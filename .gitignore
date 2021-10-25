@@ -3,3 +3,5 @@ Debug/
 Release/
 /FreeRTOS_TAD_logs/
 /AzureRTOS_TAD_logs/
+.idea/
+/cmake-build-debug/
