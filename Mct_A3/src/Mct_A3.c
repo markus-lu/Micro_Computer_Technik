@@ -2,9 +2,9 @@
  ===============================================================================
  Name        : Mct_A3.c
  Author      : Markus Luckau, Simon Struck
- Version     :
- Copyright   : $(copyright)
- Description : main definition
+ Version     : 1.0
+ Copyright   : Unlicense
+ Description : Rechenmaschine
  ===============================================================================
  */
 
@@ -20,45 +20,59 @@
 #include "Mct_A3.h"
 
 /**
- * // TODO: äöüß <=========================================================================================
  *  \file     Mct_A3.c
 */
 
 /**
  *  \mainpage A3: Rechenmaschine
  *
- *  Dies ist usere Lösung zu Aufgabe A3: Rechenmaschine.<BR><BR>
+ *  Dies ist unsere Lösung zu Aufgabe A3: Rechenmaschine.<BR><BR>
  *  Dieses Programm multipliziert zwei Zahlen miteinander,
- *  die über Schalter binär angegeben werden.
+ *  die über Schalter binär angegeben werden.<BR>
  *
  *  <HR>
  *
  *  \section sec1 Aufgabenstellung
  *  Programmierung einer einfachen Rechenmaschine in der Programmiersprache C
- *  auf dem Mikrocontroller-Entwicklungssystem MCTlite.
- * Nach dem Programmstart soll zunächst mittels des Tasters TA1 eine an den
- * Eingängen E0 .. E3 angelegte Binärzahl als Multiplikator A eingelesen werden.
- * Danach wird Multiplikand B an E0 .. E3 angelegt und
- * über den Taster TA2 eingelesen.<BR>
- * Im Anschluss daran wird das Produkt C = A * B gebildet und
- * auf den 8 gelben LEDs ausgegeben.<BR>
- * Diese LEDs können, optional, durch den Taster TA3 gelöscht werden.
- * Danach beginnt das Programm wieder von vorn.<BR>
+ *  auf dem Mikrocontroller-Entwicklungssystem MCTlite.<BR>
+ *  Nach dem Programmstart soll zunächst mittels des Tasters TA1 eine an den
+ *  Eingängen E0 .. E3 angelegte Binärzahl als Multiplikator A eingelesen werden.<BR>
+ *  Danach wird Multiplikand B an E0 .. E3 angelegt und
+ *  über den Taster TA2 eingelesen.<BR>
+ *  Im Anschluss daran wird das Produkt C = A * B gebildet und
+ *  auf den 8 gelben LEDs ausgegeben.<BR>
+ *  Diese LEDs können, optional, durch den Taster TA3 gelöscht werden.<BR>
+ *  Danach beginnt das Programm wieder von vorn.<BR>
  *
  *  \section sec2 Unterprogramme
  *
- *  \callgraph
- *
- *  \subsection sec2_1 Allgemeines, Initialisierung
- *
- *  Hier werden die C-Funktionen beschrieben, die der Initialisierung
- *  der Hardware sowie weiteren, einmalig auszuführenden Aufgaben
- *  dienen ("Init").
+ *  \subsection sec2_1 Initialisierung
+ *  Die Initialisierung des verwendeten GPIO-Ports wird in der
+ *  Funktion "io_init" gemacht.
  *
  *  \subsection sec2_2 Ablaufsteuerung
+ *  Dieses Programm multipliziert zwei Zahlen miteinander,
+ *  die über Schalter Binär angegeben werden.<BR>
+ *  Die main-Funktion kontrolliert den Programmablauf und<BR>
+ *  ruft die folgenden Funktionen der Reihe nach auf.
  *
- *  Hier erfolgt die Beschreibung der eigentlichen Ablaufsteuerung
- *  des Programms ("Loop").
+ *  \subsection sec2_3 Einlesen der Buttons und Schalter
+ *  Das Einlesen der gedrückten  Schalter und Taster wird in der Funktion
+ *  "getkey" gemacht.
+ *
+ *  \subsection sec2_4 Verarbeiten der Eingaben
+ *  Funktion zum Speichern der Multiplikanten und Berechnen des Produkts wird
+ *  in der Funktion "keyhandler" abgearbeitet.
+ *
+ *  \subsection sec2_5 Anzeigen des Produkts
+ *  Die Ausgabe des Produkts auf die LEDs wird in der Funktion
+ *  "show_result" gemacht.
+ *
+ *  \subsection sec2_6 Zeitverzögerung
+ *  Zum Erzeugen einer variablen Verzögerungszeit wird die Funktion "delay"
+ *  verwendet.<BR>
+ *  Diese wird aber im Hauptprogramm nicht benutzt.
+ *
  *
  *  <HR>
  *
@@ -155,7 +169,7 @@ void io_init(void) {
 
 /*********************************************************************/
 /**
-Funktion zum anzeigen des Rechenergebnisses mitels Output LEDs
+Funktion zum anzeigen des Rechenergebnisses mittels Output LEDs
 
 \param   res
 		 Diese Variable beinhaltet das Rechenergebnis
