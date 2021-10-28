@@ -2,7 +2,7 @@
  * Mct_A3.h
  *
  *  Created on: 07.10.2021
- *      Author: marku
+ *      Author: markus
  */
 
 #ifndef MCT_A3_H_
