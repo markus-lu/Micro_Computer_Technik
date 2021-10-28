@@ -206,9 +206,9 @@ uint32_t getkey(void) {
 
     uint32_t input = ~LPC_GPIO0->FIOPIN;
 
-    //printf("Input: %X \n", input);
+    // printf("Input: %X\n", input);
 
-    // Bits die graucht werden
+    // Bits die gebraucht werden
     // TA1 -> P0.6
     // Ta2 -> P0.7
     // Ta3 -> P0.8
@@ -226,7 +226,7 @@ uint32_t getkey(void) {
     switches |= (input & E3) >> 10;
     uint32_t output = switches | buttons;
 
-    //printf("Output: %X \n", output);
+    // printf("Output: %X\n", output);
     return output;
 
 }
