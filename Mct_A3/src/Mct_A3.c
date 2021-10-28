@@ -99,7 +99,8 @@ Dieses Programm multipliziert zwei Zahlen miteinander, die über Schalter Binär
 \bug     keine Fehler bekannt
 **********************************************************************/
 int main(void) {
-    uint32_t keys = 0; // Tastencodes
+    uint32_t keys ; // Tastencodes
+    keys = 0; // Tastencodes
     uint32_t Faktor1 = 0; // Multiplikator
     uint32_t Faktor2 = 0; // Multiplikand
     uint32_t Produkt = 0; // Produkt der Multiplikation
@@ -139,29 +140,29 @@ void io_init(void) {
 
     // Eingang Pins
 
-    // Nutze als GPIO
+    // Nutze gesammten Port 0 als GPIO
     LPC_PINCON->PINSEL0 = 0;
     LPC_PINCON->PINSEL1 = 0;
 
-    // Nutze als Eingang
+    // Nutze gesammten Port 0 als Pull-Up
     LPC_PINCON->PINMODE0 = 0;
     LPC_PINCON->PINMODE1 = 0;
 
-    // Nutze nur einige Pins
+    // Nutze nur einige Pins von Port 0
     LPC_GPIO0->FIOMASK = ~ALL_INPUTS;
 
-    // Pins als Eingang
+    // Nutze benötigte Pins in Port 0 als Eingang
     LPC_GPIO0->FIODIR = ~ALL_INPUTS;
 
     // Ausgangs Pins
 
-    // Nutze als GPIO
+    // Nutze untere hälfte von Port 2 als GPIO
     LPC_PINCON->PINSEL4 = 0;
 
-    // Nutze nur Leds
+    // Nutze nur Leds von Port 2
     LPC_GPIO2->FIOMASK = ~LEDS;
 
-    // Pins als Ausgang
+    // Nutze benötigte Pins als Ausgang
     LPC_GPIO2->FIODIR = LEDS;
 
 }
@@ -183,6 +184,7 @@ Funktion zum anzeigen des Rechenergebnisses mittels Output LEDs
 \bug     keine Fehler bekannt
 **********************************************************************/
 void show_result(uint32_t res) {
+	// LEDs fangen bei Pin 1 an und nicht Pin 0, daher um 1 verschieben
     LPC_GPIO2->FIOPIN = ~(res << 1);
 }
 
@@ -217,8 +219,10 @@ uint32_t getkey(void) {
     // E2 -> P0.21
     // E3 -> P0.16
 
-    uint32_t buttons = (input & (TA1 | TA2 | TA3)) >> 6;
+    // Buttons auf Bits 2,1,0
+    uint32_t buttons = (input & (TA3 | TA2 | TA1)) >> 6;
 
+    // Switches auf Bits 3,4,5,6
     uint32_t switches = 0;
     switches |= (input & E0) << 1;
     switches |= (input & E1) << 1;
@@ -258,6 +262,10 @@ void delay(uint32_t dtime) {
 /**
 Funktion zum Speichern der Multiplikanten und Berechnen des Produkts
 
+\param   keys
+		 Hier werden die Taster und Schalter übergeben.
+		 (0 - 0x7F)
+
 \param   A
 		 Hier wird der erste Multiplikant gespeichert,
 		 sobald der Taster gedrueckt wird.
@@ -289,17 +297,18 @@ Funktion zum Speichern der Multiplikanten und Berechnen des Produkts
 **********************************************************************/
 void keyhandler(uint32_t keys, uint32_t *A, uint32_t *B, uint32_t *C,
                 uint32_t *valuesAvailable) {
-
+	// Taster raus schieben, sodass nur der Schalter-Wert bleibt.
     uint32_t input = keys >> 3;
-    if (keys & 1) {
+
+    if (keys & 0b0001) { // TA1
         *A = input;
         *valuesAvailable |= A_AVAILABLE;
 
-    } else if (keys & 2) {
+    } else if (keys & 0b010) { // TA2
         *B = input;
         *valuesAvailable |= B_AVAILABLE;
 
-    } else if (keys & 4) {
+    } else if (keys & 0b100) { // TA3
         *A = 0;
         *B = 0;
         *C = 0;

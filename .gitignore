@@ -5,4 +5,4 @@ Release/
 /AzureRTOS_TAD_logs/
 .idea/
 /cmake-build-debug/
-/DoxygenOutput/
+DoxygenOutput/

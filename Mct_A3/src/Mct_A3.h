@@ -21,7 +21,7 @@
 #define LEDS (0b11111111 << 1)          // Output LEDs
 
 // Alle Input-Bitmasken vereint
-#define ALL_INPUTS (TA1 | TA2 | TA3 | E0 | E1 | E2 | E3)
+#define ALL_INPUTS (E3 | E2 | E1 | E0 | TA3 | TA2 | TA1)
 
 
 #define A_B_NOT_AVAILABLE 0b00          // weder A noch B wurden bisher eingelesen
