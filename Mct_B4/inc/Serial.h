@@ -1,17 +1,20 @@
 /*
  ===============================================================================
- Name        : Menu.h
+ Name        : I2C.h
  Author      : Markus Luckau, Simon Struck
  Version     : 1.0
  Copyright   : Unlicense
- Description : Anzeigen des Menüs und reagieren auf Tastendrücke
+ Description : I2C Treiber
  ===============================================================================
  */
 
-struct menu {
+#include <stdint.h>
+
+struct serial {
     void (*init)(void);
-    void (*loop_once)(void);
+    void (*write)(uint8_t address, uint8_t *data, uint32_t length);
+    void (*read)(uint8_t address, uint8_t *data, uint32_t length);
+    void (*deinit)(void);
 };
 
-extern const struct menu Menu;
-
+extern const struct serial Serial;

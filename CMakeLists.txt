@@ -21,8 +21,8 @@ include_directories(${PROJECT_FOLDER}/inc)
 include_directories(include)
 include_directories(libi2c_lcd_mctlite)
 
-file(GLOB_RECURSE USER_SOURCES "${PROJECT_FOLDER}/src/*.c*")
-file(GLOB_RECURSE USER_INCLUDES "${PROJECT_FOLDER}/inc/*.h*")
+file(GLOB_RECURSE USER_SOURCES "${PROJECT_FOLDER}/src/*.c")
+file(GLOB_RECURSE USER_INCLUDES "${PROJECT_FOLDER}/inc/*.h")
 
 file(GLOB_RECURSE HAL_SOURCES "lpc_chip_11u6x/src/*.c")
 file(GLOB_RECURSE HAL_INCLUDES "lpc_chip_11u6x/inc/*.h")

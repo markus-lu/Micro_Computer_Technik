@@ -1,0 +1,45 @@
+/*
+ ===============================================================================
+ Name        : Clock.h
+ Author      : Markus Luckau, Simon Struck
+ Version     : 1.0
+ Copyright   : Unlicense
+ Description : Logik für die Uhrzeit auf dem LEDKey und die Buttons darauf
+ ===============================================================================
+ */
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <LPC17xx.h>
+
+#define MODE_GPIO 0
+
+enum PinDir {
+    INPUT = 0,
+    OUTPUT = 1,
+};
+
+enum PinMode {
+    PULL_UP = 0b00,
+    REPEATER = 0b01,
+    NONE = 0b10,
+    PULL_DOWN = 0b11,
+};
+
+struct GPIOPin {
+    uint8_t port;
+    uint8_t pin;
+    enum PinDir dir;
+    enum PinMode mode;
+    bool open_drain;
+};
+
+struct gpio {
+    void (*init)(void);
+    void (*init_pin)(const struct GPIOPin *pin);
+    void (*set)(const struct GPIOPin *pin);
+    void (*clear)(const struct GPIOPin *pin);
+    bool (*get)(const struct GPIOPin *pin);
+};
+
+extern const struct clock Clock;

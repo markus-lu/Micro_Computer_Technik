@@ -8,30 +8,19 @@
 ===============================================================================
 */
 
-#ifdef __USE_CMSIS
-#include "LPC17xx.h"
-#endif
+#include "Mct_B4.h"
 
-#include <cr_section_macros.h>
+int main() {
+    Clock.init();
+    Events.init();
+    Menu.init();
+    I2C.init();
+    FrontIO.init();
 
-#include <stdio.h>
-
-// TODO: insert other include files here
-
-// TODO: insert other definitions and declarations here
-
-int main(void) {
-
-    printf("Hello World\n");
-
-    // Force the counter to be placed into memory
-    volatile static int i = 0 ;
-    // Enter an infinite loop, just incrementing a counter
-    while(1) {
-        i++ ;
-        // "Dummy" NOP to allow source level single
-        // stepping of tight while() loop
-        __asm volatile ("nop");
+    while (1) {
+        Clock.loop_once();
+        Menu.loop_once();
     }
-    return 0 ;
+    i2c_exit();
+    return 0;
 }

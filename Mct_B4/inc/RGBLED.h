@@ -1,17 +1,17 @@
 /*
  ===============================================================================
- Name        : Menu.h
+ Name        : RGBLED.h
  Author      : Markus Luckau, Simon Struck
  Version     : 1.0
  Copyright   : Unlicense
- Description : Anzeigen des Menüs und reagieren auf Tastendrücke
+ Description : Input Output Frontplatte
  ===============================================================================
  */
 
-struct menu {
+struct rgbled {
     void (*init)(void);
-    void (*loop_once)(void);
+    void (*set_green)(void);
+    void (*set_red)(void);
 };
 
-extern const struct menu Menu;
-
+extern const struct rgbled RGBLED;

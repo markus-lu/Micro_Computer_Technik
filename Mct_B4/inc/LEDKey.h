@@ -9,3 +9,11 @@
 
  ===============================================================================
  */
+
+struct ledkey {
+    void (*init)(void);
+    void (*loop_once)(void);
+};
+
+extern const struct ledkey LEDKey;
+

@@ -7,3 +7,10 @@
  Description : Input Output Frontplatte
  ===============================================================================
  */
+
+struct frontio {
+    void (*init)(void);
+    void (*loop_once)(void);
+};
+
+extern const struct frontio FrontIO;
