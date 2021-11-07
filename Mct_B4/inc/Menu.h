@@ -8,6 +8,10 @@
  ===============================================================================
  */
 
+#ifndef _MENU_H_
+#define _MENU_H_
+
+
 struct menu {
     void (*init)(void);
     void (*loop_once)(void);
@@ -15,3 +19,4 @@ struct menu {
 
 extern const struct menu Menu;
 
+#endif

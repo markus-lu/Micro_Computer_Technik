@@ -8,9 +8,17 @@
  ===============================================================================
  */
 
+#ifndef _FRONTIO_H_
+#define _FRONTIO_H_
+
+#include "GPIO.h"
+
 struct frontio {
+    const struct GPIOPin interrupt;
     void (*init)(void);
-    void (*loop_once)(void);
+    void (*handle_interrupt)(void);
 };
 
 extern const struct frontio FrontIO;
+
+#endif

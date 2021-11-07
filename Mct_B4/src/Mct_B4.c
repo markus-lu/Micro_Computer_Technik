@@ -15,12 +15,14 @@ int main() {
     Events.init();
     Menu.init();
     I2C.init();
+    Serial.init();
     FrontIO.init();
 
     while (1) {
         Clock.loop_once();
         Menu.loop_once();
     }
-    i2c_exit();
+    I2C.deinit();
+    Serial.deinit();
     return 0;
 }

@@ -1,12 +1,16 @@
 /*
  ===============================================================================
- Name        : I2C.h
+ Name        : Serial.h
  Author      : Markus Luckau, Simon Struck
  Version     : 1.0
  Copyright   : Unlicense
- Description : I2C Treiber
+ Description : Custom Serial Protokoll Treiber
  ===============================================================================
  */
+
+#ifndef _SERIAL_H_
+#define _SERIAL_H_
+
 
 #include <stdint.h>
 
@@ -18,3 +22,5 @@ struct serial {
 };
 
 extern const struct serial Serial;
+
+#endif

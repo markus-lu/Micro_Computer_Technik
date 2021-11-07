@@ -1,37 +1,38 @@
 #include "RTC.h"
 
-void convert_bcd_to_binary(uint8_t *bytes, struct DateTime *dateTime) {
+void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
     // TODO: format values in struct BCD code to datetime
 }
 
-void convert_binary_to_bcd(struct DateTime *dateTime, uint8_t *out) {
+void encode_time(struct DateTime *dateTime, uint8_t *out) {
     out[0] = 0; // Register Address
     // TODO: format values in struct BCD code for RTC
 }
 
 uint32_t read_temp() {
-
+    // TODO: Read Temperature and convert it to readable value
+    return 0;
 }
 
 struct DateTime read_time() {
-    uint8_t slave_address[] = {0};
-    I2C.write(I2C_DS3231_ADDR, slave_address, 1);
+    uint8_t slave_address[1] = {0};
+    I2C.write(I2C.DS3231_ADDRESS, slave_address, 1);
 
     uint8_t bytes[7];
-    I2C.read(I2C_DS3231_ADDR, bytes, 7);
+    I2C.read(I2C.DS3231_ADDRESS, bytes, 7);
 
     struct DateTime time;
-    convert_bcd_to_binary(bytes, &time);
+    decode_time(bytes, &time);
 
     return time;
 }
 
 void write_time(struct DateTime dateTime) {
-    uint8_t data[8];
+    uint8_t bytes[8];
 
-    convert_binary_to_bcd(&dateTime, data);
+    encode_time(&dateTime, bytes);
 
-    I2C.write(I2C_DS3231_ADDR, data, 8);
+    I2C.write(I2C.DS3231_ADDRESS, bytes, 8);
 }
 
 const struct rtc RTC = {

@@ -4,11 +4,11 @@ void init() {
 
 }
 
-void set_green() {
+void loop_once() {
 
 }
 
 const struct menu Menu  = {
         .init = init,
-        .loop_once = set_green,
+        .loop_once = loop_once,
 };

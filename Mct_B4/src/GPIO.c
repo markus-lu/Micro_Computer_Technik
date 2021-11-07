@@ -48,7 +48,12 @@ void init_pin(const struct GPIOPin *pin) {
     set_pin_open_drain(pin);
 
     volatile LPC_GPIO_TypeDef *gpio = port_to_gpio_address(pin->port);
-    gpio->FIODIR |= (pin->dir << pin->pin);
+
+    if (pin->dir == OUTPUT) {
+        gpio->FIODIR |= (1 << pin->pin);
+    } else {
+        gpio->FIODIR &= ~(1 << pin->pin);
+    }
     gpio->FIOMASK &= ~(1 << pin->pin);
 }
 

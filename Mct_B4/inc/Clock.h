@@ -7,6 +7,8 @@
  Description : Logik für die Uhrzeit auf dem LEDKey und die Buttons darauf
  ===============================================================================
  */
+#ifndef _CLOCK_H_
+#define _CLOCK_H_
 
 #include "LEDKey.h"
 
@@ -16,3 +18,5 @@ struct clock {
 };
 
 extern const struct clock Clock;
+
+#endif

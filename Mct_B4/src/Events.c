@@ -1,34 +1,28 @@
 #include "Events.h"
 
-static struct Event *event_data[EVENT_COUNT];
+static struct Event event_data[EVENT_COUNT];
 
 void init() {
-    memset(event_data, 0, EVENT_COUNT);
+    memset(event_data, 0, sizeof(struct Event) * EVENT_COUNT);
 }
 
 uint16_t get_programmed_events() {
-    uint16_t out = 0;
+    uint16_t count = 0;
     for (int i = 0; i < EVENT_COUNT; ++i) {
-        if (event_data[i] != NULL) {
-            out |= (1 << i);
-        }
+        count += event_data[i].enabled;
     }
-    return out;
+    return count;
 }
 
 void add_event(uint8_t position, struct Event event) {
-    struct Event *persisted_event = malloc(sizeof(struct Event));
-    memcpy(persisted_event, &event, sizeof(struct Event));
-    event_data[position] = persisted_event;
+    memcpy(&event_data[position], &event, sizeof(struct Event));
 }
 
 void delete_event(uint8_t position) {
-    struct Event *event = event_data[position];
-    event_data[position] = NULL;
-    free(event);
+    event_data[position].enabled = false;
 }
 
-struct Event *get_event(uint8_t position) {
+struct Event get_event(uint8_t position) {
     return event_data[position];
 }
 

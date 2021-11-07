@@ -8,12 +8,16 @@
  ===============================================================================
  */
 
+#ifndef _I2CLEDS_H_
+#define _I2CLEDS_H_
+
+
 #include "I2C.h"
 
 struct i2cleds {
-    void (*init)(void);
-    void (*loop_once)(void);
+    void (*set_leds)(uint32_t event_count);
 };
 
 extern const struct i2cleds I2CLEDs;
 
+#endif

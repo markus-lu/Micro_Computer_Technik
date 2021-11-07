@@ -8,6 +8,10 @@
  ===============================================================================
  */
 
+#ifndef _LCD_H_
+#define _LCD_H_
+
+
 #include "mclite/lcdlib_1769.h"
 
 struct lcd {
@@ -27,3 +31,4 @@ struct lcd {
 
 extern const struct lcd LCD;
 
+#endif

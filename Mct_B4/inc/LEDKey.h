@@ -10,10 +10,19 @@
  ===============================================================================
  */
 
+#ifndef _LEDKEY_H_
+#define _LEDKEY_H_
+
+#include "GPIO.h"
+
 struct ledkey {
+    const struct GPIOPin clk;
+    const struct GPIOPin dio;
+    const struct GPIOPin stb;
     void (*init)(void);
     void (*loop_once)(void);
 };
 
 extern const struct ledkey LEDKey;
 
+#endif

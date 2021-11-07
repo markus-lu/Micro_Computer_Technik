@@ -26,6 +26,10 @@ void read(uint8_t address, uint8_t *data, uint32_t length) {
 
 
 const struct i2c I2C = {
+        .PCA9539_ADDRESS = 0xE8,
+        .PCF8574A_ADDRESS = 0x7E,
+        .PCF8574_LCD_ADDRESS = 0x4E,
+        .DS3231_ADDRESS = 0x68,
         .init = init,
         .write =write,
         .read = read,

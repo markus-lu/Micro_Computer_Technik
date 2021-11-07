@@ -8,8 +8,13 @@
  ===============================================================================
  */
 
+#ifndef _MCT_B4_H_
+#define _MCT_B4_H_
+
+
 #include "mclite/i2c_1769.h"
 #include "I2C.h"
+#include "Serial.h"
 #include "Menu.h"
 #include "Clock.h"
 #include "Events.h"
@@ -26,3 +31,5 @@
 #include <stdio.h>
 
 int main();
+
+#endif

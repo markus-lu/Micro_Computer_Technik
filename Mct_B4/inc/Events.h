@@ -8,6 +8,9 @@
  ===============================================================================
  */
 
+#ifndef _EVENTS_H_
+#define _EVENTS_H_
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -16,6 +19,7 @@
 #define EVENT_COUNT 16
 
 struct Event {
+    bool enabled;
     uint8_t hour;
     uint8_t minute;
     uint8_t weekdays; // MSB = 0, Monday, ..., LSB = Sunday
@@ -28,7 +32,9 @@ struct events {
     uint16_t (*get_programmed_events)(void);
     void (*add_event)(uint8_t position, struct Event event);
     void (*delete_event)(uint8_t position);
-    struct Event *(*get_event)(uint8_t position);
+    struct Event (*get_event)(uint8_t position);
 };
 
 extern const struct events Events;
+
+#endif

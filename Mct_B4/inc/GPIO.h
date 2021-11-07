@@ -8,6 +8,9 @@
  ===============================================================================
  */
 
+#ifndef _GPIO_H_
+#define _GPIO_H_
+
 #include <stdint.h>
 #include <stdbool.h>
 #include <LPC17xx.h>
@@ -42,4 +45,6 @@ struct gpio {
     bool (*get)(const struct GPIOPin *pin);
 };
 
-extern const struct clock Clock;
+extern const struct gpio GPIO;
+
+#endif
