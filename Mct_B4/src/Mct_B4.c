@@ -10,6 +10,9 @@
 
 #include "Mct_B4.h"
 
+// TODO: Frage: Ist eine static variable auch als global eingestuft?
+
+
 int main() {
     struct MenuState menu;
     Clock.init();
