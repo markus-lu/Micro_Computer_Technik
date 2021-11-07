@@ -10,11 +10,15 @@
 
 #ifndef _MENU_H_
 #define _MENU_H_
+#include "FrontIO.h"
 
+struct MenuState{
+
+};
 
 struct menu {
     void (*init)(void);
-    void (*loop_once)(void);
+    void (*loop_once)(struct MenuState* state);
 };
 
 extern const struct menu Menu;

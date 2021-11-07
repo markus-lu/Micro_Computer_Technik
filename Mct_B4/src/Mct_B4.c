@@ -11,6 +11,7 @@
 #include "Mct_B4.h"
 
 int main() {
+    struct MenuState menu;
     Clock.init();
     Events.init();
     Menu.init();
@@ -20,7 +21,7 @@ int main() {
 
     while (1) {
         Clock.loop_once();
-        Menu.loop_once();
+        Menu.loop_once(&menu);
     }
     I2C.deinit();
     Serial.deinit();
