@@ -1,10 +1,10 @@
 #include "GPIO.h"
 
-void init() {
+static void init() {
 }
 
 
-void set_pin_sel(const struct GPIOPin *pin) {
+static void set_pin_sel(const struct GPIOPin *pin) {
     volatile uint32_t *pinsel = &LPC_PINCON->PINSEL0;
     pinsel += pin->port * 2;
 
@@ -16,7 +16,7 @@ void set_pin_sel(const struct GPIOPin *pin) {
     }
 }
 
-void set_pin_mode(const struct GPIOPin *pin) {
+static void set_pin_mode(const struct GPIOPin *pin) {
     volatile uint32_t *pinsel = &LPC_PINCON->PINMODE0;
     pinsel += pin->port * 2;
 
@@ -28,21 +28,21 @@ void set_pin_mode(const struct GPIOPin *pin) {
     }
 }
 
-void set_pin_open_drain(const struct GPIOPin *pin) {
+static void set_pin_open_drain(const struct GPIOPin *pin) {
     volatile uint32_t *pinsel = &LPC_PINCON->PINMODE_OD0;
     pinsel += pin->port;
 
     *pinsel |= (pin->open_drain << (pin->pin));
 }
 
-LPC_GPIO_TypeDef *port_to_gpio_address(uint8_t port) {
-    LPC_GPIO_TypeDef *ptr = LPC_GPIO0;
-    ptr += (sizeof(LPC_GPIO_TypeDef) * port);
+static LPC_GPIO_TypeDef *port_to_gpio_address(uint8_t port) {
+    LPC_GPIO_TypeDef *ptr = LPC_GPIO_BASE;
+    ptr += port;
     return ptr;
 }
 
 
-void init_pin(const struct GPIOPin *pin) {
+static void init_pin(const struct GPIOPin *pin) {
     set_pin_sel(pin);
     set_pin_mode(pin);
     set_pin_open_drain(pin);
@@ -57,19 +57,19 @@ void init_pin(const struct GPIOPin *pin) {
     gpio->FIOMASK &= ~(1 << pin->pin);
 }
 
-void set(const struct GPIOPin *pin) {
+static void set(const struct GPIOPin *pin) {
     volatile LPC_GPIO_TypeDef *gpio = port_to_gpio_address(pin->port);
 
     gpio->FIOSET = (1 << pin->pin);
 }
 
-void clear(const struct GPIOPin *pin) {
+static void clear(const struct GPIOPin *pin) {
     volatile LPC_GPIO_TypeDef *gpio = port_to_gpio_address(pin->port);
 
     gpio->FIOCLR = (1 << pin->pin);
 }
 
-bool get(const struct GPIOPin *pin) {
+static bool get(const struct GPIOPin *pin) {
     volatile LPC_GPIO_TypeDef *gpio = port_to_gpio_address(pin->port);
 
     return (gpio->FIOPIN & (1 << pin->pin)) != 0;

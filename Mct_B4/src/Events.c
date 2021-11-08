@@ -2,11 +2,11 @@
 
 static struct Event event_data[EVENT_COUNT];
 
-void init() {
+static void init() {
     memset(event_data, 0, sizeof(struct Event) * EVENT_COUNT);
 }
 
-uint16_t get_programmed_events() {
+static uint16_t get_programmed_events() {
     uint16_t count = 0;
     for (int i = 0; i < EVENT_COUNT; ++i) {
         count += event_data[i].enabled;
@@ -14,11 +14,11 @@ uint16_t get_programmed_events() {
     return count;
 }
 
-void add_event(uint8_t position, struct Event event) {
+static void add_event(uint8_t position, struct Event event) {
     memcpy(&event_data[position], &event, sizeof(struct Event));
 }
 
-void delete_event(uint8_t position) {
+static void delete_event(uint8_t position) {
     event_data[position].enabled = false;
 }
 

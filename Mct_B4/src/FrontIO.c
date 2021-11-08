@@ -1,4 +1,5 @@
 #include "FrontIO.h"
+#include "I2C.h"
 
 #define LED0 (1 << 0)
 #define LED1 (1 << 1)
@@ -9,12 +10,16 @@
 #define TA2 (1 << 6)
 #define TA3 (1 << 7)
 
-void init() {
+static void init() {
+	GPIO.init_pin(&FrontIO.interrupt);
+
+
+
 // TODO: Einmal I2C Lesen, damit er einen Interrupt beim Knopfdrücken auslöst wird
 // TODO: Interrupt auf Pin 2.13 aktivieren
 }
 
-void handle_interrupt() {
+static void handle_interrupt() {
     // TODO: Taster abfragen, um zu sehen welcher Taster gedrückt wurde
     // TODO: LED's aktualisieren
     // TODO: Gedrückten Taster an Menu weiter geben, damit dort auf den Tastendruck reagiert werden kann

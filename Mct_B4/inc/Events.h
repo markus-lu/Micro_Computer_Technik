@@ -14,9 +14,17 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <memory.h>
+
 
 #define EVENT_COUNT 16
+
+#define Monday (1 << 6)
+#define Tuesday (1 << 5)
+#define Wednesday (1 << 4)
+#define Thursday (1 << 3)
+#define Friday (1 << 2)
+#define Saturday (1 << 1)
+#define Sunday (1 << 0)
 
 struct Event {
     bool enabled;

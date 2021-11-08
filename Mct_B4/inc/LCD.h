@@ -12,7 +12,7 @@
 #define _LCD_H_
 
 
-#include "mclite/lcdlib_1769.h"
+#include "lcdlib_1769.h"
 
 struct lcd {
     void (*init)(uint8_t LineNo, uint8_t speed);

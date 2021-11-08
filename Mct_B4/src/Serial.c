@@ -1,20 +1,20 @@
 #include "Serial.h"
 
-void init() {
+static void init() {
     GPIO.init_pin(&Serial.clk);
     GPIO.init_pin(&Serial.dio);
     GPIO.init_pin(&Serial.stb);
 }
 
-void write(uint8_t address, uint8_t *data, uint32_t length) {
+static void write(uint8_t address, uint8_t *data, uint32_t length) {
     // TODO: Rausfinden, wie man Daten schreibt (Timer2?)
 }
 
-void read(uint8_t address, uint8_t *data, uint32_t length) {
+static void read(uint8_t address, uint8_t *data, uint32_t length) {
     // TODO: Rausfinden, wie man Daten liest (Timer2?)
 }
 
-void deinit() {
+static void deinit() {
 
 }
 

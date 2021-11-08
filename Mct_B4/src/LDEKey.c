@@ -1,10 +1,10 @@
 #include "LEDKey.h"
 
-void init() {
+static void init() {
 
 }
 
-void loop_once() {
+static void loop_once() {
 
 }
 
