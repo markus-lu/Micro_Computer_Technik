@@ -1,7 +1,7 @@
 #include "I2C.h"
 
 static void init(){
-    i2c_init(I2C_SM);
+    i2c_init(I2C.SPEED);
 }
 
 static uint8_t write(uint8_t address, uint8_t *data, uint32_t length) {
@@ -36,6 +36,7 @@ const struct i2c I2C = {
         .PCF8574A_ADDRESS = 0x7E,
         .PCF8574_LCD_ADDRESS = 0x4E,
         .DS3231_ADDRESS = 0x68,
+        .SPEED = I2C_SM,
         .init = init,
         .write =write,
         .read = read,
