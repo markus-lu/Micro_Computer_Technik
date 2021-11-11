@@ -7,27 +7,27 @@ static void init() {
 }
 
 static void set_green() {
-    GPIO.set(&RGBLED.red);
-    GPIO.set(&RGBLED.blue);
-    GPIO.clear(&RGBLED.green);
+    GPIO.set_high(&RGBLED.red);
+    GPIO.set_high(&RGBLED.blue);
+    GPIO.set_low(&RGBLED.green);
 }
 
 static void set_red() {
-    GPIO.set(&RGBLED.green);
-    GPIO.set(&RGBLED.blue);
-    GPIO.clear(&RGBLED.red);
+    GPIO.set_high(&RGBLED.green);
+    GPIO.set_high(&RGBLED.blue);
+    GPIO.set_low(&RGBLED.red);
 }
 
 static void set_blue() {
-    GPIO.set(&RGBLED.green);
-    GPIO.set(&RGBLED.red);
-    GPIO.clear(&RGBLED.blue);
+    GPIO.set_high(&RGBLED.green);
+    GPIO.set_high(&RGBLED.red);
+    GPIO.set_low(&RGBLED.blue);
 }
 
 static void off() {
-    GPIO.set(&RGBLED.green);
-    GPIO.set(&RGBLED.red);
-    GPIO.set(&RGBLED.blue);
+    GPIO.set_high(&RGBLED.green);
+    GPIO.set_high(&RGBLED.red);
+    GPIO.set_high(&RGBLED.blue);
 }
 
 const struct rgbled RGBLED = {

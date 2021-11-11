@@ -53,16 +53,24 @@ static void init_pin(const struct GPIOPin *pin) {
     gpio->FIOMASK &= ~(1 << pin->pin);
 }
 
-static void set(const struct GPIOPin *pin) {
+static void set_high(const struct GPIOPin *pin) {
     volatile LPC_GPIO_TypeDef *gpio = port_to_gpio_address(pin->port);
 
     gpio->FIOSET = (1 << pin->pin);
 }
 
-static void clear(const struct GPIOPin *pin) {
+static void set_low(const struct GPIOPin *pin) {
     volatile LPC_GPIO_TypeDef *gpio = port_to_gpio_address(pin->port);
 
     gpio->FIOCLR = (1 << pin->pin);
+}
+
+static void set(const struct GPIOPin *pin, bool state) {
+    if (state) {
+        set_high(pin);
+    } else {
+        set_low(pin);
+    }
 }
 
 static bool get(const struct GPIOPin *pin) {
@@ -73,7 +81,8 @@ static bool get(const struct GPIOPin *pin) {
 
 const struct gpio GPIO = {
         .init_pin = init_pin,
+        .set_high = set_high,
+        .set_low = set_low,
         .set = set,
-        .clear = clear,
         .get = get,
 };

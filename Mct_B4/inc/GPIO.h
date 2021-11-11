@@ -39,8 +39,9 @@ struct GPIOPin {
 
 struct gpio {
     void (*init_pin)(const struct GPIOPin *pin);
-    void (*set)(const struct GPIOPin *pin);
-    void (*clear)(const struct GPIOPin *pin);
+    void (*set_high)(const struct GPIOPin *pin);
+    void (*set_low)(const struct GPIOPin *pin);
+    void (*set)(const struct GPIOPin *pin, bool state);
     bool (*get)(const struct GPIOPin *pin);
 };
 
