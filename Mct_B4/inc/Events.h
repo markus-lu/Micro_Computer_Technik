@@ -36,11 +36,8 @@ struct Event {
 
 
 struct events {
-    void (*init)(void);
-    uint16_t (*get_programmed_events)(void);
-    void (*add_event)(uint8_t position, struct Event event);
-    void (*delete_event)(uint8_t position);
-    struct Event (*get_event)(uint8_t position);
+    void (*init)(struct Event *event_data);
+    uint16_t (*get_count)(const struct Event *event_data);
 };
 
 extern const struct events Events;
