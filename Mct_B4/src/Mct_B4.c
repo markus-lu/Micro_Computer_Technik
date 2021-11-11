@@ -1,12 +1,12 @@
 /*
-===============================================================================
+ ===============================================================================
  Name        : Mct_B4.c
  Author      : $(author)
  Version     :
  Copyright   : $(copyright)
  Description : main definition
-===============================================================================
-*/
+ ===============================================================================
+ */
 
 #include "Mct_B4.h"
 #include "I2C.h"
@@ -28,23 +28,19 @@
 
 #include <stdio.h>
 
-// TODO: Frage: Ist eine static variable auch als global eingestuft?
-
-
 void delay(uint32_t dtime) {
-    volatile uint32_t i;
-    for (i = 0; i < dtime; i++) {
-        __asm("nop");
-    }
+	volatile uint32_t i;
+	for (i = 0; i < dtime; i++) {
+		__asm("nop");
+	}
 }
 
-
 int main() {
-    struct MenuState menu;
+	struct MenuState menu;
 //    Clock.init();
 //    Events.init();
 //    Menu.init();
-    I2C.init();
+	I2C.init();
 //    Serial.init();
 //    FrontIO.init();
 
@@ -54,7 +50,6 @@ int main() {
 //    }
 //    I2C.deinit();
 //    Serial.deinit();
-
 
 //    RGBLED.init();
 //    while(1){
@@ -68,8 +63,13 @@ int main() {
 //        RGBLED.off();
 //    }
 //    RGBLED.off();
-    I2CLEDs.set_leds(0);
+	I2CLEDs.init();
+//	while (true) {
+//		for (int i = 0; i <= 16; ++i) {
+//			I2CLEDs.set_leds(i);
+//			delay(5000000);
+//		}
+//	}
 
-
-    return 0;
+	return 0;
 }

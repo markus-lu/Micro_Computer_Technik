@@ -15,6 +15,7 @@
 #include "I2C.h"
 
 struct i2cleds {
+    void (*init)(void);
     void (*set_leds)(uint32_t event_count);
 };
 
