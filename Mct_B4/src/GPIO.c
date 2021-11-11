@@ -1,9 +1,5 @@
 #include "GPIO.h"
 
-static void init() {
-}
-
-
 static void set_pin_sel(const struct GPIOPin *pin) {
     volatile uint32_t *pinsel = &LPC_PINCON->PINSEL0;
     pinsel += pin->port * 2;
@@ -76,7 +72,6 @@ static bool get(const struct GPIOPin *pin) {
 }
 
 const struct gpio GPIO = {
-        .init = init,
         .init_pin = init_pin,
         .set = set,
         .clear = clear,

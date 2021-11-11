@@ -38,7 +38,6 @@ struct GPIOPin {
 };
 
 struct gpio {
-    void (*init)(void);
     void (*init_pin)(const struct GPIOPin *pin);
     void (*set)(const struct GPIOPin *pin);
     void (*clear)(const struct GPIOPin *pin);
