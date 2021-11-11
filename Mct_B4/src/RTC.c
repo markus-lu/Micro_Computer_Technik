@@ -18,23 +18,20 @@ static uint32_t read_temp() {
     return 0;
 }
 
-static struct DateTime read_time() {
+static void read_time(struct DateTime* time) {
     uint8_t slave_address[1] = {0};
     I2C.write(I2C.DS3231_ADDRESS, slave_address, 1);
 
     uint8_t bytes[7];
     I2C.read(I2C.DS3231_ADDRESS, bytes, 7);
 
-    struct DateTime time;
-    decode_time(bytes, &time);
-
-    return time;
+    decode_time(bytes, time);
 }
 
-static void write_time(struct DateTime dateTime) {
+static void write_time(struct DateTime *time) {
     uint8_t bytes[8];
 
-    encode_time(&dateTime, bytes);
+    encode_time(time, bytes);
 
     I2C.write(I2C.DS3231_ADDRESS, bytes, 8);
 }
