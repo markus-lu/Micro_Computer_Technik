@@ -36,7 +36,7 @@ static void set_pin_open_drain(const struct GPIOPin *pin) {
 }
 
 static LPC_GPIO_TypeDef *port_to_gpio_address(uint8_t port) {
-    LPC_GPIO_TypeDef *ptr = LPC_GPIO_BASE;
+    LPC_GPIO_TypeDef *ptr = (LPC_GPIO_TypeDef *) LPC_GPIO_BASE;
     ptr += port;
     return ptr;
 }
