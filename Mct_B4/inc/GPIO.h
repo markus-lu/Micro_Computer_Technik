@@ -30,11 +30,11 @@ enum PinMode {
 };
 
 struct GPIOPin {
-    uint8_t port;
-    uint8_t pin;
-    enum PinDir dir;
-    enum PinMode mode;
-    bool open_drain;
+    const uint8_t port;
+    const uint8_t pin;
+    const enum PinDir dir;
+    const enum PinMode mode;
+    const bool open_drain;
 };
 
 struct gpio {
