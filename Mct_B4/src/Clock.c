@@ -1,10 +1,16 @@
 #include "Clock.h"
+#include "RTC.h"
+#include "LEDKey.h"
 
-void init() {
-
+void init(struct ClockState* state) {
+    LEDKey.init();
+    RTC.init();
+    state->time = RTC.read_time();
+    state->sel_field = 0;
+    state->edit_mode = false;
 }
 
-void loop_once() {
+void loop_once(struct ClockState* state) {
 
 }
 

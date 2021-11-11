@@ -10,11 +10,19 @@
 #ifndef _CLOCK_H_
 #define _CLOCK_H_
 
-#include "LEDKey.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include "RTC.h"
+
+struct ClockState {
+    struct DateTime time;
+    uint8_t sel_field;
+    bool edit_mode;
+};
 
 struct clock {
-    void (*init)(void);
-    void (*loop_once)(void);
+    void (*init)(struct ClockState* state);
+    void (*loop_once)(struct ClockState* state);
 };
 
 extern const struct clock Clock;
