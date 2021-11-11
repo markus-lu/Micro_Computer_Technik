@@ -26,7 +26,7 @@
 
 #include <cr_section_macros.h>
 
-#include <stdio.h>
+// TODO: Fragen, wie LCD.write_symbols funktioniert (undokumentiert)
 
 void delay(uint32_t dtime) {
 	volatile uint32_t i;
@@ -36,45 +36,14 @@ void delay(uint32_t dtime) {
 }
 
 int main() {
-	struct MenuState menu = {
-		.screen=SCREEN_HOME,
-		.sel_event = 0,
-		.sel_event_detail =0,
-	};
-//    Clock.init();
-//    Events.init();
-    Menu.init();
-	I2C.init();
-//    Serial.init();
-//    FrontIO.init();
+	struct MenuState menu;
+    Menu.init(&menu);
 
-    Menu.loop_once(&menu);
-//    while (1) {
-////        Clock.loop_once();
-//        Menu.loop_once(&menu);
-//    }
-//    I2C.deinit();
-//    Serial.deinit();
-
-//    RGBLED.init();
-//    while(1){
-//    	delay(5000000);
-//        RGBLED.set_green();
-//    	delay(5000000);
-//        RGBLED.set_red();
-//    	delay(5000000);
-//        RGBLED.set_blue();
-//    	delay(5000000);
-//        RGBLED.off();
-//    }
-//    RGBLED.off();
-//	I2CLEDs.init();
-//	while (true) {
-//		for (int i = 0; i <= 16; ++i) {
-//			I2CLEDs.set_leds(i);
-//			delay(5000000);
-//		}
-//	}
-
+    struct ClockState clock;
+    Clock.init(&clock);
+    while (1) {
+    	delay(5000000);
+    }
+    Serial.deinit();
 	return 0;
 }
