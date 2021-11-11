@@ -27,6 +27,7 @@ struct DateTime {
 };
 
 struct rtc {
+    void (*init)(void);
     uint32_t (*read_temp)(void);
     struct DateTime (*read_time)(void);
     void (*write_time)(struct DateTime);

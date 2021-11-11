@@ -9,6 +9,10 @@ static void encode_time(struct DateTime *dateTime, uint8_t *out) {
     // TODO: format values in struct BCD code for RTC
 }
 
+static void init() {
+
+}
+
 static uint32_t read_temp() {
     // TODO: Read Temperature and convert it to readable value
     return 0;
@@ -36,6 +40,7 @@ static void write_time(struct DateTime dateTime) {
 }
 
 const struct rtc RTC = {
+        .init = init,
         .read_temp = read_temp,
         .read_time = read_time,
         .write_time = write_time,
