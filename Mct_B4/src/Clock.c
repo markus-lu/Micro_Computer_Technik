@@ -5,7 +5,7 @@
 void init(struct ClockState* state) {
     LEDKey.init();
     RTC.init();
-    state->time = RTC.read_time();
+    RTC.read_time(&state->time);
     state->sel_field = 0;
     state->edit_mode = false;
 }
