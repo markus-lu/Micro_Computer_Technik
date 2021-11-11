@@ -36,16 +36,21 @@ void delay(uint32_t dtime) {
 }
 
 int main() {
-	struct MenuState menu;
+	struct MenuState menu = {
+		.screen=SCREEN_HOME,
+		.sel_event = 0,
+		.sel_event_detail =0,
+	};
 //    Clock.init();
 //    Events.init();
-//    Menu.init();
+    Menu.init();
 	I2C.init();
 //    Serial.init();
 //    FrontIO.init();
 
+    Menu.loop_once(&menu);
 //    while (1) {
-//        Clock.loop_once();
+////        Clock.loop_once();
 //        Menu.loop_once(&menu);
 //    }
 //    I2C.deinit();
@@ -63,7 +68,7 @@ int main() {
 //        RGBLED.off();
 //    }
 //    RGBLED.off();
-	I2CLEDs.init();
+//	I2CLEDs.init();
 //	while (true) {
 //		for (int i = 0; i <= 16; ++i) {
 //			I2CLEDs.set_leds(i);

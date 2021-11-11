@@ -10,10 +10,15 @@
 
 #ifndef _MENU_H_
 #define _MENU_H_
+#define SCREEN_HOME 0
+#define SCREEN_EVENTS 1
+#define SCREEN_EVENT_DETAILS 2
 #include "FrontIO.h"
 
 struct MenuState{
-
+	uint8_t screen;
+	uint8_t sel_event;
+	uint8_t sel_event_detail;
 };
 
 struct menu {

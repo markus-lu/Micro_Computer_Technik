@@ -1,7 +1,9 @@
 #include "Menu.h"
+#include "LCD.h"
 
 static void init() {
     FrontIO.init();
+    LCD.backlight(0xFF);
 }
 
 static bool handle_keypress() {
@@ -9,15 +11,29 @@ static bool handle_keypress() {
     return 0;
 }
 
-static void draw_menu() {
-    // TODO: Figure out how to draw a menu
+static void draw_menu(const struct MenuState *state) {
+	switch (state->screen) {
+	default:
+	case SCREEN_HOME:
+		LCD.write_4lines(
+				"Tempeatur:   22.25.C",
+				"Status:      Aus",
+				"Events:      0/16",
+				""
+				);
+		break;
+	case SCREEN_EVENTS:
+
+		break;
+	case SCREEN_EVENT_DETAILS:
+
+		break;
+	}
 }
 
 static void loop_once(struct MenuState *state) {
-    bool menu_changed = handle_keypress();
-    if (menu_changed) {
-        draw_menu();
-    }
+        draw_menu(state);
+
 }
 
 const struct menu Menu = {
