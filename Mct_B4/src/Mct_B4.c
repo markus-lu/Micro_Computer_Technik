@@ -36,6 +36,7 @@ void delay(uint32_t dtime) {
 }
 
 int main() {
+    SystemCoreClockUpdate();
 	struct MenuState menu;
     Menu.init(&menu);
 
