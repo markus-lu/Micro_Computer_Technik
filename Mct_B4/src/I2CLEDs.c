@@ -38,4 +38,7 @@ static void set_leds(uint32_t event_count) {
 	I2C.write(I2C.PCA9539_ADDRESS, cmd, 2);
 }
 
-const struct i2cleds I2CLEDs = { .init = init, .set_leds = set_leds, };
+const struct i2cleds I2CLEDs = {
+		.init = init,
+		.set_leds = set_leds,
+};
