@@ -16,8 +16,8 @@
 #include "LPC17xx.h"
 
 struct timer {
-    void (*init)(LPC_TIM_TypeDef* timer);
-    void (*get_count)(LPC_TIM_TypeDef* timer);
+    void (*init_timer2)(void);
+    uint32_t (*get_count)(LPC_TIM_TypeDef* timer);
     void (*set_prescaler)(LPC_TIM_TypeDef* timer, uint32_t value);
     void (*enable_match_interrupt)(LPC_TIM_TypeDef* timer, uint8_t match, uint32_t value);
     void (*disable_match_interrupt)(LPC_TIM_TypeDef* timer, uint8_t match);
