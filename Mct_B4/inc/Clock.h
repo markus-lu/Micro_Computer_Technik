@@ -10,7 +10,7 @@
 #ifndef _CLOCK_H_
 #define _CLOCK_H_
 
-#include <stdint.h>
+#include <types.h>
 #include <stdbool.h>
 #include "RTC.h"
 

@@ -22,6 +22,9 @@ struct timer {
     void (*enable_match_interrupt)(LPC_TIM_TypeDef* timer, uint8_t match, uint32_t value);
     void (*disable_match_interrupt)(LPC_TIM_TypeDef* timer, uint8_t match);
     void (*clear_match_interrupt)(LPC_TIM_TypeDef* timer, uint8_t match);
+    bool (*has_ticked)(void);
+    void (*start_timer)(LPC_TIM_TypeDef *timer);
+    void (*stop_timer)(LPC_TIM_TypeDef *timer);
     void (*deinit)(LPC_TIM_TypeDef* timer);
 };
 

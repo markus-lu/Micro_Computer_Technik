@@ -11,7 +11,7 @@
 #ifndef _MENU_H_
 #define _MENU_H_
 
-#include <stdint.h>
+#include <types.h>
 
 #define SCREEN_HOME 0
 #define SCREEN_EVENTS 1

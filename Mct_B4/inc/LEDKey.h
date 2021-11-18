@@ -13,6 +13,20 @@
 #ifndef _LEDKEY_H_
 #define _LEDKEY_H_
 
+#define SEG_0 0b00111111
+#define SEG_1 0b00000110
+#define SEG_2 0b01011011
+#define SEG_3 0b01001111
+#define SEG_4 0b01100110
+#define SEG_5 0b01101101
+#define SEG_6 0b01111101
+#define SEG_7 0b00000111
+#define SEG_8 0b01111111
+#define SEG_9 0b01101111
+
+#define SEG_A 0b01110111
+
+
 #include "GPIO.h"
 
 struct ledkey {

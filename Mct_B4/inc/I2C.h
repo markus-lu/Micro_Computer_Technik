@@ -11,7 +11,6 @@
 #ifndef _I2C_H_
 #define _I2C_H_
 
-#include <stdint.h>
 #include "i2c_1769.h"
 
 struct i2c {

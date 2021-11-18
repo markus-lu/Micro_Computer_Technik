@@ -13,7 +13,7 @@
 
 
 #include "I2C.h"
-#include <stdint.h>
+#include <types.h>
 
 struct DateTime {
     uint8_t seconds;
