@@ -1,12 +1,43 @@
 #include "RTC.h"
 
-static void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
-    // TODO: format values in struct BCD code to datetime
+//bcd = binaray decimal code
+static uint8_t decode_bcd(uint8_t byte){
+	uint8_t tens = (byte >> 4)& 0b1111;
+	uint8_t ones = byte & 0b1111;
+	return (tens*10)+ ones;
 }
 
-static void encode_time(struct DateTime *dateTime, uint8_t *out) {
-    out[0] = 0; // Register Address
-    // TODO: format values in struct BCD code for RTC
+static uint8_t encode_bcd(uint8_t number){
+
+	uint8_t tens = number/10;
+	uint8_t ones = number%10;
+
+	return (tens <<4) | ones;
+}
+
+static void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
+
+
+	dateTime->seconds = decode_bcd(bytes[0]);
+	dateTime->minutes = decode_bcd(bytes[1]);
+	// und verknüpfung filtert 24 stunden bit herraus
+	dateTime->hours = decode_bcd(bytes[2]&0b111111);
+	dateTime->weekday = decode_bcd(bytes[3]);
+	dateTime->day = decode_bcd(bytes[4]);
+	// und verknüpfung filtert century bit herraus
+	dateTime->month = decode_bcd((bytes[5])&0b11111);
+	dateTime->year = decode_bcd(bytes[6]);
+}
+
+static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
+	bytes[0] = encode_bcd(dateTime->seconds);
+	bytes[1] = encode_bcd(dateTime->minutes);
+	bytes[2] = encode_bcd(dateTime->hours);
+	bytes[3] = encode_bcd(dateTime->weekday);
+	bytes[4] = encode_bcd(dateTime->day);
+	bytes[5] = encode_bcd(dateTime->month);
+	bytes[6] = encode_bcd(dateTime->year);
+
 }
 
 static void init() {
@@ -30,8 +61,9 @@ static void read_time(struct DateTime* time) {
 
 static void write_time(struct DateTime *time) {
     uint8_t bytes[8];
+    bytes[0] = 0;
 
-    encode_time(time, bytes);
+    encode_time(time, &bytes[1]);
 
     I2C.write(I2C.DS3231_ADDRESS, bytes, 8);
 }
