@@ -11,7 +11,7 @@
 #define TA3 (1 << 7)
 
 static void init() {
-	GPIO.init_pin(&FrontIO.interrupt);
+    GPIO.init_pin(&FrontIO.interrupt);
 
 
 

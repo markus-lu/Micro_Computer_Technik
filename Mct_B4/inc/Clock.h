@@ -21,8 +21,9 @@ struct ClockState {
 };
 
 struct clock {
-    void (*init)(struct ClockState* state);
-    void (*loop_once)(struct ClockState* state);
+    void (*init)(struct ClockState *state);
+
+    void (*loop_once)(struct ClockState *state);
 };
 
 extern const struct clock Clock;

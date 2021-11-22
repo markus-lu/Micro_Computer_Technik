@@ -37,6 +37,7 @@ struct Event {
 
 struct events {
     void (*init)(struct Event *event_data);
+
     uint16_t (*get_count)(const struct Event *event_data);
 };
 

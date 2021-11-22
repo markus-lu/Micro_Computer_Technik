@@ -55,6 +55,6 @@ const struct rgbled RGBLED = {
         .init = init,
         .set_green = set_green,
         .set_red = set_red,
-		.set_blue = set_blue,
-		.off = off,
+        .set_blue = set_blue,
+        .off = off,
 };

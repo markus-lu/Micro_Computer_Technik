@@ -15,12 +15,12 @@ static uint32_t get_count(LPC_TIM_TypeDef *timer) {
     return timer->TC;
 }
 
-static void start_timer(LPC_TIM_TypeDef *timer){
-	timer->TCR |= 1;
+static void start_timer(LPC_TIM_TypeDef *timer) {
+    timer->TCR |= 1;
 }
 
-static void stop_timer(LPC_TIM_TypeDef *timer){
-	timer->TCR &= ~1;
+static void stop_timer(LPC_TIM_TypeDef *timer) {
+    timer->TCR &= ~1;
 }
 
 static void set_prescaler(LPC_TIM_TypeDef *timer, uint32_t value) {
@@ -44,9 +44,9 @@ static void clear_match_interrupt(LPC_TIM_TypeDef *timer, uint8_t match) {
 }
 
 static bool has_ticked() {
-	bool has_ticked = ticked;
-	ticked = false;
-	return has_ticked;
+    bool has_ticked = ticked;
+    ticked = false;
+    return has_ticked;
 }
 
 static void deinit(LPC_TIM_TypeDef *timer) {
@@ -54,9 +54,9 @@ static void deinit(LPC_TIM_TypeDef *timer) {
 }
 
 void TIMER2_IRQHandler() {
-	NVIC_ClearPendingIRQ(TIMER2_IRQn);
-	clear_match_interrupt(LPC_TIM2, 1);
-	ticked = true;
+    NVIC_ClearPendingIRQ(TIMER2_IRQn);
+    clear_match_interrupt(LPC_TIM2, 1);
+    ticked = true;
 }
 
 const struct timer Timer = {
@@ -66,8 +66,8 @@ const struct timer Timer = {
         .enable_match_interrupt = enable_match_interrupt,
         .disable_match_interrupt = disable_match_interrupt,
         .clear_match_interrupt = clear_match_interrupt,
-		.has_ticked = has_ticked,
-		.start_timer = start_timer,
-		.stop_timer = stop_timer,
+        .has_ticked = has_ticked,
+        .start_timer = start_timer,
+        .stop_timer = stop_timer,
         .deinit = deinit,
 };

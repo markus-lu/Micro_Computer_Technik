@@ -15,7 +15,9 @@
 
 struct frontio {
     const struct GPIOPin interrupt;
+
     void (*init)(void);
+
     void (*handle_interrupt)(void);
 };
 

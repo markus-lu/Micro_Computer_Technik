@@ -17,15 +17,16 @@
 #define SCREEN_EVENTS 1
 #define SCREEN_EVENT_DETAILS 2
 
-struct MenuState{
-	uint8_t screen;
-	uint8_t sel_event;
-	uint8_t sel_event_detail;
+struct MenuState {
+    uint8_t screen;
+    uint8_t sel_event;
+    uint8_t sel_event_detail;
 };
 
 struct menu {
-    void (*init)(struct MenuState* state);
-    void (*loop_once)(struct MenuState* state);
+    void (*init)(struct MenuState *state);
+
+    void (*loop_once)(struct MenuState *state);
 };
 
 extern const struct menu Menu;

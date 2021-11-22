@@ -19,9 +19,13 @@ struct i2c {
     const uint8_t PCF8574_LCD_ADDRESS; // Portexpander für das LCD
     const uint8_t DS3231_ADDRESS;      // RTC Modul
     const uint8_t SPEED;
+
     void (*init)(void);
+
     uint8_t (*write)(uint8_t address, uint8_t *data, uint32_t length);
+
     uint8_t (*read)(uint8_t address, uint8_t *data, uint32_t length);
+
     void (*deinit)(void);
 };
 

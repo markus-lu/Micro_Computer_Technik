@@ -18,10 +18,15 @@ struct rgbled {
     const struct GPIOPin red;
     const struct GPIOPin green;
     const struct GPIOPin blue;
+
     void (*init)(void);
+
     void (*set_green)(void);
+
     void (*set_red)(void);
+
     void (*set_blue)(void);
+
     void (*off)(void);
 };
 

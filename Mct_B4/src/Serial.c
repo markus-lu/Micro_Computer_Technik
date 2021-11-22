@@ -29,29 +29,29 @@ static void init() {
     Timer.start_timer(LPC_TIM2);
 }
 
-static void wait_for_interrupt(){
-	while(!Timer.has_ticked()){
-		__asm("nop");
-	}
+static void wait_for_interrupt() {
+    while (!Timer.has_ticked()) {
+        __asm("nop");
+    }
 }
 
-static void write_byte(uint8_t byte){
-	struct GPIOPin dio = {
-			.dir = OUTPUT,
-			.mode = Serial.dio.mode,
-			.pin = Serial.dio.pin,
-			.port = Serial.dio.port,
-			.open_drain = Serial.dio.open_drain,
-	};
-	GPIO.init_pin(&dio);
-	for (int i = 0; i < 8; ++i) {
-		GPIO.set(&Serial.dio, ((byte >> i) & 0b1));
-	    wait_for_interrupt();
-	    GPIO.set_low(&Serial.clk);
-	    wait_for_interrupt();
-	    GPIO.set_high(&Serial.clk);
-	    wait_for_interrupt();
-	}
+static void write_byte(uint8_t byte) {
+    struct GPIOPin dio = {
+            .dir = OUTPUT,
+            .mode = Serial.dio.mode,
+            .pin = Serial.dio.pin,
+            .port = Serial.dio.port,
+            .open_drain = Serial.dio.open_drain,
+    };
+    GPIO.init_pin(&dio);
+    for (int i = 0; i < 8; ++i) {
+        GPIO.set(&Serial.dio, ((byte >> i) & 0b1));
+        wait_for_interrupt();
+        GPIO.set_low(&Serial.clk);
+        wait_for_interrupt();
+        GPIO.set_high(&Serial.clk);
+        wait_for_interrupt();
+    }
 }
 
 static void write(uint8_t *data, uint32_t length) {
@@ -59,33 +59,33 @@ static void write(uint8_t *data, uint32_t length) {
     wait_for_interrupt();
     wait_for_interrupt();
     for (int i = 0; i < length; ++i) {
-    	write_byte(data[i]);
-	}
+        write_byte(data[i]);
+    }
 
-	wait_for_interrupt();
-	wait_for_interrupt();
-	GPIO.set_high(&Serial.stb);
+    wait_for_interrupt();
+    wait_for_interrupt();
+    GPIO.set_high(&Serial.stb);
 }
 
-static uint8_t read_byte(){
-	uint8_t byte = 0;
-	struct GPIOPin dio = {
-			.dir = INPUT,
-			.mode = Serial.dio.mode,
-			.pin = Serial.dio.pin,
-			.port = Serial.dio.port,
-			.open_drain = Serial.dio.open_drain,
-	};
-	GPIO.init_pin(&Serial.dio);
-	for (int i = 0; i < 8; i++) {
-	    GPIO.set_low(&Serial.clk);
-	    wait_for_interrupt();
-	    byte |= (GPIO.get(&Serial.dio) << i);
-	    wait_for_interrupt();
-	    GPIO.set_high(&Serial.clk);
-	    wait_for_interrupt();
-	}
-	return byte;
+static uint8_t read_byte() {
+    uint8_t byte = 0;
+    struct GPIOPin dio = {
+            .dir = INPUT,
+            .mode = Serial.dio.mode,
+            .pin = Serial.dio.pin,
+            .port = Serial.dio.port,
+            .open_drain = Serial.dio.open_drain,
+    };
+    GPIO.init_pin(&Serial.dio);
+    for (int i = 0; i < 8; i++) {
+        GPIO.set_low(&Serial.clk);
+        wait_for_interrupt();
+        byte |= (GPIO.get(&Serial.dio) << i);
+        wait_for_interrupt();
+        GPIO.set_high(&Serial.clk);
+        wait_for_interrupt();
+    }
+    return byte;
 }
 
 static void read(uint8_t *data, uint32_t length) {
@@ -93,12 +93,12 @@ static void read(uint8_t *data, uint32_t length) {
     wait_for_interrupt();
     wait_for_interrupt();
     for (int i = 0; i < length; ++i) {
-    	read_byte(data[i]);
-	}
+        read_byte(data[i]);
+    }
 
-	wait_for_interrupt();
-	wait_for_interrupt();
-	GPIO.set_high(&Serial.stb);
+    wait_for_interrupt();
+    wait_for_interrupt();
+    GPIO.set_high(&Serial.stb);
 }
 
 static void deinit() {
