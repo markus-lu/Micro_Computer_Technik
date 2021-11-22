@@ -11,28 +11,16 @@
 #define TA3 (1 << 7)
 
 static void init() {
-    GPIO.init_pin(&FrontIO.interrupt);
-
-
-
-// TODO: Einmal I2C Lesen, damit er einen Interrupt beim Knopfdrücken auslöst wird
-// TODO: Interrupt auf Pin 2.13 aktivieren
+    I2C.init();
 }
 
-static void handle_interrupt() {
-    // TODO: Taster abfragen, um zu sehen welcher Taster gedrückt wurde
-    // TODO: LED's aktualisieren
-    // TODO: Gedrückten Taster an Menu weiter geben, damit dort auf den Tastendruck reagiert werden kann
+static uint8_t get_buttons() {
+    uint8_t data[1];
+    I2C.read(I2C.PCF8574A_ADDRESS, data, 1);
+    return data[0];
 }
 
 const struct frontio FrontIO = {
-        .interrupt = {
-                .port = 2,
-                .pin = 13,
-                .mode = PULL_UP,
-                .dir = INPUT,
-                .open_drain = false,
-        },
         .init = init,
-        .handle_interrupt = handle_interrupt
+        .get_buttons = get_buttons
 };

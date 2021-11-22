@@ -14,11 +14,9 @@
 #include "GPIO.h"
 
 struct frontio {
-    const struct GPIOPin interrupt;
-
     void (*init)(void);
 
-    void (*handle_interrupt)(void);
+    uint8_t (*get_buttons)(void);
 };
 
 extern const struct frontio FrontIO;
