@@ -49,8 +49,10 @@ static bool has_ticked() {
     return has_ticked;
 }
 
-static void deinit(LPC_TIM_TypeDef *timer) {
-
+static void deinit_timer2() {
+    LPC_TIM2->TCR = 0b10;
+    NVIC_DisableIRQ(TIMER2_IRQn);
+    NVIC_ClearPendingIRQ(TIMER2_IRQn);
 }
 
 void TIMER2_IRQHandler() {
@@ -69,5 +71,5 @@ const struct timer Timer = {
         .has_ticked = has_ticked,
         .start_timer = start_timer,
         .stop_timer = stop_timer,
-        .deinit = deinit,
+        .deinit_timer2 = deinit_timer2,
 };

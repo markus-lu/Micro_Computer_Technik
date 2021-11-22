@@ -34,7 +34,7 @@ struct timer {
 
     void (*stop_timer)(LPC_TIM_TypeDef *timer);
 
-    void (*deinit)(LPC_TIM_TypeDef *timer);
+    void (*deinit_timer2)(void);
 };
 
 extern const struct timer Timer;
