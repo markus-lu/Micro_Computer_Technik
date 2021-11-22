@@ -35,15 +35,20 @@ static void wait_for_interrupt() {
     }
 }
 
-static void write_byte(uint8_t byte) {
+static void set_dio_pin_dir(enum PinDir dir) {
     struct GPIOPin dio = {
-            .dir = OUTPUT,
+            .dir = dir,
             .mode = Serial.dio.mode,
             .pin = Serial.dio.pin,
             .port = Serial.dio.port,
             .open_drain = Serial.dio.open_drain,
     };
     GPIO.init_pin(&dio);
+}
+
+static void write_byte(uint8_t byte) {
+    set_dio_pin_dir(OUTPUT);
+
     for (int i = 0; i < 8; ++i) {
         GPIO.set(&Serial.dio, ((byte >> i) & 0b1));
         wait_for_interrupt();
@@ -54,29 +59,10 @@ static void write_byte(uint8_t byte) {
     }
 }
 
-static void write(uint8_t *data, uint32_t length) {
-    GPIO.set_low(&Serial.stb);
-    wait_for_interrupt();
-    wait_for_interrupt();
-    for (int i = 0; i < length; ++i) {
-        write_byte(data[i]);
-    }
-
-    wait_for_interrupt();
-    wait_for_interrupt();
-    GPIO.set_high(&Serial.stb);
-}
-
 static uint8_t read_byte() {
+    set_dio_pin_dir(INPUT);
+
     uint8_t byte = 0;
-    struct GPIOPin dio = {
-            .dir = INPUT,
-            .mode = Serial.dio.mode,
-            .pin = Serial.dio.pin,
-            .port = Serial.dio.port,
-            .open_drain = Serial.dio.open_drain,
-    };
-    GPIO.init_pin(&Serial.dio);
     for (int i = 0; i < 8; i++) {
         GPIO.set_low(&Serial.clk);
         wait_for_interrupt();
@@ -88,21 +74,36 @@ static uint8_t read_byte() {
     return byte;
 }
 
-static void read(uint8_t *data, uint32_t length) {
+static void transmission(uint8_t *data, uint32_t length, bool do_write) {
     GPIO.set_low(&Serial.stb);
+
     wait_for_interrupt();
     wait_for_interrupt();
+
     for (int i = 0; i < length; ++i) {
-        read_byte(data[i]);
+        if (do_write) {
+            write_byte(data[i]);
+        } else {
+            data[i] = read_byte();
+        }
     }
 
     wait_for_interrupt();
     wait_for_interrupt();
+
     GPIO.set_high(&Serial.stb);
 }
 
-static void deinit() {
+static void write(uint8_t *data, uint32_t length) {
+    transmission(data, length, true);
+}
 
+static void read(uint8_t *data, uint32_t length) {
+    transmission(data, length, false);
+}
+
+static void deinit() {
+    Timer.deinit_timer2();
 }
 
 const struct serial Serial = {
