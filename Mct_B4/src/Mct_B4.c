@@ -43,6 +43,10 @@ int main() {
 
     I2C.init();
     RTC.init();
+    LEDKey.init();
+
+    LEDKey.set_brightness(4, true);
+    int counter = 0;
     struct DateTime test;
 
     test.seconds = 11;
@@ -53,7 +57,7 @@ int main() {
     test.year = 99;
 
     RTC.write_time(&test);
-    delay(100000000);
+    delay(50000000);
 
     while (true) {
         RTC.read_time(&test);
@@ -64,37 +68,31 @@ int main() {
         printf("Tag: %d\n", test.day);
         printf("Monat: %d\n", test.month);
         printf("Jahr: %d\n", test.year);
-        delay(100000000);
+
+        uint8_t digits[16];
+        digits[0] = SEG_0;
+        digits[1] = SEG_1;
+        digits[2] = SEG_2;
+        digits[3] = SEG_3;
+        digits[4] = SEG_4;
+        digits[5] = SEG_5;
+        digits[6] = SEG_6;
+        digits[7] = SEG_7;
+        digits[8] = SEG_8;
+        digits[9] = SEG_9;
+        digits[10] = SEG_A;
+        digits[11] = SEG_B;
+        digits[12] = SEG_C;
+        digits[13] = SEG_D;
+        digits[14] = SEG_E;
+        digits[15] = SEG_F;
+
+        LEDKey.set_display_data(8, &digits[counter++]);
+        counter %= 8;
+
+        delay(500000000);
     }
 
-
-    Serial.init();
-    {
-        uint8_t data[1];
-        data[0] = 0x40;
-        Serial.write(data, 1);
-    }
-    {
-        uint8_t data[1];
-        data[0] = 0x8F;
-        Serial.write(data, 1);
-    }
-
-
-    uint8_t data[17];
-    data[0] = 0xC0;
-
-    data[1] = SEG_1;
-    data[3] = SEG_2;
-    data[5] = SEG_3;
-    data[7] = SEG_4;
-    data[9] = SEG_5;
-    data[11] = SEG_6;
-    data[13] = SEG_7;
-    data[15] = SEG_8;
-    Serial.write(data, 17);
-    printf("End!!\n");
-
-    Serial.deinit();
+    LEDKey.deinit();
     return 0;
 }
