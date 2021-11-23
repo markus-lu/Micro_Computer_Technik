@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-static bool ticked;
+static volatile bool ticked;
 
 static void init_timer1() {
     LPC_SC->PCONP |= TIMER1_PCONP_BIT;
