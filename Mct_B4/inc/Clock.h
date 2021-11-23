@@ -12,18 +12,13 @@
 
 #include <types.h>
 #include <stdbool.h>
+#include "State.h"
 #include "RTC.h"
 
-struct ClockState {
-    struct DateTime time;
-    uint8_t sel_field;
-    bool edit_mode;
-};
-
 struct clock {
-    void (*init)(struct ClockState *state);
+    void (*init)(struct State *state);
 
-    void (*loop_once)(struct ClockState *state);
+    void (*loop_once)(struct State *state);
 };
 
 extern const struct clock Clock;

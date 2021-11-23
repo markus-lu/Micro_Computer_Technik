@@ -1,17 +1,20 @@
 #include "Clock.h"
-#include "RTC.h"
 #include "LEDKey.h"
 
-void init(struct ClockState *state) {
+void init() {
     LEDKey.init();
     RTC.init();
-    RTC.read_time(&state->time);
-    state->sel_field = 0;
-    state->edit_mode = false;
 }
 
-void loop_once(struct ClockState *state) {
+static void draw_time(){
+    // TODO: Output time to LEDKey
+    // LEDKey.set_display_data();
+}
 
+void loop_once(struct State *state) {
+    if (state->clock_should_redraw) {
+        draw_time();
+    }
 }
 
 const struct clock Clock = {
