@@ -51,7 +51,9 @@ struct timer {
 
     void (*clear_match_interrupt)(LPC_TIM_TypeDef *timer, uint8_t match);
 
-    bool (*has_ticked)(void);
+    bool (*has_timer1_ticked)(void);
+
+    bool (*has_timer2_ticked)(void);
 
     void (*start_timer)(LPC_TIM_TypeDef *timer);
 

@@ -30,7 +30,7 @@ static void init() {
 }
 
 static void wait_for_interrupt() {
-    while (!Timer.has_ticked()) {
+    while (!Timer.has_timer2_ticked()) {
         __asm("nop");
     }
 }

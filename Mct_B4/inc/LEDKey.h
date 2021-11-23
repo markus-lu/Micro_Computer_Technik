@@ -25,6 +25,8 @@
 #define SEG_8 0b01111111
 #define SEG_9 0b01101111
 
+#define SEG_DOT 0b10000000
+
 // hex
 #define SEG_A 0b01110111
 #define SEG_B 0b00011111

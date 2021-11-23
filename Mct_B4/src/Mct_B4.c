@@ -34,7 +34,7 @@ void delay(uint32_t ms) {
 void init_state(struct State *state, struct Event *event_data) {
     state->blink = false;
     state->screen = &MainMenu;
-    state->last_buttons = 0;
+    state->menu_last_buttons = 0;
     state->selected_event = 0;
     state->selected_event_detail = 0;
     state->menu_edit_mode = false;
@@ -68,6 +68,7 @@ int main() {
     LEDKey.init();
     Timer.init_timer1();
     Timer.set_prescaler(LPC_TIM1, SystemCoreClock / 1000);
+    Timer.enable_match_interrupt(LPC_TIM1, 1, 500);
     Timer.start_timer(LPC_TIM1);
     struct Event event_data[EVENT_COUNT];
     Events.init(event_data);
@@ -79,12 +80,14 @@ int main() {
     int counter = 0;
     struct DateTime test;
 
-    test.seconds = 11;
-    test.minutes = 22;
-    test.hours = 11;
-    test.weekday = 3;
-    test.month = 11;
-    test.year = 99;
+    test.seconds = 0;
+    test.minutes = 0;
+    test.hours = 0;
+    test.weekday = Monday;
+    test.day = 1;
+    test.month = 1;
+    test.year = 0;
+    test.century = 1;
 
     RTC.write_time(&test);
 
@@ -93,7 +96,12 @@ int main() {
         check_time_change(&state);
         Menu.loop_once(&state);
         Clock.loop_once(&state);
-        if (Timer.get_count(LPC_TIM1) % 500 == 0) {
+        if (Timer.has_timer1_ticked()) {
+            state.blink = !state.blink;
+            state.menu_should_redraw = true;
+            state.clock_should_redraw = true;
+
+
             RTC.read_time(&test);
             printf("Seconds: %d\n", test.seconds);
             printf("Minuten: %d\n", test.minutes);

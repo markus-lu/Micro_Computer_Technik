@@ -1,6 +1,7 @@
 #include "Timer.h"
 
-static volatile bool ticked;
+static volatile bool timer1_ticked;
+static volatile bool timer2_ticked;
 
 static void init_timer1() {
     LPC_SC->PCONP |= TIMER1_PCONP_BIT;
@@ -51,9 +52,15 @@ static void clear_match_interrupt(LPC_TIM_TypeDef *timer, uint8_t match) {
     timer->IR |= (1 << match);
 }
 
-static bool has_ticked() {
-    bool has_ticked = ticked;
-    ticked = false;
+static bool has_timer1_ticked() {
+    bool has_ticked = timer1_ticked;
+    timer1_ticked = false;
+    return has_ticked;
+}
+
+static bool has_timer2_ticked() {
+    bool has_ticked = timer2_ticked;
+    timer2_ticked = false;
     return has_ticked;
 }
 
@@ -69,10 +76,16 @@ static void deinit_timer2() {
     NVIC_ClearPendingIRQ(TIMER2_IRQn);
 }
 
+void TIMER1_IRQHandler() {
+    NVIC_ClearPendingIRQ(TIMER1_IRQn);
+    clear_match_interrupt(LPC_TIM1, 1);
+    timer1_ticked = true;
+}
+
 void TIMER2_IRQHandler() {
     NVIC_ClearPendingIRQ(TIMER2_IRQn);
     clear_match_interrupt(LPC_TIM2, 1);
-    ticked = true;
+    timer2_ticked = true;
 }
 
 const struct timer Timer = {
@@ -83,7 +96,8 @@ const struct timer Timer = {
         .enable_match_interrupt = enable_match_interrupt,
         .disable_match_interrupt = disable_match_interrupt,
         .clear_match_interrupt = clear_match_interrupt,
-        .has_ticked = has_ticked,
+        .has_timer1_ticked = has_timer1_ticked,
+        .has_timer2_ticked = has_timer2_ticked,
         .start_timer = start_timer,
         .stop_timer = stop_timer,
         .deinit_timer1 = deinit_timer1,
