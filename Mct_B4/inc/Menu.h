@@ -11,24 +11,39 @@
 #ifndef _MENU_H_
 #define _MENU_H_
 
-#include <types.h>
+#include "State.h"
+#include "types.h"
+#include "FrontIO.h"
+#include "Events.h"
+#include "LCD.h"
 
-#define SCREEN_HOME 0
-#define SCREEN_EVENTS 1
-#define SCREEN_EVENT_DETAILS 2
+#define BUTTON_BACK (1 << 0)
+#define BUTTON_DOWN (1 << 1)
+#define BUTTON_UP (1 << 2)
+#define BUTTON_OK (1 << 3)
 
-struct MenuState {
-    uint8_t screen;
-    uint8_t sel_event;
-    uint8_t sel_event_detail;
-};
 
 struct menu {
-    void (*init)(struct MenuState *state);
+    void (*init)();
 
-    void (*loop_once)(struct MenuState *state);
+    void (*loop_once)(struct State *state);
+};
+
+struct MenuScreen {
+    void (*handle_back)(struct State *state);
+
+    void (*handle_down)(struct State *state);
+
+    void (*handle_up)(struct State *state);
+
+    void (*handle_ok)(struct State *state);
+
+    void (*draw_menu)(struct State *state);
 };
 
 extern const struct menu Menu;
+extern const struct MenuScreen MainMenu;
+extern const struct MenuScreen EventsMenu;
+extern const struct MenuScreen EventDetailsMenu;
 
 #endif
