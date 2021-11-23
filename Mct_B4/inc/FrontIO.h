@@ -16,6 +16,8 @@
 struct frontio {
     void (*init)(void);
 
+    void (*set_leds)(uint8_t leds);
+
     uint8_t (*get_buttons)(void);
 };
 
