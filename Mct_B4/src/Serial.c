@@ -50,7 +50,7 @@ static void write_byte(uint8_t byte) {
     set_dio_pin_dir(OUTPUT);
 
     for (int i = 0; i < 8; ++i) {
-        GPIO.set(&Serial.dio, ((byte >> i) & 0b1));
+        GPIO.set(&Serial.dio, (byte >> i) & 0b1);
         wait_for_interrupt();
         GPIO.set_low(&Serial.clk);
         wait_for_interrupt();
