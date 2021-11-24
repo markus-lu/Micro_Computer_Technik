@@ -2,7 +2,7 @@
 #include "I2C.h"
 
 static void init() {
-    lcd_init(LCD.LINES, I2C.SPEED);
+    lcd_init(LCD.LINES, I2C_FM);
 }
 
 const struct lcd LCD = {

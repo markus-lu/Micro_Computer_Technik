@@ -18,9 +18,10 @@
 #define TIMER1_PCONP_BIT (1 << 2)
 #define TIMER2_PCONP_BIT (1 << 22)
 
-#define CCLK_DIVIDED_BY_4 0b00
+
 #define CCLK_DIVIDED_BY_1 0b01
 #define CCLK_DIVIDED_BY_2 0b10
+#define CCLK_DIVIDED_BY_4 0b00
 #define CCLK_DIVIDED_BY_8 0b11
 #define TIMER1_PCLKSEL_BIT(value) (value << 4)
 #define TIMER2_PCLKSEL_BIT(value) (value << 12)

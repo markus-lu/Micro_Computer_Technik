@@ -45,7 +45,7 @@ static void init() {
 static void set_register_address(uint8_t address) {
     uint8_t register_address[1];
     register_address[0] = address;
-    I2C.write(I2C.DS3231_ADDRESS, register_address, 1);
+    I2C.write(DS3231_ADDRESS, register_address, 1);
 }
 
 /******************************************************************************/
@@ -65,13 +65,13 @@ Funktion zum Auslesen der Temperatur
 \version 22.11.2021
 *******************************************************************************/
 static uint16_t read_temp() {
-    set_register_address(11);
+    set_register_address(0x11);
 
     uint8_t bytes[2];
-    I2C.read(I2C.DS3231_ADDRESS, bytes, 2);
+    I2C.read(DS3231_ADDRESS, bytes, 2);
 
-    uint16_t temperature = bytes[0];
-    temperature |= bytes[1] << 2;
+    uint16_t temperature = bytes[0]<<8;
+    temperature |= bytes[1]>>6;
     return temperature;
 }
 
@@ -79,7 +79,7 @@ static void read_time(struct DateTime *time) {
     set_register_address(0);
 
     uint8_t bytes[7];
-    I2C.read(I2C.DS3231_ADDRESS, bytes, 7);
+    I2C.read(DS3231_ADDRESS, bytes, 7);
 
     decode_time(bytes, time);
 }
@@ -90,7 +90,7 @@ static void write_time(struct DateTime *time) {
 
     encode_time(time, &bytes[1]);
 
-    I2C.write(I2C.DS3231_ADDRESS, bytes, 8);
+    I2C.write(DS3231_ADDRESS, bytes, 8);
 }
 
 static void deinit() {

@@ -20,6 +20,8 @@ static const uint8_t SEGMENT_DIGITS[] = {SEG_0, SEG_1, SEG_2, SEG_3, SEG_4, SEG_
 static void draw_time(struct State *state) {
     uint8_t segments[8];
     if (state->clock_show_time) {
+    	segments[0] = 0;
+    	segments[1] = 0;
         segments[2] = SEGMENT_DIGITS[state->time.hours / 10];
         segments[3] = SEGMENT_DIGITS[state->time.hours % 10] | SEG_DOT;
         segments[4] = SEGMENT_DIGITS[state->time.minutes / 10];
@@ -64,11 +66,11 @@ static void draw_time(struct State *state) {
         }
     }
 
-    LEDKey.set_display_data(state->blink && state->clock_selected_field == 6 ? 0 : state->time.weekday, segments);
+    LEDKey.set_display_data((state->blink && state->clock_selected_field == 6) ? 0 : state->time.weekday, segments);
 }
 
 #define DEC(value, max) if (state->time.value > 0) { state->time.value--; } else { state->time.value = (max); } break;
-#define INC(value, max) if (state->time.value < (max)) { state->time.value++; } break;
+#define INC(value, max) if (state->time.value < (max)) { state->time.value++; }else{state->time.value=(0);} break;
 
 static void check_keypress(struct State *state) {
     uint8_t buttons = LEDKey.get_buttons();
@@ -154,6 +156,7 @@ void loop_once(struct State *state) {
     check_keypress(state);
     if (state->clock_should_redraw) {
         draw_time(state);
+        state->clock_should_redraw = false;
     }
 }
 

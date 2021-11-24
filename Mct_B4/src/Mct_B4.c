@@ -47,7 +47,6 @@ void check_time_change(struct State *state) {
     RTC.read_time(&new_time);
     if (compare_times(&state->time, &new_time)) {
         state->time = new_time;
-        state->menu_should_redraw = true;
         state->clock_should_redraw = true;
     }
 }
@@ -76,20 +75,7 @@ int main() {
     init_state(&state, event_data);
     Menu.init();
 
-    LEDKey.set_brightness(4, true);
-    int counter = 0;
-    struct DateTime test;
-
-    test.seconds = 0;
-    test.minutes = 0;
-    test.hours = 0;
-    test.weekday = Monday;
-    test.day = 1;
-    test.month = 1;
-    test.year = 0;
-    test.century = 1;
-
-    RTC.write_time(&test);
+    LEDKey.set_brightness(MAX_BRIGHTNESS, true);
 
     while (true) {
         check_temperature_change(&state);
@@ -98,39 +84,8 @@ int main() {
         Clock.loop_once(&state);
         if (Timer.has_timer1_ticked()) {
             state.blink = !state.blink;
-            state.menu_should_redraw = true;
-            state.clock_should_redraw = true;
-
-
-            RTC.read_time(&test);
-            printf("Seconds: %d\n", test.seconds);
-            printf("Minuten: %d\n", test.minutes);
-            printf("Stunden: %d\n", test.hours);
-            printf("Wochentag: %d\n", test.weekday);
-            printf("Tag: %d\n", test.day);
-            printf("Monat: %d\n", test.month);
-            printf("Jahr: %d\n", test.year);
-
-            uint8_t digits[16];
-            digits[0] = SEG_0;
-            digits[1] = SEG_1;
-            digits[2] = SEG_2;
-            digits[3] = SEG_3;
-            digits[4] = SEG_4;
-            digits[5] = SEG_5;
-            digits[6] = SEG_6;
-            digits[7] = SEG_7;
-            digits[8] = SEG_8;
-            digits[9] = SEG_9;
-            digits[10] = SEG_A;
-            digits[11] = SEG_B;
-            digits[12] = SEG_C;
-            digits[13] = SEG_D;
-            digits[14] = SEG_E;
-            digits[15] = SEG_F;
-
-            LEDKey.set_display_data(8, &digits[counter++]);
-            counter %= 8;
+            state.menu_should_redraw = state.menu_edit_mode;
+            state.clock_should_redraw = state.clock_edit_mode;
         }
     }
 

@@ -18,8 +18,8 @@ static void handle_ok(struct State *state) {
 
 static void draw_menu(struct State *state) {
     uint16_t event_count = Events.get_count(state->event_data);
-    uint8_t temperature_whole = state->temperature;
-    uint8_t temperature_fraction = state->temperature >> 8;
+    uint8_t temperature_whole = state->temperature >> 8;
+    uint8_t temperature_fraction = state->temperature;
     struct DateTime *time = &state->time;
 
     LCD.clear_screen();
@@ -31,21 +31,19 @@ static void draw_menu(struct State *state) {
     LCD.write_char('.');
     switch (temperature_fraction) {
         case 0:
-            LCD.write_string("00" "\xFD" "C");
+            LCD.write_string("00" "\xDF" "C");
             break;
         case 1:
-            LCD.write_string("25" "\xFD" "C");
+            LCD.write_string("25" "\xDF" "C");
             break;
         case 2:
-            LCD.write_string("50" "\xFD" "C");
+            LCD.write_string("50" "\xDF" "C");
             break;
         case 3:
-            LCD.write_string("75" "\xFD" "C");
+            LCD.write_string("75" "\xDF" "C");
             break;
         default:
-            while (true){
-                // WTF?!
-            }
+        	break;
     }
 
     LCD.go_to_xy(1, 2);
@@ -57,25 +55,25 @@ static void draw_menu(struct State *state) {
     LCD.write_char(event_count / 10 + '0');
     LCD.write_char(event_count % 10 + '0');
 
-    LCD.go_to_xy(1, 4);
-    LCD.write_char(time->hours / 10 + '0');
-    LCD.write_char(time->hours % 10 + '0');
-    LCD.write_char(':');
-    LCD.write_char(time->minutes / 10 + '0');
-    LCD.write_char(time->minutes % 10 + '0');
-    LCD.write_char(':');
-    LCD.write_char(time->seconds / 10 + '0');
-    LCD.write_char(time->seconds % 10 + '0');
-    LCD.write_char(' ');
-    LCD.write_char(time->day / 10 + '0');
-    LCD.write_char(time->day % 10 + '0');
-    LCD.write_char(':');
-    LCD.write_char(time->month / 10 + '0');
-    LCD.write_char(time->month % 10 + '0');
-    LCD.write_char(':');
-    LCD.write_string(time->century ? "20" : "19");
-    LCD.write_char(time->year / 10 + '0');
-    LCD.write_char(time->year % 10 + '0');
+//    LCD.go_to_xy(1, 4);
+//    LCD.write_char(time->hours / 10 + '0');
+//    LCD.write_char(time->hours % 10 + '0');
+//    LCD.write_char(':');
+//    LCD.write_char(time->minutes / 10 + '0');
+//    LCD.write_char(time->minutes % 10 + '0');
+//    LCD.write_char(':');
+//    LCD.write_char(time->seconds / 10 + '0');
+//    LCD.write_char(time->seconds % 10 + '0');
+//    LCD.write_char(' ');
+//    LCD.write_char(time->day / 10 + '0');
+//    LCD.write_char(time->day % 10 + '0');
+//    LCD.write_char(':');
+//    LCD.write_char(time->month / 10 + '0');
+//    LCD.write_char(time->month % 10 + '0');
+//    LCD.write_char(':');
+//    LCD.write_string(time->century ? "20" : "19");
+//    LCD.write_char(time->year / 10 + '0');
+//    LCD.write_char(time->year % 10 + '0');
 }
 
 const struct MenuScreen MainMenu = {

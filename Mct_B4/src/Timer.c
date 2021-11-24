@@ -4,9 +4,13 @@ static volatile bool timer1_ticked;
 static volatile bool timer2_ticked;
 
 static void init_timer1() {
+	//timer 1 Power an
     LPC_SC->PCONP |= TIMER1_PCONP_BIT;
+    //Clock festsetzung
     LPC_SC->PCLKSEL0 |= TIMER1_PCLKSEL_BIT(CCLK_DIVIDED_BY_1);
+    //Clock resetten
     LPC_TIM1->TCR = TIMER_RESET;
+    // reset weg nehmen
     LPC_TIM1->TCR = 0;
 }
 
@@ -37,6 +41,7 @@ static void set_prescaler(LPC_TIM_TypeDef *timer, uint32_t value) {
 
 static void enable_match_interrupt(LPC_TIM_TypeDef *timer, uint8_t match, uint32_t value) {
     int match_config = INTERRUPT_ON_MATCH | RESET_ON_MATCH;
+    // Interrupt mit Reset für Match aktivieren
     timer->MCR |= (match_config << match * MATCH_CONTROL_REGISTER_WIDTH); // Enable Interrupt for Match
 
     volatile uint32_t *match_register = &timer->MR0;

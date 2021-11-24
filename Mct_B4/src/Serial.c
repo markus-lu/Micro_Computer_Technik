@@ -66,7 +66,8 @@ static uint8_t read_byte() {
     for (int i = 0; i < 8; i++) {
         GPIO.set_low(&Serial.clk);
         wait_for_interrupt();
-        byte |= (GPIO.get(&Serial.dio) << i);
+        uint8_t tmp = GPIO.get(&Serial.dio);
+        byte |= (tmp << i);
         wait_for_interrupt();
         GPIO.set_high(&Serial.clk);
         wait_for_interrupt();
@@ -117,7 +118,7 @@ const struct serial Serial = {
         .dio = {
                 .port = 0,
                 .pin = 11,
-                .mode = NONE,
+                .mode = PULL_UP,
                 .dir = OUTPUT,
                 .open_drain = false,
         },
@@ -131,5 +132,6 @@ const struct serial Serial = {
         .init = init,
         .write = write,
         .read = read,
+		.wait_for_interrupt = wait_for_interrupt,
         .deinit = deinit,
 };

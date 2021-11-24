@@ -17,15 +17,15 @@ static void init() {
 // lower 4 bits for LEDs
 static void set_leds(uint8_t leds) {
     uint8_t data[1];
-    data[0] = leds & 0x0F;
-    I2C.write(I2C.PCF8574A_ADDRESS, data, 1);
+    data[0] = ~(leds & 0x0F) ;
+    I2C.write(PCF8574A_ADDRESS, data, 1);
 }
 
 // lower 4 bits for buttons
 static uint8_t get_buttons() {
     uint8_t data[1];
-    I2C.read(I2C.PCF8574A_ADDRESS, data, 1);
-    return ~(data[0] >> 4);
+    I2C.read(PCF8574A_ADDRESS, data, 1);
+    return ((~data[0]) >> 4) & 0x0F;
 }
 
 const struct frontio FrontIO = {
