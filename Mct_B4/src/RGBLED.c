@@ -4,6 +4,8 @@ static void init() {
     GPIO.init_pin(&RGBLED.red);
     GPIO.init_pin(&RGBLED.green);
     GPIO.init_pin(&RGBLED.blue);
+
+    RGBLED.set_red();
 }
 
 static void set_green() {
