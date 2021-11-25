@@ -73,6 +73,7 @@ static void draw_time(struct State *state) {
 #define INC(value, max) if (state->time.value < (max)) { state->time.value++; }else{state->time.value=(0);} break;
 
 static void check_keypress(struct State *state) {
+    bool should_redraw = state->clock_should_redraw;
     uint8_t buttons = LEDKey.get_buttons();
     if (buttons != state->clock_last_buttons) {
         state->clock_should_redraw = true;
@@ -145,7 +146,7 @@ static void check_keypress(struct State *state) {
                 LEDKey.set_brightness(state->clock_brightness, true);
                 break;
             default:
-                state->clock_should_redraw = false;
+                state->clock_should_redraw = should_redraw;
                 break;
         }
         state->clock_last_buttons = buttons;

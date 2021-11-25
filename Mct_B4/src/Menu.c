@@ -7,6 +7,7 @@ static void init() {
 }
 
 static void check_keypress(struct State *state) {
+    bool should_redraw = state->menu_should_redraw;
     uint8_t buttons = FrontIO.get_buttons();
     FrontIO.set_leds(buttons);
     FrontIO.get_buttons();
@@ -26,7 +27,7 @@ static void check_keypress(struct State *state) {
                 state->screen->handle_ok(state);
                 break;
             default:
-                state->menu_should_redraw = false;
+                state->menu_should_redraw = should_redraw;
                 break;
         }
         state->menu_last_buttons = buttons;
