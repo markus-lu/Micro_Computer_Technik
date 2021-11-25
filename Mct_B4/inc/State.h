@@ -22,7 +22,7 @@ struct State {
     bool clock_should_redraw;
     bool clock_show_time;
     uint8_t clock_last_buttons;
-    uint8_t clock_brightness;
+    int8_t clock_brightness;
 };
 
 bool compare_times(struct DateTime *old_time, struct DateTime *new_time);
