@@ -19,7 +19,9 @@ static void check_keypress(struct State *state) {
         state->clock_should_redraw = true;
         switch (buttons) {
             case BUTTON_TOGGLE_TIME_DATE:
-                state->clock_show_time = !state->clock_show_time;
+                if (!state->clock_edit_mode){
+                    state->clock_show_time = !state->clock_show_time;
+                }
                 break;
             case BUTTON_EDIT:
                 if (!state->clock_edit_mode) {
