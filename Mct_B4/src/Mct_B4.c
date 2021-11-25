@@ -40,6 +40,15 @@ void init_state(struct State *state, struct Event *event_data) {
     state->menu_edit_mode = false;
     state->event_data = event_data;
     state->menu_should_redraw = true;
+    state->rgb_state = false;
+    state->temperature = 0;
+//    state->time;                        // wird an anderer Stelle initialisiert
+    state->clock_selected_field = 0;
+    state->clock_edit_mode = false;
+    state->clock_should_redraw = true;
+    state->clock_show_time = true;
+    state->clock_last_buttons = 0;
+    state->clock_brightness = 0;
 }
 
 void check_time_change(struct State *state) {
@@ -74,19 +83,24 @@ int main() {
     struct State state;
     init_state(&state, event_data);
     Menu.init();
-
-    LEDKey.set_brightness(MAX_BRIGHTNESS, true);
+    Clock.init(&state);
 
     while (true) {
-        check_temperature_change(&state);
-        check_time_change(&state);
-        Menu.loop_once(&state);
-        Clock.loop_once(&state);
         if (Timer.has_timer1_ticked()) {
             state.blink = !state.blink;
-            state.menu_should_redraw = state.menu_edit_mode;
-            state.clock_should_redraw = state.clock_edit_mode;
+            if (state.screen == &EventDetailsMenu) {
+                state.menu_should_redraw = true;
+            }
+            if (state.clock_edit_mode) {
+                state.clock_should_redraw = true;
+            }
         }
+        check_temperature_change(&state);
+        if (!state.clock_edit_mode) {
+            check_time_change(&state);
+        }
+        Menu.loop_once(&state);
+        Clock.loop_once(&state);
     }
 
     LEDKey.deinit();
