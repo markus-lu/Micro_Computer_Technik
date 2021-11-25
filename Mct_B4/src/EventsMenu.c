@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "Menu.h"
 
 static void handle_back(struct State *state) {
@@ -24,14 +25,14 @@ static void write_event_line(struct State *state, int index) {
     struct Event *event = &state->event_data[index];
 
     LCD.write_char(state->selected_event == index ? '>' : ' ');
-    LCD.write_char(event->enabled ? 'x' : 0xBD);
+    LCD.write_char(event->enabled ? 'x' : 0xDB);
     LCD.write_char(' ');
     LCD.write_char(event->hour / 10 + '0');
     LCD.write_char(event->hour % 10 + '0');
     LCD.write_char(':');
     LCD.write_char(event->minute / 10 + '0');
     LCD.write_char(event->minute % 10 + '0');
-    LCD.write_string(event->on_or_off ? "  An" : " Aus");
+    LCD.write_string(event->on_or_off ? "  An " : " Aus ");
     LCD.write_char(((event->weekdays & Monday) != 0) ? 'M' : 'm');
     LCD.write_char(((event->weekdays & Tuesday) != 0) ? 'D' : 'd');
     LCD.write_char(((event->weekdays & Wednesday) != 0) ? 'M' : 'm');
