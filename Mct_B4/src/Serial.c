@@ -75,18 +75,33 @@ static uint8_t read_byte() {
     return byte;
 }
 
-static void transmission(uint8_t *data, uint32_t length, bool do_write) {
+static void write_command(uint8_t command) {
     GPIO.set_low(&Serial.stb);
 
     wait_for_interrupt();
     wait_for_interrupt();
 
+    write_byte(command);
+
+    wait_for_interrupt();
+    wait_for_interrupt();
+
+    GPIO.set_high(&Serial.stb);
+}
+
+static void write(uint8_t command, uint8_t *data, uint32_t length) {
+    GPIO.set_low(&Serial.stb);
+
+    wait_for_interrupt();
+    wait_for_interrupt();
+
+    write_byte(command);
+
+    wait_for_interrupt();
+    wait_for_interrupt();
+
     for (int i = 0; i < length; ++i) {
-        if (do_write) {
-            write_byte(data[i]);
-        } else {
-            data[i] = read_byte();
-        }
+        write_byte(data[i]);
     }
 
     wait_for_interrupt();
@@ -95,12 +110,26 @@ static void transmission(uint8_t *data, uint32_t length, bool do_write) {
     GPIO.set_high(&Serial.stb);
 }
 
-static void write(uint8_t *data, uint32_t length) {
-    transmission(data, length, true);
-}
+static void read(uint8_t command, uint8_t *data, uint32_t length) {
+    // start transmission
+    GPIO.set_low(&Serial.stb);
 
-static void read(uint8_t *data, uint32_t length) {
-    transmission(data, length, false);
+    wait_for_interrupt();
+    wait_for_interrupt();
+
+    write_byte(command);
+
+    wait_for_interrupt();
+    wait_for_interrupt();
+
+    for (int i = 0; i < length; ++i) {
+        data[i] = read_byte();
+    }
+
+    wait_for_interrupt();
+    wait_for_interrupt();
+    // end transmission
+    GPIO.set_high(&Serial.stb);
 }
 
 static void deinit() {
@@ -118,7 +147,7 @@ const struct serial Serial = {
         .dio = {
                 .port = 0,
                 .pin = 11,
-                .mode = PULL_UP,
+                .mode = PULL_DOWN,
                 .dir = OUTPUT,
                 .open_drain = false,
         },
@@ -130,8 +159,9 @@ const struct serial Serial = {
                 .open_drain = false,
         },
         .init = init,
+        .write_command = write_command,
         .write = write,
         .read = read,
-		.wait_for_interrupt = wait_for_interrupt,
+        .wait_for_interrupt = wait_for_interrupt,
         .deinit = deinit,
 };

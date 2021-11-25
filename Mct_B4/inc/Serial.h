@@ -21,9 +21,11 @@ struct serial {
 
     void (*init)(void);
 
-    void (*write)(uint8_t *data, uint32_t length);
+    void (*write_command)(uint8_t command);
 
-    void (*read)(uint8_t *data, uint32_t length);
+    void (*write)(uint8_t command, uint8_t *data, uint32_t length);
+
+    void (*read)(uint8_t command, uint8_t *data, uint32_t length);
 
     void (*wait_for_interrupt)(void);
 

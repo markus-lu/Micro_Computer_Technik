@@ -43,6 +43,15 @@
 #define DISPLAY_ON      0b00001000
 #define MAX_BRIGHTNESS  0b00000111
 
+#define BUTTON_0 (1 << 6)
+#define BUTTON_1 (1 << 4)
+#define BUTTON_2 (1 << 2)
+#define BUTTON_3 (1 << 0)
+#define BUTTON_4 (1 << 7)
+#define BUTTON_5 (1 << 5)
+#define BUTTON_6 (1 << 3)
+#define BUTTON_7 (1 << 1)
+
 #include "GPIO.h"
 
 struct ledkey {
