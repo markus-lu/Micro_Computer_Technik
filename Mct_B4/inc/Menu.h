@@ -39,6 +39,8 @@ struct MenuScreen {
     void (*handle_ok)(struct State *state);
 
     void (*draw_menu)(struct State *state);
+
+    void (*update_menu)(struct State*state);
 };
 
 extern const struct menu Menu;

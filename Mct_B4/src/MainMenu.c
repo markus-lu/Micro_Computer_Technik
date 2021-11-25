@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "Menu.h"
 
 static void handle_back(struct State *state) {
@@ -25,7 +26,7 @@ static void draw_menu(struct State *state) {
     LCD.clear_screen();
 
     LCD.go_to_xy(1, 1);
-    LCD.write_string("Temperatur:  ");
+    LCD.write_string("Temperatur: ");
     LCD.write_char(temperature_whole / 10 + '0');
     LCD.write_char(temperature_whole % 10 + '0');
     LCD.write_char('.');
@@ -43,37 +44,54 @@ static void draw_menu(struct State *state) {
             LCD.write_string("75" "\xDF" "C");
             break;
         default:
-        	break;
+            break;
     }
 
     LCD.go_to_xy(1, 2);
-    LCD.write_string("Status:      ");
+    LCD.write_string("Status:     ");
     LCD.write_string(state->rgb_state ? "An" : "Aus");
 
     LCD.go_to_xy(1, 3);
-    LCD.write_string("Events:      ");
+    LCD.write_string("Events:     ");
     LCD.write_char(event_count / 10 + '0');
     LCD.write_char(event_count % 10 + '0');
 
-//    LCD.go_to_xy(1, 4);
-//    LCD.write_char(time->hours / 10 + '0');
-//    LCD.write_char(time->hours % 10 + '0');
-//    LCD.write_char(':');
-//    LCD.write_char(time->minutes / 10 + '0');
-//    LCD.write_char(time->minutes % 10 + '0');
-//    LCD.write_char(':');
-//    LCD.write_char(time->seconds / 10 + '0');
-//    LCD.write_char(time->seconds % 10 + '0');
-//    LCD.write_char(' ');
-//    LCD.write_char(time->day / 10 + '0');
-//    LCD.write_char(time->day % 10 + '0');
-//    LCD.write_char(':');
-//    LCD.write_char(time->month / 10 + '0');
-//    LCD.write_char(time->month % 10 + '0');
-//    LCD.write_char(':');
-//    LCD.write_string(time->century ? "20" : "19");
-//    LCD.write_char(time->year / 10 + '0');
-//    LCD.write_char(time->year % 10 + '0');
+    LCD.go_to_xy(1, 4);
+    LCD.write_char(time->day / 10 + '0');
+    LCD.write_char(time->day % 10 + '0');
+    LCD.write_char('.');
+    LCD.write_char(time->month / 10 + '0');
+    LCD.write_char(time->month % 10 + '0');
+    LCD.write_char('.');
+    LCD.write_string(time->century ? "20" : "19");
+    LCD.write_char(time->year / 10 + '0');
+    LCD.write_char(time->year % 10 + '0');
+    LCD.write_string("  ");
+    LCD.write_char(time->hours / 10 + '0');
+    LCD.write_char(time->hours % 10 + '0');
+    LCD.write_char(':');
+    LCD.write_char(time->minutes / 10 + '0');
+    LCD.write_char(time->minutes % 10 + '0');
+    LCD.write_char(':');
+    LCD.write_char(time->seconds / 10 + '0');
+    LCD.write_char(time->seconds % 10 + '0');
+}
+
+static void update_menu(struct State *state) {
+    if (!state->clock_edit_mode) {
+        struct DateTime *time = &state->time;
+
+        char_t line[20];
+        for (int i = 0; i < 20; ++i) {
+            line[i] = 0;
+        }
+        char_t *string = (char_t *) line;
+
+        sprintf(string, "%02d:%02d:%02d", time->hours, time->minutes, time->seconds);
+
+        LCD.go_to_xy(13, 4);
+        LCD.write_string(string);
+    }
 }
 
 const struct MenuScreen MainMenu = {
@@ -82,4 +100,5 @@ const struct MenuScreen MainMenu = {
         .handle_up = handle_up,
         .handle_ok = handle_ok,
         .draw_menu = draw_menu,
+        .update_menu = update_menu,
 };

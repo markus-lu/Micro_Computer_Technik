@@ -12,6 +12,8 @@
 #include "Menu.h"
 #include "Clock.h"
 #include "LEDKey.h"
+#include "Timer.h"
+#include "RGBLED.h"
 
 #ifdef __USE_CMSIS
 
@@ -22,7 +24,6 @@
 
 #include <stdio.h>
 #include <cr_section_macros.h>
-#include <Timer.h>
 
 void delay(uint32_t ms) {
     uint32_t start_time = Timer.get_count(LPC_TIM1);
@@ -55,6 +56,20 @@ void check_time_change(struct State *state) {
     struct DateTime new_time;
     RTC.read_time(&new_time);
     if (compare_times(&state->time, &new_time)) {
+        if (state->time.minutes != new_time.minutes) {
+            for (int i = 0; i < EVENT_COUNT; ++i) {
+                struct Event *event = &state->event_data[i];
+                if (event->enabled &&
+                    event->hour == new_time.hours &&
+                    event->minute == new_time.minutes) {
+                    if (event->on_or_off) {
+                        RGBLED.set_green();
+                    } else {
+                        RGBLED.set_red();
+                    }
+                }
+            }
+        }
         state->time = new_time;
         state->clock_should_redraw = true;
     }
@@ -73,6 +88,7 @@ int main() {
     printf("Hello World!!!\n");
 
     RTC.init();
+    RGBLED.init();
     LEDKey.init();
     Timer.init_timer1();
     Timer.set_prescaler(LPC_TIM1, SystemCoreClock / 1000);
@@ -88,9 +104,7 @@ int main() {
     while (true) {
         if (Timer.has_timer1_ticked()) {
             state.blink = !state.blink;
-            if (state.screen == &EventDetailsMenu) {
-                state.menu_should_redraw = true;
-            }
+            state.screen->update_menu(&state);
             if (state.clock_edit_mode) {
                 state.clock_should_redraw = true;
             }
