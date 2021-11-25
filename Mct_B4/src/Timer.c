@@ -12,6 +12,8 @@ static void init_timer1() {
     LPC_TIM1->TCR = TIMER_RESET;
     // reset weg nehmen
     LPC_TIM1->TCR = 0;
+    NVIC_ClearPendingIRQ(TIMER1_IRQn);
+    NVIC_EnableIRQ(TIMER1_IRQn);
 }
 
 static void init_timer2() {
