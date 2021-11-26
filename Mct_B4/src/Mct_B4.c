@@ -61,7 +61,9 @@ void check_time_change(struct State *state) {
                 struct Event *event = &state->event_data[i];
                 if (event->enabled &&
                     event->hour == new_time.hours &&
-                    event->minute == new_time.minutes) {
+                    event->minute == new_time.minutes &&
+                    (event->weekdays & new_time.weekday) != 0) { // TODO: Check if this works
+                    state->rgb_state = event->on_or_off;
                     if (event->on_or_off) {
                         RGBLED.set_green();
                     } else {
