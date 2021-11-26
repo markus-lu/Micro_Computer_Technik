@@ -18,9 +18,13 @@
 #define SELECTED4(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF" "\xFF" "\xFF") : (normal)
 
 static void handle_back(struct State *state) {
-    state->screen = &EventsMenu;
-    state->selected_event_detail = SELECTED_MONDAY;
-    state->menu_edit_mode = false;
+    if (state->menu_edit_mode) {
+        state->menu_edit_mode = false;
+    } else {
+        state->screen = &EventsMenu;
+        state->selected_event_detail = SELECTED_MONDAY;
+        state->menu_edit_mode = false;
+    }
 }
 
 static void handle_down(struct State *state) {
