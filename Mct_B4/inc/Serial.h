@@ -27,8 +27,6 @@ struct serial {
 
     void (*read)(uint8_t command, uint8_t *data, uint32_t length);
 
-    void (*wait_for_interrupt)(void);
-
     void (*deinit)(void);
 };
 

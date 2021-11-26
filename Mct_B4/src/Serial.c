@@ -162,6 +162,5 @@ const struct serial Serial = {
         .write_command = write_command,
         .write = write,
         .read = read,
-        .wait_for_interrupt = wait_for_interrupt,
         .deinit = deinit,
 };
