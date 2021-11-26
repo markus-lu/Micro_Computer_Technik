@@ -10,7 +10,7 @@ void init(struct State *state) {
 
 
 #define DEC(value, max) if (state->time.value > 1) { state->time.value--; } else { state->time.value = (max); } break;
-#define INC(value, max) if (state->time.value < (max)) { state->time.value++; }else{ state->time.value=(0); } break;
+#define INC(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 0; } break;
 
 static void check_keypress(struct State *state) {
     bool should_redraw = state->clock_should_redraw;
@@ -19,7 +19,7 @@ static void check_keypress(struct State *state) {
         state->clock_should_redraw = true;
         switch (buttons) {
             case BUTTON_TOGGLE_TIME_DATE:
-                if (!state->clock_edit_mode){
+                if (!state->clock_edit_mode) {
                     state->clock_show_time = !state->clock_show_time;
                 }
                 break;
@@ -212,7 +212,7 @@ static void draw_time(struct State *state) {
         weekday = 0;
     }
 
-    LEDKey.set_display_data(weekday, segments);
+    LEDKey.set_display_data(weekday << 1, segments);
 }
 
 void loop_once(struct State *state) {
