@@ -18,6 +18,4 @@ void main_menu_handle_keypress(struct State* state, uint8_t buttons);
 
 void main_menu_draw_menu(struct State *state);
 
-void main_menu_update_menu(struct State *state);
-
 #endif // _MAIN_MENU_H_

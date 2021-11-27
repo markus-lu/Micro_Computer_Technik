@@ -109,20 +109,3 @@ void main_menu_draw_menu(struct State *state) {
     lcd_write_char(time->seconds / 10 + '0');
     lcd_write_char(time->seconds % 10 + '0');
 }
-
-void main_menu_update_menu(struct State *state) {
-    if (!state->clock_edit_mode) {
-        struct DateTime *time = &state->time;
-
-        char_t line[20];
-        for (int i = 0; i < 20; ++i) {
-            line[i] = 0;
-        }
-        char_t *string = (char_t *) line;
-
-        sprintf(string, "%02d:%02d:%02d", time->hours, time->minutes, time->seconds);
-
-        lcd_gotoxy(13, 4);
-        lcd_write_string(string);
-    }
-}

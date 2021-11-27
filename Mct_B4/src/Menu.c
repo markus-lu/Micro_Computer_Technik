@@ -31,17 +31,6 @@ void menu_check_keypress (struct State *state) {
     }
 }
 
-void menu_update_menu(struct State *state){
-    switch (state->menu_screen) {
-        case SCREEN_MAIN_MENU:
-            main_menu_update_menu(state);
-            break;
-        case SCREEN_EVENT_DETAILS_MENU:
-            event_details_menu_update_menu(state);
-            break;
-    }
-}
-
 void menu_loop_once (struct State *state) {
     menu_check_keypress(state);
     if (state->menu_should_redraw) {

@@ -17,6 +17,7 @@
 #include "LEDKey.h"
 #include "Timer.h"
 #include "RGBLED.h"
+#include "EventDetailsMenu.h"
 #include <stdio.h>
 
 #ifdef __USE_CMSIS
@@ -102,6 +103,9 @@ int main() {
     while (true) {
         if (timer_has_timer1_ticked()) {
             state.blink = !state.blink;
+            if (state.menu_screen == SCREEN_EVENT_DETAILS_MENU) {
+                event_details_menu_update_menu(&state);
+            }
             menu_update_menu(&state);
             if (state.clock_edit_mode) {
                 state.clock_should_redraw = true;
