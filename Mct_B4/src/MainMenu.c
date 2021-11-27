@@ -1,83 +1,116 @@
-#include <stdio.h>
+#include "MainMenu.h"
 #include "Menu.h"
+#include "Events.h"
+#include <stdio.h>
+#include "lcdlib_1769.h"
+
+static void handle_back(struct State *state);
+
+static void handle_up(struct State *state);
+
+static void handle_down(struct State *state);
+
+static void handle_ok(struct State *state);
+
+void main_menu_handle_keypress(struct State *state, uint8_t buttons) {
+    bool should_redraw = state->menu_should_redraw;
+    state->menu_should_redraw = true;
+    switch (buttons) {
+        case BUTTON_BACK:
+            handle_back(state);
+            break;
+        case BUTTON_UP:
+            handle_up(state);
+            break;
+        case BUTTON_DOWN:
+            handle_down(state);
+            break;
+        case BUTTON_OK:
+            handle_ok(state);
+            break;
+        default:
+            state->menu_should_redraw = should_redraw;
+            break;
+    }
+}
 
 static void handle_back(struct State *state) {
     state->menu_should_redraw = false;
 }
 
 static void handle_down(struct State *state) {
-    state->screen = &EventsMenu;
+    state->menu_screen = SCREEN_EVENTS_MENU;
 }
 
 static void handle_up(struct State *state) {
-    state->screen = &EventsMenu;
+    state->menu_screen = SCREEN_EVENTS_MENU;
 }
 
 static void handle_ok(struct State *state) {
-    state->screen = &EventsMenu;
+    state->menu_screen = SCREEN_EVENTS_MENU;
 }
 
-static void draw_menu(struct State *state) {
-    uint16_t event_count = Events.get_count(state->event_data);
+void main_menu_draw_menu(struct State *state) {
+    uint16_t event_count = events_get_count(state->event_data);
     uint8_t temperature_whole = state->temperature >> 8;
     uint8_t temperature_fraction = state->temperature;
     struct DateTime *time = &state->time;
 
-    LCD.clear_screen();
+    lcd_clrscr();
 
-    LCD.go_to_xy(1, 1);
-    LCD.write_string("Temperatur: ");
-    LCD.write_char(temperature_whole / 10 + '0');
-    LCD.write_char(temperature_whole % 10 + '0');
-    LCD.write_char('.');
+    lcd_gotoxy(1, 1);
+    lcd_write_string("Temperatur: ");
+    lcd_write_char(temperature_whole / 10 + '0');
+    lcd_write_char(temperature_whole % 10 + '0');
+    lcd_write_char('.');
     switch (temperature_fraction) {
         case 0:
-            LCD.write_string("00" "\xDF" "C");
+            lcd_write_string("00" "\xDF" "C");
             break;
         case 1:
-            LCD.write_string("25" "\xDF" "C");
+            lcd_write_string("25" "\xDF" "C");
             break;
         case 2:
-            LCD.write_string("50" "\xDF" "C");
+            lcd_write_string("50" "\xDF" "C");
             break;
         case 3:
-            LCD.write_string("75" "\xDF" "C");
+            lcd_write_string("75" "\xDF" "C");
             break;
         default:
             break;
     }
 
-    LCD.go_to_xy(1, 2);
-    LCD.write_string("Status:     ");
-    LCD.write_string(state->rgb_state ? "An" : "Aus");
+    lcd_gotoxy(1, 2);
+    lcd_write_string("Status:     ");
+    lcd_write_string(state->rgb_state ? "An" : "Aus");
 
-    LCD.go_to_xy(1, 3);
-    LCD.write_string("Events:     ");
-    LCD.write_char(event_count / 10 + '0');
-    LCD.write_char(event_count % 10 + '0');
+    lcd_gotoxy(1, 3);
+    lcd_write_string("Events:     ");
+    lcd_write_char(event_count / 10 + '0');
+    lcd_write_char(event_count % 10 + '0');
 
-    LCD.go_to_xy(1, 4);
-    LCD.write_char(time->day / 10 + '0');
-    LCD.write_char(time->day % 10 + '0');
-    LCD.write_char('.');
-    LCD.write_char(time->month / 10 + '0');
-    LCD.write_char(time->month % 10 + '0');
-    LCD.write_char('.');
-    LCD.write_string(time->century ? "20" : "19");
-    LCD.write_char(time->year / 10 + '0');
-    LCD.write_char(time->year % 10 + '0');
-    LCD.write_string("  ");
-    LCD.write_char(time->hours / 10 + '0');
-    LCD.write_char(time->hours % 10 + '0');
-    LCD.write_char(':');
-    LCD.write_char(time->minutes / 10 + '0');
-    LCD.write_char(time->minutes % 10 + '0');
-    LCD.write_char(':');
-    LCD.write_char(time->seconds / 10 + '0');
-    LCD.write_char(time->seconds % 10 + '0');
+    lcd_gotoxy(1, 4);
+    lcd_write_char(time->day / 10 + '0');
+    lcd_write_char(time->day % 10 + '0');
+    lcd_write_char('.');
+    lcd_write_char(time->month / 10 + '0');
+    lcd_write_char(time->month % 10 + '0');
+    lcd_write_char('.');
+    lcd_write_string(time->century ? "20" : "19");
+    lcd_write_char(time->year / 10 + '0');
+    lcd_write_char(time->year % 10 + '0');
+    lcd_write_string("  ");
+    lcd_write_char(time->hours / 10 + '0');
+    lcd_write_char(time->hours % 10 + '0');
+    lcd_write_char(':');
+    lcd_write_char(time->minutes / 10 + '0');
+    lcd_write_char(time->minutes % 10 + '0');
+    lcd_write_char(':');
+    lcd_write_char(time->seconds / 10 + '0');
+    lcd_write_char(time->seconds % 10 + '0');
 }
 
-static void update_menu(struct State *state) {
+void main_menu_update_menu(struct State *state) {
     if (!state->clock_edit_mode) {
         struct DateTime *time = &state->time;
 
@@ -89,16 +122,7 @@ static void update_menu(struct State *state) {
 
         sprintf(string, "%02d:%02d:%02d", time->hours, time->minutes, time->seconds);
 
-        LCD.go_to_xy(13, 4);
-        LCD.write_string(string);
+        lcd_gotoxy(13, 4);
+        lcd_write_string(string);
     }
 }
-
-const struct MenuScreen MainMenu = {
-        .handle_back = handle_back,
-        .handle_down = handle_down,
-        .handle_up = handle_up,
-        .handle_ok = handle_ok,
-        .draw_menu = draw_menu,
-        .update_menu = update_menu,
-};

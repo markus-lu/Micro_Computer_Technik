@@ -1,4 +1,5 @@
 #include "RTC.h"
+#include "I2C.h"
 
 // BCD = binary decimal code
 static uint8_t decode_bcd(uint8_t byte) {
@@ -38,69 +39,41 @@ static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
     bytes[6] = encode_bcd(dateTime->year);
 }
 
-static void init() {
-    I2C.init();
+void rtc_init() {
+    i2c_init(I2C_FM);
 }
 
 static void set_register_address(uint8_t address) {
     uint8_t register_address[1];
     register_address[0] = address;
-    I2C.write(DS3231_ADDRESS, register_address, 1);
+    i2c_write(DS3231_ADDRESS, register_address, 1);
 }
 
-/******************************************************************************/
-/**
-Funktion zum Auslesen der Temperatur
-
-\return  temperature
-         Unteres Byte enthält ganzzahlige Gradzahl
-         Oberes Byte enthält 2 bits, die die Kommastelle angeben
-         (in 0.25 Grad Schritten)
-         Bytes sind absichtlich entgegen der logischen Reihenfolge angeordnet,
-         damit man weniger Shiften muss und bei einem Cast zu
-         einen int8 direkt die ganzzahlige Gradzahl erhält.
-         (oberes Byte: 0 - 3 [repräsentiert 0, 0.25, 0.5, 0.75 Grad])
-         (unteres Byte: -128 - +128 Grad)
-
-\version 22.11.2021
-*******************************************************************************/
-static uint16_t read_temp() {
+uint16_t rtc_read_temp() {
     set_register_address(0x11);
 
     uint8_t bytes[2];
-    I2C.read(DS3231_ADDRESS, bytes, 2);
+    i2c_read(DS3231_ADDRESS, bytes, 2);
 
-    uint16_t temperature = bytes[0]<<8;
-    temperature |= bytes[1]>>6;
+    uint16_t temperature = bytes[0] << 8;
+    temperature |= bytes[1] >> 6;
     return temperature;
 }
 
-static void read_time(struct DateTime *time) {
+void rtc_read_time(struct DateTime *time) {
     set_register_address(0);
 
     uint8_t bytes[7];
-    I2C.read(DS3231_ADDRESS, bytes, 7);
+    i2c_read(DS3231_ADDRESS, bytes, 7);
 
     decode_time(bytes, time);
 }
 
-static void write_time(struct DateTime *time) {
+void rtc_write_time(struct DateTime *time) {
     uint8_t bytes[8];
     bytes[0] = 0; // register address
 
     encode_time(time, &bytes[1]);
 
-    I2C.write(DS3231_ADDRESS, bytes, 8);
+    i2c_write(DS3231_ADDRESS, bytes, 8);
 }
-
-static void deinit() {
-    I2C.deinit();
-}
-
-const struct rtc RTC = {
-        .init = init,
-        .read_temp = read_temp,
-        .read_time = read_time,
-        .write_time = write_time,
-        .deinit = deinit,
-};

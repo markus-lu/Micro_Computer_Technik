@@ -9,32 +9,27 @@
  */
 
 #include "Mct_B4.h"
+#include "types.h"
 #include "Menu.h"
+#include "Events.h"
+#include "I2CLEDs.h"
 #include "Clock.h"
 #include "LEDKey.h"
 #include "Timer.h"
 #include "RGBLED.h"
+#include <stdio.h>
 
 #ifdef __USE_CMSIS
 
 #include "LPC17xx.h"
-#include <types.h>
 
 #endif
 
-#include <stdio.h>
 #include <cr_section_macros.h>
-
-void delay(uint32_t ms) {
-    uint32_t start_time = Timer.get_count(LPC_TIM1);
-    while (Timer.get_count(LPC_TIM1) - start_time < ms) {
-
-    }
-}
 
 void init_state(struct State *state, struct Event *event_data) {
     state->blink = false;
-    state->screen = &MainMenu;
+    state->menu_screen = SCREEN_MAIN_MENU;
     state->menu_last_buttons = 0;
     state->selected_event = 0;
     state->selected_event_detail = 0;
@@ -54,7 +49,7 @@ void init_state(struct State *state, struct Event *event_data) {
 
 void check_time_change(struct State *state) {
     struct DateTime new_time;
-    RTC.read_time(&new_time);
+    rtc_read_time(&new_time);
     if (compare_times(&state->time, &new_time)) {
         if (state->time.minutes != new_time.minutes) {
             for (int i = 0; i < EVENT_COUNT; ++i) {
@@ -62,12 +57,12 @@ void check_time_change(struct State *state) {
                 if (event->enabled &&
                     event->hour == new_time.hours &&
                     event->minute == new_time.minutes &&
-                    (event->weekdays & new_time.weekday) != 0) { // TODO: Check if this works
+                    (event->weekdays == (1 << new_time.weekday))) {
                     state->rgb_state = event->on_or_off;
                     if (event->on_or_off) {
-                        RGBLED.set_green();
+                        rgbled_set_green();
                     } else {
-                        RGBLED.set_red();
+                        rgbled_set_red();
                     }
                 }
             }
@@ -78,7 +73,7 @@ void check_time_change(struct State *state) {
 }
 
 void check_temperature_change(struct State *state) {
-    uint16_t new_temperature = RTC.read_temp();
+    uint16_t new_temperature = rtc_read_temp();
     if (new_temperature != state->temperature) {
         state->temperature = new_temperature;
         state->menu_should_redraw = true;
@@ -89,24 +84,25 @@ int main() {
     SystemCoreClockUpdate();
     printf("Hello World!!!\n");
 
-    RTC.init();
-    RGBLED.init();
-    LEDKey.init();
-    Timer.init_timer1();
-    Timer.set_prescaler(LPC_TIM1, SystemCoreClock / 1000);
-    Timer.enable_match_interrupt(LPC_TIM1, 1, 500);
-    Timer.start_timer(LPC_TIM1);
+    rtc_init();
+    rgbled_init();
+    ledkey_init();
+    timer_init_timer1();
+    timer_set_prescaler(LPC_TIM1, SystemCoreClock / 1000);
+    timer_enable_match_interrupt(LPC_TIM1, 1, 500);
+    timer_start_timer(LPC_TIM1);
     struct Event event_data[EVENT_COUNT];
-    Events.init(event_data);
+    events_init(event_data);
     struct State state;
     init_state(&state, event_data);
-    Menu.init();
-    Clock.init(&state);
+    menu_init();
+    clock_init(&state);
+    i2cleds_init();
 
     while (true) {
-        if (Timer.has_timer1_ticked()) {
+        if (timer_has_timer1_ticked()) {
             state.blink = !state.blink;
-            state.screen->update_menu(&state);
+            menu_update_menu(&state);
             if (state.clock_edit_mode) {
                 state.clock_should_redraw = true;
             }
@@ -115,10 +111,12 @@ int main() {
         if (!state.clock_edit_mode) {
             check_time_change(&state);
         }
-        Menu.loop_once(&state);
-        Clock.loop_once(&state);
+        menu_loop_once(&state);
+        clock_loop_once(&state);
+        i2cleds_set_leds(events_get_count(event_data));
     }
-
-    LEDKey.deinit();
+    timer_deinit_timer1();
+    ledkey_deinit();
+    i2c_exit();
     return 0;
 }

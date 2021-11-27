@@ -11,16 +11,13 @@
 #ifndef _FRONTIO_H_
 #define _FRONTIO_H_
 
+#include "types.h"
 #include "GPIO.h"
 
-struct frontio {
-    void (*init)(void);
+void frontio_init(void);
 
-    void (*set_leds)(uint8_t leds);
+void frontio_set_leds(uint8_t leds);
 
-    uint8_t (*get_buttons)(void);
-};
-
-extern const struct frontio FrontIO;
+uint8_t frontio_get_buttons(void);
 
 #endif

@@ -11,9 +11,8 @@
 #ifndef _RTC_H_
 #define _RTC_H_
 
-
+#include "types.h"
 #include "I2C.h"
-#include <types.h>
 
 struct DateTime {
     uint8_t seconds;
@@ -26,18 +25,12 @@ struct DateTime {
     uint8_t year;
 };
 
-struct rtc {
-    void (*init)(void);
+void rtc_init(void);
 
-    uint16_t (*read_temp)(void);
+uint16_t rtc_read_temp(void);
 
-    void (*read_time)(struct DateTime *);
+void rtc_read_time(struct DateTime *);
 
-    void (*write_time)(struct DateTime *);
-
-    void (*deinit)(void);
-};
-
-extern const struct rtc RTC;
+void rtc_write_time(struct DateTime *);
 
 #endif

@@ -1,10 +1,6 @@
 #include "I2C.h"
 
-static void init() {
-    i2c_init(I2C_FM);
-}
-
-static uint8_t write(uint8_t address, uint8_t *data, uint32_t length) {
+uint8_t i2c_write(uint8_t address, uint8_t *data, uint32_t length) {
     i2c_start();
     uint8_t status = i2c_write_byte(address | I2C_WRITE);
     if (status == ACK) {
@@ -17,7 +13,7 @@ static uint8_t write(uint8_t address, uint8_t *data, uint32_t length) {
     return status;
 }
 
-static uint8_t read(uint8_t address, uint8_t *data, uint32_t length) {
+uint8_t i2c_read(uint8_t address, uint8_t *data, uint32_t length) {
     i2c_start();
     uint8_t status = i2c_write_byte(address | I2C_READ);
     if (status == ACK) {
@@ -29,11 +25,3 @@ static uint8_t read(uint8_t address, uint8_t *data, uint32_t length) {
     i2c_stop();
     return status;
 }
-
-
-const struct i2c I2C = {
-        .init = init,
-        .write =write,
-        .read = read,
-        .deinit = i2c_exit,
-};

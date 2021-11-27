@@ -11,9 +11,7 @@
 #ifndef _GPIO_H_
 #define _GPIO_H_
 
-#include <stdint.h>
-#include <stdbool.h>
-#include <LPC17xx.h>
+#include "types.h"
 
 #define MODE_GPIO 0
 
@@ -37,18 +35,14 @@ struct GPIOPin {
     const bool open_drain;
 };
 
-struct gpio {
-    void (*init_pin)(const struct GPIOPin *pin);
+void gpio_init_pin(const struct GPIOPin *pin);
 
-    void (*set_high)(const struct GPIOPin *pin);
+void gpio_set_high(const struct GPIOPin *pin);
 
-    void (*set_low)(const struct GPIOPin *pin);
+void gpio_set_low(const struct GPIOPin *pin);
 
-    void (*set)(const struct GPIOPin *pin, bool state);
+void gpio_set(const struct GPIOPin *pin, bool state);
 
-    bool (*get)(const struct GPIOPin *pin);
-};
-
-extern const struct gpio GPIO;
+bool gpio_get(const struct GPIOPin *pin);
 
 #endif

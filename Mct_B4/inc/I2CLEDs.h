@@ -11,15 +11,11 @@
 #ifndef _I2CLEDS_H_
 #define _I2CLEDS_H_
 
-
+#include "types.h"
 #include "I2C.h"
 
-struct i2cleds {
-    void (*init)(void);
+void i2cleds_init(void);
 
-    void (*set_leds)(uint32_t event_count);
-};
-
-extern const struct i2cleds I2CLEDs;
+void i2cleds_set_leds(uint32_t event_count);
 
 #endif

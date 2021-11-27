@@ -1,48 +1,61 @@
 #include "Menu.h"
+#include "FrontIO.h"
+#include "lcdlib_1769.h"
+#include "MainMenu.h"
+#include "EventsMenu.h"
+#include "EventDetailsMenu.h"
 
-static void init() {
-    FrontIO.init();
-    LCD.init();
-    LCD.backlight(0xFF);
+void menu_init () {
+    frontio_init();
+    lcd_init(4, I2C_FM);
+    lcd_bglight(0xFF);
 }
 
-static void check_keypress(struct State *state) {
-    bool should_redraw = state->menu_should_redraw;
-    uint8_t buttons = FrontIO.get_buttons();
-    FrontIO.set_leds(buttons);
-    FrontIO.get_buttons();
+void menu_check_keypress (struct State *state) {
+    uint8_t buttons = frontio_get_buttons();
+    frontio_set_leds(buttons);
+    frontio_get_buttons();
     if (buttons != state->menu_last_buttons) {
-        state->menu_should_redraw = true;
-        switch (buttons) {
-            case BUTTON_BACK:
-                state->screen->handle_back(state);
+        switch (state->menu_screen) {
+            case SCREEN_MAIN_MENU:
+                main_menu_handle_keypress(state, buttons);
                 break;
-            case BUTTON_UP:
-                state->screen->handle_up(state);
+            case SCREEN_EVENTS_MENU:
+                events_menu_handle_keypress(state, buttons);
                 break;
-            case BUTTON_DOWN:
-                state->screen->handle_down(state);
-                break;
-            case BUTTON_OK:
-                state->screen->handle_ok(state);
-                break;
-            default:
-                state->menu_should_redraw = should_redraw;
+            case SCREEN_EVENT_DETAILS_MENU:
+                event_details_menu_handle_keypress(state, buttons);
                 break;
         }
         state->menu_last_buttons = buttons;
     }
 }
 
-static void loop_once(struct State *state) {
-    check_keypress(state);
-    if (state->menu_should_redraw) {
-        state->screen->draw_menu(state);
-        state->menu_should_redraw = false;
+void menu_update_menu(struct State *state){
+    switch (state->menu_screen) {
+        case SCREEN_MAIN_MENU:
+            main_menu_update_menu(state);
+            break;
+        case SCREEN_EVENT_DETAILS_MENU:
+            event_details_menu_update_menu(state);
+            break;
     }
 }
 
-const struct menu Menu = {
-        .init = init,
-        .loop_once = loop_once,
-};
+void menu_loop_once (struct State *state) {
+    menu_check_keypress(state);
+    if (state->menu_should_redraw) {
+        switch (state->menu_screen) {
+            case SCREEN_MAIN_MENU:
+                main_menu_draw_menu(state);
+                break;
+            case SCREEN_EVENTS_MENU:
+                events_menu_draw_menu(state);
+                break;
+            case SCREEN_EVENT_DETAILS_MENU:
+                event_details_menu_draw_menu(state);
+                break;
+        }
+        state->menu_should_redraw = false;
+    }
+}

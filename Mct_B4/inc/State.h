@@ -3,11 +3,10 @@
 
 #include "types.h"
 #include "RTC.h"
-#include <stdbool.h>
 
 struct State {
     bool blink;
-    const struct MenuScreen *screen;
+    uint32_t menu_screen;
     uint8_t menu_last_buttons;
     uint8_t selected_event;
     uint8_t selected_event_detail;

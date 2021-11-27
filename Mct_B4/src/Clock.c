@@ -2,19 +2,19 @@
 #include "Clock.h"
 #include "LEDKey.h"
 
-void init(struct State *state) {
-    LEDKey.init();
-    RTC.init();
-    LEDKey.set_brightness(state->clock_brightness, true);
+void clock_init(struct State *state) {
+    ledkey_init();
+    rtc_init();
+    ledkey_set_brightness(state->clock_brightness, true);
 }
 
 
 #define DEC(value, max) if (state->time.value > 1) { state->time.value--; } else { state->time.value = (max); } break;
 #define INC(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 0; } break;
 
-static void check_keypress(struct State *state) {
+void clock_check_keypress(struct State *state) {
     bool should_redraw = state->clock_should_redraw;
-    uint8_t buttons = LEDKey.get_buttons();
+    uint8_t buttons = ledkey_get_buttons();
     if (buttons != state->clock_last_buttons) {
         state->clock_should_redraw = true;
         switch (buttons) {
@@ -31,7 +31,7 @@ static void check_keypress(struct State *state) {
                 } else {
                     state->clock_edit_mode = false;
                     state->blink = false;
-                    RTC.write_time(&state->time);
+                    rtc_write_time(&state->time);
                 }
                 break;
             case BUTTON_PREVIOUS:
@@ -59,7 +59,7 @@ static void check_keypress(struct State *state) {
                     state->clock_show_time = false;
                 }
                 break;
-            case BUTTON_DOWN:
+            case BUTTON_DEC:
                 switch (state->clock_selected_field) {
                     case SELECTED_HOUR:
                     DEC(hours, 23)
@@ -88,7 +88,7 @@ static void check_keypress(struct State *state) {
                         break;
                 }
                 break;
-            case BUTTON_UP:
+            case BUTTON_INC:
                 switch (state->clock_selected_field) {
                     case SELECTED_HOUR:
                     INC(hours, 24)
@@ -124,9 +124,9 @@ static void check_keypress(struct State *state) {
                 }
 
                 if (state->clock_brightness > -1) {
-                    LEDKey.set_brightness(state->clock_brightness, true);
+                    ledkey_set_brightness(state->clock_brightness, true);
                 } else {
-                    LEDKey.set_brightness(0, false);
+                    ledkey_set_brightness(0, false);
                 }
                 break;
             case BUTTON_BRIGHTNESS_UP:
@@ -134,7 +134,7 @@ static void check_keypress(struct State *state) {
                 if (state->clock_brightness < MAX_BRIGHTNESS) {
                     state->clock_brightness++;
                 }
-                LEDKey.set_brightness(state->clock_brightness, true);
+                ledkey_set_brightness(state->clock_brightness, true);
                 break;
             default:
                 state->clock_should_redraw = should_redraw;
@@ -147,7 +147,7 @@ static void check_keypress(struct State *state) {
 
 static const uint8_t SEGMENT_DIGITS[] = {SEG_0, SEG_1, SEG_2, SEG_3, SEG_4, SEG_5, SEG_6, SEG_7, SEG_8, SEG_9, SEG_DOT};
 
-static void draw_time(struct State *state) {
+void clock_draw_time(struct State *state) {
     uint8_t segments[8];
     if (state->clock_show_time) {
         segments[0] = 0;
@@ -158,22 +158,6 @@ static void draw_time(struct State *state) {
         segments[5] = SEGMENT_DIGITS[state->time.minutes % 10] | SEG_DOT;
         segments[6] = SEGMENT_DIGITS[state->time.seconds / 10];
         segments[7] = SEGMENT_DIGITS[state->time.seconds % 10];
-        if (state->blink) {
-            switch (state->clock_selected_field) {
-                case SELECTED_HOUR:
-                    segments[2] = 0;
-                    segments[3] = 0 | SEG_DOT;
-                    break;
-                case SELECTED_MINUTE:
-                    segments[4] = 0;
-                    segments[5] = 0 | SEG_DOT;
-                    break;
-                case SELECTED_SECOND:
-                    segments[6] = 0;
-                    segments[7] = 0;
-                    break;
-            }
-        }
     } else {
         segments[0] = SEGMENT_DIGITS[state->time.day / 10];
         segments[1] = SEGMENT_DIGITS[state->time.day % 10] | SEG_DOT;
@@ -188,42 +172,48 @@ static void draw_time(struct State *state) {
         }
         segments[6] = SEGMENT_DIGITS[(state->time.year / 10) % 10];
         segments[7] = SEGMENT_DIGITS[state->time.year % 10];
-        if (state->blink) {
-            switch (state->clock_selected_field) {
-                case SELECTED_DAY:
-                    segments[0] = 0;
-                    segments[1] = 0 | SEG_DOT;
-                    break;
-                case SELECTED_MONTH:
-                    segments[2] = 0;
-                    segments[3] = 0 | SEG_DOT;
-                    break;
-                case SELECTED_YEAR:
-                    segments[4] = 0;
-                    segments[5] = 0;
-                    segments[6] = 0;
-                    segments[7] = 0;
-                    break;
-            }
+    }
+
+    if (state->blink) {
+        switch (state->clock_selected_field) {
+            case SELECTED_MINUTE:
+                segments[4] = 0;
+                segments[5] = 0 | SEG_DOT;
+                break;
+            case SELECTED_SECOND:
+                segments[6] = 0;
+                segments[7] = 0;
+                break;
+            case SELECTED_DAY:
+                segments[0] = 0;
+                segments[1] = 0 | SEG_DOT;
+                break;
+            case SELECTED_MONTH:
+            case SELECTED_HOUR:
+                segments[2] = 0;
+                segments[3] = 0 | SEG_DOT;
+                break;
+            case SELECTED_YEAR:
+                segments[4] = 0;
+                segments[5] = 0;
+                segments[6] = 0;
+                segments[7] = 0;
+                break;
         }
     }
+
     uint8_t weekday = state->time.weekday;
     if (state->blink && state->clock_selected_field == SELECTED_WEEKDAY) {
         weekday = 0;
     }
 
-    LEDKey.set_display_data(weekday << 1, segments);
+    ledkey_set_display_data((1 << weekday), segments);
 }
 
-void loop_once(struct State *state) {
-    check_keypress(state);
+void clock_loop_once(struct State *state) {
+    clock_check_keypress(state);
     if (state->clock_should_redraw) {
-        draw_time(state);
+        clock_draw_time(state);
         state->clock_should_redraw = false;
     }
 }
-
-const struct clock Clock = {
-        .init = init,
-        .loop_once = loop_once,
-};

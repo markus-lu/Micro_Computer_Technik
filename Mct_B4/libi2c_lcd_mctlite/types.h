@@ -9,6 +9,7 @@
 #ifndef _TYPES
 #define _TYPES
 #include <stdint.h>
+#include <stdbool.h>
 						// 8 Bit Character
 typedef char char_t;
 typedef unsigned char uchar_t;

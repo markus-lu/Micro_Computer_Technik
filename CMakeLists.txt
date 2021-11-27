@@ -29,6 +29,11 @@ file(GLOB_RECURSE HAL_INCLUDES "lpc_chip_11u6x/inc/*.h")
 
 file(GLOB_RECURSE LIB_INCLUDES "${PROJECT_FOLDER}/libi2c_lcd_mctlite/*.h")
 
+SET(COMMON_FLAGS "-O3 -fno-common -g3 -Wall -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -mcpu=cortex-m0 -mthumb -fstack-usage -MMD -MP")
+SET(CMAKE_C_FLAGS   "${COMMON_FLAGS}")
+SET(CMAKE_CXX_FLAGS "${COMMON_FLAGS} -fno-rtti -fno-exceptions")
+SET(CMAKE_ASM_FLAGS "${COMMON_FLAGS} -x assembler-with-cpp")
+
 #add_executable(${PROJECT_NAME}.axf ${USER_SOURCES} ${HAL_SOURCES} ${USER_INCLUDES} ${HAL_INCLUDES})
 add_library(${PROJECT_NAME}.axf OBJECT ${USER_SOURCES} ${HAL_SOURCES} ${USER_INCLUDES} ${HAL_INCLUDES} ${LIB_INCLUDES})
 target_link_libraries(${PROJECT_NAME}.axf ${PROJECT_FOLDER}/libi2c_lcd_mctlite/libi2c_lcd_mctlite.a)

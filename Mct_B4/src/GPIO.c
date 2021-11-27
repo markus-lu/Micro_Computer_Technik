@@ -1,6 +1,7 @@
 #include "GPIO.h"
+#include "LPC17xx.h"
 
-static void set_pin_sel(const struct GPIOPin *pin) {
+void gpio_set_pin_sel(const struct GPIOPin *pin) {
     volatile uint32_t *pinsel = &LPC_PINCON->PINSEL0;
     pinsel += pin->port * 2;
 
@@ -12,7 +13,7 @@ static void set_pin_sel(const struct GPIOPin *pin) {
     }
 }
 
-static void set_pin_mode(const struct GPIOPin *pin) {
+void gpio_set_pin_mode(const struct GPIOPin *pin) {
     volatile uint32_t *pinmode = &LPC_PINCON->PINMODE0;
     pinmode += pin->port * 2;
 
@@ -24,7 +25,7 @@ static void set_pin_mode(const struct GPIOPin *pin) {
     }
 }
 
-static void set_pin_open_drain(const struct GPIOPin *pin) {
+void gpio_set_pin_open_drain(const struct GPIOPin *pin) {
     volatile uint32_t *pinsel = &LPC_PINCON->PINMODE_OD0;
     pinsel += pin->port;
 
@@ -38,10 +39,10 @@ static LPC_GPIO_TypeDef *get_gpio_port(uint8_t port) {
 }
 
 
-static void init_pin(const struct GPIOPin *pin) {
-    set_pin_sel(pin);
-    set_pin_mode(pin);
-    set_pin_open_drain(pin);
+void gpio_init_pin(const struct GPIOPin *pin) {
+    gpio_set_pin_sel(pin);
+    gpio_set_pin_mode(pin);
+    gpio_set_pin_open_drain(pin);
 
     volatile LPC_GPIO_TypeDef *gpio = get_gpio_port(pin->port);
 
@@ -53,32 +54,24 @@ static void init_pin(const struct GPIOPin *pin) {
     gpio->FIOMASK &= ~(1 << pin->pin);
 }
 
-static void set_high(const struct GPIOPin *pin) {
+void gpio_set_high(const struct GPIOPin *pin) {
     get_gpio_port(pin->port)->FIOSET = (1 << pin->pin);
 }
 
-static void set_low(const struct GPIOPin *pin) {
+void gpio_set_low(const struct GPIOPin *pin) {
     get_gpio_port(pin->port)->FIOCLR = (1 << pin->pin);
 }
 
-static void set(const struct GPIOPin *pin, bool state) {
+void gpio_set(const struct GPIOPin *pin, bool state) {
     if (state) {
-        set_high(pin);
+        gpio_set_high(pin);
     } else {
-        set_low(pin);
+        gpio_set_low(pin);
     }
 }
 
-static bool get(const struct GPIOPin *pin) {
+bool gpio_get(const struct GPIOPin *pin) {
     volatile uint32_t fiopin = get_gpio_port(pin->port)->FIOPIN;
     uint32_t masked_pin = fiopin & (1 << pin->pin);
     return masked_pin != 0;
 }
-
-const struct gpio GPIO = {
-        .init_pin = init_pin,
-        .set_high = set_high,
-        .set_low = set_low,
-        .set = set,
-        .get = get,
-};

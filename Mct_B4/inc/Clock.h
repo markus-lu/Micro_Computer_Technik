@@ -10,8 +10,7 @@
 #ifndef _CLOCK_H_
 #define _CLOCK_H_
 
-#include <types.h>
-#include <stdbool.h>
+#include "types.h"
 #include "State.h"
 #include "RTC.h"
 
@@ -19,8 +18,8 @@
 #define BUTTON_EDIT BUTTON_1
 #define BUTTON_PREVIOUS BUTTON_2
 #define BUTTON_NEXT BUTTON_3
-#define BUTTON_DOWN BUTTON_4
-#define BUTTON_UP BUTTON_5
+#define BUTTON_DEC BUTTON_4
+#define BUTTON_INC BUTTON_5
 #define BUTTON_BRIGHTNESS_DOWN BUTTON_6
 #define BUTTON_BRIGHTNESS_UP BUTTON_7
 
@@ -36,12 +35,8 @@
 #define SELECTED_TIME (SELECTED_HOUR | SELECTED_MINUTE | SELECTED_SECOND)
 #define SELECTED_DATE (SELECTED_DAY | SELECTED_MONTH | SELECTED_YEAR | SELECTED_WEEKDAY)
 
-struct clock {
-    void (*init)(struct State *state);
+void clock_init(struct State *state);
 
-    void (*loop_once)(struct State *state);
-};
-
-extern const struct clock Clock;
+void clock_loop_once(struct State *state);
 
 #endif

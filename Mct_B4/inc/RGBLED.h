@@ -12,24 +12,21 @@
 #define _RGBLED_H_
 
 
+#include "types.h"
 #include "GPIO.h"
 
-struct rgbled {
-    const struct GPIOPin red;
-    const struct GPIOPin green;
-    const struct GPIOPin blue;
+extern const struct GPIOPin rgbled_red;
+extern const struct GPIOPin rgbled_green;
+extern const struct GPIOPin rgbled_blue;
 
-    void (*init)(void);
+void rgbled_init(void);
 
-    void (*set_green)(void);
+void rgbled_set_green(void);
 
-    void (*set_red)(void);
+void rgbled_set_red(void);
 
-    void (*set_blue)(void);
+void rgbled_set_blue(void);
 
-    void (*off)(void);
-};
-
-extern const struct rgbled RGBLED;
+void rgbled_off(void);
 
 #endif

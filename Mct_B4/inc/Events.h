@@ -11,9 +11,7 @@
 #ifndef _EVENTS_H_
 #define _EVENTS_H_
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include "types.h"
 
 
 #define EVENT_COUNT 16
@@ -34,13 +32,8 @@ struct Event {
     bool on_or_off; // 1 = on, 0 = off
 };
 
+void events_init(struct Event *event_data);
 
-struct events {
-    void (*init)(struct Event *event_data);
-
-    uint16_t (*get_count)(const struct Event *event_data);
-};
-
-extern const struct events Events;
+uint16_t events_get_count(const struct Event *event_data);
 
 #endif

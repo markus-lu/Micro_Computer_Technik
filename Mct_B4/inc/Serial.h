@@ -11,25 +11,21 @@
 #ifndef _SERIAL_H_
 #define _SERIAL_H_
 
+#include "types.h"
 #include "GPIO.h"
-#include <stdint.h>
 
-struct serial {
-    const struct GPIOPin clk;
-    const struct GPIOPin dio;
-    const struct GPIOPin stb;
+extern const struct GPIOPin serial_clk;
+extern const struct GPIOPin serial_dio;
+extern const struct GPIOPin serial_stb;
 
-    void (*init)(void);
+void serial_init(void);
 
-    void (*write_command)(uint8_t command);
+void serial_write_command(uint8_t command);
 
-    void (*write)(uint8_t command, uint8_t *data, uint32_t length);
+void serial_write(uint8_t command, uint8_t *data, uint32_t length);
 
-    void (*read)(uint8_t command, uint8_t *data, uint32_t length);
+void serial_read(uint8_t command, uint8_t *data, uint32_t length);
 
-    void (*deinit)(void);
-};
-
-extern const struct serial Serial;
+void serial_deinit(void);
 
 #endif

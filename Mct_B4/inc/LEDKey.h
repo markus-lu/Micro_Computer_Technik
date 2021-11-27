@@ -13,6 +13,9 @@
 #ifndef _LEDKEY_H_
 #define _LEDKEY_H_
 
+#include "types.h"
+#include "GPIO.h"
+
 // digits
 #define SEG_0 0b00111111
 #define SEG_1 0b00000110
@@ -26,14 +29,6 @@
 #define SEG_9 0b01101111
 
 #define SEG_DOT 0b10000000
-
-// hex
-#define SEG_A 0b01110111
-#define SEG_B 0b00011111
-#define SEG_C 0b01001110
-#define SEG_D 0b00111101
-#define SEG_E 0b01001111
-#define SEG_F 0b01000111
 
 // commands
 #define WRITE_DATA      0b01000000
@@ -52,20 +47,14 @@
 #define BUTTON_6 (1 << 3)
 #define BUTTON_7 (1 << 1)
 
-#include "GPIO.h"
+void ledkey_init(void);
 
-struct ledkey {
-    void (*init)(void);
+uint8_t ledkey_get_buttons(void);
 
-    uint8_t (*get_buttons)(void);
+void ledkey_set_display_data(uint8_t leds, const uint8_t *digits);
 
-    void (*set_display_data)(const uint8_t leds, const uint8_t *digits);
+void ledkey_set_brightness(uint8_t brightness, bool display_on);
 
-    void (*set_brightness)(uint8_t brightness, bool display_on);
-
-    void (*deinit)(void);
-};
-
-extern const struct ledkey LEDKey;
+void ledkey_deinit(void);
 
 #endif

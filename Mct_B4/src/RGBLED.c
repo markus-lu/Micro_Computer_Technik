@@ -1,62 +1,57 @@
 #include "RGBLED.h"
 
-static void init() {
-    GPIO.init_pin(&RGBLED.red);
-    GPIO.init_pin(&RGBLED.green);
-    GPIO.init_pin(&RGBLED.blue);
+void rgbled_init() {
+    gpio_init_pin(&rgbled_red);
+    gpio_init_pin(&rgbled_green);
+    gpio_init_pin(&rgbled_blue);
 
-    RGBLED.set_red();
+    rgbled_set_red();
 }
 
-static void set_green() {
-    GPIO.set_high(&RGBLED.red);
-    GPIO.set_high(&RGBLED.blue);
-    GPIO.set_low(&RGBLED.green);
+void rgbled_set_green() {
+    gpio_set_high(&rgbled_red);
+    gpio_set_high(&rgbled_blue);
+    gpio_set_low(&rgbled_green);
 }
 
-static void set_red() {
-    GPIO.set_high(&RGBLED.green);
-    GPIO.set_high(&RGBLED.blue);
-    GPIO.set_low(&RGBLED.red);
+void rgbled_set_red() {
+    gpio_set_high(&rgbled_green);
+    gpio_set_high(&rgbled_blue);
+    gpio_set_low(&rgbled_red);
 }
 
-static void set_blue() {
-    GPIO.set_high(&RGBLED.green);
-    GPIO.set_high(&RGBLED.red);
-    GPIO.set_low(&RGBLED.blue);
+void rgbled_set_blue() {
+    gpio_set_high(&rgbled_green);
+    gpio_set_high(&rgbled_red);
+    gpio_set_low(&rgbled_blue);
 }
 
-static void off() {
-    GPIO.set_high(&RGBLED.green);
-    GPIO.set_high(&RGBLED.red);
-    GPIO.set_high(&RGBLED.blue);
+void rgbled_off() {
+    gpio_set_high(&rgbled_green);
+    gpio_set_high(&rgbled_red);
+    gpio_set_high(&rgbled_blue);
 }
 
-const struct rgbled RGBLED = {
-        .red = {
-                .port = 0,
-                .pin = 22,
-                .mode = NONE,
-                .dir = OUTPUT,
-                .open_drain = false,
-        },
-        .green = {
-                .port = 3,
-                .pin = 25,
-                .mode = NONE,
-                .dir = OUTPUT,
-                .open_drain = false,
-        },
-        .blue = {
-                .port = 3,
-                .pin = 26,
-                .mode = NONE,
-                .dir = OUTPUT,
-                .open_drain = false,
-        },
-        .init = init,
-        .set_green = set_green,
-        .set_red = set_red,
-        .set_blue = set_blue,
-        .off = off,
+const struct GPIOPin rgbled_red = {
+        .port = 0,
+        .pin = 22,
+        .mode = NONE,
+        .dir = OUTPUT,
+        .open_drain = false,
+};
+
+const struct GPIOPin rgbled_green = {
+        .port = 3,
+        .pin = 25,
+        .mode = NONE,
+        .dir = OUTPUT,
+        .open_drain = false,
+};
+
+const struct GPIOPin rgbled_blue = {
+        .port = 3,
+        .pin = 26,
+        .mode = NONE,
+        .dir = OUTPUT,
+        .open_drain = false,
 };
