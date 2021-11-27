@@ -173,8 +173,9 @@ void clock_draw_time(struct State *state) {
         segments[6] = SEGMENT_DIGITS[(state->time.year / 10) % 10];
         segments[7] = SEGMENT_DIGITS[state->time.year % 10];
     }
+    uint8_t weekday = (1 << state->time.weekday);
 
-    if (state->blink) {
+    if (state->clock_edit_mode && state->blink) {
         switch (state->clock_selected_field) {
             case SELECTED_MINUTE:
                 segments[4] = 0;
@@ -199,15 +200,13 @@ void clock_draw_time(struct State *state) {
                 segments[6] = 0;
                 segments[7] = 0;
                 break;
+            case SELECTED_WEEKDAY:
+                weekday = 0;
+                break;
         }
     }
 
-    uint8_t weekday = state->time.weekday;
-    if (state->blink && state->clock_selected_field == SELECTED_WEEKDAY) {
-        weekday = 0;
-    }
-
-    ledkey_set_display_data((1 << weekday), segments);
+    ledkey_set_display_data(weekday, segments);
 }
 
 void clock_loop_once(struct State *state) {
