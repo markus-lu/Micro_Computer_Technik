@@ -57,7 +57,7 @@ void check_time_change(struct State *state) {
                 if (event->enabled &&
                     event->hour == new_time.hours &&
                     event->minute == new_time.minutes &&
-                    (event->weekdays == (1 << new_time.weekday))) {
+                    ((event->weekdays & (1 << new_time.weekday)) != 0)) {
                     state->rgb_state = event->on_or_off;
                     if (event->on_or_off) {
                         rgbled_set_green();
