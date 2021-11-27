@@ -58,7 +58,7 @@ static void handle_down(struct State *state) {
 static void handle_up(struct State *state) {
     goto_event(state->selected_event);
     lcd_write_char(' ');
-    if (state->selected_event < EVENT_COUNT) {
+    if (state->selected_event < EVENT_COUNT - 1) {
         state->selected_event++;
     }
     goto_event(state->selected_event);
