@@ -25,8 +25,6 @@
 
 void menu_init();
 
-void menu_update_menu(struct State *state);
-
 void menu_loop_once(struct State *state);
 
 #endif

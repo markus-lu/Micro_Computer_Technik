@@ -106,7 +106,6 @@ int main() {
             if (state.menu_screen == SCREEN_EVENT_DETAILS_MENU) {
                 event_details_menu_update_menu(&state);
             }
-            menu_update_menu(&state);
             if (state.clock_edit_mode) {
                 state.clock_should_redraw = true;
             }
