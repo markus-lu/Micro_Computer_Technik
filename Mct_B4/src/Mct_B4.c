@@ -33,7 +33,7 @@
 */
 
 /**
- *  \mainpage B4: Rechenmaschine
+ *  \mainpage B4: Schaltuhr und Thermometer
  *
  *  Dies ist unsere Lösung zu Aufgabe B4: Schaltuhr und Thermometer.<BR><BR>
  *  Dieses Programm ist eine Schaltuhr und ein Thermometer. Dabei können Events abgespeichert werden,
@@ -51,46 +51,87 @@
  *  separat - auf die vom Baustein zur Verfügung gestellte Temperaturinformation zugegriffen werden
  *  können. Implementieren Sie dazu ein geeignetes Time-Struct zur Kommunikation mit der Leseund der Schreibfunktion für die Echtzeituhr.
  *
- * \subsection sec1_1 Teilaufgabe 1
- * Programmieren Sie einen Treiber für den vollständigen Zugriff auf die TM1638-Platine, die sich
- * auf dem beiliegenden I/O-Board befindet. Es sollen alle 8 LEDs und die achtstellige
- * Siebensegmentanzeige (incl. Dezimalpunkten) ansteuerbar sein und alle 8 Taster ausgelesen
- * werden können.
+ *  \subsection sec1_2 Teilaufgabe 2
+ *  Programmieren Sie einen Treiber für den vollständigen Zugriff auf die TM1638-Platine, die sich
+ *  auf dem beiliegenden I/O-Board befindet. Es sollen alle 8 LEDs und die achtstellige
+ *  Siebensegmentanzeige (incl. Dezimalpunkten) ansteuerbar sein und alle 8 Taster ausgelesen
+ *  werden können.
  *
- *  \section sec2 Unterprogramme
+ *  \subsection sec1_3 Teilaufgabe 3
+ *  Programmieren Sie, basierend auf den oben genannten Treibern, eine ergonomisch und intuitiv
+ *  bedienbare Schaltuhr mit zusätzlicher Temperaturanzeige.
+ *  Diese soll über folgende Leitungsmerkmale verfügen:
+ *  - aktuelle Uhrzeit einstellbar
+ *  - bis zu 16 Schalt-Events programmierbar
+ *  - für jedes Schalt-Event sind folgende Merkmale einzeln einstellbar:
+ *  - Stunde und Minute
+ *  - Wochentag
+ *  - Wiederholung für jeden einzelnen Wochentag getrennt ein-/ausschaltbar
+ *  - Ein- oder Ausschaltvorgang
+ *  - die Anzahl der aktuell programmierten Events wird durch rote LEDs am Portexpander
+ *  PCA9539 dargestellt. ( Anzahl leuchtender LEDs von links = Anzahl Events).
+ *  - Der Einschaltzustand wird durch die RGB-LED (grün : EIN, rot : AUS) signaliert
+ *  - Die Programmierung und Darstellung von Uhrzeit, Datum und Wochentag geschieht
+ *  primär über das TM1638-Ein-/Ausgabemodul
+ *  - Die Temperaturinformation sowie der Status der Schaltuhr (Anzahl programmierter
+ *  Events, derzeitiger Schaltzustand) werden auf dem LCD dargestellt.
+ *  - Über das LCD soll, nach entsprechender Anforderung, eine Liste aller programmierten
+ *  Events darstellbar und editierbar sein. Die Bedienung dieser Funktion geschieht über die
+ *  Taster T1 .. T4, eine Rückmeldung erfolgt über die LEDs LED1 .. LED4.
  *
- *  \subsection sec2_1 Initialisierung
- *  Die Initialisierung des verwendeten GPIO-Ports wird in der
- *  Funktion "io_init" gemacht.
+ *  \section sec2 Eingebundene Dateien
  *
- *  \subsection sec2_2 Ablaufsteuerung
- *  Dieses Programm multipliziert zwei Zahlen miteinander,
- *  die über Schalter Binär angegeben werden.<BR>
- *  Die main-Funktion kontrolliert den Programmablauf und<BR>
- *  ruft die folgenden Funktionen der Reihe nach auf.
+ *  \subsection sec2_1 Clock
+ *	Logik für die Uhrzeit auf dem LEDKey und die Buttons.
  *
- *  \subsection sec2_3 Einlesen der Buttons und Schalter
- *  Das Einlesen der gedrückten  Schalter und Taster wird in der Funktion
- *  "getkey" gemacht.
+ *  \subsection sec2_2 Events
+ *	Funktionen für Events
  *
- *  \subsection sec2_4 Verarbeiten der Eingaben
- *  Funktion zum Speichern der Multiplikanten und Berechnen des Produkts wird
- *  in der Funktion "keyhandler" abgearbeitet.
+ *  \subsection sec2_3 FrontIO
+ *  Input Output Frontplatte
  *
- *  \subsection sec2_5 Anzeigen des Produkts
- *  Die Ausgabe des Produkts auf die LEDs wird in der Funktion
- *  "show_result" gemacht.
+ *  \subsection sec2_4 GPIO
+ *  Funktionen und Structe zur Interaktion mit GPIO
  *
- *  \subsection sec2_6 Zeitverzögerung
- *  Zum Erzeugen einer variablen Verzögerungszeit wird die Funktion "delay"
- *  verwendet.<BR>
- *  Diese wird aber im Hauptprogramm nicht benutzt.
+ *  \subsection sec2_5 I2C
+ *	I2C Treiber
+ *
+ *  \subsection sec2_6 I2CLED
+ *	Ausgabe der Evenanzahl über LEDs
+ *
+ *  \subsection sec2_7 LEDKey
+ *  Anzeigen der Uhrzeit und Datum + Auslesen der Taster
+ *
+ *  \subsection sec2_8 Menu
+ *	Anzeigen des Menüs und reagieren auf Tastendrücke
+ *
+ *  \subsubsection sec2_9_1  - MainMenu
+ *	Anzeigen des Hauptmenüs und reagieren auf Tastendrücke
+ *  \subsubsection sec2_9_2  - EventsMenu
+ *	 Anzeigen des Eventmenüs und reagieren auf Tastendrücke
+ *  \subsubsection sec2_9_3  - EventDetailsMenu
+ *  Anzeigen des EventDetailsMenüs und reagieren auf Tastendrücke
+ *
+ *  \subsection sec2_10 RGBLED
+ *  RGB LED Treiber
+ *
+ *  \subsection sec2_11 RTC
+ *  Lesen und schreiben von Datum, Uhrzeit und Temperatur
+ *
+ *  \subsection sec2_12 Serial
+ *  Custom Serial Protokoll Treiber für TM1638
+ *
+ *  \subsection sec2_13 State
+ *  Struct definitionen für den aktuellen Zustand des Menüs
+ *
+ *  \subsection sec2_14 Timer
+ *  Timer Treiber
  *
  *
  *  <HR>
  *
  *   \author	Markus Luckau, Simon Struck
- *   \date		25.10.2021
+ *   \date		28.11.2021
  *   \version 	1.0             Fertige Version
  */
 

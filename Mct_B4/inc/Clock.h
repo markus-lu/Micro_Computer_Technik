@@ -4,7 +4,7 @@
  Author      : Markus Luckau, Simon Struck
  Version     : 1.0
  Copyright   : Unlicense
- Description : Logik für die Uhrzeit auf dem LEDKey und die Buttons darauf
+ Description : Logik für die Uhrzeit auf dem LEDKey und die Buttons
  ===============================================================================
  */
 #ifndef _CLOCK_H_

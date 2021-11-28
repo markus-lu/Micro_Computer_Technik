@@ -4,7 +4,7 @@
  Author      : Markus Luckau, Simon Struck
  Version     : 1.0
  Copyright   : Unlicense
- Description : Custom Serial Protokoll Treiber
+ Description : Custom Serial Protokoll Treiber für TM1638
  ===============================================================================
  */
 

@@ -4,7 +4,7 @@
  Author      : Markus Luckau, Simon Struck
  Version     : 1.0
  Copyright   : Unlicense
- Description : Ausgabe der Evenanzahl
+ Description : Ausgabe der Evenanzahl über LEDs
  ===============================================================================
  */
 

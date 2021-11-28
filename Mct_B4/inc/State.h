@@ -1,3 +1,13 @@
+/*
+ ===============================================================================
+ Name        : State.h
+ Author      : Markus Luckau, Simon Struck
+ Version     : 1.0
+ Copyright   : Unlicense
+ Description : Struct definitionen für den aktuellen Zustand des Menüs
+ ===============================================================================
+ */
+
 #ifndef _STATE_H_
 #define _STATE_H_
 
