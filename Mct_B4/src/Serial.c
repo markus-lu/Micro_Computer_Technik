@@ -25,7 +25,7 @@ void serial_init() {
 
     timer_init_timer2();
     timer_set_prescaler(LPC_TIM2, SystemCoreClock / DOUBLE_CLOCK);
-    timer_enable_match_interrupt(LPC_TIM2, 1, 10);
+    timer_enable_match_interrupt(LPC_TIM2, 1, 2);
     timer_start_timer(LPC_TIM2);
 }
 

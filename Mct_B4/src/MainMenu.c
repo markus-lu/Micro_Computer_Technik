@@ -89,23 +89,4 @@ void main_menu_draw_menu(struct State *state) {
     lcd_write_char(event_count / 10 + '0');
     lcd_write_char(event_count % 10 + '0');
 
-    lcd_gotoxy(1, 4);
-    lcd_write_char(time->day / 10 + '0');
-    lcd_write_char(time->day % 10 + '0');
-    lcd_write_char('.');
-    lcd_write_char(time->month / 10 + '0');
-    lcd_write_char(time->month % 10 + '0');
-    lcd_write_char('.');
-    lcd_write_string(time->century ? "20" : "19");
-    lcd_write_char(time->year / 10 + '0');
-    lcd_write_char(time->year % 10 + '0');
-    lcd_write_string("  ");
-    lcd_write_char(time->hours / 10 + '0');
-    lcd_write_char(time->hours % 10 + '0');
-    lcd_write_char(':');
-    lcd_write_char(time->minutes / 10 + '0');
-    lcd_write_char(time->minutes % 10 + '0');
-    lcd_write_char(':');
-    lcd_write_char(time->seconds / 10 + '0');
-    lcd_write_char(time->seconds % 10 + '0');
 }

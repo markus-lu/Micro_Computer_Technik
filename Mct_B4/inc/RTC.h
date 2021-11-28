@@ -14,6 +14,10 @@
 #include "types.h"
 #include "I2C.h"
 
+#define MONDAY 1
+#define SUNDAY 7
+
+
 struct DateTime {
     uint8_t seconds;
     uint8_t minutes;
