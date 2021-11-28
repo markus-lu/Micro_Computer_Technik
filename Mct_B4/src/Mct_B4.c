@@ -79,6 +79,8 @@
  *  Events darstellbar und editierbar sein. Die Bedienung dieser Funktion geschieht über die
  *  Taster T1 .. T4, eine Rückmeldung erfolgt über die LEDs LED1 .. LED4.
  *
+ *	<HR>
+ *
  *  \section sec2 Eingebundene Dateien
  *
  *  \subsection sec2_1 Clock
