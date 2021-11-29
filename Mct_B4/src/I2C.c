@@ -32,12 +32,13 @@
 Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,
 welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
 
-\param   address
-         I2C Adresse, an die geschrieben werden soll
-         ()
-\param   data
+\param  address
+        I2C Adresse, an die geschrieben werden soll
+        (0x00 - 0x7F)
+\param  data
+        Ein Pointer, von dem length Bytes gelesen werden sollen
+\param  length
 
-\param   length
 
 \return  -
 
@@ -48,7 +49,7 @@ welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
 **********************************************************************/
 uint8_t i2c_write(uint8_t address, uint8_t *data, uint32_t length) {
     i2c_start();
-    uint8_t status = i2c_write_byte(address | I2C_WRITE);
+    uint8_t status = i2c_write_byte((address << 1) | I2C_WRITE);
     if (status == ACK) {
         for (uint32_t i = 0; i < length; ++i) {
             // discard result, it's also not checked in the lcd library
