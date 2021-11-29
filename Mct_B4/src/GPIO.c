@@ -93,6 +93,7 @@ void gpio_set_low(const struct GPIOPin *pin) {
 }
 
 void gpio_set(const struct GPIOPin *pin, bool state) {
+	// Setzt high oder low abhängig vom bool state
     if (state) {
         gpio_set_high(pin);
     } else {

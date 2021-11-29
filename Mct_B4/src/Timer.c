@@ -78,8 +78,11 @@ void timer_clear_match_interrupt (LPC_TIM_TypeDef *timer, uint8_t match) {
 }
 
 bool timer_has_timer1_ticked () {
+	// Merken ob Timer1 getickt hat
     bool has_ticked = timer1_ticked;
+    // Timer1 auf false setzen
     timer1_ticked = false;
+    // return ob Timer1 getickt hat
     return has_ticked;
 }
 

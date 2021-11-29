@@ -15,6 +15,7 @@
 #define SELECTED_ON_OR_OFF 9
 #define SELECTED_ENABLED 10
 
+// Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch Blöcke ersetzt
 #define SELECTED1(index, normal) (state->selected_event_detail == index && state->blink) ? '\xFF' : (normal)
 #define SELECTED2(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF") : (normal)
 #define SELECTED3(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF" "\xFF") : (normal)
@@ -212,8 +213,10 @@ void event_details_menu_draw_menu(struct State *state) {
 }
 
 void event_details_menu_update_menu(struct State *state) {
+	// Pointer zum aktuell ausgewählten Event raussuchen
     struct Event *event = &state->event_data[state->selected_event];
 
+    // Je nach ausgewälten Feld wird es zum blinken gebracht
     switch (state->selected_event_detail) {
         case SELECTED_MONDAY:
             lcd_gotoxy(6, 1);

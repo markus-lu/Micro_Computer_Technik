@@ -139,6 +139,7 @@
 
 
 void init_state(struct State *state, struct Event *event_data) {
+	// Startwerte für das Menü festsetzen
     state->blink = false;
     state->menu_screen = SCREEN_MAIN_MENU;
     state->menu_last_buttons = 0;
@@ -160,16 +161,25 @@ void init_state(struct State *state, struct Event *event_data) {
 
 void check_events(struct State *state){
 
+	// Schleife die Durch alle Events geht
     for (int i = 0; i < EVENT_COUNT; ++i) {
+    	// Pointer zum aktuellen Event erstellen
         struct Event *event = &state->event_data[i];
+        // Wenn Event aktiviert ist,
+        // wenn Stunden und Minuten passen,
+        // und der Wochentag passt
         if (event->enabled &&
             event->hour == state->time.hours &&
             event->minute == state->time.minutes &&
             ((event->weekdays & (1 << (state->time.weekday-1))) != 0)) {
+        	// Zustand der RGB-LED vom Event übernehmen
             state->rgb_state = event->on_or_off;
+            // Wenn event an
             if (event->on_or_off) {
+            	// RGB-Led Grün
                 rgbled_set_green();
             } else {
+            	// Ansonsten Rot schalten
                 rgbled_set_red();
             }
         }
@@ -178,11 +188,17 @@ void check_events(struct State *state){
 }
 
 void check_time_change(struct State *state) {
+	// Speicherplatz für die Zeit Reservieren
     struct DateTime new_time;
+    // Zeit von der RTC lesen
     rtc_read_time(&new_time);
+    // Wenn Zeit sich geändert hat
     if (compare_times(&state->time, &new_time)) {
+    	// Wenn sich die Minuten geändert haben
         if (state->time.minutes != new_time.minutes) {
+        	// Neue Zeit abspeichern
         	state->time = new_time;
+        	// Prüfen ob Event auslösst
         	check_events(state);
         }
         state->time = new_time;
@@ -191,9 +207,13 @@ void check_time_change(struct State *state) {
 }
 
 void check_temperature_change(struct State *state) {
+	// neue Tempeartur einlesen
     uint16_t new_temperature = rtc_read_temp();
+    // Wenn die Temp sich verändert hat
     if (new_temperature != state->temperature) {
+    	// Temp Aktualisiern
         state->temperature = new_temperature;
+        // Menü sagen das es sich aktualisieren soll
         state->menu_should_redraw = true;
     }
 }
@@ -218,9 +238,8 @@ int main() {
     SystemCoreClockUpdate();
     printf("Hello World!!!\n");
     // Initialisierung
-    rtc_init();
+
     rgbled_init();
-    ledkey_init();
     menu_init();
     i2cleds_init();
     // Timer für Displayblinken

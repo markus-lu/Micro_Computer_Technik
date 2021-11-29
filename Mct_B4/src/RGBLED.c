@@ -10,8 +10,11 @@ void rgbled_init() {
 }
 
 void rgbled_set_green() {
+	// Rot aus
     gpio_set_high(&rgbled_red);
+    // Blau aus
     gpio_set_high(&rgbled_blue);
+    // Grün an
     gpio_set_low(&rgbled_green);
 }
 

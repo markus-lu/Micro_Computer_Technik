@@ -9,7 +9,7 @@ void ledkey_init() {
 uint8_t ledkey_get_buttons() {
     uint8_t output = 0;
     uint8_t data[4];
-    serial_read(READ_DATA, data, 4);
+    serial_read(READ_DATA_COMMAND, data, 4);
     for (int i = 0; i < 4; ++i) {
         output <<= 1;
         output |= (data[i] & 0x10) != 0;
@@ -20,7 +20,7 @@ uint8_t ledkey_get_buttons() {
 }
 
 void ledkey_set_display_data(uint8_t leds, const uint8_t *digits) {
-    serial_write_command(WRITE_DATA);
+    serial_write_command(WRITE_DATA_COMMAND);
     uint8_t data[16];
 
     data[0] = digits[0];
@@ -40,15 +40,17 @@ void ledkey_set_display_data(uint8_t leds, const uint8_t *digits) {
     data[14] = digits[7];
     data[15] = (leds >> 0) & 0b1;
 
-    serial_write(SET_ADDRESS, data, 16);
+    serial_write(SET_ADDRESS_COMMAND, data, 16);
 }
 
 // uses only lower 3 bits
 void ledkey_set_brightness(uint8_t brightness, bool display_on) {
-    uint8_t command = DISPLAY_CONTROL | (brightness & MAX_BRIGHTNESS);
+	// Befehlsbyte zusammenbauen für Helligkeitssteuerung
+    uint8_t command = DISPLAY_CONTROL_COMMAND | (brightness & MAX_BRIGHTNESS);
     if (display_on) {
         command |= DISPLAY_ON;
     }
+    // Befehl senden
     serial_write_command(command);
 }
 

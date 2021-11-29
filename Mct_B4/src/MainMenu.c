@@ -4,57 +4,29 @@
 #include <stdio.h>
 #include "lcdlib_1769.h"
 
-static void handle_back(struct State *state);
-
-static void handle_up(struct State *state);
-
-static void handle_down(struct State *state);
-
-static void handle_ok(struct State *state);
-
 void main_menu_handle_keypress(struct State *state, uint8_t buttons) {
-    bool should_redraw = state->menu_should_redraw;
-    state->menu_should_redraw = true;
+	// Je nach gedrückten Taster
     switch (buttons) {
+    // Bei Zurück, Hoch und Runter passiert nichts
         case BUTTON_BACK:
-            handle_back(state);
-            break;
         case BUTTON_UP:
-            handle_up(state);
-            break;
         case BUTTON_DOWN:
-            handle_down(state);
+            state->menu_should_redraw = false;
             break;
+		// Bei OK wechseln wir ins Eventsmenü
         case BUTTON_OK:
-            handle_ok(state);
-            break;
-        default:
-            state->menu_should_redraw = should_redraw;
+        	// Status auf Eventsmenü ändern
+            state->menu_screen = SCREEN_EVENTS_MENU;
+            // Neuzeichnen auf Wahr setzen
+            state->menu_should_redraw = true;
             break;
     }
-}
-
-static void handle_back(struct State *state) {
-    state->menu_should_redraw = false;
-}
-
-static void handle_down(struct State *state) {
-    state->menu_screen = SCREEN_EVENTS_MENU;
-}
-
-static void handle_up(struct State *state) {
-    state->menu_screen = SCREEN_EVENTS_MENU;
-}
-
-static void handle_ok(struct State *state) {
-    state->menu_screen = SCREEN_EVENTS_MENU;
 }
 
 void main_menu_draw_menu(struct State *state) {
     uint16_t event_count = events_get_count(state->event_data);
     uint8_t temperature_whole = state->temperature >> 8;
     uint8_t temperature_fraction = state->temperature;
-    struct DateTime *time = &state->time;
 
     lcd_clrscr();
 
@@ -88,5 +60,4 @@ void main_menu_draw_menu(struct State *state) {
     lcd_write_string("Events:     ");
     lcd_write_char(event_count / 10 + '0');
     lcd_write_char(event_count % 10 + '0');
-
 }

@@ -34,12 +34,15 @@ void serial_init() {
 }
 
 static void wait_for_interrupt() {
+	// Warten bis timer 2 tickt
     while (!timer_has_timer2_ticked()) {
         __asm("nop");
     }
 }
 
 static void set_dio_pin_dir(enum PinDir dir) {
+	// Kopie vom DIO-PIN machen weil die Konstante nicht verändert werden kann
+	// Alles Kopiert außer die Richtung
     struct GPIOPin dio = {
             .dir = dir,
             .mode = serial_dio.mode,
@@ -47,18 +50,28 @@ static void set_dio_pin_dir(enum PinDir dir) {
             .port = serial_dio.port,
             .open_drain = serial_dio.open_drain,
     };
+    // Pin neu Initialisiern
     gpio_init_pin(&dio);
 }
 
+
 static void write_byte(uint8_t byte) {
+	// Kommunikationsrichtung einstellen
     set_dio_pin_dir(OUTPUT);
 
+    // In einer for schleife die einzelden Bits senden
     for (int i = 0; i < 8; ++i) {
+    	// Setzen des Datenbits
         gpio_set(&serial_dio, (byte >> i) & 0b1);
+        // Ein Tackt warten
         wait_for_interrupt();
+        // Clock Pin Auf 0 ziehen
         gpio_set_low(&serial_clk);
+        // Ein Tackt warten
         wait_for_interrupt();
+        // Clock Pin Auf 1 ziehen
         gpio_set_high(&serial_clk);
+        // Ein Tackt warten
         wait_for_interrupt();
     }
 }
@@ -80,16 +93,21 @@ static uint8_t read_byte() {
 }
 
 void serial_write_command(uint8_t command) {
+	//Strobeleitung muss zu begin der Übertragung auf 0 gezogen werden
     gpio_set_low(&serial_stb);
 
+    // Zwei Tackte abwarten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Ein Byte zum Chip senden
     write_byte(command);
 
+    // Zwei Tackte abwarten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Zum Beenden der Übertragung Strobeleitung wieder auf 1 ziehen
     gpio_set_high(&serial_stb);
 }
 
