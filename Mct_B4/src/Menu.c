@@ -7,7 +7,7 @@
 
 void menu_init () {
     frontio_init();
-    lcd_init(4, I2C_FM);
+    lcd_init(4, I2C_SPEED);
     lcd_bglight(0xFF);
 }
 

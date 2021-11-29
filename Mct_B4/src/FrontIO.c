@@ -11,7 +11,7 @@
 #define TA3 (1 << 7)
 
 void frontio_init() {
-    i2c_init(I2C_FM);
+    i2c_init(I2C_SPEED);
 }
 
 // lower 4 bits for LEDs

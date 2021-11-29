@@ -40,7 +40,7 @@ static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
 }
 
 void rtc_init() {
-    i2c_init(I2C_FM);
+    i2c_init(I2C_SPEED);
 }
 
 static void set_register_address(uint8_t address) {
