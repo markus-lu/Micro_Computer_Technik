@@ -19,9 +19,11 @@
 // Portexpander Frontplatte
 #define PCF8574A_ADDRESS 0x3F
 // Portexpander für das LCD
-#define PCF8574_LCD_ADDRESS 0x4E
+#define PCF8574_LCD_ADDRESS 0x27
 // RTC Modul
 #define DS3231_ADDRESS 0x68
+
+#define I2C_SPEED I2C_FM
 
 uint8_t i2c_write(uint8_t address, uint8_t *data, uint32_t length);
 
