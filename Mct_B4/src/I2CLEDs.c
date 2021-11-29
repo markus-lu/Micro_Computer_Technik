@@ -11,13 +11,24 @@
 #define LED_OFF 0b1
 
 void i2cleds_init() {
+	// Array zum Daten in I2C SChreiben
     uint8_t configuration[2];
+    // Command Byte
+    // Configuration Port 0
     configuration[0] = Config_P0;
+    // Data Byte
+    // Port 0 auf Ausgang konfigurieren
     configuration[1] = Dir_OUT;
+    // Senden der Configuration
     i2c_write(PCA9539_ADDRESS, configuration, 2);
 
+    // Command Byte
+    // Configuration Port 1
     configuration[0] = Config_P1;
+    // Data Byte
+    // Port 1 auf Ausgang konfigurieren
     configuration[1] = Dir_OUT;
+    // Senden der Configuration
     i2c_write(PCA9539_ADDRESS, configuration, 2);
 }
 

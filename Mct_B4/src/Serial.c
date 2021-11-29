@@ -16,16 +16,20 @@
 
 
 void serial_init() {
+	// GPIO Pins Initialisieren
     gpio_init_pin(&serial_clk);
     gpio_init_pin(&serial_dio);
     gpio_init_pin(&serial_stb);
 
+    // Startwerte für GPIO-Pins setzen
     gpio_set_high(&serial_stb);
     gpio_set_high(&serial_clk);
 
+    // timer 2 Initialisiern
     timer_init_timer2();
     timer_set_prescaler(LPC_TIM2, SystemCoreClock / DOUBLE_CLOCK);
     timer_enable_match_interrupt(LPC_TIM2, 1, 2);
+    // Timer 2 Starten
     timer_start_timer(LPC_TIM2);
 }
 

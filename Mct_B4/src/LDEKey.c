@@ -2,6 +2,7 @@
 #include "Serial.h"
 
 void ledkey_init() {
+	// Initialisierung Serielles Protokoll
     serial_init();
 }
 

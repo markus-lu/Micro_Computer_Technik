@@ -1,6 +1,7 @@
 #include "RGBLED.h"
 
 void rgbled_init() {
+	// Initialisierung der GPIO PINS für RGB LED
     gpio_init_pin(&rgbled_red);
     gpio_init_pin(&rgbled_green);
     gpio_init_pin(&rgbled_blue);
@@ -15,8 +16,11 @@ void rgbled_set_green() {
 }
 
 void rgbled_set_red() {
+	// Grün aus
     gpio_set_high(&rgbled_green);
+    // Blau aus
     gpio_set_high(&rgbled_blue);
+    // Rot an
     gpio_set_low(&rgbled_red);
 }
 

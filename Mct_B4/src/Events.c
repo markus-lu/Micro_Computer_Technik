@@ -1,6 +1,7 @@
 #include "Events.h"
 
 void events_init(struct Event *event_data) {
+	// Schleife die Startwerte für die Events Festsetzen
     for (int i = 0; i < EVENT_COUNT; ++i) {
         event_data[i].enabled = false;
         event_data[i].hour = 0;

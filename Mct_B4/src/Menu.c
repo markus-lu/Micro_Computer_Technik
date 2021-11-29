@@ -6,9 +6,14 @@
 #include "EventDetailsMenu.h"
 
 void menu_init () {
+	// Initialisierung Frontplatte
     frontio_init();
-    lcd_init(4, I2C_SPEED);
+    // Initialisierung LCD
+    lcd_init(LCD_LINES, I2C_SPEED);
+    // LCD Hintergrundbeleuchtung einschalten
     lcd_bglight(0xFF);
+    // Curser des LCD auschalten
+    lcd_cursor(0);
 }
 
 void menu_check_keypress (struct State *state) {

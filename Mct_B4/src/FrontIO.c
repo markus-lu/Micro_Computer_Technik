@@ -11,6 +11,7 @@
 #define TA3 (1 << 7)
 
 void frontio_init() {
+	// Initialisierung I2C
     i2c_init(I2C_SPEED);
 }
 

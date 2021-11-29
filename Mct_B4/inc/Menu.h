@@ -14,6 +14,8 @@
 #include "types.h"
 #include "State.h"
 
+#define LCD_LINES 4
+
 #define BUTTON_BACK (1 << 0)
 #define BUTTON_DOWN (1 << 1)
 #define BUTTON_UP (1 << 2)
