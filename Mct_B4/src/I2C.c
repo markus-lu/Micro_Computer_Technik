@@ -7,6 +7,9 @@
 /**
  *  \page I2C
  *
+ * Die Funktionen in diesem Modul existieren zur Vereinfachung der Benutzung des I2C Buses.
+ * Die Funktionen sind so geschrieben, dass deren Falsch-Verwendung möglichst schwer ist.
+ *
  *  \section sec1 Unterprogramme
  *
  *  \subsection sec1_1 i2c_write
@@ -36,13 +39,13 @@ welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
         I2C Adresse, an die geschrieben werden soll
         (0x00 - 0x7F)
 \param  data
-        Ein Pointer, von dem length Bytes gelesen werden sollen
+        Ein Pointer, von dem length Bytes geschrieben werden sollen
 \param  length
-
+        Anzahl an Bytes, die geschrieben werden sollen
 
 \return  -
 
-\version 07.11.2021
+\version 29.11.2021
 
 \todo -
 \bug  keine Fehler bekannt
@@ -59,22 +62,23 @@ uint8_t i2c_write(uint8_t address, uint8_t *data, uint32_t length) {
     i2c_stop();
     return status;
 }
-
 /*********************************************************************/
 /**
 Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,
 welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu lesen.
 
- \param   address
-         I2C Adresse, an die geschrieben werden soll
-         ()
-\param   data
+\param  address
+        I2C Adresse, von der gelesen werden soll
+        (0x00 - 0x7F)
+\param  data
+        Ein Pointer, ein den length Bytes eingelesen werden sollen
+\param  length
+        Anzahl an Bytes, die gelesen werden sollen
 
-\param   length
+\return status
 
-\return  -
 
-\version 07.11.2021
+\version 29.11.2021
 
 \todo -
 \bug  keine Fehler bekannt
