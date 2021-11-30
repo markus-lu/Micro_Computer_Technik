@@ -20,7 +20,7 @@ struct State {
     uint8_t menu_last_buttons;
     uint8_t selected_event;
     uint8_t selected_event_detail;
-    bool menu_edit_mode;
+    bool menu_event_time_edit_mode;
     struct Event *event_data;
     bool menu_should_redraw;
     bool rgb_state;

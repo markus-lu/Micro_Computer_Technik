@@ -145,7 +145,7 @@ void init_state(struct State *state, struct Event *event_data) {
     state->menu_last_buttons = 0;
     state->selected_event = 0;
     state->selected_event_detail = 0;
-    state->menu_edit_mode = false;
+    state->menu_event_time_edit_mode = false;
     state->event_data = event_data;
     state->menu_should_redraw = true;
     state->rgb_state = false;

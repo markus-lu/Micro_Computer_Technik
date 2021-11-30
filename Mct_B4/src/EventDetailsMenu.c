@@ -30,8 +30,7 @@ static void handle_down(struct State *state);
 static void handle_ok(struct State *state);
 
 void event_details_menu_handle_keypress(struct State *state, uint8_t buttons) {
-    bool should_redraw = state->menu_should_redraw;
-    state->menu_should_redraw = true;
+	// Je nach gedrückten Button in die dazugehörige handle Methode weiterleiten
     switch (buttons) {
         case BUTTON_BACK:
             handle_back(state);
@@ -45,41 +44,53 @@ void event_details_menu_handle_keypress(struct State *state, uint8_t buttons) {
         case BUTTON_OK:
             handle_ok(state);
             break;
-        default:
-            state->menu_should_redraw = should_redraw;
-            break;
     }
 }
 
 static void handle_back(struct State *state) {
-    if (state->menu_edit_mode) {
-        state->menu_edit_mode = false;
+	// Wenn im Bearbeitungsmodus für die Uhrzeit
+    if (state->menu_event_time_edit_mode) {
+    	// Verlasse den Bearbeitungsmodus
+        state->menu_event_time_edit_mode = false;
     } else {
+    	// Wenn nicht im Bearbeitungsmodus
+    	// Menüstaus auf Events-Menü setzen
         state->menu_screen = SCREEN_EVENTS_MENU;
+        // Montag in den Eventsdetails auswälen
+        // Zum Rücksetzen des Cursors für das darauf folgende Event
         state->selected_event_detail = SELECTED_MONDAY;
-        state->menu_edit_mode = false;
+		// Neuzeichnen auf Wahr setzen
+        state->menu_should_redraw = true;
     }
 }
 
 static void handle_up(struct State *state) {
+	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
-    if (!state->menu_edit_mode) {
+    // Wenn nicht im Bearbeitungsmodus
+    if (!state->menu_event_time_edit_mode) {
+    	// Blinken ausschalten
         state->blink = false;
+        // Blinken vom Bildschirm entfernen
         event_details_menu_update_menu(state);
-        state->menu_should_redraw = false;
     }
-    if (state->menu_edit_mode) {
+    // Wenn Eventzeit bearbeitet wird
+    if (state->menu_event_time_edit_mode) {
+    	// Wenn Stunde oder Minute ausgewählt ist
         switch (state->selected_event_detail) {
+        	// Bei ausgewälter Stunde
             case SELECTED_HOUR:
+            	// Wenn kleiner als 23 Uhr
                 if (event->hour < 23) {
+                	// Uhrzeit hochzälen
                     event->hour++;
+				// Wenn 23 Uhr
                 } else {
+                	// UHrzeit auf 0 setzen
                     event->hour = 0;
                 }
-                lcd_gotoxy(7, 2);
-                lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour / 10 + '0'));
-                lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour % 10 + '0'));
-                state->menu_should_redraw = false;
+                // tbd
+                event_details_menu_update_menu(state);
                 break;
             case SELECTED_MINUTE:
                 if (event->minute < 59) {
@@ -87,10 +98,7 @@ static void handle_up(struct State *state) {
                 } else {
                     event->minute = 0;
                 }
-                lcd_gotoxy(10, 2);
-                lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute / 10 + '0'));
-                lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute % 10 + '0'));
-                state->menu_should_redraw = false;
+                event_details_menu_update_menu(state);
                 break;
         }
     } else if (state->selected_event_detail < SELECTED_ENABLED) {
@@ -102,12 +110,11 @@ static void handle_up(struct State *state) {
 
 static void handle_down(struct State *state) {
     struct Event *event = &state->event_data[state->selected_event];
-    if (!state->menu_edit_mode) {
+    if (!state->menu_event_time_edit_mode) {
         state->blink = false;
         event_details_menu_update_menu(state);
-        state->menu_should_redraw = false;
     }
-    if (state->menu_edit_mode) {
+    if (state->menu_event_time_edit_mode) {
         switch (state->selected_event_detail) {
             case SELECTED_HOUR:
                 if (event->hour > 0) {
@@ -115,10 +122,7 @@ static void handle_down(struct State *state) {
                 } else {
                     event->hour = 23;
                 }
-                lcd_gotoxy(7, 2);
-                lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour / 10 + '0'));
-                lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour % 10 + '0'));
-                state->menu_should_redraw = false;
+                event_details_menu_update_menu(state);
                 break;
             case SELECTED_MINUTE:
                 if (event->minute > 0) {
@@ -126,10 +130,7 @@ static void handle_down(struct State *state) {
                 } else {
                     event->minute = 59;
                 }
-                lcd_gotoxy(10, 2);
-                lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute / 10 + '0'));
-                lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute % 10 + '0'));
-                state->menu_should_redraw = false;
+                event_details_menu_update_menu(state);
                 break;
         }
     } else if (state->selected_event_detail > SELECTED_MONDAY) {
@@ -166,7 +167,7 @@ static void handle_ok(struct State *state) {
             break;
         case SELECTED_HOUR:
         case SELECTED_MINUTE:
-            state->menu_edit_mode = !state->menu_edit_mode;
+            state->menu_event_time_edit_mode = !state->menu_event_time_edit_mode;
             break;
         case SELECTED_ON_OR_OFF:
             event->on_or_off = !event->on_or_off;
@@ -177,7 +178,6 @@ static void handle_ok(struct State *state) {
     }
 
     event_details_menu_update_menu(state);
-    state->menu_should_redraw = false;
 }
 
 void event_details_menu_draw_menu(struct State *state) {
