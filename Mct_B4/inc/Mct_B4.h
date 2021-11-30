@@ -11,6 +11,9 @@
 #ifndef _MCT_B4_H_
 #define _MCT_B4_H_
 
+/**
+ *  \file     Mct_B4.h
+*/
 
 int main();
 
