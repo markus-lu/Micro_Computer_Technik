@@ -23,11 +23,9 @@
  *  <HR>
  *
  *   \author	Markus Luckau, Simon Struck
- *   \date		25.10.2021
+ *   \date		29.11.2021
  *   \version 	1.0             Fertige Version
  */
-
-
 
 
 /*********************************************************************/
@@ -43,7 +41,8 @@ welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
 \param  length
         Anzahl an Bytes, die geschrieben werden sollen
 
-\return  -
+\return status Status des Slaves
+        (ACK, wenn Slave geantwortet hat, NACK wenn nicht)
 
 \version 29.11.2021
 
@@ -68,6 +67,7 @@ uint8_t i2c_write(uint8_t address, uint8_t *data, uint32_t length) {
     // Rückgabe ob Daten Empfangen wurden
     return status;
 }
+
 /*********************************************************************/
 /**
 Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,
@@ -81,8 +81,8 @@ welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu lesen.
 \param  length
         Anzahl an Bytes, die gelesen werden sollen
 
-\return status
-
+\return status Status des Slaves
+        (ACK, wenn Slave geantwortet hat, NACK wenn nicht)
 
 \version 29.11.2021
 
