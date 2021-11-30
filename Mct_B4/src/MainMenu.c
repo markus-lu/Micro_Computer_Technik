@@ -4,6 +4,34 @@
 #include <stdio.h>
 #include "lcdlib_1769.h"
 
+/**
+ *  \file     MainMenu.c
+*/
+
+/*********************************************************************/
+ /**
+ Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
+ Hauptmenü befindet. Wenn die Tasten Hoch, Runter und Zurück gedrückt werden,
+ passiert nichts. Sollte die Taste OK gedrückt worden sein wird wird auf das
+ Events-Menü gewechselt.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+\param	buttons
+		Ein Integer der eine Codirung für gedrückte Taster enthält
+		(0 - 31)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void main_menu_handle_keypress(struct State *state, uint8_t buttons) {
 	// Je nach gedrückten Taster
     switch (buttons) {
@@ -23,6 +51,22 @@ void main_menu_handle_keypress(struct State *state, uint8_t buttons) {
     }
 }
 
+/*********************************************************************/
+ /**
+ Diese Funktion schreibt das Hauptmenü auf das LC-Display.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void main_menu_draw_menu(struct State *state) {
 	// Zälung der aktivierten Events
     uint8_t event_count = events_get_count(state->event_data);
