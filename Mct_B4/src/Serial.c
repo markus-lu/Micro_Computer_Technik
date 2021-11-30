@@ -2,19 +2,27 @@
 #include "Serial.h"
 #include "GPIO.h"
 
-#define RISE_TIME 2                //   2 us
-#define FALL_TIME 120              // 120 us
-#define DOUBLE_CLOCK (1000 * 1000) //  1 MHz
-#define CLOCK (500 * 1000)         // 500 kHz
+/**
+ *  \file     Serial.c
+*/
 
-#define MIN_CLOCK_PULSE_WIDTH   400 // ns
-#define MIN_STROBE_PULSE_WIDTH 1000 // ns
-#define MIN_DATA_SETUP_TIME     100 // ns
-#define MIN_DATA_HOLD_TIME      100 // ns
-#define MIN_CLK_STB_TIME       1000 // ns
-#define MIN_WAIT_TIME          1000 // ns
+/*********************************************************************/
+/**
+Diese Funktion initialisiert die GPIOPin's und den Timer 2 für das Custom Serial Protokoll des TM1638.
+Die Frequenz des Timers wird auf das Doppelte der auf dem TM1638 angegebenen Maximalfrequenz gesetzt,
+Ein Interrupt erfolgt aber erst
 
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
 
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void serial_init() {
 	// GPIO Pins Initialisieren
     gpio_init_pin(&serial_clk);
@@ -27,8 +35,8 @@ void serial_init() {
 
     // timer 2 Initialisiern
     timer_init_timer2();
-    timer_set_prescaler(LPC_TIM2, 1);
-    timer_enable_match_interrupt(LPC_TIM2, 1, SERIAL_CLOCK);
+    timer_set_prescaler(LPC_TIM2, SystemCoreClock / SERIAL_CLOCK);
+    timer_enable_match_interrupt(LPC_TIM2, 1, 2);
     // Timer 2 Starten
     timer_start_timer(LPC_TIM2);
 }
