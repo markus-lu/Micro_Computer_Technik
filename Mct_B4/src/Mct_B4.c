@@ -141,7 +141,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion setzt den Startwerte für den Startzustand der Menüwerte
+Diese Funktion setzt den Startwerte für den Zustand der Menüwerte
 
 \param  state
 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
@@ -149,8 +149,8 @@ Diese Funktion setzt den Startwerte für den Startzustand der Menüwerte
 		(Wertebereich in der Struct-Defenition)
 
 \param  event_data
-		Pointer der ein Array aus Event Strucs enthält, welche die Details zu
-		den einzelden Events enthalten
+		Pointer der ein Array aus Event Structs enthält, welche die Details zu
+		den einzelnen Events enthalten
 		(Wertebereich in der Struct-Defenition)
 
 \return  -
@@ -183,13 +183,13 @@ void init_state(struct State *state, struct Event *event_data) {
 
  /*********************************************************************/
  /**
- Diese Funktion checkt alle Events und wenn eins zutrifft ist und
- zusätzlich aktiviert ist, wird die RGB-Led auf grün geschaltet
+ Diese Funktion checkt alle Events und wenn eins zutreffend und
+ zusätzlich aktiviert ist, wird die RGB-LED auf grün geschaltet
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
- 		und die Uhr enthält
- 		(Wertebereich in der Struct-Defenition)
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
 
  \return  -
 
@@ -229,13 +229,13 @@ void check_events(struct State *state){
 /*********************************************************************/
  /**
  Diese Funktion checkt ob die Zeit sich geändert hat und speichert bei
- veränderungen diese ab. Falls dies der Fall war wird zusäzlich die
+ Veränderungen diese ab. Falls dies der Fall war, wird zusäzlich die
  check_events Methode aufgerufen.
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
- 		und die Uhr enthält.
- 		(Wertebereich in der Struct-Defenition)
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
 
  \return  -
 
@@ -266,13 +266,13 @@ void check_time_change(struct State *state) {
 /*********************************************************************/
  /**
  Diese Funktion checkt ob die Tempeartur sich verändert hat und speichert bei
- veränderungen diese ab. Falls dies der Fall war wird zusäzlich der Menüstatus
- zum neu Zeichnen auf wahr gesetzt.
+ Veränderungen diese ab. Falls dies der Fall war, wird zusäzlich der Menüstatus
+ zum Neuzeichnen auf wahr gesetzt.
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
- 		und die Uhr enthält.
- 		(Wertebereich in der Struct-Defenition)
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
 
  \return  -
 
@@ -299,9 +299,9 @@ void check_temperature_change(struct State *state) {
  * \brief Dies ist das Hauptprogramm
 
 Dieses Programm ist für den Richtigen Programmablauf der Schaltuhr
-und Thermometer zustandig. Es Zeigt auf dem LCD die Tempeatur und
-Events an. Diese können Bearbeitet und aktiviert werden. Die Uhrzeitausgabe
-und deren einstellung erfollt durch externe peripherie.
+und Thermometer zuständig. Es zeigt auf dem LCD die Tempeatur und
+Events an. Diese können bearbeitet und aktiviert werden. Die Uhrzeitausgabe
+und deren Einstellung erfolgt durch externe Peripherie.
 
 \param   -
 
