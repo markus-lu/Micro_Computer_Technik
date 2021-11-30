@@ -1,10 +1,31 @@
 #include "GPIO.h"
 #include "LPC17xx.h"
 
+/**
+ *  \file     GPIO.c
+*/
+
+/*********************************************************************/
+/**
+Diese Funktion setzt das LPC_PINCON->PINSEL Register.
+In diesem Register wird die Pin-Funktion eingestellt.
+Alle Pins, die in diesem Projekt verwendet werden, werden als GPIO genutzt.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_set_pin_sel(const struct GPIOPin *pin) {
 	// Adresse vom PINSEL-Register für Port 0
 	volatile uint32_t *pinsel = &LPC_PINCON->PINSEL0;
-    // Um auf PINSEL2 zu kommen plus port mal 2
+    // Um auf PINSEL2 zu kommen, plus Port mal 2
 	pinsel += pin->port * 2;
 
 	// wenn Untere hälfte benutzt wir (pin 0 - 15)
@@ -20,6 +41,24 @@ void gpio_set_pin_sel(const struct GPIOPin *pin) {
     }
 }
 
+/*********************************************************************/
+/**
+Diese Funktion setzt das LPC_PINCON->PINMODE Register.
+In diesem Register wird eingestellt, ob ein Pullup-Widerstand,
+ein Pulldown-Widerstand oder die Repeater-Funktion aktiviert werden soll.
+Diese Information ist im GPIOPin Struct enthalten.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_set_pin_mode(const struct GPIOPin *pin) {
 	// Rausuchen des Richtigen Pinmodus
 	volatile uint32_t *pinmode = &LPC_PINCON->PINMODE0;
@@ -41,6 +80,23 @@ void gpio_set_pin_mode(const struct GPIOPin *pin) {
     }
 }
 
+/*********************************************************************/
+/**
+Diese Funktion setzt das LPC_PINCON->PINMODE_OD0 Register.
+In diesem Register wird der Open-Drain-Modus eingestellt.
+Diese Information ist im GPIOPin Struct enthalten.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_set_pin_open_drain(const struct GPIOPin *pin) {
 	// Rausuchen des Pinmode für Port 0
     volatile uint32_t *pinmode_od = &LPC_PINCON->PINMODE_OD0;
@@ -51,6 +107,24 @@ void gpio_set_pin_open_drain(const struct GPIOPin *pin) {
     *pinmode_od |= (pin->open_drain << (pin->pin));
 }
 
+/*********************************************************************/
+/**
+Diese Funktion ist eine Hilfsfunktion um den als Integer gespeicherten Port
+zu dem korrekten Pointer zu wandeln.
+
+Zum Beispiel würde ein Funktionsaufruf mit dem Wert 2 den Pointer LPC_GPIO2 zurück geben.
+
+\param  port
+        Port zu dem der Pointer benötigt wird.
+        (0 - 4)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  Bei Überschreitung des Wertebereichs werden invalide Pointer zurückgegeben.
+**********************************************************************/
 static LPC_GPIO_TypeDef *get_gpio_port(uint8_t port) {
 	// GPIO Basisadresse holen
 	LPC_GPIO_TypeDef *ptr = (LPC_GPIO_TypeDef *) LPC_GPIO_BASE;
@@ -60,7 +134,29 @@ static LPC_GPIO_TypeDef *get_gpio_port(uint8_t port) {
     return ptr;
 }
 
+/*********************************************************************/
+/**
+Diese Funktion (re-)initialisiert einen GPIOPin.
 
+Diese Funktion nutzt Hilfsfunktionen um die folgenden Aktionen durchzuführen:
+ 1. Pinfunktion festlegen (PIN function SELect, PINSEL)
+ 2. Eingangsmodus von Portbits einstellen (PIN MODE select, PINMODE)
+ 3. OpenDrain von Portbits einstellen (PIN MODE select, PINMODE_OD)
+ 4. Fast gpIO port DIRection control register (FIODIR)
+ 5. Fast MASK register for ports (FIOMASK)
+
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_init_pin(const struct GPIOPin *pin) {
 	// Initialisierung GPIO
 	gpio_set_pin_sel(pin);
@@ -82,16 +178,65 @@ void gpio_init_pin(const struct GPIOPin *pin) {
     gpio->FIOMASK &= ~(1 << pin->pin);
 }
 
+/*********************************************************************/
+/**
+Diese Funktion setzt den Ausgang eines GPIOPin's auf HIGH.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_set_high(const struct GPIOPin *pin) {
 	// Pin mit dem Register FIOSET einschalten
     get_gpio_port(pin->port)->FIOSET = (1 << pin->pin);
 }
 
+/*********************************************************************/
+/**
+Diese Funktion setzt den Ausgang eines GPIOPin's auf LOW.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_set_low(const struct GPIOPin *pin) {
 	// Pin mit dem Register FIOCLR ausschalten
     get_gpio_port(pin->port)->FIOCLR = (1 << pin->pin);
 }
 
+/*********************************************************************/
+/**
+Diese Funktion setzt den Ausgang eines GPIOPin's auf HIGH oder LOW,
+abhängig von dem Parameter state.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+\param  state
+        Steuert, ob der Pin auf HIGH oder LOW gesetzt wird.
+        (0 = LOW, 1 = HIGH)
+
+\return -
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void gpio_set(const struct GPIOPin *pin, bool state) {
 	// Setzt high oder low abhängig vom bool state
     if (state) {
@@ -101,6 +246,23 @@ void gpio_set(const struct GPIOPin *pin, bool state) {
     }
 }
 
+/*********************************************************************/
+/**
+Diese Funktion liest einen GPIOPin aus und gibt zurück,
+ob an diesem Pin ein HIGH oder LOW Pegel anliegt.
+
+\param  pin
+        Das struct GPIOPin enthält die Einstellungen für diesen Pin.
+        (Wertebereich in der Struct-Definition)
+
+\return Den Zustand des Pins
+        (0 = LOW, 1 = HIGH)
+
+\version 12.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 bool gpio_get(const struct GPIOPin *pin) {
     volatile uint32_t fiopin = get_gpio_port(pin->port)->FIOPIN;
     uint32_t masked_pin = fiopin & (1 << pin->pin);
