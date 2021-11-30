@@ -69,24 +69,40 @@ void events_menu_handle_keypress(struct State *state, uint8_t buttons) {
 
 
 static void write_event(struct State *state, char_t *string, int event) {
+	// Wenn Event ausgewählt ist dann enthält der Char '>'
+	// Ansonsten ' '
 	char_t selected = state->selected_event == event ? '>' : ' ';
+	// Wenn Event aktiviert ist dann enthält der Char 'x'
+	// Ansonsten eine Box (0xDB)
 	char_t enabled = state->event_data[event].enabled ? 'x' : 0xDB;
 
+	// Bsp: ">x 02"
 	sprintf(string, "%c%c %02d", selected, enabled, event);
 }
 
 void events_menu_draw_menu(struct State *state) {
+	// LCD Löschen (Tafeldienst)
 	lcd_clrscr();
+	// Zweidim Array erstellen
 	char_t event[5][5];
+	// Am Ende eine Pysikalische 0 schreiben um das ende des Strings zu signalisieren
 	event[4][0] = 0;
+	// Char-Pointer erstellen (String)
 	char_t *line = (char_t*) event;
 
+	// Schleife zum zschreiben einer Zeile des Menüs auf LCD
+	// Erste Zeile sind Events  0,4,8,12
+	// Zweite Zeile sind Event  1,5,9,13
+	// Dritte Zeile sind Event  2,6,10,14
+	// Vierte Zeile sind Events 3,7,11,15
 	for (int i = 0; i < EVENT_COUNT / 4; ++i) {
+		// Startpunkt festsetzen
 		lcd_gotoxy(1, i + 1);
 		write_event(state, event[0], i);
 		write_event(state, event[1], i + 4);
 		write_event(state, event[2], i + 8);
 		write_event(state, event[3], i + 12);
+		// Zeile auf das LCD schreiben
 		lcd_write_string(line);
 	}
 }

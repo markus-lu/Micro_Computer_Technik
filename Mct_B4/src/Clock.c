@@ -17,7 +17,6 @@ void clock_init(struct State *state) {
 
 
 void clock_check_keypress(struct State *state) {
-	bool should_redraw = state->clock_should_redraw;
 	uint8_t buttons = ledkey_get_buttons();
 	if (buttons != state->clock_last_buttons) {
 		state->clock_should_redraw = true;
@@ -124,7 +123,6 @@ void clock_check_keypress(struct State *state) {
 			}
 			break;
 		case BUTTON_BRIGHTNESS_DOWN:
-			state->clock_should_redraw = false;
 			if (state->clock_brightness > -1) {
 				state->clock_brightness--;
 			}
@@ -136,14 +134,10 @@ void clock_check_keypress(struct State *state) {
 			}
 			break;
 		case BUTTON_BRIGHTNESS_UP:
-			state->clock_should_redraw = false;
 			if (state->clock_brightness < MAX_BRIGHTNESS) {
 				state->clock_brightness++;
 			}
 			ledkey_set_brightness(state->clock_brightness, true);
-			break;
-		default:
-			state->clock_should_redraw = should_redraw;
 			break;
 		}
 		state->clock_last_buttons = buttons;
@@ -216,6 +210,7 @@ void clock_draw_time(struct State *state) {
 }
 
 void clock_loop_once(struct State *state) {
+	// Schalter verarbeitung
 	clock_check_keypress(state);
 	if (state->clock_should_redraw) {
 		clock_draw_time(state);

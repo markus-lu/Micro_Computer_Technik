@@ -12,9 +12,15 @@ void events_init(struct Event *event_data) {
 }
 
 uint16_t events_get_count(const struct Event *event_data) {
+	// Zähler erstellen
     uint16_t count = 0;
+    // Alle abgespeicherten Events zählen
     for (int i = 0; i < EVENT_COUNT; ++i) {
+    	// enabled = bool
+    	// also +1 bei aktiv
+    	// +0 bei nicht aktiv
         count += event_data[i].enabled;
     }
+    // Rückgabe des Eventanzahl
     return count;
 }

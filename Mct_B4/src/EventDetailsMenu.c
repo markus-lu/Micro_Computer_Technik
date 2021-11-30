@@ -67,13 +67,7 @@ static void handle_back(struct State *state) {
 static void handle_up(struct State *state) {
 	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
-    // Wenn nicht im Bearbeitungsmodus
-    if (!state->menu_event_time_edit_mode) {
-    	// Blinken ausschalten
-        state->blink = false;
-        // Blinken vom Bildschirm entfernen
-        event_details_menu_update_menu(state);
-    }
+
     // Wenn Eventzeit bearbeitet wird
     if (state->menu_event_time_edit_mode) {
     	// Wenn Stunde oder Minute ausgewählt ist
@@ -82,69 +76,111 @@ static void handle_up(struct State *state) {
             case SELECTED_HOUR:
             	// Wenn kleiner als 23 Uhr
                 if (event->hour < 23) {
-                	// Uhrzeit hochzälen
+                	// Stunden hochzälen
                     event->hour++;
 				// Wenn 23 Uhr
                 } else {
-                	// UHrzeit auf 0 setzen
+                	// Stunden auf 0 setzen
                     event->hour = 0;
                 }
-                // tbd
+                // Stunde neu Zeichnen
                 event_details_menu_update_menu(state);
                 break;
+			// Bei ausgewählter Minute
             case SELECTED_MINUTE:
+            	// Wenn Minute Kleiner als 59
                 if (event->minute < 59) {
+                	// Minuten hochzälen
                     event->minute++;
+				// Wenn Minute 59 ist
                 } else {
+                	// Minuten auf 0 setzen
                     event->minute = 0;
                 }
+                // Minuten neu Zeichen
                 event_details_menu_update_menu(state);
                 break;
         }
-    } else if (state->selected_event_detail < SELECTED_ENABLED) {
-        state->selected_event_detail++;
+	// Wenn nicht im Bearbeitungsmodus
     } else {
-        state->selected_event_detail = SELECTED_MONDAY;
+    	// Blinken ausschalten
+		state->blink = false;
+		// Blinken vom Bildschirm entfernen
+		event_details_menu_update_menu(state);
+		// Wenn der Cursor noch vor dem letzen Element ist
+    	if (state->selected_event_detail < SELECTED_ENABLED) {
+    		// Zum nächsten Detail springen
+			state->selected_event_detail++;
+		// Wenn der Cursor beim lezten Element ist
+		} else {
+			// Cursor Springt an den Anfang (Montag)
+			state->selected_event_detail = SELECTED_MONDAY;
+		}
     }
 }
 
 static void handle_down(struct State *state) {
+	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
-    if (!state->menu_event_time_edit_mode) {
-        state->blink = false;
-        event_details_menu_update_menu(state);
-    }
+
+    // Wenn Stunde oder Minute ausgewählt ist
     if (state->menu_event_time_edit_mode) {
         switch (state->selected_event_detail) {
+        	// Bei ausgewälter Stunde
             case SELECTED_HOUR:
+            	// Wenn größer als 0 Uhr
                 if (event->hour > 0) {
+                	// Stunden runterzählen
                     event->hour--;
+                // Wenn Stunden 0 Uhr
                 } else {
+                	// Stunden auf 23 setzen
                     event->hour = 23;
                 }
+                // Stunde neu Zeichnen
                 event_details_menu_update_menu(state);
                 break;
+			// Bei ausgewälter Minute
             case SELECTED_MINUTE:
+            	// Wenn minute größer als 0
                 if (event->minute > 0) {
+                	// Minute runterzälen
                     event->minute--;
+				// Wenn Minute bei 0
                 } else {
+                	// Minuten auf 59 setzen
                     event->minute = 59;
                 }
+                // Minuten neu Zeichen
                 event_details_menu_update_menu(state);
                 break;
         }
-    } else if (state->selected_event_detail > SELECTED_MONDAY) {
-        state->selected_event_detail--;
-    } else {
-        state->selected_event_detail = SELECTED_ENABLED;
-    }
+	// Wenn nicht im Bearbeitungsmodus
+    } else{
+    	// Blinken ausschalten
+    	state->blink = false;
+    	// Blinken vom Bildschirm entfernen
+		event_details_menu_update_menu(state);
+		// Wenn der Cursor nicht auf dem ersten Element ist
+    	if (state->selected_event_detail > SELECTED_MONDAY) {
+    		// Zum vorherigen Detail springen
+			state->selected_event_detail--;
+		} else {
+			// Cursor Springt an das Ende (Aktiv ja/nein)
+			state->selected_event_detail = SELECTED_ENABLED;
+		}
+	}
 }
 
 static void handle_ok(struct State *state) {
+	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
 
+    // Welches Detail ist ausgewält
     switch (state->selected_event_detail) {
+    	// Wenn Montag ausgewält ist
         case SELECTED_MONDAY:
+        	// Montag Bit wird xor (flippen des Bits)
             event->weekdays ^= Monday;
             break;
         case SELECTED_TUESDAY:
@@ -165,27 +201,37 @@ static void handle_ok(struct State *state) {
         case SELECTED_SUNDAY:
             event->weekdays ^= Sunday;
             break;
+		// Bei ausgewälter Uhrzeit
         case SELECTED_HOUR:
         case SELECTED_MINUTE:
+        	// Ein und auschalten des Bearbeitungsmodus
             state->menu_event_time_edit_mode = !state->menu_event_time_edit_mode;
             break;
+		// Bei Schaltzustand (aus/an)
         case SELECTED_ON_OR_OFF:
+        	// Negieren
             event->on_or_off = !event->on_or_off;
             break;
         case SELECTED_ENABLED:
             event->enabled = !event->enabled;
             break;
     }
-
+    // Den Entprechenden Teil des LCDs neu Zeichnen
     event_details_menu_update_menu(state);
 }
 
 void event_details_menu_draw_menu(struct State *state) {
+	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
 
+    //LCD löschen (Tafeldienst)
     lcd_clrscr();
 
+    // LCD Cursor setzen
     lcd_gotoxy(1, 1);
+    // Wochentage ausgeben
+    // Wenn Wochentag aktiviert ist dann groß schreiben
+    // Ansonsten klein
     lcd_write_string("Tag: ");
     lcd_write_string(SELECTED2(SELECTED_MONDAY, ((event->weekdays & Monday) != 0) ? "MO" : "mo"));
     lcd_write_string(SELECTED2(SELECTED_TUESDAY, ((event->weekdays & Tuesday) != 0) ? "DI" : "di"));
@@ -195,19 +241,29 @@ void event_details_menu_draw_menu(struct State *state) {
     lcd_write_string(SELECTED2(SELECTED_SATURDAY, ((event->weekdays & Saturday) != 0) ? "SA" : "sa"));
     lcd_write_string(SELECTED2(SELECTED_SUNDAY, ((event->weekdays & Sunday) != 0) ? "SO" : "so"));
 
+    // Cousor setzen
     lcd_gotoxy(1, 2);
+    // Uhrzeit ausgeben
     lcd_write_string("Zeit: ");
+    // Zehner
     lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour / 10 + '0'));
+    // Einer
     lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour % 10 + '0'));
     lcd_write_char(':');
+    // Zehner
     lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute / 10 + '0'));
+    // Einer
     lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute % 10 + '0'));
 
+    // Cursor setzen
     lcd_gotoxy(1, 3);
+    // Schaltzustend ausgeben
     lcd_write_string("Schaltzustand: ");
     lcd_write_string(SELECTED3(SELECTED_ON_OR_OFF, event->on_or_off ? " an" : "aus"));
 
+    // Cursor setzen
     lcd_gotoxy(1, 4);
+    // Aktivirung ausgeben
     lcd_write_string("Aktiv: ");
     lcd_write_string(SELECTED4(SELECTED_ENABLED, event->enabled ? "  ja" : "nein"));
 }

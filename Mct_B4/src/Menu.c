@@ -47,7 +47,9 @@ void menu_check_keypress (struct State *state) {
 void menu_loop_once (struct State *state) {
 	// Prüfen ob eine Taste Gedrückt wurde
     menu_check_keypress(state);
+    // Wenn Bildschirm neu gezeichnet werden muss
     if (state->menu_should_redraw) {
+    	// Abhängig vom aktuellen angezeigten Menü
         switch (state->menu_screen) {
             case SCREEN_MAIN_MENU:
                 main_menu_draw_menu(state);
@@ -59,6 +61,7 @@ void menu_loop_once (struct State *state) {
                 event_details_menu_draw_menu(state);
                 break;
         }
+        // Neu zeichnen auf Falsch setzten
         state->menu_should_redraw = false;
     }
 }

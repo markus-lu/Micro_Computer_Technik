@@ -24,17 +24,23 @@ void main_menu_handle_keypress(struct State *state, uint8_t buttons) {
 }
 
 void main_menu_draw_menu(struct State *state) {
-    uint16_t event_count = events_get_count(state->event_data);
+	// Zälung der aktivierten Events
+    uint8_t event_count = events_get_count(state->event_data);
+    // Tempeartur in Vorkommastelle und Nachkommastelle zerlegen
     uint8_t temperature_whole = state->temperature >> 8;
     uint8_t temperature_fraction = state->temperature;
 
+    // Bildschirm löschen (Tafeldienst)
     lcd_clrscr();
 
+    // Temp in die erste Zeile Schreiben
     lcd_gotoxy(1, 1);
     lcd_write_string("Temperatur: ");
     lcd_write_char(temperature_whole / 10 + '0');
     lcd_write_char(temperature_whole % 10 + '0');
     lcd_write_char('.');
+    // Ausgabe der Nachkommastellen
+    // 0xDF -> Gradzeichen
     switch (temperature_fraction) {
         case 0:
             lcd_write_string("00" "\xDF" "C");
@@ -51,11 +57,12 @@ void main_menu_draw_menu(struct State *state) {
         default:
             break;
     }
-
+    // Aktueller Status der RGB-Led wird in der zweiten Zeile ausgeben
     lcd_gotoxy(1, 2);
     lcd_write_string("Status:     ");
     lcd_write_string(state->rgb_state ? "An" : "Aus");
 
+    // Eventanzahl wird in der dritten Zeile ausgegeben
     lcd_gotoxy(1, 3);
     lcd_write_string("Events:     ");
     lcd_write_char(event_count / 10 + '0');
