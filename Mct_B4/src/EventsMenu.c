@@ -4,6 +4,27 @@
 #include <stdio.h>
 #include "lcdlib_1769.h"
 
+/**
+ *  \file    EventsMenu.c
+*/
+
+
+/*********************************************************************/
+ /**
+ Diese Funktion setzt den Cursor auf das aktuell ausgewählte
+ Event.
+
+ \param	event
+ 	 	Enthält Integer für das aktuell ausgewälte Event
+		(0 - 15)
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 static void goto_event(uint8_t event) {
 	// LCD hat 4 Zeilen mit je 20 Zeichen
 	// Aufteilung der Events auf 5 Zeichen pro Event
@@ -15,6 +36,36 @@ static void goto_event(uint8_t event) {
 	lcd_gotoxy(x + 1, y + 1);
 }
 
+/*********************************************************************/
+ /**
+ Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
+ Events-Menü befindet.
+
+ Wenn die Taste Zurück gedrückt wurde, wechselt das Events-Menü in das Hautmenü.
+
+ Wenn der Hoch-Taster gedrückt wurde, wechselt der Cursor zum nächsten Event.
+
+ Wenn der Runter-Taster gedrückt wurde, wechselt der Cursor zum vorherigen Event.
+
+ Wenn der OK-Taster gedrückt wurde, wechselt das Events-Menü in das Events-Details-Menü.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+\param	buttons
+		Ein Integer der eine Codierung für gedrückte Taster enthält
+		(0 - 31)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void events_menu_handle_keypress(struct State *state, uint8_t buttons) {
 	// Je nach gedrückten Taster
 	switch (buttons) {
@@ -67,7 +118,33 @@ void events_menu_handle_keypress(struct State *state, uint8_t buttons) {
 }
 
 
+/*********************************************************************/
+ /**
+ Diese Funktion speichert die Anzeige, ob ein Event aktiviert oder deaktiviert
+ ist, in einem String-Pointer.
 
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+\param	string
+		Ein String-Pointer in dem das aktuell ausgewählte Event mit oder
+		ohne Coursor und Aktivierung speichert
+		(Reservierter Speicher 5 Zeichen)
+
+\param	event
+		Integer der die Nummer des aktuell ausgewälten Events enthält
+		(0 - 15)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 static void write_event(struct State *state, char_t *string, int event) {
 	// Wenn Event ausgewählt ist dann enthält der Char '>'
 	// Ansonsten ' '
@@ -80,6 +157,23 @@ static void write_event(struct State *state, char_t *string, int event) {
 	sprintf(string, "%c%c %02d", selected, enabled, event);
 }
 
+/*********************************************************************/
+ /**
+ Diese Funktion schreibt das Event-Menü auf das LC-Display.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void events_menu_draw_menu(struct State *state) {
 	// LCD Löschen (Tafeldienst)
 	lcd_clrscr();

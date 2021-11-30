@@ -14,6 +14,10 @@
 #include "types.h"
 #include "State.h"
 
+/**
+ *  \file    EventsMenu.h
+*/
+
 void events_menu_handle_keypress(struct State* state, uint8_t buttons);
 
 void events_menu_draw_menu(struct State *state);

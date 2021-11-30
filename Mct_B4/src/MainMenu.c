@@ -21,7 +21,7 @@
 		(Wertebereich in der Struct-Defenition)
 
 \param	buttons
-		Ein Integer der eine Codirung für gedrückte Taster enthält
+		Ein Integer der eine Codierung für gedrückte Taster enthält
 		(0 - 31)
 
 
