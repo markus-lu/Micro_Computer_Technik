@@ -10,13 +10,13 @@
  * Die Funktionen in diesem Modul existieren zur Vereinfachung der Benutzung des I2C Buses.
  * Die Funktionen sind so geschrieben, dass deren Falsch-Verwendung möglichst schwer ist.
  *
- *  \section sec1 Unterprogramme
+ *  \section i2c_sec1 Unterprogramme
  *
- *  \subsection sec1_1 i2c_write
+ *  \subsection i2c_sec1_1 i2c_write
  *  Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,
  *  welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
  *
- *  \subsection sec1_1 i2c_read
+ *  \subsection i2c_sec1_2 i2c_read
  *  Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,
  *  welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu lesen.
  *
