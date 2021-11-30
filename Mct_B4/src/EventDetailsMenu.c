@@ -3,17 +3,9 @@
 #include "Events.h"
 #include "lcdlib_1769.h"
 
-#define SELECTED_MONDAY 0
-#define SELECTED_TUESDAY 1
-#define SELECTED_WEDNESDAY 2
-#define SELECTED_THURSDAY 3
-#define SELECTED_FRIDAY 4
-#define SELECTED_SATURDAY 5
-#define SELECTED_SUNDAY 6
-#define SELECTED_HOUR 7
-#define SELECTED_MINUTE 8
-#define SELECTED_ON_OR_OFF 9
-#define SELECTED_ENABLED 10
+/**
+ *  \file     EventsDetailsMenu.c
+*/
 
 // Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch Blöcke ersetzt
 #define SELECTED1(index, normal) (state->selected_event_detail == index && state->blink) ? '\xFF' : (normal)
@@ -29,6 +21,31 @@ static void handle_down(struct State *state);
 
 static void handle_ok(struct State *state);
 
+
+
+/*********************************************************************/
+ /**
+ Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
+ Events-Details-Menü befindet. Die Verabeitung der einzelden Tasten sind in
+ zusätzliche Methoden ausgelagert worden.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+\param	buttons
+		Ein Integer der eine Codierung für gedrückte Taster enthält
+		(0 - 31)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void event_details_menu_handle_keypress(struct State *state, uint8_t buttons) {
 	// Je nach gedrückten Button in die dazugehörige handle Methode weiterleiten
     switch (buttons) {
@@ -47,6 +64,27 @@ void event_details_menu_handle_keypress(struct State *state, uint8_t buttons) {
     }
 }
 
+/*********************************************************************/
+ /**
+ Diese Funktion verarbeitet den Tastendruck Zurück.
+
+ Wenn mann im Bearbeitungsmodus ist, verlässt man diesen.
+
+ Wenn mann nicht im Bearbeitungs ist, wechselt mann in das Events-Menü
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 static void handle_back(struct State *state) {
 	// Wenn im Bearbeitungsmodus für die Uhrzeit
     if (state->menu_event_time_edit_mode) {
@@ -64,6 +102,23 @@ static void handle_back(struct State *state) {
     }
 }
 
+/*********************************************************************/
+ /**
+
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 static void handle_up(struct State *state) {
 	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
