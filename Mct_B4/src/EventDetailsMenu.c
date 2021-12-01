@@ -4,7 +4,7 @@
 #include "lcdlib_1769.h"
 
 /**
- *  \file     EventsDetailsMenu.c
+ *  \file     EventDetailsMenu.c
 */
 
 

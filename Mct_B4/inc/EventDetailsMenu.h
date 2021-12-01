@@ -15,6 +15,11 @@
 #include "State.h"
 
 /**
+ *  \file     EventDetailsMenu.h
+*/
+
+
+/**
  * Fester Wert für das Event Detail Montag
  */
 #define SELECTED_MONDAY 0
