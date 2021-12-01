@@ -1,6 +1,49 @@
 #include "Clock.h"
 #include "LEDKey.h"
 
+/**
+ *  \file    Clock.c
+*/
+
+
+/**
+ * Programmcode zum Nullbasierten decrementiren
+ */
+#define DEC0(value, max) if (state->time.value > 0) { state->time.value--; } else { state->time.value = (max); } break;
+
+/**
+ * Programmcode zum Nullbasierten incrementiren
+ */
+#define INC0(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 0; } break;
+
+/**
+ * Programmcode zum Einsbasierten decrementiren
+ */
+#define DEC1(value, max) if (state->time.value > 1) { state->time.value--; } else { state->time.value = (max); } break;
+
+/**
+ * Programmcode zum Einsbasierten incrementiren
+ */
+#define INC1(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 1; } break;
+
+
+/*********************************************************************/
+ /**
+ Diese Funktion initialisiert alle für die Clock nötigen Komponenten.
+ Zusätzlich wird die Helligkeit der 7Seg Anzeige gesetzt.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void clock_init(struct State *state) {
 	// Initialisierung LED & Key
 	ledkey_init();
@@ -10,12 +53,34 @@ void clock_init(struct State *state) {
 	ledkey_set_brightness(state->clock_brightness, true);
 }
 
-#define DEC0(value, max) if (state->time.value > 0) { state->time.value--; } else { state->time.value = (max); } break;
-#define INC0(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 0; } break;
-#define DEC1(value, max) if (state->time.value > 1) { state->time.value--; } else { state->time.value = (max); } break;
-#define INC1(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 1; } break;
 
 
+/*********************************************************************/
+ /**
+ Diese Funktion reagiert auf Taster und verarbeitet diese
+
+ Taster von rechts
+ 1. Wechsel zwischen Uhrzeit und Datum<BR>
+ 2. Bearbeitungsmodus an/aus schalten<BR>
+ 3. Voherigesfeld auswälen<BR>
+ 4. Nächstes Feld auswälen<BR>
+ 5. Ausgewältes Feld Runterzählen<BR>
+ 6. Ausgewältes Feld Hochzählen<BR>
+ 7. Helligkeit Runterregeln<BR>
+ 8. Helligkeit Hochregeln<BR>
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void clock_check_keypress(struct State *state) {
 	uint8_t buttons = ledkey_get_buttons();
 	if (buttons != state->clock_last_buttons) {
@@ -144,10 +209,29 @@ void clock_check_keypress(struct State *state) {
 	}
 }
 
-static const uint8_t SEGMENT_DIGITS[] = { SEG_0, SEG_1, SEG_2, SEG_3, SEG_4,
-		SEG_5, SEG_6, SEG_7, SEG_8, SEG_9, SEG_DOT };
 
+/*********************************************************************/
+ /**
+ Diese Funktion schreibt je nachdem was ausgewält ist, die Uhrzeit oder das
+ Datum auf die 7Seg Anzeige
+
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void clock_draw_time(struct State *state) {
+	static const uint8_t SEGMENT_DIGITS[] = { SEG_0, SEG_1, SEG_2, SEG_3, SEG_4,
+			SEG_5, SEG_6, SEG_7, SEG_8, SEG_9, SEG_DOT };
+
 	uint8_t segments[8];
 	if (state->clock_show_time) {
 		segments[0] = 0;
@@ -209,6 +293,24 @@ void clock_draw_time(struct State *state) {
 	ledkey_set_display_data(weekday, segments);
 }
 
+/*********************************************************************/
+ /**
+ Diese Funktion chekt ob ein Taster gedrückt wurde und lässt die 7Seg Anzeige
+ neu zeichnen
+
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void clock_loop_once(struct State *state) {
 	// Schalter verarbeitung
 	clock_check_keypress(state);
