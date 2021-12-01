@@ -39,15 +39,28 @@ void ledkey_init() {
 \bug  keine Fehler bekannt
 **********************************************************************/
 uint8_t ledkey_get_buttons() {
+	// Speicherreservierung
     uint8_t output = 0;
     uint8_t data[4];
+    // Taster lesen
     serial_read(READ_DATA_COMMAND, data, 4);
+    // Zurückgegeben werden 4 Bytes
+    // Das niedrigste Bit pro Nibble ist ein Taster
     for (int i = 0; i < 4; ++i) {
+    	// Output einen nach Links schieben
+    	// LSB ist wieder frei
         output <<= 1;
+        // Unden mit Höheren Nibble
+        // Vergleichen mit 0 sorgt dafür das 1 oder an das LSB geschieben wird
         output |= (data[i] & 0x10) != 0;
+        // Output einen nach Links schieben
+        // LSB ist wieder frei
         output <<= 1;
+        // Unden mit niedrigeren Nibble
+        // Vergleichen mit 0 sorgt dafür das 1 oder an das LSB geschieben wird
         output |= (data[i] & 0x01) != 0;
     }
+    // Rückgabe der gedrückten Taster
     return output;
 }
 
@@ -70,9 +83,13 @@ uint8_t ledkey_get_buttons() {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void ledkey_set_display_data(uint8_t leds, const uint8_t *digits) {
+	// Ankündigung zum schreiben
     serial_write_command(WRITE_DATA_COMMAND);
+    // Reservierung von Speicher
     uint8_t data[16];
 
+    // 7Seg nur in jedem geraden Register
+    // LEDs in jedem Ungeraden
     data[0] = digits[0];
     data[1] = (leds >> 7) & 0b1;
     data[2] = digits[1];
@@ -90,6 +107,7 @@ void ledkey_set_display_data(uint8_t leds, const uint8_t *digits) {
     data[14] = digits[7];
     data[15] = (leds >> 0) & 0b1;
 
+    // 7Seg beschreiben
     serial_write(SET_ADDRESS_COMMAND, data, 16);
 }
 
@@ -135,5 +153,6 @@ void ledkey_set_brightness(uint8_t brightness, bool display_on) {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void ledkey_deinit() {
+	// Serielle schnittstelle auschalten
     serial_deinit();
 }

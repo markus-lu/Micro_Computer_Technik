@@ -47,8 +47,11 @@ damit der RTC beschieben werden kann.
 **********************************************************************/
 static uint8_t encode_bcd(uint8_t number) {
 	// BCD = binary decimal code
+	// Geteilt durch 10 um die Zehner zu bekommen
     uint8_t tens = number / 10;
+    // Modulo 10 um die Einer zu bekommen
     uint8_t ones = number % 10;
+    // Zehner im ersten Nibble und Einer im Zweiten Nibble zurückgeben
     return (tens << 4) | ones;
 }
 
@@ -112,12 +115,14 @@ Decodierung ist in eine externe Methode ausgelagert.
 \bug  keine Fehler bekannt
 **********************************************************************/
 static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
+	// Speicherung der BDC Codierten Werte für Datum und Uhrzeit
     bytes[0] = encode_bcd(dateTime->seconds);
     bytes[1] = encode_bcd(dateTime->minutes);
     bytes[2] = encode_bcd(dateTime->hours);
     bytes[3] = encode_bcd(dateTime->weekday);
     bytes[4] = encode_bcd(dateTime->day);
     bytes[5] = encode_bcd(dateTime->month);
+    // Jahhundert Bit an die entsprechende Stelle schieben
     bytes[5] |= dateTime->century << 7;
     bytes[6] = encode_bcd(dateTime->year);
 }
@@ -243,10 +248,15 @@ void rtc_read_time(struct DateTime *time) {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void rtc_write_time(struct DateTime *time) {
+	// Speicherreservierung
     uint8_t bytes[8];
+    // Registeradresse ab der geschrieben werden soll festslegen
+    // Register 0
     bytes[0] = 0; // register address
 
+    // Zeit ins Binary Decimal Format umwandeln
     encode_time(time, &bytes[1]);
 
+    // Schreiben auf RTC-Chip (DS3231)
     i2c_write(DS3231_ADDRESS, bytes, 8);
 }

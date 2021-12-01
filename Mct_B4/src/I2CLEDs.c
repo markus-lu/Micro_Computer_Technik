@@ -68,18 +68,27 @@ void i2cleds_init() {
  \bug  keine Fehler bekannt
  **********************************************************************/
 void i2cleds_set_leds(uint32_t event_count) {
+	// Speicher reservieren
     uint16_t leds = 0;
 
+    // Setzung der Bits für die anzahl der aktivierten events
     for (int i = 0; i < 16 - event_count; ++i) {
         leds |= (1 << i);
     }
 
+    // Speicher reserviern
     uint8_t cmd[2];
+    // Befehl Output auf Port 0 setzen
     cmd[0] = OUTPUT_P0;
+    // Untere Byte der Übertragung enthält die zu setzenden LEDs
     cmd[1] = leds;
+    // Absenden
     i2c_write(PCA9539_ADDRESS, cmd, 2);
 
+    // Befehl Output auf Port 1 setzen
     cmd[0] = OUTPUT_P1;
+    // Oberes Byte der Übertragung enthält die zu setzenden LEDs
     cmd[1] = (leds >> 8);
+    // Absenden
     i2c_write(PCA9539_ADDRESS, cmd, 2);
 }

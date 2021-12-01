@@ -264,7 +264,10 @@ ob an diesem Pin ein HIGH oder LOW Pegel anliegt.
 \bug  keine Fehler bekannt
 **********************************************************************/
 bool gpio_get(const struct GPIOPin *pin) {
+	// FIOPIN-Register für diesen GPIO-Port auslesen
     volatile uint32_t fiopin = get_gpio_port(pin->port)->FIOPIN;
+    // Filtern des Ports zum herausfinden des benötigten Pins
     uint32_t masked_pin = fiopin & (1 << pin->pin);
+    // Gibt ein Wahr Zurück wen der gesuchte Pin High war
     return masked_pin != 0;
 }
