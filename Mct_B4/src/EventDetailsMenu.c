@@ -9,22 +9,22 @@
 
 
 /**
- * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch einen Block ersetzt
+ *  \brief Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch einen Block ersetzt
  */
 #define SELECTED1(index, normal) (state->selected_event_detail == index && state->blink) ? '\xFF' : (normal)
 
 /**
- * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch zwei Blöcke ersetzt
+ *  \brief Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch zwei Blöcke ersetzt
  */
 #define SELECTED2(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF") : (normal)
 
 /**
- * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch drei Blöcke ersetzt
+ *  \brief Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch drei Blöcke ersetzt
  */
 #define SELECTED3(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF" "\xFF") : (normal)
 
 /**
- * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch vier Blöcke ersetzt
+ *  \brief Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch vier Blöcke ersetzt
  */
 #define SELECTED4(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF" "\xFF" "\xFF") : (normal)
 
@@ -40,7 +40,7 @@ static void handle_ok(struct State *state);
 
 /*********************************************************************/
  /**
- Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
+  \brief Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
  Events-Details-Menü befindet. Die Verabeitung der einzelden Tasten sind in
  zusätzliche Methoden ausgelagert worden.
 
@@ -81,7 +81,7 @@ void event_details_menu_handle_keypress(struct State *state, uint8_t buttons) {
 
 /*********************************************************************/
  /**
- Diese Funktion verarbeitet den Tastendruck Zurück.
+  \brief Diese Funktion verarbeitet den Tastendruck Zurück.
 
  Wenn mann im Bearbeitungsmodus ist, verlässt man diesen.
 
@@ -119,7 +119,7 @@ static void handle_back(struct State *state) {
 
 /*********************************************************************/
  /**
-Diese Funktion verarbeitet den Tastendruck Hoch.
+ \brief Diese Funktion verarbeitet den Tastendruck Hoch.
 
 Wenn man im Bearbeitungsmodus ist, werden je nachdem, was ausgewält ist, die
 Stunden oder Minuten hochgezäht.
@@ -197,7 +197,7 @@ static void handle_up(struct State *state) {
 
 /*********************************************************************/
  /**
-Diese Funktion verarbeitet den Tastendruck Runter.
+ \brief Diese Funktion verarbeitet den Tastendruck Runter.
 
 Wenn man im Bearbeitungsmodus ist, werden je nachdem was ausgewält ist, die
 Stunden oder Minuten runtergezäht.
@@ -273,7 +273,7 @@ static void handle_down(struct State *state) {
 
 /*********************************************************************/
  /**
-Diese Funktion verarbeitet den Tastendruck OK.
+ \brief Diese Funktion verarbeitet den Tastendruck OK.
 Je nachdem welches Eventdetail ausgewält ist, wird der Tastendruck unterschiedlich verarbeitet.
 
 Wenn ein Wochentag ausgewält ist wird dieser aktiviert (Großbuchstaben) oder deaktiviert (kleinbuchstaben)
@@ -349,7 +349,7 @@ static void handle_ok(struct State *state) {
 
 /*********************************************************************/
  /**
-Diese Funktion schreibt das Events Detail Menü auf das LC-Display
+ \brief Diese Funktion schreibt das Events Detail Menü auf das LC-Display
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
@@ -415,7 +415,7 @@ void event_details_menu_draw_menu(struct State *state) {
 
 /*********************************************************************/
  /**
-Diese Funktion aktualisiert das Events Details Menü.
+ \brief Diese Funktion aktualisiert das Events Details Menü.
 Hierbei werden nur die Zellen neu beschrieben, die sich verändert haben
 
  \param state

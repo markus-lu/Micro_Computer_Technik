@@ -5,14 +5,14 @@
 */
 
 /**
- * Kleines Macro zum Vergleichen zweier Felder in zwei DateTime Structen.
+ *  \brief Kleines Macro zum Vergleichen zweier Felder in zwei DateTime Structen.
  * Was das Vergleichen der Werte lesbarer macht und Schreibarbeit sowie Fehleranfälligkeit verringert.
  */
 #define COMPARE(value) old_time->value != new_time->value
 
 /*********************************************************************/
 /**
-Diese Funktion vergleicht zwei DateTime Structe.
+ \brief Diese Funktion vergleicht zwei DateTime Structe.
 Wenn diese ungleich sind, muss die Zeit auf dem Display aktualisiert werden.
 
 \return Ob beide Structe sich unterscheiden

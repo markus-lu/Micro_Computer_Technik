@@ -8,7 +8,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion initialisiert die GPIOPin's und den Timer 2 für das Custom Serial Protokoll des TM1638.
+ \brief Diese Funktion initialisiert die GPIOPin's und den Timer 2 für das Custom Serial Protokoll des TM1638.
 
 Die Frequenz des Timers wird auf das Doppelte der auf dem TM1638 angegebenen Maximalfrequenz gesetzt,
 Ein Interrupt erfolgt aber erst nach zwei Takten, da wir nicht mit der Maximalfrequenz arbeiten wollen,
@@ -43,7 +43,7 @@ void serial_init() {
 
 /*********************************************************************/
 /**
-Diese Funktion ist eine Hilfsfunktion um auf den nächsten Interrupt von Timer2 zu warten.
+ \brief Diese Funktion ist eine Hilfsfunktion um auf den nächsten Interrupt von Timer2 zu warten.
 
 \return -
 
@@ -61,7 +61,7 @@ static void wait_for_interrupt() {
 
 /*********************************************************************/
 /**
-Diese Funktion ist eine Hilfsfunktion um den DIO Pin zwischen Ein- und Ausgang zu wechseln.
+ \brief Diese Funktion ist eine Hilfsfunktion um den DIO Pin zwischen Ein- und Ausgang zu wechseln.
 
 \param  dir
         Richtung, in die der DIO Pin gesetzt werden soll
@@ -90,7 +90,7 @@ static void set_dio_pin_dir(enum PinDir dir) {
 
 /*********************************************************************/
 /**
-Diese Funktion ist eine Hilfsfunktion um ein Byte an den TM1638 zu senden.
+ \brief Diese Funktion ist eine Hilfsfunktion um ein Byte an den TM1638 zu senden.
 
 \param  byte
         Byte, was an den TM1638 gesendet werden soll
@@ -126,7 +126,7 @@ static void write_byte(uint8_t byte) {
 
 /*********************************************************************/
 /**
-Diese Funktion ist eine Hilfsfunktion um ein Byte vom TM1638 zu empfangen.
+ \brief Diese Funktion ist eine Hilfsfunktion um ein Byte vom TM1638 zu empfangen.
 
 \return Byte, was an den TM1638 gesendet werden soll
         (0x00 - 0xFF)
@@ -154,7 +154,7 @@ static uint8_t read_byte() {
 
 /*********************************************************************/
 /**
-Diese Funktion sendet ein einzelnes Byte and den TM1638.
+ \brief Diese Funktion sendet ein einzelnes Byte and den TM1638.
 Dies ist ein Befehl, der zum Beispiel die Helligkeit des 7-Segment-Displays steuert.
 
 \param  command
@@ -189,7 +189,7 @@ void serial_write_command(uint8_t command) {
 
 /*********************************************************************/
 /**
-Diese Funktion sendet mehrere Bytes and den TM1638.
+ \brief Diese Funktion sendet mehrere Bytes and den TM1638.
 
 Das erste Byte wird als Befehl interpretiert und wird daher als separaten Parameter command angegeben.
 
@@ -239,7 +239,7 @@ void serial_write(uint8_t command, uint8_t *data, uint32_t length) {
 
 /*********************************************************************/
 /**
-Diese Funktion empfängt mehrere Bytes vom TM1638.
+ \brief Diese Funktion empfängt mehrere Bytes vom TM1638.
 
 Zuerst wird ein Byte gesendet, um dem TM1638 einen Befehl zu geben.
 Die Antwort auf diesen Befehl wird dann im Parameter data abgespeichert.
@@ -290,7 +290,7 @@ void serial_read(uint8_t command, uint8_t *data, uint32_t length) {
 
 /*********************************************************************/
 /**
-Diese Funktion de-initialisiert den Timer 2.
+ \brief Diese Funktion de-initialisiert den Timer 2.
 
 \return -
 
@@ -305,7 +305,7 @@ void serial_deinit() {
 
 /*********************************************************************/
 /**
-Dieses Struct repräsentiert die Konfiguration für den Clock-Pin des Custom Serial Protokoll des TM1638.
+ \brief Dieses Struct repräsentiert die Konfiguration für den Clock-Pin des Custom Serial Protokoll des TM1638.
 
 \version 11.11.2021
 **********************************************************************/
@@ -319,7 +319,7 @@ const struct GPIOPin serial_clk = {
 
 /*********************************************************************/
 /**
-Dieses Struct repräsentiert die Konfiguration für den DIO-Pin des Custom Serial Protokoll des TM1638.
+ \brief Dieses Struct repräsentiert die Konfiguration für den DIO-Pin des Custom Serial Protokoll des TM1638.
 
 \version 11.11.2021
 **********************************************************************/
@@ -333,7 +333,7 @@ const struct GPIOPin serial_dio = {
 
 /*********************************************************************/
 /**
-Dieses Struct repräsentiert die Konfiguration für den STB-Pin des Custom Serial Protokoll des TM1638.
+ \brief Dieses Struct repräsentiert die Konfiguration für den STB-Pin des Custom Serial Protokoll des TM1638.
 
 \version 11.11.2021
 **********************************************************************/

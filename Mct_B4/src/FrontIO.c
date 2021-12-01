@@ -7,7 +7,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion initialisiert I²C für die IO auf der Frontplatte
+ \brief Diese Funktion initialisiert I²C für die IO auf der Frontplatte
 
 \param  -
 
@@ -25,7 +25,7 @@ void frontio_init() {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte.
+ \brief Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte.
 
 \param  leds
         Gewünschte LED Zustände
@@ -51,7 +51,7 @@ void frontio_set_leds(uint8_t leds) {
 
 /*********************************************************************/
 /**
-Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte.
+ \brief Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte.
 
 \param  -
 

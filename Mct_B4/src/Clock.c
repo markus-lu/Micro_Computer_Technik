@@ -7,29 +7,29 @@
 
 
 /**
- * Programmcode zum Nullbasierten decrementiren
+ *  \brief Programmcode zum Nullbasierten decrementiren
  */
 #define DEC0(value, max) if (state->time.value > 0) { state->time.value--; } else { state->time.value = (max); } break;
 
 /**
- * Programmcode zum Nullbasierten incrementiren
+ *  \brief Programmcode zum Nullbasierten incrementiren
  */
 #define INC0(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 0; } break;
 
 /**
- * Programmcode zum Einsbasierten decrementiren
+ *  \brief Programmcode zum Einsbasierten decrementiren
  */
 #define DEC1(value, max) if (state->time.value > 1) { state->time.value--; } else { state->time.value = (max); } break;
 
 /**
- * Programmcode zum Einsbasierten incrementiren
+ *  \brief Programmcode zum Einsbasierten incrementiren
  */
 #define INC1(value, max) if (state->time.value < (max)) { state->time.value++; } else { state->time.value = 1; } break;
 
 
 /*********************************************************************/
  /**
- Diese Funktion initialisiert alle für die Clock nötigen Komponenten.
+  \brief Diese Funktion initialisiert alle für die Clock nötigen Komponenten.
  Zusätzlich wird die Helligkeit der 7Seg Anzeige gesetzt.
 
  \param state
@@ -57,7 +57,7 @@ void clock_init(struct State *state) {
 
 /*********************************************************************/
  /**
- Diese Funktion reagiert auf Taster und verarbeitet diese
+  \brief Diese Funktion reagiert auf Taster und verarbeitet diese
 
  Taster von rechts
  1. Wechsel zwischen Uhrzeit und Datum<BR>
@@ -212,7 +212,7 @@ void clock_check_keypress(struct State *state) {
 
 /*********************************************************************/
  /**
- Diese Funktion schreibt je nachdem was ausgewält ist, die Uhrzeit oder das
+  \brief Diese Funktion schreibt je nachdem was ausgewält ist, die Uhrzeit oder das
  Datum auf die 7Seg Anzeige
 
 
@@ -295,7 +295,7 @@ void clock_draw_time(struct State *state) {
 
 /*********************************************************************/
  /**
- Diese Funktion chekt ob ein Taster gedrückt wurde und lässt die 7Seg Anzeige
+  \brief Diese Funktion chekt ob ein Taster gedrückt wurde und lässt die 7Seg Anzeige
  neu zeichnen
 
 

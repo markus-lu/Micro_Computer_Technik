@@ -18,14 +18,14 @@
 #include "types.h"
 
 /**
- * PinMode Einstellung
+ *  \brief PinMode Einstellung
  */
 #define MODE_GPIO 0
 
 /*********************************************************************/
 /**
 
-Dieser Enum beschreibt, ob ein GPIOPin als Ein- oder Ausgang verwendet werden soll.
+ \brief Dieser Enum beschreibt, ob ein GPIOPin als Ein- oder Ausgang verwendet werden soll.
 
 \version 12.11.2021
 **********************************************************************/
@@ -37,7 +37,7 @@ enum PinDir {
 /*********************************************************************/
 /**
 
-Dieser Enum beschreibt, ob ein Pullup-Widerstand,
+ \brief Dieser Enum beschreibt, ob ein Pullup-Widerstand,
 ein Pulldown-Widerstand oder die Repeater-Funktion aktiviert werden soll.
 
 \version 12.11.2021
@@ -58,31 +58,31 @@ enum PinMode {
 **********************************************************************/
 struct GPIOPin {
     /**
-     * Gibt an, an welchem Port dieser Pin anliegt.
+     *  \brief Gibt an, an welchem Port dieser Pin anliegt.
      *
      * (0 - 4)
      */
     const uint8_t port;
     /**
-     * Gibt an, welcher Pin an diesem Port konfiguriert werden soll.
+     *  \brief Gibt an, welcher Pin an diesem Port konfiguriert werden soll.
      *
      * (0 - 31)
      */
     const uint8_t pin;
     /**
-     * Gibt an, ob dieser Pin ein Ein- oder Ausgang ist.
+     *  \brief Gibt an, ob dieser Pin ein Ein- oder Ausgang ist.
      *
      * (0 - 1, siehe Enum PinDir )
      */
     const enum PinDir dir;
     /**
-     * Gibt an, ob ein Pullup-Widerstand, ein Pulldown-Widerstand, oder die Repeater-Funktion aktiviert werden soll.
+     *  \brief Gibt an, ob ein Pullup-Widerstand, ein Pulldown-Widerstand, oder die Repeater-Funktion aktiviert werden soll.
      *
      * (0 - 3, diese Enum PinMode )
      */
     const enum PinMode mode;
     /**
-     * Gibt an, ob dieser Pin im OpenDrain-Modus arbeiten soll.
+     *  \brief Gibt an, ob dieser Pin im OpenDrain-Modus arbeiten soll.
      *
      * (0 - 1)
      */

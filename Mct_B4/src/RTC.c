@@ -7,7 +7,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion wandelt die vom RTC kommende Datenstruktur für die Uhrzeit
+ \brief Diese Funktion wandelt die vom RTC kommende Datenstruktur für die Uhrzeit
 in ein für den Menschen lesbares Format um.
 
 \param  byte
@@ -32,7 +32,7 @@ static uint8_t decode_bcd(uint8_t byte) {
 
 /*********************************************************************/
 /**
-Diese Funktion wandelt die für Menschen lesbare Uhrzeit in BDC um,
+ \brief Diese Funktion wandelt die für Menschen lesbare Uhrzeit in BDC um,
 damit der RTC beschieben werden kann.
 
 \param  number
@@ -54,7 +54,7 @@ static uint8_t encode_bcd(uint8_t number) {
 
 /*********************************************************************/
 /**
-Diese Funktion wandelt die vom RTC kommende Datenstruktuen für die Uhrzeit
+ \brief Diese Funktion wandelt die vom RTC kommende Datenstruktuen für die Uhrzeit
 in ein für den Menschen lesbares Format um und speichert Diese ab. Die eigentliche
 Decodierung ist in eine externe Methode ausgelagert.
 
@@ -91,7 +91,7 @@ static void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
 
 /*********************************************************************/
 /**
-Diese Funktion wandelt die für den Menschen lesbare Datenstruktuen für die Uhrzeit
+ \brief Diese Funktion wandelt die für den Menschen lesbare Datenstruktuen für die Uhrzeit
 in ein für den RTC lesbares Format um und speichert Diese ab. Die eigentliche
 Decodierung ist in eine externe Methode ausgelagert.
 
@@ -125,7 +125,7 @@ static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
 
 /*********************************************************************/
 /**
-Diese Funktion initialisiert den I²C Portexpander für die RTC
+ \brief Diese Funktion initialisiert den I²C Portexpander für die RTC
 
 \return  -
 
@@ -141,7 +141,7 @@ void rtc_init() {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt die Adresse für den I²C Portexpander und schreibt sie.
+ \brief Diese Funktion setzt die Adresse für den I²C Portexpander und schreibt sie.
 
 \param	address
 		Integer der die zu schreibende Adresse enthält
@@ -165,7 +165,7 @@ static void set_register_address(uint8_t address) {
 
 /*********************************************************************/
 /**
-Diese Funktion liest die aktuelle Tempeartur vom RTC.
+ \brief Diese Funktion liest die aktuelle Tempeartur vom RTC.
 
 \return	temperature
    	   	Integer der die gelesende Tempeartur enthält
@@ -196,7 +196,7 @@ uint16_t rtc_read_temp() {
 
 /*********************************************************************/
 /**
-Diese Funktion liest die aktuelle Zeit vom RTC.
+ \brief Diese Funktion liest die aktuelle Zeit vom RTC.
 
 \param	time
 		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
@@ -228,7 +228,7 @@ void rtc_read_time(struct DateTime *time) {
 
 /*********************************************************************/
 /**
-Diese Funktion schreibt eine aktualisierte Zeit in den RTC.
+ \brief Diese Funktion schreibt eine aktualisierte Zeit in den RTC.
 
 \param	time
 		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen

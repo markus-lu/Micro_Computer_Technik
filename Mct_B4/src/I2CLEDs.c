@@ -16,7 +16,7 @@
 
 /*********************************************************************/
  /**
- Diese Funktion Initialisiert den I²C Portexpander für die LEDs.
+  \brief Diese Funktion Initialisiert den I²C Portexpander für die LEDs.
 
  \param	-
 
@@ -52,7 +52,7 @@ void i2cleds_init() {
 
 /*********************************************************************/
  /**
- Diese Funktion schaltet für die Anzahl der aktivierten Events die
+  \brief Diese Funktion schaltet für die Anzahl der aktivierten Events die
  entsprechende Anzahl an LEDs über den I²C Portexpander ein.
 
  \param	event_count

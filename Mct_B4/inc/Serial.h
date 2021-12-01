@@ -19,7 +19,7 @@
 #include "GPIO.h"
 
 /**
- * Takt für die Clock des Custom Serial Protokolls des TM1638
+ *  \brief Takt für die Clock des Custom Serial Protokolls des TM1638
  */
 #define SERIAL_CLOCK (1000 * 1000) //  1 MHz
 

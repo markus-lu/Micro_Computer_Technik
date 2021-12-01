@@ -10,7 +10,7 @@
 
 /*********************************************************************/
  /**
- Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
+  \brief Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
  Hauptmenü befindet. Wenn die Tasten Hoch, Runter und Zurück gedrückt werden,
  passiert nichts. Sollte die Taste OK gedrückt worden sein wird wird auf das
  Events-Menü gewechselt.
@@ -53,7 +53,7 @@ void main_menu_handle_keypress(struct State *state, uint8_t buttons) {
 
 /*********************************************************************/
  /**
- Diese Funktion schreibt das Hauptmenü auf das LC-Display.
+  \brief Diese Funktion schreibt das Hauptmenü auf das LC-Display.
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs

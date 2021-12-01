@@ -18,42 +18,42 @@
 */
 
 /**
- * Anzahl der möglichen Events
+ *  \brief Anzahl der möglichen Events
  */
 #define EVENT_COUNT 16
 
 /**
- * Bitcodieung für Montag
+ *  \brief Bitcodieung für Montag
  */
 #define Monday (1 << 6)
 
 /**
- * Bitcodieung für Dienstag
+ *  \brief Bitcodieung für Dienstag
  */
 #define Tuesday (1 << 5)
 
 /**
- * Bitcodieung für Mitwoch
+ *  \brief Bitcodieung für Mitwoch
  */
 #define Wednesday (1 << 4)
 
 /**
- * Bitcodieung für Donerstag
+ *  \brief Bitcodieung für Donerstag
  */
 #define Thursday (1 << 3)
 
 /**
- * Bitcodieung für Freitag
+ *  \brief Bitcodieung für Freitag
  */
 #define Friday (1 << 2)
 
 /**
- * Bitcodieung für Samstag
+ *  \brief Bitcodieung für Samstag
  */
 #define Saturday (1 << 1)
 
 /**
- * Bitcodieung für Sontag
+ *  \brief Bitcodieung für Sontag
  */
 #define Sunday (1 << 0)
 

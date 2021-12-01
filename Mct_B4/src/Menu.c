@@ -12,7 +12,7 @@
 
 /*********************************************************************/
  /**
- Diese Funktion initialisiert alle für das Menü benötigte Hardware.
+  \brief Diese Funktion initialisiert alle für das Menü benötigte Hardware.
  Dabei handelt es sich um das LC-Display und die Frontplatte.
  Zusätzlich werden noch der Cursor und die Hintergrundbeleuchtung des
  LC-Displays gesetzt.
@@ -39,7 +39,7 @@ void menu_init () {
 
 /*********************************************************************/
  /**
- Diese Funktion speichert sich gedrückte Taster ab und schaltet die dazugehörige
+  \brief Diese Funktion speichert sich gedrückte Taster ab und schaltet die dazugehörige
  LED ein. Danach werden je nach aktuell angezeigtem Menü die Taster anders
  verarbeitet. Die Verarbeitung ist in zusätzliche Methoden ausgelagert worden.
 
@@ -85,7 +85,7 @@ void menu_check_keypress (struct State *state) {
 
 /*********************************************************************/
  /**
- Diese Funktion fragt ab ob eine Taste gedrückt wurde. Wenn der Wert
+  \brief Diese Funktion fragt ab ob eine Taste gedrückt wurde. Wenn der Wert
  von Neuzeichen auf wahr steht, wird je nach aktuell angezeigtem Menü das
  Neuzeichnen anders verarbeitet. Die Verarbeitung ist in zusätzliche Methoden
  ausgelagert worden.

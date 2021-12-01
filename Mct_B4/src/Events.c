@@ -7,7 +7,7 @@
 
 /*********************************************************************/
  /**
- Diese Funktion füllt ein Event Struct Array mit Startwerten .
+  \brief Diese Funktion füllt ein Event Struct Array mit Startwerten .
 
  \param	 event_data
  	 	 Pointer der ein Event Struct Array enthält. In ihm werden alle wichtigen Daten
@@ -34,7 +34,7 @@ void events_init(struct Event *event_data) {
 
 /*********************************************************************/
  /**
- Diese Funktion zählt alle abgespeicherten und aktivierten Events.
+  \brief Diese Funktion zählt alle abgespeicherten und aktivierten Events.
 
  \param	 event_data
  	 	 Pointer der ein Event Struct Array enthält. In ihm werden alle wichtigen Daten

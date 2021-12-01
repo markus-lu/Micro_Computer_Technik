@@ -7,7 +7,7 @@
 
 /*********************************************************************/
  /**
- Diese Funktion Initialisiert die benötigten GPIO Pins für die RGB-LED.
+  \brief Diese Funktion Initialisiert die benötigten GPIO Pins für die RGB-LED.
 
  \param	-
 
@@ -30,7 +30,7 @@ void rgbled_init() {
 
 /*********************************************************************/
  /**
- Diese Funktion schaltet die RGB-LED grün.
+  \brief Diese Funktion schaltet die RGB-LED grün.
 
  \param	-
 
@@ -52,7 +52,7 @@ void rgbled_set_green() {
 
 /*********************************************************************/
  /**
- Diese Funktion schaltet die RGB-LED rot.
+  \brief Diese Funktion schaltet die RGB-LED rot.
 
  \param	-
 
@@ -75,7 +75,7 @@ void rgbled_set_red() {
 
 /*********************************************************************/
  /**
- Diese Funktion schaltet die RGB-LED blau.
+  \brief Diese Funktion schaltet die RGB-LED blau.
 
  \param	-
 
@@ -95,7 +95,7 @@ void rgbled_set_blue() {
 
 /*********************************************************************/
  /**
- Diese Funktion schaltet die RGB-LED aus.
+  \brief Diese Funktion schaltet die RGB-LED aus.
 
  \param	-
 
@@ -114,7 +114,7 @@ void rgbled_off() {
 
 /*********************************************************************/
 /**
-Dieses Struct repräsentiert die Konfiguration für die rote Komponente der RGB-LED.
+ \brief Dieses Struct repräsentiert die Konfiguration für die rote Komponente der RGB-LED.
 
 \version 30.11.2021
 **********************************************************************/
@@ -129,7 +129,7 @@ const struct GPIOPin rgbled_red = {
 
 /*********************************************************************/
 /**
-Dieses Struct repräsentiert die Konfiguration für die grüne Komponente der RGB-LED.
+ \brief Dieses Struct repräsentiert die Konfiguration für die grüne Komponente der RGB-LED.
 
 \version 30.11.2021
 **********************************************************************/
@@ -144,7 +144,7 @@ const struct GPIOPin rgbled_green = {
 
 /*********************************************************************/
 /**
-Dieses Struct repräsentiert die Konfiguration für die blaue Komponente der RGB-LED.
+ \brief Dieses Struct repräsentiert die Konfiguration für die blaue Komponente der RGB-LED.
 
 \version 30.11.2021
 **********************************************************************/

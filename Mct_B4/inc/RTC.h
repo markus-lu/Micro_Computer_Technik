@@ -20,12 +20,12 @@
 
 
 /**
- * Minimalwert für Wochentage
+ *  \brief Minimalwert für Wochentage
  */
 #define MONDAY 1
 
 /**
- * Maximalwert für Wochentage
+ *  \brief Maximalwert für Wochentage
  */
 #define SUNDAY 7
 

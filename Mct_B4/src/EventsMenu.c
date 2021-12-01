@@ -11,7 +11,7 @@
 
 /*********************************************************************/
  /**
- Diese Funktion setzt den Cursor auf das aktuell ausgewählte
+  \brief Diese Funktion setzt den Cursor auf das aktuell ausgewählte
  Event.
 
  \param	event
@@ -38,7 +38,7 @@ static void goto_event(uint8_t event) {
 
 /*********************************************************************/
  /**
- Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
+  \brief Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im
  Events-Menü befindet.
 
  Wenn die Taste Zurück gedrückt wurde, wechselt das Events-Menü in das Hautmenü.
@@ -120,7 +120,7 @@ void events_menu_handle_keypress(struct State *state, uint8_t buttons) {
 
 /*********************************************************************/
  /**
- Diese Funktion speichert die Anzeige, ob ein Event aktiviert oder deaktiviert
+  \brief Diese Funktion speichert die Anzeige, ob ein Event aktiviert oder deaktiviert
  ist, in einem String-Pointer.
 
  \param state
@@ -159,7 +159,7 @@ static void write_event(struct State *state, char_t *string, int event) {
 
 /*********************************************************************/
  /**
- Diese Funktion schreibt das Event-Menü auf das LC-Display.
+  \brief Diese Funktion schreibt das Event-Menü auf das LC-Display.
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs

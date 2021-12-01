@@ -141,7 +141,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion setzt den Startwerte für den Zustand der Menüwerte
+ \brief Diese Funktion setzt den Startwerte für den Zustand der Menüwerte
 
 \param  state
 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
@@ -183,7 +183,7 @@ void init_state(struct State *state, struct Event *event_data) {
 
  /*********************************************************************/
  /**
- Diese Funktion checkt alle Events und wenn eins zutreffend und
+  \brief Diese Funktion checkt alle Events und wenn eins zutreffend und
  zusätzlich aktiviert ist, wird die RGB-LED auf grün geschaltet
 
  \param state
@@ -228,7 +228,7 @@ void check_events(struct State *state){
 
 /*********************************************************************/
  /**
- Diese Funktion checkt ob die Zeit sich geändert hat und speichert bei
+  \brief Diese Funktion checkt ob die Zeit sich geändert hat und speichert bei
  Veränderungen diese ab. Falls dies der Fall war, wird zusäzlich die
  check_events Methode aufgerufen.
 
@@ -265,7 +265,7 @@ void check_time_change(struct State *state) {
 
 /*********************************************************************/
  /**
- Diese Funktion checkt ob die Tempeartur sich verändert hat und speichert bei
+  \brief Diese Funktion checkt ob die Tempeartur sich verändert hat und speichert bei
  Veränderungen diese ab. Falls dies der Fall war, wird zusäzlich der Menüstatus
  zum Neuzeichnen auf wahr gesetzt.
 

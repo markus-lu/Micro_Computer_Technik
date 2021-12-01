@@ -6,7 +6,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,
+ \brief Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,
 welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
 
 \param  address
@@ -46,7 +46,7 @@ uint8_t i2c_write(uint8_t address, uint8_t *data, uint32_t length) {
 
 /*********************************************************************/
 /**
-Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,
+ \brief Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,
 welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu lesen.
 
 \param  address

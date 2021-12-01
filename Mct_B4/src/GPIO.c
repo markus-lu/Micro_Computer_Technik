@@ -7,7 +7,7 @@
 
 /*********************************************************************/
 /**
-Diese Funktion setzt das LPC_PINCON->PINSEL Register.
+ \brief Diese Funktion setzt das LPC_PINCON->PINSEL Register.
 In diesem Register wird die Pin-Funktion eingestellt.
 Alle Pins, die in diesem Projekt verwendet werden, werden als GPIO genutzt.
 
@@ -43,7 +43,7 @@ void gpio_set_pin_sel(const struct GPIOPin *pin) {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt das LPC_PINCON->PINMODE Register.
+ \brief Diese Funktion setzt das LPC_PINCON->PINMODE Register.
 In diesem Register wird eingestellt, ob ein Pullup-Widerstand,
 ein Pulldown-Widerstand oder die Repeater-Funktion aktiviert werden soll.
 Diese Information ist im GPIOPin Struct enthalten.
@@ -82,7 +82,7 @@ void gpio_set_pin_mode(const struct GPIOPin *pin) {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt das LPC_PINCON->PINMODE_OD0 Register.
+ \brief Diese Funktion setzt das LPC_PINCON->PINMODE_OD0 Register.
 In diesem Register wird der Open-Drain-Modus eingestellt.
 Diese Information ist im GPIOPin Struct enthalten.
 
@@ -109,7 +109,7 @@ void gpio_set_pin_open_drain(const struct GPIOPin *pin) {
 
 /*********************************************************************/
 /**
-Diese Funktion ist eine Hilfsfunktion um den als Integer gespeicherten Port
+ \brief Diese Funktion ist eine Hilfsfunktion um den als Integer gespeicherten Port
 zu dem korrekten Pointer zu wandeln.
 
 Zum Beispiel würde ein Funktionsaufruf mit dem Wert 2 den Pointer LPC_GPIO2 zurück geben.
@@ -136,7 +136,7 @@ static LPC_GPIO_TypeDef *get_gpio_port(uint8_t port) {
 
 /*********************************************************************/
 /**
-Diese Funktion (re-)initialisiert einen GPIOPin.
+ \brief Diese Funktion (re-)initialisiert einen GPIOPin.
 
 Diese Funktion nutzt Hilfsfunktionen um die folgenden Aktionen durchzuführen:
  1. Pinfunktion festlegen (PIN function SELect, PINSEL)
@@ -180,7 +180,7 @@ void gpio_init_pin(const struct GPIOPin *pin) {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt den Ausgang eines GPIOPin's auf HIGH.
+ \brief Diese Funktion setzt den Ausgang eines GPIOPin's auf HIGH.
 
 \param  pin
         Das struct GPIOPin enthält die Einstellungen für diesen Pin.
@@ -200,7 +200,7 @@ void gpio_set_high(const struct GPIOPin *pin) {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt den Ausgang eines GPIOPin's auf LOW.
+ \brief Diese Funktion setzt den Ausgang eines GPIOPin's auf LOW.
 
 \param  pin
         Das struct GPIOPin enthält die Einstellungen für diesen Pin.
@@ -220,7 +220,7 @@ void gpio_set_low(const struct GPIOPin *pin) {
 
 /*********************************************************************/
 /**
-Diese Funktion setzt den Ausgang eines GPIOPin's auf HIGH oder LOW,
+ \brief Diese Funktion setzt den Ausgang eines GPIOPin's auf HIGH oder LOW,
 abhängig von dem Parameter state.
 
 \param  pin
@@ -248,7 +248,7 @@ void gpio_set(const struct GPIOPin *pin, bool state) {
 
 /*********************************************************************/
 /**
-Diese Funktion liest einen GPIOPin aus und gibt zurück,
+ \brief Diese Funktion liest einen GPIOPin aus und gibt zurück,
 ob an diesem Pin ein HIGH oder LOW Pegel anliegt.
 
 \param  pin

@@ -20,12 +20,12 @@
 
 
 /**
- * Bitmuster zum einschalten einer LED
+ *  \brief Bitmuster zum einschalten einer LED
  */
 #define LED_ON  0b0
 
 /**
- * Bitmuster zum ausschalten einer LED
+ *  \brief Bitmuster zum ausschalten einer LED
  */
 #define LED_OFF 0b1
 
