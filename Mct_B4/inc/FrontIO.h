@@ -14,6 +14,10 @@
 #include "types.h"
 #include "GPIO.h"
 
+/**
+ *  \file     FrontIO.h
+*/
+
 void frontio_init(void);
 
 void frontio_set_leds(uint8_t leds);

@@ -1,21 +1,43 @@
 #include "FrontIO.h"
 #include "I2C.h"
 
-#define LED0 (1 << 0)
-#define LED1 (1 << 1)
-#define LED2 (1 << 2)
-#define LED3 (1 << 3)
-#define TA0 (1 << 4)
-#define TA1 (1 << 5)
-#define TA2 (1 << 6)
-#define TA3 (1 << 7)
+/**
+ *  \file     FrontIO.c
+*/
 
+/*********************************************************************/
+/**
+Diese Funktion initialisiert I²C für die IO auf der Frontplatte
+
+\param  -
+
+\return -
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void frontio_init() {
 	// Initialisierung I2C
     i2c_init(I2C_SPEED);
 }
 
-// lower 4 bits for LEDs
+/*********************************************************************/
+/**
+Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte.
+
+\param  leds
+        Gewünschte LED Zustände
+        (0x00 - 0x0F [ein Bit pro LED])
+
+\return -
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void frontio_set_leds(uint8_t leds) {
 	// Speicher Reservieren
     uint8_t data[1];
@@ -27,7 +49,21 @@ void frontio_set_leds(uint8_t leds) {
     i2c_write(PCF8574A_ADDRESS, data, 1);
 }
 
-// lower 4 bits for buttons
+/*********************************************************************/
+/**
+Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte.
+
+\param  -
+
+\return Tasterzustände<br>
+        1 = gedrückt, 0 = nicht gedrückt<br>
+        (0x00 - 0x0F [ein Bit pro Taster])
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 uint8_t frontio_get_buttons() {
 	// Speicher Reservieren
     uint8_t data[1];
