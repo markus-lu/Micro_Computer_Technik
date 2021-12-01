@@ -1,11 +1,43 @@
 #include "LEDKey.h"
 #include "Serial.h"
 
+/**
+ *  \file     LEDKey.c
+*/
+
+/*********************************************************************/
+/**
+\brief Diese Funktion initialisiert das Custom Serial Protocol für das LED&KEY.
+
+\param  -
+
+\return -
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void ledkey_init() {
 	// Initialisierung Serielles Protokoll
     serial_init();
 }
 
+/*********************************************************************/
+/**
+\brief Diese Funktion liest aus, welche Taster auf dem LED&KEY gedrückt sind.
+
+\param  -
+
+\return Gedrückte Taster
+        Bits entsprechen den in der LEDKey.h definierten BUTTON_0 bis BUTTON_7
+        (0x00 - 0xFF [ein Bit pro Taster])
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 uint8_t ledkey_get_buttons() {
     uint8_t output = 0;
     uint8_t data[4];
@@ -19,6 +51,24 @@ uint8_t ledkey_get_buttons() {
     return output;
 }
 
+/*********************************************************************/
+/**
+\brief Diese Funktion ersetzt die anzuzeigenden LEDS und 7-Segment-Anzeigen.
+
+\param  leds
+        Bitmuster für die LEDS über den 7-Segmenten
+        (0x00 - 0xFF, ein Bit pro LED, MSB = Links, LSB = Rechts)
+\param  digits
+        Byte-Array, wobei jedes Byte die das Bitmuster für jedes 7-Segment enthält
+        (0x00 [kein Segment leuchtet] - 0xFF [alle Segmente leuchten])
+
+\return -
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void ledkey_set_display_data(uint8_t leds, const uint8_t *digits) {
     serial_write_command(WRITE_DATA_COMMAND);
     uint8_t data[16];
@@ -43,7 +93,24 @@ void ledkey_set_display_data(uint8_t leds, const uint8_t *digits) {
     serial_write(SET_ADDRESS_COMMAND, data, 16);
 }
 
-// uses only lower 3 bits
+/*********************************************************************/
+/**
+\brief Diese Funktion setzt die Helligkeit der 7-Segmente und kann das Display auch ganz ausschalten.
+
+\param  brightness
+        Display Helligkeit
+        (0 - MAX_BRIGHTNESS [7])
+\param  display_on
+        Display an
+        (false / true)
+
+\return -
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void ledkey_set_brightness(uint8_t brightness, bool display_on) {
 	// Befehlsbyte zusammenbauen für Helligkeitssteuerung
     uint8_t command = DISPLAY_CONTROL_COMMAND | (brightness & MAX_BRIGHTNESS);
@@ -54,6 +121,19 @@ void ledkey_set_brightness(uint8_t brightness, bool display_on) {
     serial_write_command(command);
 }
 
+/*********************************************************************/
+/**
+\brief Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&KEY.
+
+\param  -
+
+\return -
+
+\version 20.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void ledkey_deinit() {
     serial_deinit();
 }
