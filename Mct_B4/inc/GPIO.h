@@ -52,7 +52,7 @@ enum PinMode {
 /*********************************************************************/
 /**
 
-Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.
+\brief Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.
 
 \version 12.11.2021
 **********************************************************************/

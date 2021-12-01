@@ -1,8 +1,27 @@
 #include "RTC.h"
 #include "I2C.h"
 
-// BCD = binary decimal code
+/**
+ *  \file     RTC.c
+*/
+
+/*********************************************************************/
+/**
+Diese Funktion wandelt die vom RTC kommende Datenstruktur für die Uhrzeit
+in ein für den Menschen lesbares vormat um.
+
+\param  byte
+		Integer der die vom RTC ausgelesene Uhrzeit enthällt
+
+\return  Integer der auch die Uhrzeit aber für menschen lesbar enthällt
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 static uint8_t decode_bcd(uint8_t byte) {
+	// BCD = binary decimal code
 	// 10er sind im höherem Nibble
     uint8_t tens = (byte >> 4) & 0b1111;
     // 1er sind im unterem Nibble
@@ -11,13 +30,50 @@ static uint8_t decode_bcd(uint8_t byte) {
     return (tens * 10) + ones;
 }
 
-// BCD = binary decimal code
+/*********************************************************************/
+/**
+Diese Funktion wandelt die Für menschen lesbare Uhrzeit in ein Byteformat um,
+dammit der RTC beschieben werden kann.
+
+\param  number
+		Integer der die für Menschen lesbare Uhrzeit enthällt
+
+\return  Integer der die Tempeartur in einem für den RTC lesbarem Format enthällt
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 static uint8_t encode_bcd(uint8_t number) {
+	// BCD = binary decimal code
     uint8_t tens = number / 10;
     uint8_t ones = number % 10;
     return (tens << 4) | ones;
 }
 
+/*********************************************************************/
+/**
+Diese Funktion wandelt die vom RTC kommende Datenstruktuen für die Uhrzeit
+in ein für den Menschen lesbares vormat um und Speichert diese ab. Die eigentliche
+Decodierung ist in eine Externe Methode ausgelagert.
+
+\param  bytes
+		Pointer zu einem Integer Array welches die ausgelesenden Daten von der RTC enthällt
+		(Wertebereich siehe Datenblatt vom DS3231)
+
+\param	dateTime
+		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
+		lesbar enthällt
+		(Wertebereich in der Struct-Defenition)
+
+\return  -
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 static void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
 	// Struct mit werten aus demArray befüllen
     dateTime->seconds = decode_bcd(bytes[0]);
@@ -32,6 +88,29 @@ static void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
     dateTime->year = decode_bcd(bytes[6]);
 }
 
+
+/*********************************************************************/
+/**
+Diese Funktion wandelt die für den MEnschen lesbare Datenstruktuen für die Uhrzeit
+in ein für den RTC lesbares Vormat um und speichert Diese ab. Die eigentliche
+Decodierung ist in eine Externe Methode ausgelagert.
+
+\param  bytes
+		Pointer zu einem Integer Array welches die umgewandelten Daten für den RTC enthällt
+		(Wertebereich siehe Datenblatt vom DS3231)
+
+\param	dateTime
+		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
+		lesbar enthällt
+		(Wertebereich in der Struct-Defenition)
+
+\return  -
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
     bytes[0] = encode_bcd(dateTime->seconds);
     bytes[1] = encode_bcd(dateTime->minutes);
@@ -43,10 +122,37 @@ static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
     bytes[6] = encode_bcd(dateTime->year);
 }
 
+
+/*********************************************************************/
+/**
+Diese Funktion initialisiert den I²C Portexpander für die RTC
+
+\return  -
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void rtc_init() {
     i2c_init(I2C_SPEED);
 }
 
+
+/*********************************************************************/
+/**
+Diese Funktion setzt die Adresse für den I²C Portexpander und schreibt sie.
+
+\param	adress
+		Integer der die zu schreibende Adresse enthällt
+
+\return  -
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 static void set_register_address(uint8_t address) {
 	// Array erstellen
     uint8_t register_address[1];
@@ -56,6 +162,19 @@ static void set_register_address(uint8_t address) {
     i2c_write(DS3231_ADDRESS, register_address, 1);
 }
 
+
+/*********************************************************************/
+/**
+Diese Funktion Liest die aktuelle Tempeartur vom RTC.
+
+\return	temperature
+   	   	Integer der die gelesende Tempeartur enthält
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 uint16_t rtc_read_temp() {
 	// Register Adresse setzen
 	// Es soll aus Regeister 0x11 und 0x12 die Temp gelesen werden
@@ -75,6 +194,22 @@ uint16_t rtc_read_temp() {
     return temperature;
 }
 
+/*********************************************************************/
+/**
+Diese Funktion liest die aktuelle Zeit vom RTC.
+
+\param	time
+		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
+		lesbar enthällt
+		(Wertebereich in der Struct-Defenition)
+
+\return  -
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void rtc_read_time(struct DateTime *time) {
 	// Register Adresse Setzen
 	// Zeit und Datum könne aus den ersten sieben Bytes ausgelesen werden
@@ -90,6 +225,23 @@ void rtc_read_time(struct DateTime *time) {
     decode_time(bytes, time);
 }
 
+
+/*********************************************************************/
+/**
+Diese Funktion schreibt eine aktualisierte Zeit in den RTC.
+
+\param	time
+		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
+		lesbar enthällt
+		(Wertebereich in der Struct-Defenition)
+
+\return  -
+
+\version 30.11.2021
+
+\todo -
+\bug  keine Fehler bekannt
+**********************************************************************/
 void rtc_write_time(struct DateTime *time) {
     uint8_t bytes[8];
     bytes[0] = 0; // register address

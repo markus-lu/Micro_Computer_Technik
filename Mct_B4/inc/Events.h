@@ -59,7 +59,7 @@
 
 
 /**
- * Ein Event Struct in welchem alle wichtigen Daten für ein Event gespeichert wird.
+ * \brief Ein Event Struct in welchem alle wichtigen Daten für ein Event gespeichert wird.
  */
 struct Event {
 	/**
