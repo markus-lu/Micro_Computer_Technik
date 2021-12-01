@@ -127,6 +127,7 @@ void timer_start_timer (LPC_TIM_TypeDef *timer) {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void timer_stop_timer (LPC_TIM_TypeDef *timer) {
+	// Timer Control Register auf 0 setzen
     timer->TCR &= ~TIMER_ENABLE_BIT;
 }
 
@@ -210,6 +211,8 @@ void timer_enable_match_interrupt (LPC_TIM_TypeDef *timer, uint8_t match, uint32
 \bug  keine Fehler bekannt
 **********************************************************************/
 void timer_clear_match_interrupt (LPC_TIM_TypeDef *timer, uint8_t match) {
+	// Interupt Bit wird zurückgesetzt
+	// Das bit was zurückgesetzt werden soll mus auf 1 gesetzt werden
     timer->IR |= (1 << match);
 }
 
@@ -275,9 +278,14 @@ bool timer_has_timer2_ticked () {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void timer_deinit_timer1 () {
+	// Timer Stoppen
     timer_stop_timer(LPC_TIM1);
+    // Timer zurücksetzen
+    // Timer Control Register
     LPC_TIM1->TCR = TIMER_RESET_BIT;
+    // Deaktivierung der Interupts
     NVIC_DisableIRQ(TIMER1_IRQn);
+    // Anstenhende Interups Löschen
     NVIC_ClearPendingIRQ(TIMER1_IRQn);
 }
 
@@ -295,9 +303,14 @@ void timer_deinit_timer1 () {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void timer_deinit_timer2 () {
+	// Timer Stoppen
     timer_stop_timer(LPC_TIM2);
+    // Timer zurücksetzen
+    // Timer Control Register
     LPC_TIM2->TCR = TIMER_RESET_BIT;
+    // Deaktivierung der Interupts
     NVIC_DisableIRQ(TIMER2_IRQn);
+    // Anstenhende Interups Löschen
     NVIC_ClearPendingIRQ(TIMER2_IRQn);
 }
 
@@ -317,8 +330,13 @@ void timer_deinit_timer2 () {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void TIMER1_IRQHandler () {
+	// Interupt Flagge zurücksetzen
     NVIC_ClearPendingIRQ(TIMER1_IRQn);
+    // Timer interupt Flagge zurücksetzen
+    // timer LPC_TIM1
+    // Match 1 -> max 0 - 3
     timer_clear_match_interrupt(LPC_TIM1, 1);
+    // Globale Variable auf true setzen
     timer1_ticked = true;
 }
 
@@ -339,7 +357,12 @@ void TIMER1_IRQHandler () {
 \bug  keine Fehler bekannt
 **********************************************************************/
 void TIMER2_IRQHandler () {
+	// Interupt Flagge zurücksetzen
     NVIC_ClearPendingIRQ(TIMER2_IRQn);
+    // Timer interupt Flagge zurücksetzen
+    // timer LPC_TIM2
+    // Match 1 -> max 0 - 3
     timer_clear_match_interrupt(LPC_TIM2, 1);
+    // Globale Variable auf true setzen
     timer2_ticked = true;
 }

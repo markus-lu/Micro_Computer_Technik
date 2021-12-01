@@ -137,16 +137,29 @@ Diese Funktion ist eine Hilfsfunktion um ein Byte vom TM1638 zu empfangen.
 \bug  keine Fehler bekannt
 **********************************************************************/
 static uint8_t read_byte() {
+	// DIO-PIN auf Input setzen
     set_dio_pin_dir(INPUT);
 
+    // Speicher reservieren
     uint8_t byte = 0;
+
+    // Jedes Bit einzeln in for-Schleife einlesen
     for (int i = 0; i < 8; i++) {
+    	// clock auf 0 Ziehen
         gpio_set_low(&serial_clk);
+        // Einen Tackt Warten
         wait_for_interrupt();
+        // Abfrage ob GPIO-PIN high oder low ist
         uint8_t tmp = gpio_get(&serial_dio);
+        // Das Entsprechende Bit an die richtige STelle im Resultatbyte schieben
+        // Zuerst das LSB um 0
+        // Zuletzt das MSB um 7
         byte |= (tmp << i);
+        // Einen Tackt warten
         wait_for_interrupt();
+        // Clock auf High stezen
         gpio_set_high(&serial_clk);
+        // Einen Tackt warten
         wait_for_interrupt();
     }
     return byte;
@@ -176,7 +189,7 @@ void serial_write_command(uint8_t command) {
     wait_for_interrupt();
     wait_for_interrupt();
 
-    // Ein Byte zum Chip senden
+    // Komandobyte schicken
     write_byte(command);
 
     // Zwei Takte abwarten
@@ -217,23 +230,30 @@ Diese werden vom TM1638 als Parameter zu dem gesendeten Befehl interpretiert.
 \bug  keine Fehler bekannt
 **********************************************************************/
 void serial_write(uint8_t command, uint8_t *data, uint32_t length) {
+	// Strobeleitung muss zu begin der Übertragung auf 0 gezogen werden
     gpio_set_low(&serial_stb);
 
+    // Zwei Tackte warten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Komandobyte schicken
     write_byte(command);
 
+    // Zwei Tackte warten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Daten bytes werden gesendet
     for (int i = 0; i < length; ++i) {
         write_byte(data[i]);
     }
 
+    // Zwei Tackte warten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Zum Beenden der Übertragung Strobeleitung wieder auf 1 ziehen
     gpio_set_high(&serial_stb);
 }
 
@@ -267,24 +287,29 @@ Die Antwort auf diesen Befehl wird dann im Parameter data abgespeichert.
 \bug  keine Fehler bekannt
 **********************************************************************/
 void serial_read(uint8_t command, uint8_t *data, uint32_t length) {
-    // start transmission
+	// Strobeleitung muss zu begin der Übertragung auf 0 gezogen werden
     gpio_set_low(&serial_stb);
 
+    // Zwei Tackte warten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Komandobyte schicken
     write_byte(command);
 
+    // Zwei Tackte warten
     wait_for_interrupt();
     wait_for_interrupt();
 
+    // Antwortbytes lesen
     for (int i = 0; i < length; ++i) {
         data[i] = read_byte();
     }
 
+    // Zwei Tackte warten
     wait_for_interrupt();
     wait_for_interrupt();
-    // end transmission
+    // Strobe wird High gesetzt um Übertragung zu beenden
     gpio_set_high(&serial_stb);
 }
 
@@ -300,6 +325,7 @@ Diese Funktion de-initialisiert den Timer 2.
 \bug  keine Fehler bekannt
 **********************************************************************/
 void serial_deinit() {
+	// Timer 2 auschalten
     timer_deinit_timer2();
 }
 
