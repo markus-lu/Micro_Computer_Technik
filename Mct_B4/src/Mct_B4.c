@@ -250,7 +250,7 @@ void check_time_change(struct State *state) {
     // Zeit von der RTC lesen
     rtc_read_time(&new_time);
     // Wenn Zeit sich geändert hat
-    if (compare_times(&state->time, &new_time)) {
+    if (times_are_different(&state->time, &new_time)) {
     	// Wenn sich die Minuten geändert haben
         if (state->time.minutes != new_time.minutes) {
         	// Neue Zeit abspeichern
