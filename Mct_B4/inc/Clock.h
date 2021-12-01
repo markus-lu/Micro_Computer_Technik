@@ -12,6 +12,7 @@
 
 #include "types.h"
 #include "State.h"
+#include "LEDKey.h"
 #include "RTC.h"
 
 #define BUTTON_TOGGLE_TIME_DATE BUTTON_0
