@@ -7,9 +7,26 @@
 #define Dir_IN 0b1
 #define Dir_OUT 0b0
 
-#define LED_ON  0b0
-#define LED_OFF 0b1
 
+
+/**
+ *  \file    I2CLEDs.c
+*/
+
+
+/*********************************************************************/
+ /**
+ Diese Funktion Initialisiert den I²C Portexpander für die LEDs.
+
+ \param	-
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void i2cleds_init() {
 	// Array zum Daten in I2C SChreiben
     uint8_t configuration[2];
@@ -32,6 +49,24 @@ void i2cleds_init() {
     i2c_write(PCA9539_ADDRESS, configuration, 2);
 }
 
+
+/*********************************************************************/
+ /**
+ Diese Funktion schaltet für die Anzahl der aktivierten Events die
+ entsprechende Anzahl an LEDs über den I²C Portexpander ein.
+
+ \param	event_count
+ 	 	Interger der die Anzahl der zurzeit aktivierten Events enthält
+ 	 	(0 - 15)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void i2cleds_set_leds(uint32_t event_count) {
     uint16_t leds = 0;
 
