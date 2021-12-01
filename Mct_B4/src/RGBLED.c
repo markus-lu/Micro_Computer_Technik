@@ -1,5 +1,23 @@
 #include "RGBLED.h"
 
+/**
+ *  \file     RGBLED.c
+*/
+
+
+/*********************************************************************/
+ /**
+ Diese Funktion Initialisiert die benötigten GPIO Pins für die RGB-LED.
+
+ \param	-
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void rgbled_init() {
 	// Initialisierung der GPIO PINS für RGB LED
     gpio_init_pin(&rgbled_red);
@@ -9,6 +27,20 @@ void rgbled_init() {
     rgbled_set_red();
 }
 
+
+/*********************************************************************/
+ /**
+ Diese Funktion schaltet die RGB-LED grün.
+
+ \param	-
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void rgbled_set_green() {
 	// Rot aus
     gpio_set_high(&rgbled_red);
@@ -18,6 +50,19 @@ void rgbled_set_green() {
     gpio_set_low(&rgbled_green);
 }
 
+/*********************************************************************/
+ /**
+ Diese Funktion schaltet die RGB-LED rot.
+
+ \param	-
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void rgbled_set_red() {
 	// Grün aus
     gpio_set_high(&rgbled_green);
@@ -27,18 +72,52 @@ void rgbled_set_red() {
     gpio_set_low(&rgbled_red);
 }
 
+
+/*********************************************************************/
+ /**
+ Diese Funktion schaltet die RGB-LED blau.
+
+ \param	-
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void rgbled_set_blue() {
     gpio_set_high(&rgbled_green);
     gpio_set_high(&rgbled_red);
     gpio_set_low(&rgbled_blue);
 }
 
+
+/*********************************************************************/
+ /**
+ Diese Funktion schaltet die RGB-LED aus.
+
+ \param	-
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 void rgbled_off() {
     gpio_set_high(&rgbled_green);
     gpio_set_high(&rgbled_red);
     gpio_set_high(&rgbled_blue);
 }
 
+/*********************************************************************/
+/**
+Dieses Struct repräsentiert die Konfiguration für die rote Komponente der RGB-LED.
+
+\version 30.11.2021
+**********************************************************************/
 const struct GPIOPin rgbled_red = {
         .port = 0,
         .pin = 22,
@@ -47,6 +126,13 @@ const struct GPIOPin rgbled_red = {
         .open_drain = false,
 };
 
+
+/*********************************************************************/
+/**
+Dieses Struct repräsentiert die Konfiguration für die grüne Komponente der RGB-LED.
+
+\version 30.11.2021
+**********************************************************************/
 const struct GPIOPin rgbled_green = {
         .port = 3,
         .pin = 25,
@@ -55,6 +141,13 @@ const struct GPIOPin rgbled_green = {
         .open_drain = false,
 };
 
+
+/*********************************************************************/
+/**
+Dieses Struct repräsentiert die Konfiguration für die blaue Komponente der RGB-LED.
+
+\version 30.11.2021
+**********************************************************************/
 const struct GPIOPin rgbled_blue = {
         .port = 3,
         .pin = 26,

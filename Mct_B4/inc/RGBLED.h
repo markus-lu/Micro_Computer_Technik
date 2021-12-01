@@ -15,6 +15,10 @@
 #include "types.h"
 #include "GPIO.h"
 
+/**
+ *  \file     RGBLED.h
+*/
+
 extern const struct GPIOPin rgbled_red;
 extern const struct GPIOPin rgbled_green;
 extern const struct GPIOPin rgbled_blue;
