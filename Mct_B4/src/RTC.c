@@ -8,12 +8,12 @@
 /*********************************************************************/
 /**
 Diese Funktion wandelt die vom RTC kommende Datenstruktur für die Uhrzeit
-in ein für den Menschen lesbares vormat um.
+in ein für den Menschen lesbares Format um.
 
 \param  byte
-		Integer der die vom RTC ausgelesene Uhrzeit enthällt
+		Integer der die vom RTC ausgelesene Uhrzeit im BD-Code enthält
 
-\return  Integer der auch die Uhrzeit aber für menschen lesbar enthällt
+\return  Integer der auch die Uhrzeit aber für Menschen lesbar enthält
 
 \version 30.11.2021
 
@@ -32,13 +32,13 @@ static uint8_t decode_bcd(uint8_t byte) {
 
 /*********************************************************************/
 /**
-Diese Funktion wandelt die Für menschen lesbare Uhrzeit in ein Byteformat um,
-dammit der RTC beschieben werden kann.
+Diese Funktion wandelt die für Menschen lesbare Uhrzeit in BDC um,
+damit der RTC beschieben werden kann.
 
 \param  number
-		Integer der die für Menschen lesbare Uhrzeit enthällt
+		Integer der die für Menschen lesbare Uhrzeit enthält
 
-\return  Integer der die Tempeartur in einem für den RTC lesbarem Format enthällt
+\return  Integer der die Tempeartur in einem für die RTC lesbarem Format enthält
 
 \version 30.11.2021
 
@@ -55,16 +55,16 @@ static uint8_t encode_bcd(uint8_t number) {
 /*********************************************************************/
 /**
 Diese Funktion wandelt die vom RTC kommende Datenstruktuen für die Uhrzeit
-in ein für den Menschen lesbares vormat um und Speichert diese ab. Die eigentliche
-Decodierung ist in eine Externe Methode ausgelagert.
+in ein für den Menschen lesbares Format um und speichert Diese ab. Die eigentliche
+Decodierung ist in eine externe Methode ausgelagert.
 
 \param  bytes
-		Pointer zu einem Integer Array welches die ausgelesenden Daten von der RTC enthällt
+		Pointer zu einem Integer Array welches die ausgelesenden Daten von der RTC enthält
 		(Wertebereich siehe Datenblatt vom DS3231)
 
 \param	dateTime
 		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
-		lesbar enthällt
+		lesbar enthält
 		(Wertebereich in der Struct-Defenition)
 
 \return  -
@@ -91,17 +91,17 @@ static void decode_time(uint8_t *bytes, struct DateTime *dateTime) {
 
 /*********************************************************************/
 /**
-Diese Funktion wandelt die für den MEnschen lesbare Datenstruktuen für die Uhrzeit
-in ein für den RTC lesbares Vormat um und speichert Diese ab. Die eigentliche
-Decodierung ist in eine Externe Methode ausgelagert.
+Diese Funktion wandelt die für den Menschen lesbare Datenstruktuen für die Uhrzeit
+in ein für den RTC lesbares Format um und speichert Diese ab. Die eigentliche
+Decodierung ist in eine externe Methode ausgelagert.
 
 \param  bytes
-		Pointer zu einem Integer Array welches die umgewandelten Daten für den RTC enthällt
+		Pointer zu einem Integer Array welches die umgewandelten Daten für den RTC enthält
 		(Wertebereich siehe Datenblatt vom DS3231)
 
 \param	dateTime
 		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
-		lesbar enthällt
+		lesbar enthält
 		(Wertebereich in der Struct-Defenition)
 
 \return  -
@@ -143,8 +143,8 @@ void rtc_init() {
 /**
 Diese Funktion setzt die Adresse für den I²C Portexpander und schreibt sie.
 
-\param	adress
-		Integer der die zu schreibende Adresse enthällt
+\param	address
+		Integer der die zu schreibende Adresse enthält
 
 \return  -
 
@@ -165,7 +165,7 @@ static void set_register_address(uint8_t address) {
 
 /*********************************************************************/
 /**
-Diese Funktion Liest die aktuelle Tempeartur vom RTC.
+Diese Funktion liest die aktuelle Tempeartur vom RTC.
 
 \return	temperature
    	   	Integer der die gelesende Tempeartur enthält
@@ -200,7 +200,7 @@ Diese Funktion liest die aktuelle Zeit vom RTC.
 
 \param	time
 		Pointer zu einem DateTime Struct, welches die Uhrzeit und Datum für Menschen
-		lesbar enthällt
+		lesbar enthält
 		(Wertebereich in der Struct-Defenition)
 
 \return  -
