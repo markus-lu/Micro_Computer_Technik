@@ -4,30 +4,6 @@
  *  \file     I2C.c
 */
 
-/**
- *  \page I2C
- *
- * Die Funktionen in diesem Modul existieren zur Vereinfachung der Benutzung des I2C Buses.
- * Die Funktionen sind so geschrieben, dass deren Falsch-Verwendung möglichst schwer ist.
- *
- *  \section i2c_sec1 Unterprogramme
- *
- *  \subsection i2c_sec1_1 i2c_write
- *  Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,
- *  welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu schreiben.
- *
- *  \subsection i2c_sec1_2 i2c_read
- *  Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,
- *  welche es erlaubt ein Array an Bytes mit einem Funktionsaufruf zu lesen.
- *
- *  <HR>
- *
- *   \author	Markus Luckau, Simon Struck
- *   \date		29.11.2021
- *   \version 	1.0             Fertige Version
- */
-
-
 /*********************************************************************/
 /**
 Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,
