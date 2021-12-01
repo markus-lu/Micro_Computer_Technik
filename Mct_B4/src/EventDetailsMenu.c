@@ -7,10 +7,25 @@
  *  \file     EventsDetailsMenu.c
 */
 
-// Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch Blöcke ersetzt
+
+/**
+ * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch einen Block ersetzt
+ */
 #define SELECTED1(index, normal) (state->selected_event_detail == index && state->blink) ? '\xFF' : (normal)
+
+/**
+ * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch zwei Blöcke ersetzt
+ */
 #define SELECTED2(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF") : (normal)
+
+/**
+ * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch drei Blöcke ersetzt
+ */
 #define SELECTED3(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF" "\xFF") : (normal)
+
+/**
+ * Wenn Eventdetail am Index ausgewählt ist und Blink wahr ist, wird die ausgewälte Stelle durch vier Blöcke ersetzt
+ */
 #define SELECTED4(index, normal) (state->selected_event_detail == index && state->blink) ? ("\xFF" "\xFF" "\xFF" "\xFF") : (normal)
 
 static void handle_back(struct State *state);
@@ -70,7 +85,7 @@ void event_details_menu_handle_keypress(struct State *state, uint8_t buttons) {
 
  Wenn mann im Bearbeitungsmodus ist, verlässt man diesen.
 
- Wenn mann nicht im Bearbeitungs ist, wechselt mann in das Events-Menü
+ Wenn mann nicht im Bearbeitungsmodus ist, wechselt mann in das Events-Menü
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
@@ -104,7 +119,13 @@ static void handle_back(struct State *state) {
 
 /*********************************************************************/
  /**
+Diese Funktion verarbeitet den Tastendruck Hoch.
 
+Wenn man im Bearbeitungsmodus ist, werden je nachdem, was ausgewält ist, die
+Stunden oder Minuten hochgezäht.
+
+Wenn man nicht im Bearbeitungsmodus ist, wird das Blinken aus gemacht und man
+springt zum nächsten Event-Detail.
 
  \param state
  		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
@@ -128,7 +149,7 @@ static void handle_up(struct State *state) {
     	// Wenn Stunde oder Minute ausgewählt ist
         switch (state->selected_event_detail) {
         	// Bei ausgewälter Stunde
-            case SELECTED_HOUR:
+            case SELECTED_HOURS:
             	// Wenn kleiner als 23 Uhr
                 if (event->hour < 23) {
                 	// Stunden hochzälen
@@ -142,7 +163,7 @@ static void handle_up(struct State *state) {
                 event_details_menu_update_menu(state);
                 break;
 			// Bei ausgewählter Minute
-            case SELECTED_MINUTE:
+            case SELECTED_MINUTES:
             	// Wenn Minute Kleiner als 59
                 if (event->minute < 59) {
                 	// Minuten hochzälen
@@ -174,6 +195,29 @@ static void handle_up(struct State *state) {
     }
 }
 
+/*********************************************************************/
+ /**
+Diese Funktion verarbeitet den Tastendruck Runter.
+
+Wenn man im Bearbeitungsmodus ist, werden je nachdem was ausgewält ist, die
+Stunden oder Minuten runtergezäht.
+
+Wenn man nicht im Bearbeitungsmodus ist, wird das Blinken aus gemacht und man
+springt zum vorherigen Event-Detail.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 static void handle_down(struct State *state) {
 	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
@@ -182,7 +226,7 @@ static void handle_down(struct State *state) {
     if (state->menu_event_time_edit_mode) {
         switch (state->selected_event_detail) {
         	// Bei ausgewälter Stunde
-            case SELECTED_HOUR:
+            case SELECTED_HOURS:
             	// Wenn größer als 0 Uhr
                 if (event->hour > 0) {
                 	// Stunden runterzählen
@@ -196,7 +240,7 @@ static void handle_down(struct State *state) {
                 event_details_menu_update_menu(state);
                 break;
 			// Bei ausgewälter Minute
-            case SELECTED_MINUTE:
+            case SELECTED_MINUTES:
             	// Wenn minute größer als 0
                 if (event->minute > 0) {
                 	// Minute runterzälen
@@ -227,6 +271,33 @@ static void handle_down(struct State *state) {
 	}
 }
 
+/*********************************************************************/
+ /**
+Diese Funktion verarbeitet den Tastendruck OK.
+Je nachdem welches Eventdetail ausgewält ist, wird der Tastendruck unterschiedlich verarbeitet.
+
+Wenn ein Wochentag ausgewält ist wird dieser aktiviert (Großbuchstaben) oder deaktiviert (kleinbuchstaben)
+
+Wenn die Uhrzeit (Stunden oder Minuten) ausgewählt ist, wird der Bearbeitungsmodus aktiviert.
+Sollte Dieser bereits aktiviert sein, wird er deaktiviert.
+
+Wenn der Schaltzustand ausgewält ist, wird dieser aktiviert oder, falls dies schon der Fall sein sollte, deaktiviert.
+
+Wenn Aktiv ausgewählt ist, wird das gesammte Event aktiviert oder, falls dies schon der Fall sein sollte, deaktiviert.
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  keine Fehler bekannt
+ **********************************************************************/
 static void handle_ok(struct State *state) {
 	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
@@ -257,8 +328,8 @@ static void handle_ok(struct State *state) {
             event->weekdays ^= Sunday;
             break;
 		// Bei ausgewälter Uhrzeit
-        case SELECTED_HOUR:
-        case SELECTED_MINUTE:
+        case SELECTED_HOURS:
+        case SELECTED_MINUTES:
         	// Ein und auschalten des Bearbeitungsmodus
             state->menu_event_time_edit_mode = !state->menu_event_time_edit_mode;
             break;
@@ -275,6 +346,24 @@ static void handle_ok(struct State *state) {
     event_details_menu_update_menu(state);
 }
 
+
+/*********************************************************************/
+ /**
+Diese Funktion schreibt das Events Detail Menü auf das LC-Display
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  Wenn bei Schaltzustand von aus auf an gewechselt wird, blinken drei Felder, obwohl nur zwei Felder benötigt werden.
+ **********************************************************************/
 void event_details_menu_draw_menu(struct State *state) {
 	// Pointer zum aktuellen Event holen
     struct Event *event = &state->event_data[state->selected_event];
@@ -301,14 +390,14 @@ void event_details_menu_draw_menu(struct State *state) {
     // Uhrzeit ausgeben
     lcd_write_string("Zeit: ");
     // Zehner
-    lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour / 10 + '0'));
+    lcd_write_char(SELECTED1(SELECTED_HOURS, event->hour / 10 + '0'));
     // Einer
-    lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour % 10 + '0'));
+    lcd_write_char(SELECTED1(SELECTED_HOURS, event->hour % 10 + '0'));
     lcd_write_char(':');
     // Zehner
-    lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute / 10 + '0'));
+    lcd_write_char(SELECTED1(SELECTED_MINUTES, event->minute / 10 + '0'));
     // Einer
-    lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute % 10 + '0'));
+    lcd_write_char(SELECTED1(SELECTED_MINUTES, event->minute % 10 + '0'));
 
     // Cursor setzen
     lcd_gotoxy(1, 3);
@@ -323,6 +412,25 @@ void event_details_menu_draw_menu(struct State *state) {
     lcd_write_string(SELECTED4(SELECTED_ENABLED, event->enabled ? "  ja" : "nein"));
 }
 
+
+/*********************************************************************/
+ /**
+Diese Funktion aktualisiert das Events Details Menü.
+Hierbei werden nur die Zellen neu beschrieben, die sich verändert haben
+
+ \param state
+ 		Ein Pointer für das State Struct welches den Zustandspeicher für die Menüs
+		und die Uhr enthält
+		(Wertebereich in der Struct-Defenition)
+
+
+ \return  -
+
+ \version 30.11.2021
+
+ \todo -
+ \bug  Wenn bei Schaltzustand von aus auf an gewechselt wird, blinken drei Felder, obwohl nur zwei Felder benötigt werden.
+ **********************************************************************/
 void event_details_menu_update_menu(struct State *state) {
 	// Pointer zum aktuell ausgewählten Event raussuchen
     struct Event *event = &state->event_data[state->selected_event];
@@ -357,15 +465,15 @@ void event_details_menu_update_menu(struct State *state) {
             lcd_gotoxy(18, 1);
             lcd_write_string(SELECTED2(SELECTED_SUNDAY, ((event->weekdays & Sunday) != 0) ? "SO" : "so"));
             break;
-        case SELECTED_HOUR:
+        case SELECTED_HOURS:
             lcd_gotoxy(7, 2);
-            lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour / 10 + '0'));
-            lcd_write_char(SELECTED1(SELECTED_HOUR, event->hour % 10 + '0'));
+            lcd_write_char(SELECTED1(SELECTED_HOURS, event->hour / 10 + '0'));
+            lcd_write_char(SELECTED1(SELECTED_HOURS, event->hour % 10 + '0'));
             break;
-        case SELECTED_MINUTE:
+        case SELECTED_MINUTES:
             lcd_gotoxy(10, 2);
-            lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute / 10 + '0'));
-            lcd_write_char(SELECTED1(SELECTED_MINUTE, event->minute % 10 + '0'));
+            lcd_write_char(SELECTED1(SELECTED_MINUTES, event->minute / 10 + '0'));
+            lcd_write_char(SELECTED1(SELECTED_MINUTES, event->minute % 10 + '0'));
             break;
         case SELECTED_ON_OR_OFF:
             lcd_gotoxy(16, 3);
