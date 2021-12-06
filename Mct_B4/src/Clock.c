@@ -199,15 +199,15 @@ void clock_check_keypress(struct State *state) {
 				break;
 			// Wenn der Wochentag ausgewält ist
 			case SELECTED_WEEKDAY:
-				// Wenn der Wochentag kleiner als Sonnatg ist
-				if (state->time.weekday < SUNDAY) {
-					// Wochentag um Einen erhöhen
-					state->time.weekday++;
-				// Wen der Wochentag Sontag ist
-				} else {
-					// Wochentag auf Montag setzen
-					state->time.weekday = MONDAY;
-				}
+                // Wenn Wochentag größer als Montag
+                if (state->time.weekday > MONDAY) {
+                    // Einen Wochentag abziehen
+                    state->time.weekday--;
+                    // Wenn Wochentag Montag ist
+                } else {
+                    // Auf Sontag setzen
+                    state->time.weekday = SUNDAY;
+                }
 				break;
 			}
 			break;
@@ -246,15 +246,15 @@ void clock_check_keypress(struct State *state) {
 				break;
 			// Wenn der Wochentag ausgewält ist
 			case SELECTED_WEEKDAY:
-				// Wenn Wochentag größer als Montag
-				if (state->time.weekday > MONDAY) {
-					// Einen Wochentag abziehen
-					state->time.weekday--;
-				// Wenn Wochentag Montag ist
-				} else {
-					// Auf Sontag setzen
-					state->time.weekday = SUNDAY;
-				}
+                // Wenn der Wochentag kleiner als Sonnatg ist
+                if (state->time.weekday < SUNDAY) {
+                    // Wochentag um Einen erhöhen
+                    state->time.weekday++;
+                    // Wen der Wochentag Sontag ist
+                } else {
+                    // Wochentag auf Montag setzen
+                    state->time.weekday = MONDAY;
+                }
 				break;
 			}
 			break;
@@ -362,7 +362,7 @@ void clock_draw_time(struct State *state) {
 		segments[7] = SEGMENT_DIGITS[state->time.year % 10];
 	}
 	// Bit für Wochentag setzen und Schiften
-	uint8_t weekday = (1 << state->time.weekday);
+	uint8_t weekday = (1 << (7 - state->time.weekday));
 
 	// Wenn Bearbeitungsmodus an ist und Blinken an ist
 	if (state->clock_edit_mode && state->blink) {
