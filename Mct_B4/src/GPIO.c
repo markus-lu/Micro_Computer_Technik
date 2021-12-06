@@ -35,7 +35,7 @@ void gpio_set_pin_sel(const struct GPIOPin *pin) {
     } else {
     	// wenn 16 - 31
     	// ein Pinselregister weiterspringen
-        *pinsel += 1;
+        pinsel += 1;
     	// GPIO Modus an die Bits für den Pin schreiben
         *pinsel |= (MODE_GPIO << ((pin->pin - 16) * 2));
     }
@@ -73,7 +73,7 @@ void gpio_set_pin_mode(const struct GPIOPin *pin) {
     } else {
     	// wenn 16 - 31
     	// ein Pinmoderegister weiterspringen
-        *pinmode += 1;
+        pinmode += 1;
         // GPIO Modus an die Bits für den Pin schreiben
         // Mögliche Pull-Ups oder Pull-Downs defenieren
         *pinmode |= (pin->mode << ((pin->pin - 16) * 2));
