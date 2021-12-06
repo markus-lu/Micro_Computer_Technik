@@ -26,7 +26,9 @@ Die GPIOPin's STB und CLK werden beide auf HIGH gesetzt außerhalb einer Übertr
 void serial_init() {
 	// GPIO Pins initialisieren
     gpio_init_pin(&serial_clk);
+    // Data in óut
     gpio_init_pin(&serial_dio);
+    // Strobe
     gpio_init_pin(&serial_stb);
 
     // Startwerte für GPIO-Pins setzen
@@ -35,6 +37,8 @@ void serial_init() {
 
     // Timer 2 initialisieren
     timer_init_timer2();
+    // prescaler 48 mal durcklaufen
+    // timer 2 ticket
     timer_set_prescaler(LPC_TIM2, SystemCoreClock / SERIAL_CLOCK);
     timer_enable_match_interrupt(LPC_TIM2, 1, 2);
     // Timer 2 starten

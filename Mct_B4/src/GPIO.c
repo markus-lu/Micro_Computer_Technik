@@ -159,8 +159,11 @@ Diese Funktion nutzt Hilfsfunktionen um die folgenden Aktionen durchzuführen:
 **********************************************************************/
 void gpio_init_pin(const struct GPIOPin *pin) {
 	// Initialisierung GPIO
+	// Pin als GPIO verwenden
 	gpio_set_pin_sel(pin);
+	// Pull up / Pull Down
     gpio_set_pin_mode(pin);
+    // Open Drain
     gpio_set_pin_open_drain(pin);
 
     //Rausuchen der Richtigen GPIO Adresse für den Port
@@ -195,6 +198,7 @@ void gpio_init_pin(const struct GPIOPin *pin) {
 **********************************************************************/
 void gpio_set_high(const struct GPIOPin *pin) {
 	// Pin mit dem Register FIOSET einschalten
+	// Nullen werden Ignoriert
     get_gpio_port(pin->port)->FIOSET = (1 << pin->pin);
 }
 
@@ -215,6 +219,7 @@ void gpio_set_high(const struct GPIOPin *pin) {
 **********************************************************************/
 void gpio_set_low(const struct GPIOPin *pin) {
 	// Pin mit dem Register FIOCLR ausschalten
+	// Nullen werden Ignoriert
     get_gpio_port(pin->port)->FIOCLR = (1 << pin->pin);
 }
 
