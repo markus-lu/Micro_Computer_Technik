@@ -75,7 +75,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_clock_8c.html",
-"_state_8h.html"
+"_timer_8c.html#a5f946664d6639ecebe16ab3742bc2c76"
 ];
 
 var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';

@@ -5,23 +5,6 @@
  *  \file     FrontIO.c
 */
 
-/*********************************************************************/
-/**
- \brief Diese Funktion initialisiert I²C für die IO auf der Frontplatte
-
-\param  -
-
-\return -
-
-\version 20.11.2021
-
-\todo -
-\bug  keine Fehler bekannt
-**********************************************************************/
-void frontio_init() {
-	// Initialisierung I2C
-    i2c_init(I2C_SPEED);
-}
 
 /*********************************************************************/
 /**

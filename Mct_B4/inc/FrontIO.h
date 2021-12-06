@@ -18,8 +18,6 @@
  *  \file     FrontIO.h
 */
 
-void frontio_init(void);
-
 void frontio_set_leds(uint8_t leds);
 
 uint8_t frontio_get_buttons(void);

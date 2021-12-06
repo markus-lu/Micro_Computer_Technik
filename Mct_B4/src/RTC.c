@@ -130,22 +130,6 @@ static void encode_time(struct DateTime *dateTime, uint8_t *bytes) {
 
 /*********************************************************************/
 /**
- \brief Diese Funktion initialisiert den I²C Portexpander für die RTC
-
-\return  -
-
-\version 30.11.2021
-
-\todo -
-\bug  keine Fehler bekannt
-**********************************************************************/
-void rtc_init() {
-    i2c_init(I2C_SPEED);
-}
-
-
-/*********************************************************************/
-/**
  \brief Diese Funktion setzt die Adresse für den I²C Portexpander und schreibt sie.
 
 \param	address

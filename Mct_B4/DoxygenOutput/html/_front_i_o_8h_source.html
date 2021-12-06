@@ -106,19 +106,16 @@ $(document).ready(function(){initNavTree('_front_i_o_8h_source.html','');});
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;types.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_p_i_o_8h.html">GPIO.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_front_i_o_8h.html#a8c693ef2f163fbef4081cd0a45dfc8e8">frontio_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_front_i_o_8h.html#ad5ff63c1eff8aaa4e2cf026b44a1630d">frontio_set_leds</a>(uint8_t leds);</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_front_i_o_8h.html#ad5ff63c1eff8aaa4e2cf026b44a1630d">frontio_set_leds</a>(uint8_t leds);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;uint8_t <a class="code" href="_front_i_o_8h.html#aaa631d9769dcfcc716d62e492cf7ba06">frontio_get_buttons</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;uint8_t <a class="code" href="_front_i_o_8h.html#aaa631d9769dcfcc716d62e492cf7ba06">frontio_get_buttons</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="a_g_p_i_o_8h_html"><div class="ttname"><a href="_g_p_i_o_8h.html">GPIO.h</a></div></div>
-<div class="ttc" id="a_front_i_o_8h_html_ad5ff63c1eff8aaa4e2cf026b44a1630d"><div class="ttname"><a href="_front_i_o_8h.html#ad5ff63c1eff8aaa4e2cf026b44a1630d">frontio_set_leds</a></div><div class="ttdeci">void frontio_set_leds(uint8_t leds)</div><div class="ttdoc">Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte.</div><div class="ttdef"><b>Definition:</b> FrontIO.c:41</div></div>
-<div class="ttc" id="a_front_i_o_8h_html_aaa631d9769dcfcc716d62e492cf7ba06"><div class="ttname"><a href="_front_i_o_8h.html#aaa631d9769dcfcc716d62e492cf7ba06">frontio_get_buttons</a></div><div class="ttdeci">uint8_t frontio_get_buttons(void)</div><div class="ttdoc">Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte.</div><div class="ttdef"><b>Definition:</b> FrontIO.c:67</div></div>
-<div class="ttc" id="a_front_i_o_8h_html_a8c693ef2f163fbef4081cd0a45dfc8e8"><div class="ttname"><a href="_front_i_o_8h.html#a8c693ef2f163fbef4081cd0a45dfc8e8">frontio_init</a></div><div class="ttdeci">void frontio_init(void)</div><div class="ttdoc">Diese Funktion initialisiert I²C für die IO auf der Frontplatte.</div><div class="ttdef"><b>Definition:</b> FrontIO.c:21</div></div>
+<div class="ttc" id="a_front_i_o_8h_html_ad5ff63c1eff8aaa4e2cf026b44a1630d"><div class="ttname"><a href="_front_i_o_8h.html#ad5ff63c1eff8aaa4e2cf026b44a1630d">frontio_set_leds</a></div><div class="ttdeci">void frontio_set_leds(uint8_t leds)</div><div class="ttdoc">Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte.</div><div class="ttdef"><b>Definition:</b> FrontIO.c:24</div></div>
+<div class="ttc" id="a_front_i_o_8h_html_aaa631d9769dcfcc716d62e492cf7ba06"><div class="ttname"><a href="_front_i_o_8h.html#aaa631d9769dcfcc716d62e492cf7ba06">frontio_get_buttons</a></div><div class="ttdeci">uint8_t frontio_get_buttons(void)</div><div class="ttdoc">Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte.</div><div class="ttdef"><b>Definition:</b> FrontIO.c:50</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

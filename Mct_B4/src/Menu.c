@@ -27,10 +27,6 @@
  \bug  keine Fehler bekannt
  **********************************************************************/
 void menu_init () {
-	// Initialisierung Frontplatte
-    frontio_init();
-    // Initialisierung LCD
-    lcd_init(LCD_LINES, I2C_SPEED);
     // LCD Hintergrundbeleuchtung einschalten
     lcd_bglight(0xFF);
     // Curser des LCD auschalten

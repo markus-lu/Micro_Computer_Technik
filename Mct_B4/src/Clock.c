@@ -45,10 +45,6 @@
  \bug  keine Fehler bekannt
  **********************************************************************/
 void clock_init(struct State *state) {
-	// Initialisierung LED & Key
-	ledkey_init();
-	// Initialisierung RTC
-	rtc_init();
 	// Helligkeit 7Seg
 	ledkey_set_brightness(state->clock_brightness, true);
 }

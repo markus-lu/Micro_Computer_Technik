@@ -27,7 +27,6 @@ var _l_e_d_key_8h =
     [ "WRITE_DATA_COMMAND", "_l_e_d_key_8h.html#a99ddfbc68629c7389eb04d5cd9f588c6", null ],
     [ "ledkey_deinit", "_l_e_d_key_8h.html#a5addf94257e9691036c67e4f037d8ac4", null ],
     [ "ledkey_get_buttons", "_l_e_d_key_8h.html#a1c2a1ffcfc0271cd0179ce09faa7c2ee", null ],
-    [ "ledkey_init", "_l_e_d_key_8h.html#ada276a4970da34708126635a91bf8803", null ],
     [ "ledkey_set_brightness", "_l_e_d_key_8h.html#ab84623ed752fe4421adc8a01b5036108", null ],
     [ "ledkey_set_display_data", "_l_e_d_key_8h.html#a860fa1251f4ce2aa3bfa2359458c8081", null ]
 ];

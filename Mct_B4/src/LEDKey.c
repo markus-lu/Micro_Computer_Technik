@@ -7,24 +7,6 @@
 
 /*********************************************************************/
 /**
-\brief Diese Funktion initialisiert das Custom Serial Protocol für das LED&KEY.
-
-\param  -
-
-\return -
-
-\version 20.11.2021
-
-\todo -
-\bug  keine Fehler bekannt
-**********************************************************************/
-void ledkey_init() {
-	// Initialisierung Serielles Protokoll
-    serial_init();
-}
-
-/*********************************************************************/
-/**
 \brief Diese Funktion liest aus, welche Taster auf dem LED&KEY gedrückt sind.
 
 \param  -

@@ -317,7 +317,10 @@ int main() {
     printf("Hello World!!!\n");
     // Initialisierung
 
+    // LCD und I2C initialisieren
+    lcd_init(4, I2C_FM);
     rgbled_init();
+    serial_init();
     menu_init();
     i2cleds_init();
     // Timer für Displayblinken

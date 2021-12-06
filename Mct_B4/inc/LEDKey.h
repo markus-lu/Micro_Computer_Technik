@@ -123,8 +123,6 @@
  */
 #define BUTTON_7 (1 << 1)
 
-void ledkey_init(void);
-
 uint8_t ledkey_get_buttons(void);
 
 void ledkey_set_display_data(uint8_t leds, const uint8_t *digits);

@@ -87,7 +87,6 @@ struct DateTime {
     uint8_t year;
 };
 
-void rtc_init(void);
 
 uint16_t rtc_read_temp(void);
 
