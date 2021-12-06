@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_A3: A3: Rechenmaschine</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_A3
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('index.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">A3: Rechenmaschine </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Dies ist unsere Lösung zu Aufgabe A3: Rechenmaschine.<br  />
+<br  />
+ Dieses Programm multipliziert zwei Zahlen miteinander, die über Schalter binär angegeben werden.<br  />
+</p>
+<hr  />
+<h1><a class="anchor" id="sec1"></a>
+Aufgabenstellung</h1>
+<p>Programmierung einer einfachen Rechenmaschine in der Programmiersprache C auf dem Mikrocontroller-Entwicklungssystem MCTlite.<br  />
+ Nach dem Programmstart soll zunächst mittels des Tasters TA1 eine an den Eingängen E0 .. E3 angelegte Binärzahl als Multiplikator A eingelesen werden.<br  />
+ Danach wird Multiplikand B an E0 .. E3 angelegt und über den Taster TA2 eingelesen.<br  />
+ Im Anschluss daran wird das Produkt C = A * B gebildet und auf den 8 gelben LEDs ausgegeben.<br  />
+ Diese LEDs können, optional, durch den Taster TA3 gelöscht werden.<br  />
+ Danach beginnt das Programm wieder von vorn.<br  />
+</p>
+<h1><a class="anchor" id="sec2"></a>
+Unterprogramme</h1>
+<h2><a class="anchor" id="sec2_1"></a>
+Initialisierung</h2>
+<p>Die Initialisierung des verwendeten GPIO-Ports wird in der Funktion "io_init" gemacht.</p>
+<h2><a class="anchor" id="sec2_2"></a>
+Ablaufsteuerung</h2>
+<p>Dieses Programm multipliziert zwei Zahlen miteinander, die über Schalter Binär angegeben werden.<br  />
+ Die main-Funktion kontrolliert den Programmablauf und<br  />
+ ruft die folgenden Funktionen der Reihe nach auf.</p>
+<h2><a class="anchor" id="sec2_3"></a>
+Einlesen der Buttons und Schalter</h2>
+<p>Das Einlesen der gedrückten Schalter und Taster wird in der Funktion "getkey" gemacht.</p>
+<h2><a class="anchor" id="sec2_4"></a>
+Verarbeiten der Eingaben</h2>
+<p>Funktion zum Speichern der Multiplikanten und Berechnen des Produkts wird in der Funktion "keyhandler" abgearbeitet.</p>
+<h2><a class="anchor" id="sec2_5"></a>
+Anzeigen des Produkts</h2>
+<p>Die Ausgabe des Produkts auf die LEDs wird in der Funktion "show_result" gemacht.</p>
+<h2><a class="anchor" id="sec2_6"></a>
+Zeitverzögerung</h2>
+<p>Zum Erzeugen einer variablen Verzögerungszeit wird die Funktion "delay" verwendet.<br  />
+ Diese wird aber im Hauptprogramm nicht benutzt.</p>
+<hr  />
+<dl class="section author"><dt>Autor</dt><dd>Markus Luckau, Simon Struck </dd></dl>
+<dl class="section date"><dt>Datum</dt><dd>25.10.2021 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 Fertige Version </dd></dl>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

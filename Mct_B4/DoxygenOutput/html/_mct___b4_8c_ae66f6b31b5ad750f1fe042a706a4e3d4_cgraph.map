@@ -1,0 +1,52 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title="Dies ist das Hauptprogramm." alt="" coords="5,705,56,732"/>
+<area shape="rect" id="node2" href="$_mct___b4_8c.html#a5ae5353196e0e5d7f48246b3c7531088" title="Diese Funktion checkt ob die Tempeartur sich verändert hat und speichert bei Veränderungen diese ab...." alt="" coords="104,25,287,52"/>
+<area shape="rect" id="node4" href="$_mct___b4_8c.html#a1892885fa26978076e116537c500403f" title="Diese Funktion checkt ob die Zeit sich geändert hat und speichert bei Veränderungen diese ab...." alt="" coords="126,183,265,209"/>
+<area shape="rect" id="node10" href="$_clock_8c.html#a8a6ae8ff6349a08c060c7146cdd754bf" title="Diese Funktion initialisiert alle für die Clock nötigen Komponenten. Zusätzlich wird die Helligkeit d..." alt="" coords="157,487,234,513"/>
+<area shape="rect" id="node14" href="$_timer_8c.html#ab286e5a69ffcf6c62badf3bd824df97b" title="Diese Funktion aktiviert uns setzt einen Matchwert für einen Timer." alt="" coords="773,262,911,303"/>
+<area shape="rect" id="node15" href="$_timer_8c.html#ada112b39094c67ce8fc60a726d14b237" title="Diese Funktion setzt den Prescaler für einen Timer." alt="" coords="774,349,910,376"/>
+<area shape="rect" id="node16" href="$_timer_8c.html#abb311ba8892c2536d4818edb437f6108" title="Diese Funktion startet einen Timer." alt="" coords="782,405,902,432"/>
+<area shape="rect" id="node20" href="$_clock_8c.html#a471decc9a7763edf9abae04c62625142" title="Diese Funktion chekt ob ein Taster gedrückt wurde und lässt die 7Seg Anzeige neu zeichnen." alt="" coords="136,563,255,589"/>
+<area shape="rect" id="node26" href="$_event_details_menu_8c.html#a289bdc3106029dd89f03383566448c0f" title="Diese Funktion aktualisiert das Events Details Menü. Hierbei werden nur die Zellen neu beschrieben,..." alt="" coords="127,614,263,655"/>
+<area shape="rect" id="node27" href="$_events_8c.html#afb26149084fac54ca1a3797dce379cec" title="Diese Funktion zählt alle abgespeicherten und aktivierten Events." alt="" coords="575,897,697,924"/>
+<area shape="rect" id="node28" href="$_events_8c.html#a0fe09ed5bc0e043240ec335576deda2f" title="Diese Funktion füllt ein Event Struct Array mit Startwerten ." alt="" coords="154,781,237,808"/>
+<area shape="rect" id="node29" href="$_i2_c_l_e_ds_8c.html#ae6e20629ba78a8516bc54585f651f588" title="Diese Funktion Initialisiert den I²C Portexpander für die LEDs." alt="" coords="152,832,239,859"/>
+<area shape="rect" id="node30" href="$_i2_c_l_e_ds_8c.html#ab69e6e70341a3c29a272e76b95c7a721" title="Diese Funktion schaltet für die Anzahl der aktivierten Events die entsprechende Anzahl an LEDs über d..." alt="" coords="136,883,255,909"/>
+<area shape="rect" id="node31" href="$_mct___b4_8c.html#ac7445710b299cb78f3dd58e7e8f53bb5" title="Diese Funktion setzt den Startwerte für den Zustand der Menüwerte." alt="" coords="158,933,233,960"/>
+<area shape="rect" id="node32" href="$_l_e_d_key_8c.html#a9de168ee356dc692cbed8ae44f8ba205" title="Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&amp;KEY." alt="" coords="146,984,245,1011"/>
+<area shape="rect" id="node36" href="$_menu_8c.html#a825deebad1aa530657673fb8a95a2565" title="Diese Funktion initialisiert alle für das Menü benötigte Hardware. Dabei handelt es sich um das LC&#45;Di..." alt="" coords="156,1085,235,1112"/>
+<area shape="rect" id="node38" href="$_menu_8c.html#a466037318f08026463c28228f62e67bf" title="Diese Funktion fragt ab ob eine Taste gedrückt wurde. Wenn der Wert von Neuzeichen auf wahr steht,..." alt="" coords="135,680,255,707"/>
+<area shape="rect" id="node47" href="$_r_g_b_l_e_d_8c.html#ae6d1a8b38ed2549c9b4b9cbd18cd4c09" title="Diese Funktion Initialisiert die benötigten GPIO Pins für die RGB&#45;LED." alt="" coords="379,56,461,83"/>
+<area shape="rect" id="node48" href="$_timer_8c.html#afe1e83b9e6d6fe3b399294b123737ac7" title="Diese Funktion deinitialisiert Timer 1." alt="" coords="570,1035,702,1061"/>
+<area shape="rect" id="node49" href="$_timer_8c.html#afef0dc88567aae95ea940acd5f030c4a" title="Diese Funktion prüft, ob Timer 1 seit dem letzten Funktionsaufruf einen Interrupt hatte (getickt hat)" alt="" coords="113,1136,277,1163"/>
+<area shape="rect" id="node50" href="$_timer_8c.html#a4c3c6cd736dc0ce8669d4929a0381108" title="Diese Funktion initialisiert Timer 1." alt="" coords="136,1187,255,1213"/>
+<area shape="rect" id="node3" href="$_r_t_c_8c.html#a95707c663f30ec3fcb5ebbd4a29902f8" title="Diese Funktion liest die aktuelle Tempeartur vom RTC." alt="" coords="367,5,473,32"/>
+<area shape="rect" id="node5" href="$_mct___b4_8c.html#a8df805b8463872253e8b4e377eee8bd5" title="Diese Funktion checkt alle Events und wenn eins zutreffend und zusätzlich aktiviert ist,..." alt="" coords="369,208,471,235"/>
+<area shape="rect" id="node8" href="$_r_t_c_8c.html#a5a229ae7a693f59847ef1602db84ab78" title="Diese Funktion liest die aktuelle Zeit vom RTC." alt="" coords="369,157,471,184"/>
+<area shape="rect" id="node9" href="$_state_8c.html#a74307f3182671ca366bea76201b70f9c" title="Diese Funktion vergleicht zwei DateTime Structe. Wenn diese ungleich sind, muss die Zeit auf dem Disp..." alt="" coords="355,107,485,133"/>
+<area shape="rect" id="node6" href="$_r_g_b_l_e_d_8c.html#ab9772c6a9dc028276b814c8d3716417c" title="Diese Funktion schaltet die RGB&#45;LED grün." alt="" coords="575,208,697,235"/>
+<area shape="rect" id="node7" href="$_r_g_b_l_e_d_8c.html#a791d64ff43724afc1475a56149453aca" title="Diese Funktion schaltet die RGB&#45;LED rot." alt="" coords="583,132,689,159"/>
+<area shape="rect" id="node11" href="$_l_e_d_key_8c.html#a1f60010d8dba7d6ee47d09a433786cd4" title="Diese Funktion initialisiert das Custom Serial Protocol für das LED&amp;KEY." alt="" coords="378,360,462,387"/>
+<area shape="rect" id="node17" href="$_l_e_d_key_8c.html#ab84623ed752fe4421adc8a01b5036108" title="Diese Funktion setzt die Helligkeit der 7&#45;Segmente und kann das Display auch ganz ausschalten." alt="" coords="560,461,712,488"/>
+<area shape="rect" id="node19" href="$_r_t_c_8c.html#abb4fa397a4a71ad09e3b0df51f40dbe8" title="Diese Funktion initialisiert den I²C Portexpander für die RTC." alt="" coords="389,461,451,488"/>
+<area shape="rect" id="node12" href="$_serial_8c.html#a8b17b137d175d09afe7cb07684f82e5d" title="Diese Funktion initialisiert die GPIOPin&#39;s und den Timer 2 für das Custom Serial Protokoll des TM1638..." alt="" coords="597,360,675,387"/>
+<area shape="rect" id="node13" href="$_g_p_i_o_8c.html#ab96aab38e482a093b7706301a08b0250" title="Diese Funktion (re&#45;)initialisiert einen GPIOPin." alt="" coords="795,153,889,180"/>
+<area shape="rect" id="node18" href="$_serial_8c.html#a8ac0da8e073a6797296d0512033f1b9e" title="Diese Funktion sendet ein einzelnes Byte and den TM1638. Dies ist ein Befehl, der zum Beispiel die He..." alt="" coords="767,537,917,564"/>
+<area shape="rect" id="node21" href="$_clock_8c.html#a5203aee24b8ee3f0bb1a5bd7400f6455" title="Diese Funktion reagiert auf Taster und verarbeitet diese." alt="" coords="343,563,497,589"/>
+<area shape="rect" id="node24" href="$_clock_8c.html#a584ac9d5fe069f95d2dc52f96bb012de" title="Diese Funktion schreibt je nachdem was ausgewält ist, die Uhrzeit oder das Datum auf die 7Seg Anzeige..." alt="" coords="361,613,479,640"/>
+<area shape="rect" id="node22" href="$_l_e_d_key_8c.html#a5fb9af344d11c21b1486049ab12f571e" title="Diese Funktion liest aus, welche Taster auf dem LED&amp;KEY gedrückt sind." alt="" coords="569,563,703,589"/>
+<area shape="rect" id="node23" href="$_r_t_c_8c.html#a5a09429bda44498855f43d95cee9d9d1" title="Diese Funktion schreibt eine aktualisierte Zeit in den RTC." alt="" coords="585,512,687,539"/>
+<area shape="rect" id="node25" href="$_l_e_d_key_8c.html#a860fa1251f4ce2aa3bfa2359458c8081" title="Diese Funktion ersetzt die anzuzeigenden LEDS und 7&#45;Segment&#45;Anzeigen." alt="" coords="553,613,719,640"/>
+<area shape="rect" id="node33" href="$_serial_8c.html#a51f626a019eccb5c9d2dd47cf5795d83" title="Diese Funktion de&#45;initialisiert den Timer 2." alt="" coords="375,984,465,1011"/>
+<area shape="rect" id="node34" href="$_timer_8c.html#ade62ca8bd955e5e23aafdb684ea4d37e" title="Diese Funktion deinitialisiert Timer 2." alt="" coords="570,984,702,1011"/>
+<area shape="rect" id="node35" href="$_timer_8c.html#a5f946664d6639ecebe16ab3742bc2c76" title="Diese Funktion stoppt einen Timer." alt="" coords="783,1009,901,1036"/>
+<area shape="rect" id="node37" href="$_front_i_o_8c.html#ab02462a6303ccd667bed2a3a17531ed9" title="Diese Funktion initialisiert I²C für die IO auf der Frontplatte." alt="" coords="379,1085,461,1112"/>
+<area shape="rect" id="node39" href="$_event_details_menu_8c.html#aa57cda6d3f274bb2677ea4b191f5fead" title="Diese Funktion schreibt das Events Detail Menü auf das LC&#45;Display." alt="" coords="352,817,488,858"/>
+<area shape="rect" id="node40" href="$_events_menu_8c.html#a72f7726623e1e6e7fa688bffd3abd91d" title="Diese Funktion schreibt das Event&#45;Menü auf das LC&#45;Display." alt="" coords="335,765,505,792"/>
+<area shape="rect" id="node41" href="$_main_menu_8c.html#ae61dd35df0ea860179b371123c06b489" title="Diese Funktion schreibt das Hauptmenü auf das LC&#45;Display." alt="" coords="339,715,501,741"/>
+<area shape="rect" id="node42" href="$_menu_8c.html#a953b0fa48906583d4a20e64edd9b347f" title="Diese Funktion speichert sich gedrückte Taster ab und schaltet die dazugehörige LED ein...." alt="" coords="342,664,498,691"/>
+<area shape="rect" id="node43" href="$_event_details_menu_8c.html#a36e78ad29ed2414f191db4f737f95955" title="Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im Events&#45;Details&#45;Menü befindet...." alt="" coords="568,715,704,757"/>
+<area shape="rect" id="node44" href="$_events_menu_8c.html#abef2a0e027ff9e7ad6bcaf4f3c65ce0c" title="Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im Events&#45;Menü befindet." alt="" coords="565,781,707,822"/>
+<area shape="rect" id="node45" href="$_front_i_o_8c.html#ac8aa1d9eabd4eea3444feb539b783a88" title="Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte." alt="" coords="570,847,702,873"/>
+<area shape="rect" id="node46" href="$_front_i_o_8c.html#ad5ff63c1eff8aaa4e2cf026b44a1630d" title="Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte." alt="" coords="579,664,693,691"/>
+</map>

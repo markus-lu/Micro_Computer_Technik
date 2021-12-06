@@ -1,0 +1,4 @@
+<map id="TIMER2_IRQHandler" name="TIMER2_IRQHandler">
+<area shape="rect" id="node1" title="Interrupt Service Routine für Timer 2." alt="" coords="5,5,147,32"/>
+<area shape="rect" id="node2" href="$_timer_8c.html#a9900cf5cfd42abb67a69a76b0361cbeb" title="Diese Funktion cleared das Interrupt&#45;Register für ein Match für einen Timer." alt="" coords="195,5,377,32"/>
+</map>

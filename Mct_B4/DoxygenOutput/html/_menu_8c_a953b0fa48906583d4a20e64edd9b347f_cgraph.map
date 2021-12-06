@@ -1,0 +1,10 @@
+<map id="menu_check_keypress" name="menu_check_keypress">
+<area shape="rect" id="node1" title="Diese Funktion speichert sich gedrückte Taster ab und schaltet die dazugehörige LED ein...." alt="" coords="5,137,161,163"/>
+<area shape="rect" id="node2" href="$_event_details_menu_8c.html#a36e78ad29ed2414f191db4f737f95955" title="Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im Events&#45;Details&#45;Menü befindet...." alt="" coords="239,5,375,47"/>
+<area shape="rect" id="node3" href="$_events_menu_8c.html#abef2a0e027ff9e7ad6bcaf4f3c65ce0c" title="Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im Events&#45;Menü befindet." alt="" coords="235,71,378,112"/>
+<area shape="rect" id="node4" href="$_front_i_o_8c.html#ac8aa1d9eabd4eea3444feb539b783a88" title="Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte." alt="" coords="241,137,373,163"/>
+<area shape="rect" id="node6" href="$_front_i_o_8c.html#ad5ff63c1eff8aaa4e2cf026b44a1630d" title="Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte." alt="" coords="250,187,363,214"/>
+<area shape="rect" id="node8" href="$_main_menu_8c.html#af099f3e95bdc7dc55e0c5b992faa57e9" title="Diese Funktion verarbeitet einen Tastendruck, wenn das Menü sich im Hauptmenü befindet...." alt="" coords="209,238,404,265"/>
+<area shape="rect" id="node5" href="$_i2_c_8c.html#ac89af165365ad2a09243aaa3aecd2c9d" title="Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,..." alt="" coords="453,137,524,163"/>
+<area shape="rect" id="node7" href="$_i2_c_8c.html#acc60b6499694e3b8c0ae295f3e881b71" title="Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,..." alt="" coords="452,187,525,214"/>
+</map>

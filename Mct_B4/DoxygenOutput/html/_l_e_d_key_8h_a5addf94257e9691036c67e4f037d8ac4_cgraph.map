@@ -1,0 +1,6 @@
+<map id="ledkey_deinit" name="ledkey_deinit">
+<area shape="rect" id="node1" title="Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&amp;KEY." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$_serial_8c.html#a51f626a019eccb5c9d2dd47cf5795d83" title="Diese Funktion de&#45;initialisiert den Timer 2." alt="" coords="152,5,243,32"/>
+<area shape="rect" id="node3" href="$_timer_8c.html#ade62ca8bd955e5e23aafdb684ea4d37e" title="Diese Funktion deinitialisiert Timer 2." alt="" coords="291,5,423,32"/>
+<area shape="rect" id="node4" href="$_timer_8c.html#a5f946664d6639ecebe16ab3742bc2c76" title="Diese Funktion stoppt einen Timer." alt="" coords="471,5,589,32"/>
+</map>

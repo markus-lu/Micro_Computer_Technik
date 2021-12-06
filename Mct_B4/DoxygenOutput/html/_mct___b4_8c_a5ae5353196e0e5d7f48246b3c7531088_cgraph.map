@@ -1,0 +1,4 @@
+<map id="check_temperature_change" name="check_temperature_change">
+<area shape="rect" id="node1" title="Diese Funktion checkt ob die Tempeartur sich verändert hat und speichert bei Veränderungen diese ab...." alt="" coords="5,5,188,32"/>
+<area shape="rect" id="node2" href="$_r_t_c_8c.html#a95707c663f30ec3fcb5ebbd4a29902f8" title="Diese Funktion liest die aktuelle Tempeartur vom RTC." alt="" coords="236,5,341,32"/>
+</map>

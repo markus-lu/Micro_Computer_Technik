@@ -1,0 +1,4 @@
+<map id="frontio_get_buttons" name="frontio_get_buttons">
+<area shape="rect" id="node1" title="Diese Funktion liest die Eingänge des Portexpanders auf der Frontplatte." alt="" coords="5,5,137,32"/>
+<area shape="rect" id="node2" href="$_i2_c_8c.html#ac89af165365ad2a09243aaa3aecd2c9d" title="Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_read_byte,..." alt="" coords="185,5,256,32"/>
+</map>

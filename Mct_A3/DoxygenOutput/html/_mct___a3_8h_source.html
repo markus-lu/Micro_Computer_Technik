@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_A3: src/Mct_A3.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_A3
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_mct___a3_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Mct_A3.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> Name        : Mct_A3.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> Author      : Markus Luckau, Simon Struck</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> Version     : 1.0</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> Copyright   : Unlicense</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> Description : Rechenmaschine</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef MCT_A3_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define MCT_A3_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define TA1 (1 &lt;&lt; 6)                    // Taster TA1</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define TA2 (1 &lt;&lt; 7)                    // Taster TA2</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define TA3 (1 &lt;&lt; 8)                    // Taster TA3</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define E0 (1 &lt;&lt; 2)                     // Schalter E0</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define E1 (1 &lt;&lt; 3)                     // Schalter E1</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define E2 (1 &lt;&lt; 21)                    // Schalter E2</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define E3 (1 &lt;&lt; 16)                    // Schalter E3</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define LEDS (0b11111111 &lt;&lt; 1)          // Output LEDs</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Alle Input-Bitmasken vereint</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define ALL_INPUTS (E3 | E2 | E1 | E0 | TA3 | TA2 | TA1)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define A_B_NOT_AVAILABLE 0b00          // weder A noch B wurden bisher eingelesen</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define A_AVAILABLE 0b01                // A wurde eingelesen</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define B_AVAILABLE 0b10                // B wurde eingelesen</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define A_B_AVAILABLE 0b11              // A und B wurden bereits eingelesen</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="_mct___a3_8c.html#a43bba613ce0efd6af387cd04458ede8d">io_init</a>(<span class="keywordtype">void</span>);                          <span class="comment">// Initialisierung der benutzten Ein-/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                        <span class="comment">// Ausgabeschnittstellen</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_mct___a3_8c.html#a768ed6b489bb86fd353f794c5d4ae7f1">show_result</a>(uint32_t res);         <span class="comment">// Ergebnis der Multiplikation auf acht LEDs ausgeben</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;uint32_t <a class="code" href="_mct___a3_8c.html#a7b0b6c23e4b87d0f82b5e3ea8d19eaad">getkey</a>(<span class="keywordtype">void</span>);                  <span class="comment">// Abfrage und Einlesen der Taster</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_mct___a3_8c.html#ace1db03c55a3641c20be83ed5f170e55">delay</a>(uint32_t dtime);             <span class="comment">// Erzeugen einer Zeitverzögerung</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_mct___a3_8c.html#a614814894d6850d993d869a422778be9">keyhandler</a>(uint32_t keys,          <span class="comment">// Auswertung der Tasten,</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                uint32_t *A,            <span class="comment">// Berechnung und Setzen von Flags</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                uint32_t *B,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                uint32_t *C,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                uint32_t *valuesAvailable);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MCT_A3_H_ */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_mct___a3_8c_html_a614814894d6850d993d869a422778be9"><div class="ttname"><a href="_mct___a3_8c.html#a614814894d6850d993d869a422778be9">keyhandler</a></div><div class="ttdeci">void keyhandler(uint32_t keys, uint32_t *A, uint32_t *B, uint32_t *C, uint32_t *valuesAvailable)</div><div class="ttdef"><b>Definition:</b> Mct_A3.c:298</div></div>
+<div class="ttc" id="a_mct___a3_8c_html_a840291bc02cba5474a4cb46a9b9566fe"><div class="ttname"><a href="_mct___a3_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a></div><div class="ttdeci">int main(void)</div><div class="ttdoc">Dies ist das Hauptprogramm.</div><div class="ttdef"><b>Definition:</b> Mct_A3.c:101</div></div>
+<div class="ttc" id="a_mct___a3_8c_html_a768ed6b489bb86fd353f794c5d4ae7f1"><div class="ttname"><a href="_mct___a3_8c.html#a768ed6b489bb86fd353f794c5d4ae7f1">show_result</a></div><div class="ttdeci">void show_result(uint32_t res)</div><div class="ttdef"><b>Definition:</b> Mct_A3.c:186</div></div>
+<div class="ttc" id="a_mct___a3_8c_html_ace1db03c55a3641c20be83ed5f170e55"><div class="ttname"><a href="_mct___a3_8c.html#ace1db03c55a3641c20be83ed5f170e55">delay</a></div><div class="ttdeci">void delay(uint32_t dtime)</div><div class="ttdef"><b>Definition:</b> Mct_A3.c:253</div></div>
+<div class="ttc" id="a_mct___a3_8c_html_a43bba613ce0efd6af387cd04458ede8d"><div class="ttname"><a href="_mct___a3_8c.html#a43bba613ce0efd6af387cd04458ede8d">io_init</a></div><div class="ttdeci">void io_init(void)</div><div class="ttdef"><b>Definition:</b> Mct_A3.c:139</div></div>
+<div class="ttc" id="a_mct___a3_8c_html_a7b0b6c23e4b87d0f82b5e3ea8d19eaad"><div class="ttname"><a href="_mct___a3_8c.html#a7b0b6c23e4b87d0f82b5e3ea8d19eaad">getkey</a></div><div class="ttdeci">uint32_t getkey(void)</div><div class="ttdef"><b>Definition:</b> Mct_A3.c:207</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>Mct_A3.h</b></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

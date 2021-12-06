@@ -1,0 +1,5 @@
+<map id="State" name="State">
+<area shape="rect" id="node1" title="Dieses Struct enthält den Zustand des Menüs und der Uhr." alt="" coords="63,95,116,121"/>
+<area shape="rect" id="node2" href="$struct_date_time.html" title="Struct zum abspeichern der Uhrzeit und des Datum." alt="" coords="5,5,83,32"/>
+<area shape="rect" id="node3" href="$struct_event.html" title="Ein Event Struct in welchem alle wichtigen Daten für ein Event gespeichert wird." alt="" coords="107,5,162,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="check_time_change" name="check_time_change">
+<area shape="rect" id="node1" title="Diese Funktion checkt ob die Zeit sich geändert hat und speichert bei Veränderungen diese ab...." alt="" coords="5,81,144,108"/>
+<area shape="rect" id="node2" href="$_mct___b4_8c.html#a8df805b8463872253e8b4e377eee8bd5" title="Diese Funktion checkt alle Events und wenn eins zutreffend und zusätzlich aktiviert ist,..." alt="" coords="207,31,308,57"/>
+<area shape="rect" id="node7" href="$_r_t_c_8c.html#a5a229ae7a693f59847ef1602db84ab78" title="Diese Funktion liest die aktuelle Zeit vom RTC." alt="" coords="207,81,308,108"/>
+<area shape="rect" id="node8" href="$_state_8c.html#a74307f3182671ca366bea76201b70f9c" title="Diese Funktion vergleicht zwei DateTime Structe. Wenn diese ungleich sind, muss die Zeit auf dem Disp..." alt="" coords="192,132,323,159"/>
+<area shape="rect" id="node3" href="$_r_g_b_l_e_d_8c.html#ab9772c6a9dc028276b814c8d3716417c" title="Diese Funktion schaltet die RGB&#45;LED grün." alt="" coords="371,5,492,32"/>
+<area shape="rect" id="node6" href="$_r_g_b_l_e_d_8c.html#a791d64ff43724afc1475a56149453aca" title="Diese Funktion schaltet die RGB&#45;LED rot." alt="" coords="378,56,485,83"/>
+<area shape="rect" id="node4" href="$_g_p_i_o_8c.html#a3f5081ba00489282988eca86fa2c8265" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf HIGH." alt="" coords="540,5,643,32"/>
+<area shape="rect" id="node5" href="$_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="543,56,640,83"/>
+</map>

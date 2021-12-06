@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_B4: src/LEDKey.c-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_B4
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_l_e_d_key_8c.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funktionen</a>  </div>
+  <div class="headertitle">
+<div class="title">LEDKey.c-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_l_e_d_key_8h_source.html">LEDKey.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_serial_8h_source.html">Serial.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für LEDKey.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="_l_e_d_key_8c__incl.png" border="0" usemap="#src_2_l_e_d_key_8c" alt=""/></div>
+<map name="src_2_l_e_d_key_8c" id="src_2_l_e_d_key_8c">
+<area shape="rect" title=" " alt="" coords="44,5,147,32"/>
+<area shape="rect" href="_l_e_d_key_8h.html" title=" " alt="" coords="5,80,87,107"/>
+<area shape="rect" href="_serial_8h.html" title=" " alt="" coords="111,80,178,107"/>
+<area shape="rect" title=" " alt="" coords="63,229,128,256"/>
+<area shape="rect" href="_g_p_i_o_8h.html" title=" " alt="" coords="63,155,128,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a1f60010d8dba7d6ee47d09a433786cd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_e_d_key_8c.html#a1f60010d8dba7d6ee47d09a433786cd4">ledkey_init</a> ()</td></tr>
+<tr class="memdesc:a1f60010d8dba7d6ee47d09a433786cd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion initialisiert das Custom Serial Protocol für das LED&amp;KEY.  <a href="_l_e_d_key_8c.html#a1f60010d8dba7d6ee47d09a433786cd4">Mehr ...</a><br /></td></tr>
+<tr class="separator:a1f60010d8dba7d6ee47d09a433786cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fb9af344d11c21b1486049ab12f571e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_e_d_key_8c.html#a5fb9af344d11c21b1486049ab12f571e">ledkey_get_buttons</a> ()</td></tr>
+<tr class="memdesc:a5fb9af344d11c21b1486049ab12f571e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion liest aus, welche Taster auf dem LED&amp;KEY gedrückt sind.  <a href="_l_e_d_key_8c.html#a5fb9af344d11c21b1486049ab12f571e">Mehr ...</a><br /></td></tr>
+<tr class="separator:a5fb9af344d11c21b1486049ab12f571e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a860fa1251f4ce2aa3bfa2359458c8081"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_e_d_key_8c.html#a860fa1251f4ce2aa3bfa2359458c8081">ledkey_set_display_data</a> (uint8_t leds, const uint8_t *digits)</td></tr>
+<tr class="memdesc:a860fa1251f4ce2aa3bfa2359458c8081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion ersetzt die anzuzeigenden LEDS und 7-Segment-Anzeigen.  <a href="_l_e_d_key_8c.html#a860fa1251f4ce2aa3bfa2359458c8081">Mehr ...</a><br /></td></tr>
+<tr class="separator:a860fa1251f4ce2aa3bfa2359458c8081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab84623ed752fe4421adc8a01b5036108"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_e_d_key_8c.html#ab84623ed752fe4421adc8a01b5036108">ledkey_set_brightness</a> (uint8_t brightness, bool display_on)</td></tr>
+<tr class="memdesc:ab84623ed752fe4421adc8a01b5036108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt die Helligkeit der 7-Segmente und kann das Display auch ganz ausschalten.  <a href="_l_e_d_key_8c.html#ab84623ed752fe4421adc8a01b5036108">Mehr ...</a><br /></td></tr>
+<tr class="separator:ab84623ed752fe4421adc8a01b5036108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de168ee356dc692cbed8ae44f8ba205"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_l_e_d_key_8c.html#a9de168ee356dc692cbed8ae44f8ba205">ledkey_deinit</a> ()</td></tr>
+<tr class="memdesc:a9de168ee356dc692cbed8ae44f8ba205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&amp;KEY.  <a href="_l_e_d_key_8c.html#a9de168ee356dc692cbed8ae44f8ba205">Mehr ...</a><br /></td></tr>
+<tr class="separator:a9de168ee356dc692cbed8ae44f8ba205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a id="a9de168ee356dc692cbed8ae44f8ba205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de168ee356dc692cbed8ae44f8ba205">&#9670;&nbsp;</a></span>ledkey_deinit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledkey_deinit </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&amp;KEY. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>20.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000038">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000038">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_l_e_d_key_8c_a9de168ee356dc692cbed8ae44f8ba205_cgraph.png" border="0" usemap="#_l_e_d_key_8c_a9de168ee356dc692cbed8ae44f8ba205_cgraph" alt=""/></div>
+<map name="_l_e_d_key_8c_a9de168ee356dc692cbed8ae44f8ba205_cgraph" id="_l_e_d_key_8c_a9de168ee356dc692cbed8ae44f8ba205_cgraph">
+<area shape="rect" title="Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&amp;KEY." alt="" coords="5,5,104,32"/>
+<area shape="rect" href="_serial_8c.html#a51f626a019eccb5c9d2dd47cf5795d83" title="Diese Funktion de&#45;initialisiert den Timer 2." alt="" coords="152,5,243,32"/>
+<area shape="rect" href="_timer_8c.html#ade62ca8bd955e5e23aafdb684ea4d37e" title="Diese Funktion deinitialisiert Timer 2." alt="" coords="291,5,423,32"/>
+<area shape="rect" href="_timer_8c.html#a5f946664d6639ecebe16ab3742bc2c76" title="Diese Funktion stoppt einen Timer." alt="" coords="471,5,589,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5fb9af344d11c21b1486049ab12f571e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fb9af344d11c21b1486049ab12f571e">&#9670;&nbsp;</a></span>ledkey_get_buttons()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ledkey_get_buttons </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion liest aus, welche Taster auf dem LED&amp;KEY gedrückt sind. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Gedrückte Taster Bits entsprechen den in der <a class="el" href="_l_e_d_key_8h.html">LEDKey.h</a> definierten BUTTON_0 bis BUTTON_7 (0x00 - 0xFF [ein Bit pro Taster])</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>20.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000035">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000035">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_l_e_d_key_8c_a5fb9af344d11c21b1486049ab12f571e_cgraph.png" border="0" usemap="#_l_e_d_key_8c_a5fb9af344d11c21b1486049ab12f571e_cgraph" alt=""/></div>
+<map name="_l_e_d_key_8c_a5fb9af344d11c21b1486049ab12f571e_cgraph" id="_l_e_d_key_8c_a5fb9af344d11c21b1486049ab12f571e_cgraph">
+<area shape="rect" title="Diese Funktion liest aus, welche Taster auf dem LED&amp;KEY gedrückt sind." alt="" coords="5,5,140,32"/>
+<area shape="rect" href="_serial_8c.html#a0fc995e48b1ad15396d82a0295cecc68" title="Diese Funktion empfängt mehrere Bytes vom TM1638." alt="" coords="188,5,273,32"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="321,5,419,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1f60010d8dba7d6ee47d09a433786cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f60010d8dba7d6ee47d09a433786cd4">&#9670;&nbsp;</a></span>ledkey_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledkey_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion initialisiert das Custom Serial Protocol für das LED&amp;KEY. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">-</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>20.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000034">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000034">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_l_e_d_key_8c_a1f60010d8dba7d6ee47d09a433786cd4_cgraph.png" border="0" usemap="#_l_e_d_key_8c_a1f60010d8dba7d6ee47d09a433786cd4_cgraph" alt=""/></div>
+<map name="_l_e_d_key_8c_a1f60010d8dba7d6ee47d09a433786cd4_cgraph" id="_l_e_d_key_8c_a1f60010d8dba7d6ee47d09a433786cd4_cgraph">
+<area shape="rect" title="Diese Funktion initialisiert das Custom Serial Protocol für das LED&amp;KEY." alt="" coords="5,195,89,221"/>
+<area shape="rect" href="_serial_8c.html#a8b17b137d175d09afe7cb07684f82e5d" title="Diese Funktion initialisiert die GPIOPin&#39;s und den Timer 2 für das Custom Serial Protokoll des TM1638..." alt="" coords="137,195,215,221"/>
+<area shape="rect" href="_g_p_i_o_8c.html#ab96aab38e482a093b7706301a08b0250" title="Diese Funktion (re&#45;)initialisiert einen GPIOPin." alt="" coords="285,56,379,83"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a3f5081ba00489282988eca86fa2c8265" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf HIGH." alt="" coords="281,107,383,133"/>
+<area shape="rect" href="_timer_8c.html#ab286e5a69ffcf6c62badf3bd824df97b" title="Diese Funktion aktiviert uns setzt einen Matchwert für einen Timer." alt="" coords="263,158,401,199"/>
+<area shape="rect" href="_timer_8c.html#a638053ee5be4d3e2757a8ed14ce43a43" title="Diese Funktion initialisiert Timer 2." alt="" coords="273,224,391,251"/>
+<area shape="rect" href="_timer_8c.html#ada112b39094c67ce8fc60a726d14b237" title="Diese Funktion setzt den Prescaler für einen Timer." alt="" coords="264,275,400,301"/>
+<area shape="rect" href="_timer_8c.html#abb311ba8892c2536d4818edb437f6108" title="Diese Funktion startet einen Timer." alt="" coords="272,325,392,352"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a6da9ce24b45495dcee97e1a501a79f99" title="Diese Funktion setzt das LPC_PINCON&#45;&gt;PINMODE Register. In diesem Register wird eingestellt,..." alt="" coords="465,5,599,32"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a80bd7faded5bca479ef58fbc650077cc" title="Diese Funktion setzt das LPC_PINCON&#45;&gt;PINMODE_OD0 Register. In diesem Register wird der Open&#45;Drain&#45;Mod..." alt="" coords="449,56,615,83"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a787953ab251c90e438cc38af8e17fd68" title="Diese Funktion setzt das LPC_PINCON&#45;&gt;PINSEL Register. In diesem Register wird die Pin&#45;Funktion einges..." alt="" coords="473,107,591,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab84623ed752fe4421adc8a01b5036108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab84623ed752fe4421adc8a01b5036108">&#9670;&nbsp;</a></span>ledkey_set_brightness()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledkey_set_brightness </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>brightness</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>display_on</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt die Helligkeit der 7-Segmente und kann das Display auch ganz ausschalten. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">brightness</td><td>Display Helligkeit (0 - MAX_BRIGHTNESS [7]) </td></tr>
+    <tr><td class="paramname">display_on</td><td>Display an (false / true)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>20.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000037">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000037">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_l_e_d_key_8c_ab84623ed752fe4421adc8a01b5036108_cgraph.png" border="0" usemap="#_l_e_d_key_8c_ab84623ed752fe4421adc8a01b5036108_cgraph" alt=""/></div>
+<map name="_l_e_d_key_8c_ab84623ed752fe4421adc8a01b5036108_cgraph" id="_l_e_d_key_8c_ab84623ed752fe4421adc8a01b5036108_cgraph">
+<area shape="rect" title="Diese Funktion setzt die Helligkeit der 7&#45;Segmente und kann das Display auch ganz ausschalten." alt="" coords="5,5,157,32"/>
+<area shape="rect" href="_serial_8c.html#a8ac0da8e073a6797296d0512033f1b9e" title="Diese Funktion sendet ein einzelnes Byte and den TM1638. Dies ist ein Befehl, der zum Beispiel die He..." alt="" coords="205,5,356,32"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="404,5,501,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a860fa1251f4ce2aa3bfa2359458c8081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a860fa1251f4ce2aa3bfa2359458c8081">&#9670;&nbsp;</a></span>ledkey_set_display_data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ledkey_set_display_data </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>leds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>digits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion ersetzt die anzuzeigenden LEDS und 7-Segment-Anzeigen. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">leds</td><td>Bitmuster für die LEDS über den 7-Segmenten (0x00 - 0xFF, ein Bit pro LED, MSB = Links, LSB = Rechts) </td></tr>
+    <tr><td class="paramname">digits</td><td>Byte-Array, wobei jedes Byte die das Bitmuster für jedes 7-Segment enthält (0x00 [kein Segment leuchtet] - 0xFF [alle Segmente leuchten])</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>20.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000036">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000036">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_l_e_d_key_8c_a860fa1251f4ce2aa3bfa2359458c8081_cgraph.png" border="0" usemap="#_l_e_d_key_8c_a860fa1251f4ce2aa3bfa2359458c8081_cgraph" alt=""/></div>
+<map name="_l_e_d_key_8c_a860fa1251f4ce2aa3bfa2359458c8081_cgraph" id="_l_e_d_key_8c_a860fa1251f4ce2aa3bfa2359458c8081_cgraph">
+<area shape="rect" title="Diese Funktion ersetzt die anzuzeigenden LEDS und 7&#45;Segment&#45;Anzeigen." alt="" coords="5,31,171,57"/>
+<area shape="rect" href="_serial_8c.html#a732f691e58392100db489180495d7252" title="Diese Funktion sendet mehrere Bytes and den TM1638." alt="" coords="251,5,337,32"/>
+<area shape="rect" href="_serial_8c.html#a8ac0da8e073a6797296d0512033f1b9e" title="Diese Funktion sendet ein einzelnes Byte and den TM1638. Dies ist ein Befehl, der zum Beispiel die He..." alt="" coords="219,56,369,83"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="417,31,515,57"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_l_e_d_key_8c.html">LEDKey.c</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

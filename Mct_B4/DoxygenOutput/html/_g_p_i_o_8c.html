@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_B4: src/GPIO.c-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_B4
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_g_p_i_o_8c.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funktionen</a>  </div>
+  <div class="headertitle">
+<div class="title">GPIO.c-Dateireferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_g_p_i_o_8h_source.html">GPIO.h</a>&quot;</code><br />
+<code>#include &quot;LPC17xx.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für GPIO.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="_g_p_i_o_8c__incl.png" border="0" usemap="#src_2_g_p_i_o_8c" alt=""/></div>
+<map name="src_2_g_p_i_o_8c" id="src_2_g_p_i_o_8c">
+<area shape="rect" title=" " alt="" coords="44,5,131,32"/>
+<area shape="rect" href="_g_p_i_o_8h.html" title=" " alt="" coords="5,80,71,107"/>
+<area shape="rect" title=" " alt="" coords="95,80,181,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,71,181"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a787953ab251c90e438cc38af8e17fd68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#a787953ab251c90e438cc38af8e17fd68">gpio_set_pin_sel</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:a787953ab251c90e438cc38af8e17fd68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt das LPC_PINCON-&gt;PINSEL Register. In diesem Register wird die Pin-Funktion eingestellt. Alle Pins, die in diesem Projekt verwendet werden, werden als GPIO genutzt.  <a href="_g_p_i_o_8c.html#a787953ab251c90e438cc38af8e17fd68">Mehr ...</a><br /></td></tr>
+<tr class="separator:a787953ab251c90e438cc38af8e17fd68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da9ce24b45495dcee97e1a501a79f99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#a6da9ce24b45495dcee97e1a501a79f99">gpio_set_pin_mode</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:a6da9ce24b45495dcee97e1a501a79f99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt das LPC_PINCON-&gt;PINMODE Register. In diesem Register wird eingestellt, ob ein Pullup-Widerstand, ein Pulldown-Widerstand oder die Repeater-Funktion aktiviert werden soll. Diese Information ist im <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> Struct enthalten.  <a href="_g_p_i_o_8c.html#a6da9ce24b45495dcee97e1a501a79f99">Mehr ...</a><br /></td></tr>
+<tr class="separator:a6da9ce24b45495dcee97e1a501a79f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80bd7faded5bca479ef58fbc650077cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#a80bd7faded5bca479ef58fbc650077cc">gpio_set_pin_open_drain</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:a80bd7faded5bca479ef58fbc650077cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt das LPC_PINCON-&gt;PINMODE_OD0 Register. In diesem Register wird der Open-Drain-Modus eingestellt. Diese Information ist im <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> Struct enthalten.  <a href="_g_p_i_o_8c.html#a80bd7faded5bca479ef58fbc650077cc">Mehr ...</a><br /></td></tr>
+<tr class="separator:a80bd7faded5bca479ef58fbc650077cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab96aab38e482a093b7706301a08b0250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#ab96aab38e482a093b7706301a08b0250">gpio_init_pin</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:ab96aab38e482a093b7706301a08b0250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion (re-)initialisiert einen <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>.  <a href="_g_p_i_o_8c.html#ab96aab38e482a093b7706301a08b0250">Mehr ...</a><br /></td></tr>
+<tr class="separator:ab96aab38e482a093b7706301a08b0250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5081ba00489282988eca86fa2c8265"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#a3f5081ba00489282988eca86fa2c8265">gpio_set_high</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:a3f5081ba00489282988eca86fa2c8265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt den Ausgang eines <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>'s auf HIGH.  <a href="_g_p_i_o_8c.html#a3f5081ba00489282988eca86fa2c8265">Mehr ...</a><br /></td></tr>
+<tr class="separator:a3f5081ba00489282988eca86fa2c8265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fb9fd03565587a243b524e1c3ca17ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba">gpio_set_low</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:a2fb9fd03565587a243b524e1c3ca17ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt den Ausgang eines <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>'s auf LOW.  <a href="_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba">Mehr ...</a><br /></td></tr>
+<tr class="separator:a2fb9fd03565587a243b524e1c3ca17ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a674a2700ad3152dba1d8aecb4b97be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#a5a674a2700ad3152dba1d8aecb4b97be">gpio_set</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin, bool state)</td></tr>
+<tr class="memdesc:a5a674a2700ad3152dba1d8aecb4b97be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion setzt den Ausgang eines <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>'s auf HIGH oder LOW, abhängig von dem Parameter state.  <a href="_g_p_i_o_8c.html#a5a674a2700ad3152dba1d8aecb4b97be">Mehr ...</a><br /></td></tr>
+<tr class="separator:a5a674a2700ad3152dba1d8aecb4b97be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83c15d01670fc781a93b277afa362c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_g_p_i_o_8c.html#ad83c15d01670fc781a93b277afa362c0">gpio_get</a> (const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *pin)</td></tr>
+<tr class="memdesc:ad83c15d01670fc781a93b277afa362c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diese Funktion liest einen <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> aus und gibt zurück, ob an diesem Pin ein HIGH oder LOW Pegel anliegt.  <a href="_g_p_i_o_8c.html#ad83c15d01670fc781a93b277afa362c0">Mehr ...</a><br /></td></tr>
+<tr class="separator:ad83c15d01670fc781a93b277afa362c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentation der Funktionen</h2>
+<a id="ad83c15d01670fc781a93b277afa362c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83c15d01670fc781a93b277afa362c0">&#9670;&nbsp;</a></span>gpio_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gpio_get </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion liest einen <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> aus und gibt zurück, ob an diesem Pin ein HIGH oder LOW Pegel anliegt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Den Zustand des Pins (0 = LOW, 1 = HIGH)</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000029">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000029">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+
+</div>
+</div>
+<a id="ab96aab38e482a093b7706301a08b0250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab96aab38e482a093b7706301a08b0250">&#9670;&nbsp;</a></span>gpio_init_pin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_init_pin </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion (re-)initialisiert einen <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>. </p>
+<p>Diese Funktion nutzt Hilfsfunktionen um die folgenden Aktionen durchzuführen:</p><ol type="1">
+<li>Pinfunktion festlegen (PIN function SELect, PINSEL)</li>
+<li>Eingangsmodus von Portbits einstellen (PIN MODE select, PINMODE)</li>
+<li>OpenDrain von Portbits einstellen (PIN MODE select, PINMODE_OD)</li>
+<li>Fast gpIO port DIRection control register (FIODIR)</li>
+<li>Fast MASK register for ports (FIOMASK)</li>
+</ol>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000025">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_g_p_i_o_8c_ab96aab38e482a093b7706301a08b0250_cgraph.png" border="0" usemap="#_g_p_i_o_8c_ab96aab38e482a093b7706301a08b0250_cgraph" alt=""/></div>
+<map name="_g_p_i_o_8c_ab96aab38e482a093b7706301a08b0250_cgraph" id="_g_p_i_o_8c_ab96aab38e482a093b7706301a08b0250_cgraph">
+<area shape="rect" title="Diese Funktion (re&#45;)initialisiert einen GPIOPin." alt="" coords="5,56,100,83"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a6da9ce24b45495dcee97e1a501a79f99" title="Diese Funktion setzt das LPC_PINCON&#45;&gt;PINMODE Register. In diesem Register wird eingestellt,..." alt="" coords="163,5,298,32"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a80bd7faded5bca479ef58fbc650077cc" title="Diese Funktion setzt das LPC_PINCON&#45;&gt;PINMODE_OD0 Register. In diesem Register wird der Open&#45;Drain&#45;Mod..." alt="" coords="148,56,313,83"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a787953ab251c90e438cc38af8e17fd68" title="Diese Funktion setzt das LPC_PINCON&#45;&gt;PINSEL Register. In diesem Register wird die Pin&#45;Funktion einges..." alt="" coords="171,107,290,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5a674a2700ad3152dba1d8aecb4b97be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a674a2700ad3152dba1d8aecb4b97be">&#9670;&nbsp;</a></span>gpio_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_set </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt den Ausgang eines <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>'s auf HIGH oder LOW, abhängig von dem Parameter state. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition) </td></tr>
+    <tr><td class="paramname">state</td><td>Steuert, ob der Pin auf HIGH oder LOW gesetzt wird. (0 = LOW, 1 = HIGH)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000028">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000028">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="_g_p_i_o_8c_a5a674a2700ad3152dba1d8aecb4b97be_cgraph.png" border="0" usemap="#_g_p_i_o_8c_a5a674a2700ad3152dba1d8aecb4b97be_cgraph" alt=""/></div>
+<map name="_g_p_i_o_8c_a5a674a2700ad3152dba1d8aecb4b97be_cgraph" id="_g_p_i_o_8c_a5a674a2700ad3152dba1d8aecb4b97be_cgraph">
+<area shape="rect" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf HIGH oder LOW, abhängig von dem Parameter state." alt="" coords="5,31,76,57"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a3f5081ba00489282988eca86fa2c8265" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf HIGH." alt="" coords="124,5,227,32"/>
+<area shape="rect" href="_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="127,56,224,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3f5081ba00489282988eca86fa2c8265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5081ba00489282988eca86fa2c8265">&#9670;&nbsp;</a></span>gpio_set_high()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_set_high </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt den Ausgang eines <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>'s auf HIGH. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000026">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+
+</div>
+</div>
+<a id="a2fb9fd03565587a243b524e1c3ca17ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fb9fd03565587a243b524e1c3ca17ba">&#9670;&nbsp;</a></span>gpio_set_low()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_set_low </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt den Ausgang eines <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a>'s auf LOW. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000027">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000027">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+
+</div>
+</div>
+<a id="a6da9ce24b45495dcee97e1a501a79f99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6da9ce24b45495dcee97e1a501a79f99">&#9670;&nbsp;</a></span>gpio_set_pin_mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_set_pin_mode </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt das LPC_PINCON-&gt;PINMODE Register. In diesem Register wird eingestellt, ob ein Pullup-Widerstand, ein Pulldown-Widerstand oder die Repeater-Funktion aktiviert werden soll. Diese Information ist im <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> Struct enthalten. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000022">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000022">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+
+</div>
+</div>
+<a id="a80bd7faded5bca479ef58fbc650077cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80bd7faded5bca479ef58fbc650077cc">&#9670;&nbsp;</a></span>gpio_set_pin_open_drain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_set_pin_open_drain </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt das LPC_PINCON-&gt;PINMODE_OD0 Register. In diesem Register wird der Open-Drain-Modus eingestellt. Diese Information ist im <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> Struct enthalten. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000023">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000023">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+
+</div>
+</div>
+<a id="a787953ab251c90e438cc38af8e17fd68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a787953ab251c90e438cc38af8e17fd68">&#9670;&nbsp;</a></span>gpio_set_pin_sel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gpio_set_pin_sel </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="struct_g_p_i_o_pin.html">GPIOPin</a> *&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diese Funktion setzt das LPC_PINCON-&gt;PINSEL Register. In diesem Register wird die Pin-Funktion eingestellt. Alle Pins, die in diesem Projekt verwendet werden, werden als GPIO genutzt. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>Das struct <a class="el" href="struct_g_p_i_o_pin.html" title="Dieses Struct repräsentiert die Konfiguration eines GPIO Pins.">GPIOPin</a> enthält die Einstellungen für diesen Pin. (Wertebereich in der Struct-Definition)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>-</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>12.11.2021</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000021">Noch zu erledigen:</a></b></dt><dd><ul>
+<li></li>
+</ul>
+</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000021">Fehler:</a></b></dt><dd>keine Fehler bekannt </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_g_p_i_o_8c.html">GPIO.c</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<map id="clock_draw_time" name="clock_draw_time">
+<area shape="rect" id="node1" title="Diese Funktion schreibt je nachdem was ausgewält ist, die Uhrzeit oder das Datum auf die 7Seg Anzeige..." alt="" coords="5,31,124,57"/>
+<area shape="rect" id="node2" href="$_l_e_d_key_8c.html#a860fa1251f4ce2aa3bfa2359458c8081" title="Diese Funktion ersetzt die anzuzeigenden LEDS und 7&#45;Segment&#45;Anzeigen." alt="" coords="172,31,337,57"/>
+<area shape="rect" id="node3" href="$_serial_8c.html#a732f691e58392100db489180495d7252" title="Diese Funktion sendet mehrere Bytes and den TM1638." alt="" coords="417,5,504,32"/>
+<area shape="rect" id="node5" href="$_serial_8c.html#a8ac0da8e073a6797296d0512033f1b9e" title="Diese Funktion sendet ein einzelnes Byte and den TM1638. Dies ist ein Befehl, der zum Beispiel die He..." alt="" coords="385,56,536,83"/>
+<area shape="rect" id="node4" href="$_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="584,31,681,57"/>
+</map>

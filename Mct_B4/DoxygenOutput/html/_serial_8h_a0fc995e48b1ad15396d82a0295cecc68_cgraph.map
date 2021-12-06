@@ -1,0 +1,4 @@
+<map id="serial_read" name="serial_read">
+<area shape="rect" id="node1" title="Diese Funktion empfängt mehrere Bytes vom TM1638." alt="" coords="5,5,91,32"/>
+<area shape="rect" id="node2" href="$_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="139,5,236,32"/>
+</map>

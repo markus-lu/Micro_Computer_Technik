@@ -1,0 +1,4 @@
+<map id="timer_deinit_timer2" name="timer_deinit_timer2">
+<area shape="rect" id="node1" title="Diese Funktion deinitialisiert Timer 2." alt="" coords="5,5,137,32"/>
+<area shape="rect" id="node2" href="$_timer_8c.html#a5f946664d6639ecebe16ab3742bc2c76" title="Diese Funktion stoppt einen Timer." alt="" coords="185,5,304,32"/>
+</map>

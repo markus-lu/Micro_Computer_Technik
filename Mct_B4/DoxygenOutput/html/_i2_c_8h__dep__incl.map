@@ -1,0 +1,22 @@
+<map id="inc/I2C.h" name="inc/I2C.h">
+<area shape="rect" id="node1" title=" " alt="" coords="408,5,481,32"/>
+<area shape="rect" id="node2" href="$_front_i_o_8c.html" title=" " alt="" coords="210,80,309,107"/>
+<area shape="rect" id="node3" href="$_i2_c_8c.html" title=" " alt="" coords="333,80,407,107"/>
+<area shape="rect" id="node4" href="$_r_t_c_8c.html" title=" " alt="" coords="375,155,455,181"/>
+<area shape="rect" id="node5" href="$_r_t_c_8h.html" title=" " alt="" coords="483,80,561,107"/>
+<area shape="rect" id="node19" href="$_i2_c_l_e_ds_8h.html" title=" " alt="" coords="771,80,876,107"/>
+<area shape="rect" id="node6" href="$_state_8h.html" title=" " alt="" coords="479,155,565,181"/>
+<area shape="rect" id="node8" href="$_clock_8h.html" title=" " alt="" coords="699,229,785,256"/>
+<area shape="rect" id="node7" href="$_state_8c.html" title=" " alt="" coords="5,229,92,256"/>
+<area shape="rect" id="node11" href="$_event_details_menu_8h.html" title=" " alt="" coords="516,229,675,256"/>
+<area shape="rect" id="node14" href="$_events_menu_8h.html" title=" " alt="" coords="255,229,381,256"/>
+<area shape="rect" id="node16" href="$_main_menu_8h.html" title=" " alt="" coords="117,229,231,256"/>
+<area shape="rect" id="node18" href="$_menu_8h.html" title=" " alt="" coords="405,229,492,256"/>
+<area shape="rect" id="node9" href="$_clock_8c.html" title=" " alt="" coords="823,304,911,331"/>
+<area shape="rect" id="node10" href="$_mct___b4_8c.html" title=" " alt="" coords="699,304,799,331"/>
+<area shape="rect" id="node12" href="$_event_details_menu_8c.html" title=" " alt="" coords="516,304,675,331"/>
+<area shape="rect" id="node13" href="$_menu_8c.html" title=" " alt="" coords="405,304,492,331"/>
+<area shape="rect" id="node15" href="$_events_menu_8c.html" title=" " alt="" coords="255,304,381,331"/>
+<area shape="rect" id="node17" href="$_main_menu_8c.html" title=" " alt="" coords="115,304,230,331"/>
+<area shape="rect" id="node20" href="$_i2_c_l_e_ds_8c.html" title=" " alt="" coords="861,155,967,181"/>
+</map>

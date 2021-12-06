@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_B4: inc/LEDKey.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_B4
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_l_e_d_key_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LEDKey.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_l_e_d_key_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> Name        : LEDKey.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> Author      : Markus Luckau, Simon Struck</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> Version     : 1.0</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> Copyright   : Unlicense</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> Description : Anzeigen der Uhrzeit und Datum + Auslesen der Taster</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _LEDKEY_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define _LEDKEY_H_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;types.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_g_p_i_o_8h.html">GPIO.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a3e8aff88ac466980aeddd160f0250006">   25</a></span>&#160;<span class="preprocessor">#define SEG_0 0b00111111</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a40497c6b54dc560ccbcc6b57ad6c0ffd">   29</a></span>&#160;<span class="preprocessor">#define SEG_1 0b00000110</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a114f34d740417cf35244183c7e8d618a">   33</a></span>&#160;<span class="preprocessor">#define SEG_2 0b01011011</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a0a71df53e9d09f50efdcce4f5731414b">   37</a></span>&#160;<span class="preprocessor">#define SEG_3 0b01001111</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a4d651ef8de81da24a6eb369ae6cf9a14">   41</a></span>&#160;<span class="preprocessor">#define SEG_4 0b01100110</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a06eebf95c845958231280482355ab031">   45</a></span>&#160;<span class="preprocessor">#define SEG_5 0b01101101</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a5d777f95d0ed7b024ca5ba17e3bc6ba3">   49</a></span>&#160;<span class="preprocessor">#define SEG_6 0b01111101</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a8320d7533c81e2c427fe3ce1792b1c8e">   53</a></span>&#160;<span class="preprocessor">#define SEG_7 0b00000111</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#afc149a46cff66c29b54ea614a8bd86c5">   57</a></span>&#160;<span class="preprocessor">#define SEG_8 0b01111111</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a075e185a83322ca66dd8b665489074b5">   61</a></span>&#160;<span class="preprocessor">#define SEG_9 0b01101111</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a513c070947379d55e51bb8adfdeac731">   66</a></span>&#160;<span class="preprocessor">#define SEG_DOT 0b10000000</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a99ddfbc68629c7389eb04d5cd9f588c6">   71</a></span>&#160;<span class="preprocessor">#define WRITE_DATA_COMMAND      0b01000000</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a3400e5547475ddd7c08045470da174b1">   75</a></span>&#160;<span class="preprocessor">#define READ_DATA_COMMAND       0b01000010</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#ab04b8a82090039a742d7db4c5a6703bf">   79</a></span>&#160;<span class="preprocessor">#define SET_ADDRESS_COMMAND     0b11000000</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a7e81501636bc89d742e98151ad7b6ffc">   83</a></span>&#160;<span class="preprocessor">#define DISPLAY_CONTROL_COMMAND 0b10000000</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a5ae6b05b3e1559c97f0d1b2daaaa0ee4">   87</a></span>&#160;<span class="preprocessor">#define DISPLAY_ON              0b00001000</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a2134a5a06f0865c945543a1f07eba387">   91</a></span>&#160;<span class="preprocessor">#define MAX_BRIGHTNESS          0b00000111</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a2e2c60c01e1e303a89b0b16842d77cf9">   96</a></span>&#160;<span class="preprocessor">#define BUTTON_0 (1 &lt;&lt; 6)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#af58f5adf2c4e479e30f2efaa24e38324">  100</a></span>&#160;<span class="preprocessor">#define BUTTON_1 (1 &lt;&lt; 4)</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a46acb6114f87027ec8fa196c02ea7d81">  104</a></span>&#160;<span class="preprocessor">#define BUTTON_2 (1 &lt;&lt; 2)</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#aec518359a13ecef01c1f596fea855364">  108</a></span>&#160;<span class="preprocessor">#define BUTTON_3 (1 &lt;&lt; 0)</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a9bbe94022b11df96e0f4e9147822ed79">  112</a></span>&#160;<span class="preprocessor">#define BUTTON_4 (1 &lt;&lt; 7)</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a400f0f2ee5defcf2f0fc3a21f10669b1">  116</a></span>&#160;<span class="preprocessor">#define BUTTON_5 (1 &lt;&lt; 5)</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#a0373e0d4f2cbd4fcb55ada29be95347d">  120</a></span>&#160;<span class="preprocessor">#define BUTTON_6 (1 &lt;&lt; 3)</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="_l_e_d_key_8h.html#aad527497b1c6f33967d32c254c87f0f7">  124</a></span>&#160;<span class="preprocessor">#define BUTTON_7 (1 &lt;&lt; 1)</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_l_e_d_key_8h.html#ada276a4970da34708126635a91bf8803">ledkey_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;uint8_t <a class="code" href="_l_e_d_key_8h.html#a1c2a1ffcfc0271cd0179ce09faa7c2ee">ledkey_get_buttons</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_l_e_d_key_8h.html#a860fa1251f4ce2aa3bfa2359458c8081">ledkey_set_display_data</a>(uint8_t leds, <span class="keyword">const</span> uint8_t *digits);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_l_e_d_key_8h.html#ab84623ed752fe4421adc8a01b5036108">ledkey_set_brightness</a>(uint8_t brightness, <span class="keywordtype">bool</span> display_on);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_l_e_d_key_8h.html#a5addf94257e9691036c67e4f037d8ac4">ledkey_deinit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_l_e_d_key_8h_html_a860fa1251f4ce2aa3bfa2359458c8081"><div class="ttname"><a href="_l_e_d_key_8h.html#a860fa1251f4ce2aa3bfa2359458c8081">ledkey_set_display_data</a></div><div class="ttdeci">void ledkey_set_display_data(uint8_t leds, const uint8_t *digits)</div><div class="ttdoc">Diese Funktion ersetzt die anzuzeigenden LEDS und 7-Segment-Anzeigen.</div><div class="ttdef"><b>Definition:</b> LEDKey.c:85</div></div>
+<div class="ttc" id="a_g_p_i_o_8h_html"><div class="ttname"><a href="_g_p_i_o_8h.html">GPIO.h</a></div></div>
+<div class="ttc" id="a_l_e_d_key_8h_html_ab84623ed752fe4421adc8a01b5036108"><div class="ttname"><a href="_l_e_d_key_8h.html#ab84623ed752fe4421adc8a01b5036108">ledkey_set_brightness</a></div><div class="ttdeci">void ledkey_set_brightness(uint8_t brightness, bool display_on)</div><div class="ttdoc">Diese Funktion setzt die Helligkeit der 7-Segmente und kann das Display auch ganz ausschalten.</div><div class="ttdef"><b>Definition:</b> LEDKey.c:132</div></div>
+<div class="ttc" id="a_l_e_d_key_8h_html_a1c2a1ffcfc0271cd0179ce09faa7c2ee"><div class="ttname"><a href="_l_e_d_key_8h.html#a1c2a1ffcfc0271cd0179ce09faa7c2ee">ledkey_get_buttons</a></div><div class="ttdeci">uint8_t ledkey_get_buttons(void)</div><div class="ttdoc">Diese Funktion liest aus, welche Taster auf dem LED&amp;KEY gedrückt sind.</div><div class="ttdef"><b>Definition:</b> LEDKey.c:41</div></div>
+<div class="ttc" id="a_l_e_d_key_8h_html_ada276a4970da34708126635a91bf8803"><div class="ttname"><a href="_l_e_d_key_8h.html#ada276a4970da34708126635a91bf8803">ledkey_init</a></div><div class="ttdeci">void ledkey_init(void)</div><div class="ttdoc">Diese Funktion initialisiert das Custom Serial Protocol für das LED&amp;KEY.</div><div class="ttdef"><b>Definition:</b> LEDKey.c:21</div></div>
+<div class="ttc" id="a_l_e_d_key_8h_html_a5addf94257e9691036c67e4f037d8ac4"><div class="ttname"><a href="_l_e_d_key_8h.html#a5addf94257e9691036c67e4f037d8ac4">ledkey_deinit</a></div><div class="ttdeci">void ledkey_deinit(void)</div><div class="ttdoc">Diese Funktion deinitialisiert das Custom Serial Protocol für das LED&amp;KEY.</div><div class="ttdef"><b>Definition:</b> LEDKey.c:155</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="_l_e_d_key_8h.html">LEDKey.h</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

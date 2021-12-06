@@ -1,0 +1,4 @@
+<map id="serial_write_command" name="serial_write_command">
+<area shape="rect" id="node1" title="Diese Funktion sendet ein einzelnes Byte and den TM1638. Dies ist ein Befehl, der zum Beispiel die He..." alt="" coords="5,5,156,32"/>
+<area shape="rect" id="node2" href="$_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="204,5,301,32"/>
+</map>

@@ -1,0 +1,28 @@
+var _timer_8h =
+[
+    [ "CCLK_DIVIDED_BY_1", "_timer_8h.html#a261c733cf8925d808f76455c25667a2a", null ],
+    [ "CCLK_DIVIDED_BY_2", "_timer_8h.html#a26b33d63b655a7bac90b2c27c5a3a7d7", null ],
+    [ "CCLK_DIVIDED_BY_4", "_timer_8h.html#a119dfbca3221195972369c99d3f094c6", null ],
+    [ "CCLK_DIVIDED_BY_8", "_timer_8h.html#a6ea2117c0f71a989832625342681be08", null ],
+    [ "INTERRUPT_ON_MATCH_BIT", "_timer_8h.html#ae82967b2ebfc46a2a3e00ce470832a91", null ],
+    [ "MATCH_CONTROL_REGISTER_WIDTH", "_timer_8h.html#a95396860c001dd0c73cd7d9ec9b072a2", null ],
+    [ "RESET_ON_MATCH_BIT", "_timer_8h.html#a049b5d8208ef467fe766950ecf68fde8", null ],
+    [ "STOP_ON_MATCH_BIT", "_timer_8h.html#a65f4bcaff20a18f95f6a5025a53924e5", null ],
+    [ "TIMER1_PCLKSEL_BIT", "_timer_8h.html#a6b6dc9e642a573b0e75d24d76617fb46", null ],
+    [ "TIMER1_POWER_CONTROL_PERIPHERALS_BIT", "_timer_8h.html#a9814fd7e81bc420e4048a67651203f58", null ],
+    [ "TIMER2_PCLKSEL_BIT", "_timer_8h.html#a270f6eda83a6c48c6232efa3d62ddb4a", null ],
+    [ "TIMER2_POWER_CONTROL_PERIPHERALS_BIT", "_timer_8h.html#aabce894a69785a5c1a549d70d791af63", null ],
+    [ "TIMER_ENABLE_BIT", "_timer_8h.html#ab45d9ee65df557e16e9e7c3f4b9b7c54", null ],
+    [ "TIMER_RESET_BIT", "_timer_8h.html#a1b14997c7f8846fb71e626d2bc307b7b", null ],
+    [ "timer_clear_match_interrupt", "_timer_8h.html#a9900cf5cfd42abb67a69a76b0361cbeb", null ],
+    [ "timer_deinit_timer1", "_timer_8h.html#acbe721c12220baa9b01ac87e57b903c5", null ],
+    [ "timer_deinit_timer2", "_timer_8h.html#af210c9b4f2c0d132133aaf3b911338ca", null ],
+    [ "timer_enable_match_interrupt", "_timer_8h.html#ab286e5a69ffcf6c62badf3bd824df97b", null ],
+    [ "timer_has_timer1_ticked", "_timer_8h.html#adcf40df1d855498d50dc34dac1e3b4c2", null ],
+    [ "timer_has_timer2_ticked", "_timer_8h.html#a737c0fd13c8134496ead31c648dfeafe", null ],
+    [ "timer_init_timer1", "_timer_8h.html#ae340a13cc61b4bdbca07015fef231074", null ],
+    [ "timer_init_timer2", "_timer_8h.html#aa2752b4d58c2cece880c09460303451c", null ],
+    [ "timer_set_prescaler", "_timer_8h.html#ada112b39094c67ce8fc60a726d14b237", null ],
+    [ "timer_start_timer", "_timer_8h.html#abb311ba8892c2536d4818edb437f6108", null ],
+    [ "timer_stop_timer", "_timer_8h.html#a5f946664d6639ecebe16ab3742bc2c76", null ]
+];

@@ -1,0 +1,4 @@
+<map id="frontio_set_leds" name="frontio_set_leds">
+<area shape="rect" id="node1" title="Diese Funktion setzt die Ausgänge des Portexpanders auf der Frontplatte." alt="" coords="5,5,119,32"/>
+<area shape="rect" id="node2" href="$_i2_c_8c.html#acc60b6499694e3b8c0ae295f3e881b71" title="Diese Funktion bietet eine Abstraktion über die Bibliotheksfunktion i2c_write_byte,..." alt="" coords="167,5,240,32"/>
+</map>

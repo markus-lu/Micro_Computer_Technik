@@ -1,0 +1,4 @@
+<map id="main_menu_draw_menu" name="main_menu_draw_menu">
+<area shape="rect" id="node1" title="Diese Funktion schreibt das Hauptmenü auf das LC&#45;Display." alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node2" href="$_events_8c.html#afb26149084fac54ca1a3797dce379cec" title="Diese Funktion zählt alle abgespeicherten und aktivierten Events." alt="" coords="216,5,339,32"/>
+</map>

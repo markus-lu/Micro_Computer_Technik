@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_B4: inc/Clock.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_B4
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_clock_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Clock.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_clock_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> Name        : Clock.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> Author      : Markus Luckau, Simon Struck</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> Version     : 1.0</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> Copyright   : Unlicense</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> Description : Logik für die Uhrzeit auf dem LEDKey und die Buttons</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _CLOCK_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define _CLOCK_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;types.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_state_8h.html">State.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_l_e_d_key_8h.html">LEDKey.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_t_c_8h.html">RTC.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="_clock_8h.html#ab8b7a0140e459c6498ff767464802c2b">   26</a></span>&#160;<span class="preprocessor">#define BUTTON_TOGGLE_TIME_DATE BUTTON_0</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="_clock_8h.html#a46fd9366ff4854427e35df9da8b45c4b">   31</a></span>&#160;<span class="preprocessor">#define BUTTON_EDIT BUTTON_1</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="_clock_8h.html#a576459d5adeceb1716c8dd966592036e">   36</a></span>&#160;<span class="preprocessor">#define BUTTON_PREVIOUS BUTTON_2</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="_clock_8h.html#aad0d42fd11767cf49214cb63a703723b">   41</a></span>&#160;<span class="preprocessor">#define BUTTON_NEXT BUTTON_3</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="_clock_8h.html#a0477e21aac72dd903c80965ccda29ea0">   46</a></span>&#160;<span class="preprocessor">#define BUTTON_DEC BUTTON_4</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="_clock_8h.html#aa5e288569a9fa643ad015aac3a10a83e">   51</a></span>&#160;<span class="preprocessor">#define BUTTON_INC BUTTON_5</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="_clock_8h.html#acb19791621972e716db3a3d527b8d952">   56</a></span>&#160;<span class="preprocessor">#define BUTTON_BRIGHTNESS_DOWN BUTTON_6</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="_clock_8h.html#ac22e50b3a0f8e6c671a9bf4919c34d94">   61</a></span>&#160;<span class="preprocessor">#define BUTTON_BRIGHTNESS_UP BUTTON_7</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="_clock_8h.html#a320e4a69b6322bc2e7c1fe2d4d9861f6">   67</a></span>&#160;<span class="preprocessor">#define SELECTED_HOUR (1 &lt;&lt; 0)</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="_clock_8h.html#a936ce3ef4c0ed5c7aa26d923c3ee5c43">   72</a></span>&#160;<span class="preprocessor">#define SELECTED_MINUTE (1 &lt;&lt; 1)</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="_clock_8h.html#acc7eb17d04fe685ed2794a856000e591">   77</a></span>&#160;<span class="preprocessor">#define SELECTED_SECOND (1 &lt;&lt; 2)</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="_clock_8h.html#af8aa96866d9e805eef672077acbd1757">   82</a></span>&#160;<span class="preprocessor">#define SELECTED_DAY (1 &lt;&lt; 3)</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="_clock_8h.html#ad64bbb75e5b0f2c45c1fc442d8de38b0">   87</a></span>&#160;<span class="preprocessor">#define SELECTED_MONTH (1 &lt;&lt; 4)</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="_clock_8h.html#a0b09dab1f658fa3a9e1948805000272f">   92</a></span>&#160;<span class="preprocessor">#define SELECTED_YEAR (1 &lt;&lt; 5)</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="_clock_8h.html#a727da6d43c4d9cbe9150557a1df23764">   97</a></span>&#160;<span class="preprocessor">#define SELECTED_WEEKDAY (1 &lt;&lt; 6)</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="_clock_8h.html#a579f53075236615fe0dcc28a3b206114">  102</a></span>&#160;<span class="preprocessor">#define SELECTED_TIME (SELECTED_HOUR | SELECTED_MINUTE | SELECTED_SECOND)</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="_clock_8h.html#ab9374c47ea70bd27da5abc61e53447af">  107</a></span>&#160;<span class="preprocessor">#define SELECTED_DATE (SELECTED_DAY | SELECTED_MONTH | SELECTED_YEAR | SELECTED_WEEKDAY)</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_clock_8h.html#a8a6ae8ff6349a08c060c7146cdd754bf">clock_init</a>(<span class="keyword">struct</span> <a class="code" href="struct_state.html">State</a> *state);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_clock_8h.html#a471decc9a7763edf9abae04c62625142">clock_loop_once</a>(<span class="keyword">struct</span> <a class="code" href="struct_state.html">State</a> *state);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_clock_8h_html_a8a6ae8ff6349a08c060c7146cdd754bf"><div class="ttname"><a href="_clock_8h.html#a8a6ae8ff6349a08c060c7146cdd754bf">clock_init</a></div><div class="ttdeci">void clock_init(struct State *state)</div><div class="ttdoc">Diese Funktion initialisiert alle für die Clock nötigen Komponenten. Zusätzlich wird die Helligkeit d...</div><div class="ttdef"><b>Definition:</b> Clock.c:47</div></div>
+<div class="ttc" id="astruct_state_html"><div class="ttname"><a href="struct_state.html">State</a></div><div class="ttdoc">Dieses Struct enthält den Zustand des Menüs und der Uhr.</div><div class="ttdef"><b>Definition:</b> State.h:24</div></div>
+<div class="ttc" id="a_l_e_d_key_8h_html"><div class="ttname"><a href="_l_e_d_key_8h.html">LEDKey.h</a></div></div>
+<div class="ttc" id="a_r_t_c_8h_html"><div class="ttname"><a href="_r_t_c_8h.html">RTC.h</a></div></div>
+<div class="ttc" id="a_clock_8h_html_a471decc9a7763edf9abae04c62625142"><div class="ttname"><a href="_clock_8h.html#a471decc9a7763edf9abae04c62625142">clock_loop_once</a></div><div class="ttdeci">void clock_loop_once(struct State *state)</div><div class="ttdoc">Diese Funktion chekt ob ein Taster gedrückt wurde und lässt die 7Seg Anzeige neu zeichnen.</div><div class="ttdef"><b>Definition:</b> Clock.c:423</div></div>
+<div class="ttc" id="a_state_8h_html"><div class="ttname"><a href="_state_8h.html">State.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="_clock_8h.html">Clock.h</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

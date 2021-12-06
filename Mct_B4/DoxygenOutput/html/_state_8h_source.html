@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_B4: inc/State.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_B4
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_state_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">State.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_state_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> Name        : State.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> Author      : Markus Luckau, Simon Struck</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> Version     : 1.0</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> Copyright   : Unlicense</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> Description : Struct definitionen für den aktuellen Zustand des Menüs</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> ===============================================================================</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _STATE_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define _STATE_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;types.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_r_t_c_8h.html">RTC.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="struct_state.html">   24</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_state.html">State</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="struct_state.html#ab76afbbc52aba8f3c78158fef0f9956c">   35</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#ab76afbbc52aba8f3c78158fef0f9956c">blink</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="struct_state.html#a847a172b81f2070a9de6e58a790751a5">   48</a></span>&#160;    uint32_t <a class="code" href="struct_state.html#a847a172b81f2070a9de6e58a790751a5">menu_screen</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="struct_state.html#aa73dfb176ed7703eb1910ae961c1a27d">   59</a></span>&#160;    uint8_t <a class="code" href="struct_state.html#aa73dfb176ed7703eb1910ae961c1a27d">menu_last_buttons</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="struct_state.html#a20885b8894f59f886d1d17bb3d9fbde2">   68</a></span>&#160;    uint8_t <a class="code" href="struct_state.html#a20885b8894f59f886d1d17bb3d9fbde2">selected_event</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="struct_state.html#aae8f1361b92e3e26b763bf80b45fc88b">   77</a></span>&#160;    uint8_t <a class="code" href="struct_state.html#aae8f1361b92e3e26b763bf80b45fc88b">selected_event_detail</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="struct_state.html#adf5235d49c17aebf577e3cad3547b4f9">   88</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#adf5235d49c17aebf577e3cad3547b4f9">menu_event_time_edit_mode</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="struct_state.html#abe2a234ad94f95add602c71430dfd966">   96</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_event.html">Event</a> *<a class="code" href="struct_state.html#abe2a234ad94f95add602c71430dfd966">event_data</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="struct_state.html#a8c7b7bca814de33668eceefce996c10a">  106</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#a8c7b7bca814de33668eceefce996c10a">menu_should_redraw</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="struct_state.html#ad17eb59b5e1cdd4c6954e1c715e7fd6d">  114</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#ad17eb59b5e1cdd4c6954e1c715e7fd6d">rgb_state</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="struct_state.html#afbf101f57180f0c719d322100aae2d14">  125</a></span>&#160;    uint16_t <a class="code" href="struct_state.html#afbf101f57180f0c719d322100aae2d14">temperature</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="struct_state.html#acc38ae1cbd60693d3de4740a8a5e2728">  133</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_date_time.html">DateTime</a> <a class="code" href="struct_state.html#acc38ae1cbd60693d3de4740a8a5e2728">time</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="struct_state.html#afdef77385874d79bf8b8d29f0b18605f">  141</a></span>&#160;    uint8_t <a class="code" href="struct_state.html#afdef77385874d79bf8b8d29f0b18605f">clock_selected_field</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="struct_state.html#a9c87f33a4b061b9e76d047ec19842445">  156</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#a9c87f33a4b061b9e76d047ec19842445">clock_edit_mode</a>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="struct_state.html#adbc0ba46b20dbf2564e7a1e7e55d85d5">  166</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#adbc0ba46b20dbf2564e7a1e7e55d85d5">clock_should_redraw</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="struct_state.html#a3dd30c5ffed58ae9bb6a58dd7e97bb5e">  175</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_state.html#a3dd30c5ffed58ae9bb6a58dd7e97bb5e">clock_show_time</a>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="struct_state.html#a33bdf58a0635d3e4a7d3fc9c71372bf8">  186</a></span>&#160;    uint8_t <a class="code" href="struct_state.html#a33bdf58a0635d3e4a7d3fc9c71372bf8">clock_last_buttons</a>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="struct_state.html#a10a9af7418a69629d3d937222037b8ae">  198</a></span>&#160;    int8_t <a class="code" href="struct_state.html#a10a9af7418a69629d3d937222037b8ae">clock_brightness</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;};</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="_state_8h.html#a74307f3182671ca366bea76201b70f9c">times_are_different</a>(<span class="keyword">struct</span> <a class="code" href="struct_date_time.html">DateTime</a> *old_time, <span class="keyword">struct</span> <a class="code" href="struct_date_time.html">DateTime</a> *new_time);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="preprocessor">#endif //_STATE_H_</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_state_html_afbf101f57180f0c719d322100aae2d14"><div class="ttname"><a href="struct_state.html#afbf101f57180f0c719d322100aae2d14">State::temperature</a></div><div class="ttdeci">uint16_t temperature</div><div class="ttdoc">Enthält die Temperatur zur Anzeige im MainMenu.</div><div class="ttdef"><b>Definition:</b> State.h:125</div></div>
+<div class="ttc" id="astruct_state_html_a8c7b7bca814de33668eceefce996c10a"><div class="ttname"><a href="struct_state.html#a8c7b7bca814de33668eceefce996c10a">State::menu_should_redraw</a></div><div class="ttdeci">bool menu_should_redraw</div><div class="ttdoc">Kontrolliert, ob das Menü komplett neu zeichnen soll.</div><div class="ttdef"><b>Definition:</b> State.h:106</div></div>
+<div class="ttc" id="astruct_state_html_acc38ae1cbd60693d3de4740a8a5e2728"><div class="ttname"><a href="struct_state.html#acc38ae1cbd60693d3de4740a8a5e2728">State::time</a></div><div class="ttdeci">struct DateTime time</div><div class="ttdoc">Enthält die aktuelle Zeit.</div><div class="ttdef"><b>Definition:</b> State.h:133</div></div>
+<div class="ttc" id="astruct_state_html"><div class="ttname"><a href="struct_state.html">State</a></div><div class="ttdoc">Dieses Struct enthält den Zustand des Menüs und der Uhr.</div><div class="ttdef"><b>Definition:</b> State.h:24</div></div>
+<div class="ttc" id="a_state_8h_html_a74307f3182671ca366bea76201b70f9c"><div class="ttname"><a href="_state_8h.html#a74307f3182671ca366bea76201b70f9c">times_are_different</a></div><div class="ttdeci">bool times_are_different(struct DateTime *old_time, struct DateTime *new_time)</div><div class="ttdoc">Diese Funktion vergleicht zwei DateTime Structe. Wenn diese ungleich sind, muss die Zeit auf dem Disp...</div><div class="ttdef"><b>Definition:</b> State.c:26</div></div>
+<div class="ttc" id="astruct_state_html_a33bdf58a0635d3e4a7d3fc9c71372bf8"><div class="ttname"><a href="struct_state.html#a33bdf58a0635d3e4a7d3fc9c71372bf8">State::clock_last_buttons</a></div><div class="ttdeci">uint8_t clock_last_buttons</div><div class="ttdoc">Speichert die zuletzt gedrückten Taster am LED&amp;KEY.</div><div class="ttdef"><b>Definition:</b> State.h:186</div></div>
+<div class="ttc" id="astruct_state_html_a20885b8894f59f886d1d17bb3d9fbde2"><div class="ttname"><a href="struct_state.html#a20885b8894f59f886d1d17bb3d9fbde2">State::selected_event</a></div><div class="ttdeci">uint8_t selected_event</div><div class="ttdoc">Speichert welches Event ausgewählt ist.</div><div class="ttdef"><b>Definition:</b> State.h:68</div></div>
+<div class="ttc" id="astruct_state_html_a3dd30c5ffed58ae9bb6a58dd7e97bb5e"><div class="ttname"><a href="struct_state.html#a3dd30c5ffed58ae9bb6a58dd7e97bb5e">State::clock_show_time</a></div><div class="ttdeci">bool clock_show_time</div><div class="ttdoc">Kontrolliert, ob das LED&amp;KEY die Uhrzeit oder das Datum anzeigen soll.</div><div class="ttdef"><b>Definition:</b> State.h:175</div></div>
+<div class="ttc" id="astruct_state_html_abe2a234ad94f95add602c71430dfd966"><div class="ttname"><a href="struct_state.html#abe2a234ad94f95add602c71430dfd966">State::event_data</a></div><div class="ttdeci">struct Event * event_data</div><div class="ttdoc">Pointer auf ein Array, welches die programmierbaren Events enthält.</div><div class="ttdef"><b>Definition:</b> State.h:96</div></div>
+<div class="ttc" id="astruct_state_html_a10a9af7418a69629d3d937222037b8ae"><div class="ttname"><a href="struct_state.html#a10a9af7418a69629d3d937222037b8ae">State::clock_brightness</a></div><div class="ttdeci">int8_t clock_brightness</div><div class="ttdoc">Speichert die Helligkeit des 7-Segment-Displays des LED&amp;KEY.</div><div class="ttdef"><b>Definition:</b> State.h:198</div></div>
+<div class="ttc" id="astruct_event_html"><div class="ttname"><a href="struct_event.html">Event</a></div><div class="ttdoc">Ein Event Struct in welchem alle wichtigen Daten für ein Event gespeichert wird.</div><div class="ttdef"><b>Definition:</b> Events.h:64</div></div>
+<div class="ttc" id="astruct_date_time_html"><div class="ttname"><a href="struct_date_time.html">DateTime</a></div><div class="ttdoc">Struct zum abspeichern der Uhrzeit und des Datum.</div><div class="ttdef"><b>Definition:</b> RTC.h:37</div></div>
+<div class="ttc" id="astruct_state_html_adf5235d49c17aebf577e3cad3547b4f9"><div class="ttname"><a href="struct_state.html#adf5235d49c17aebf577e3cad3547b4f9">State::menu_event_time_edit_mode</a></div><div class="ttdeci">bool menu_event_time_edit_mode</div><div class="ttdoc">Steuert, ob dein Tastendruck auf die Tasten Hoch oder Runter die Stunden / Minuten verändern oder das...</div><div class="ttdef"><b>Definition:</b> State.h:88</div></div>
+<div class="ttc" id="astruct_state_html_afdef77385874d79bf8b8d29f0b18605f"><div class="ttname"><a href="struct_state.html#afdef77385874d79bf8b8d29f0b18605f">State::clock_selected_field</a></div><div class="ttdeci">uint8_t clock_selected_field</div><div class="ttdoc">Speichert den Cursor der Uhr.</div><div class="ttdef"><b>Definition:</b> State.h:141</div></div>
+<div class="ttc" id="astruct_state_html_adbc0ba46b20dbf2564e7a1e7e55d85d5"><div class="ttname"><a href="struct_state.html#adbc0ba46b20dbf2564e7a1e7e55d85d5">State::clock_should_redraw</a></div><div class="ttdeci">bool clock_should_redraw</div><div class="ttdoc">Kontrolliert, ob die Uhrzeit oder das Datum neu gezeichnet werden soll.</div><div class="ttdef"><b>Definition:</b> State.h:166</div></div>
+<div class="ttc" id="astruct_state_html_a847a172b81f2070a9de6e58a790751a5"><div class="ttname"><a href="struct_state.html#a847a172b81f2070a9de6e58a790751a5">State::menu_screen</a></div><div class="ttdeci">uint32_t menu_screen</div><div class="ttdoc">Steuert, welches Menü gerade auf dem LCD angezeigt werden soll.</div><div class="ttdef"><b>Definition:</b> State.h:48</div></div>
+<div class="ttc" id="astruct_state_html_aae8f1361b92e3e26b763bf80b45fc88b"><div class="ttname"><a href="struct_state.html#aae8f1361b92e3e26b763bf80b45fc88b">State::selected_event_detail</a></div><div class="ttdeci">uint8_t selected_event_detail</div><div class="ttdoc">Speichert den Cursor im EventDetailsMenu.</div><div class="ttdef"><b>Definition:</b> State.h:77</div></div>
+<div class="ttc" id="a_r_t_c_8h_html"><div class="ttname"><a href="_r_t_c_8h.html">RTC.h</a></div></div>
+<div class="ttc" id="astruct_state_html_a9c87f33a4b061b9e76d047ec19842445"><div class="ttname"><a href="struct_state.html#a9c87f33a4b061b9e76d047ec19842445">State::clock_edit_mode</a></div><div class="ttdeci">bool clock_edit_mode</div><div class="ttdoc">Steuert, ob die Uhrzeit / Datum gerade editiert wird.</div><div class="ttdef"><b>Definition:</b> State.h:156</div></div>
+<div class="ttc" id="astruct_state_html_aa73dfb176ed7703eb1910ae961c1a27d"><div class="ttname"><a href="struct_state.html#aa73dfb176ed7703eb1910ae961c1a27d">State::menu_last_buttons</a></div><div class="ttdeci">uint8_t menu_last_buttons</div><div class="ttdoc">Speichert die zuletzt gedrückten Taster an der Frontplatte.</div><div class="ttdef"><b>Definition:</b> State.h:59</div></div>
+<div class="ttc" id="astruct_state_html_ad17eb59b5e1cdd4c6954e1c715e7fd6d"><div class="ttname"><a href="struct_state.html#ad17eb59b5e1cdd4c6954e1c715e7fd6d">State::rgb_state</a></div><div class="ttdeci">bool rgb_state</div><div class="ttdoc">Speichert den aktuellen Zustand der RGBLED, damit Dieser im MainMenu ausgegeben werden kann.</div><div class="ttdef"><b>Definition:</b> State.h:114</div></div>
+<div class="ttc" id="astruct_state_html_ab76afbbc52aba8f3c78158fef0f9956c"><div class="ttname"><a href="struct_state.html#ab76afbbc52aba8f3c78158fef0f9956c">State::blink</a></div><div class="ttdeci">bool blink</div><div class="ttdoc">Steuert das Blinken des ausgewählten Feldes im Menü und der Uhr.</div><div class="ttdef"><b>Definition:</b> State.h:35</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="_state_8h.html">State.h</a></li>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

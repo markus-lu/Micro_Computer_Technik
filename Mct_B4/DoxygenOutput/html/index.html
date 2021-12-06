@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mct_B4: B4: Schaltuhr und Thermometer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mct_B4
+   &#160;<span id="projectnumber">V1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('index.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">B4: Schaltuhr und Thermometer </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Dies ist unsere Lösung zu Aufgabe B4: Schaltuhr und Thermometer.<br  />
+<br  />
+ Dieses Programm ist eine Schaltuhr und ein Thermometer. Dabei können Events abgespeichert werden, welche bei der eingestellten Uhrzeit Auslösen. Zusätzlich können Uhrzeit und Datum individuell eingestellt werden. <br  />
+</p>
+<hr  />
+<h1><a class="anchor" id="sec1"></a>
+Aufgabenstellung</h1>
+<p>Diese Aufgabe besteht aus folgenden Teilaufgaben:</p>
+<h2><a class="anchor" id="sec1_1"></a>
+Teilaufgabe 1</h2>
+<p>Programmieren Sie einen Treiber zum vollständigen Setzen und Auslesen des I²C-Uhrenbausteins DS3231. Es soll auf die Sekunde, Minute, Stunde, den Tag, den Monat und das Jahr sowie – separat - auf die vom Baustein zur Verfügung gestellte Temperaturinformation zugegriffen werden können. Implementieren Sie dazu ein geeignetes Time-Struct zur Kommunikation mit der Leseund der Schreibfunktion für die Echtzeituhr.</p>
+<h2><a class="anchor" id="sec1_2"></a>
+Teilaufgabe 2</h2>
+<p>Programmieren Sie einen Treiber für den vollständigen Zugriff auf die TM1638-Platine, die sich auf dem beiliegenden I/O-Board befindet. Es sollen alle 8 LEDs und die achtstellige Siebensegmentanzeige (incl. Dezimalpunkten) ansteuerbar sein und alle 8 Taster ausgelesen werden können.</p>
+<h2><a class="anchor" id="sec1_3"></a>
+Teilaufgabe 3</h2>
+<p>Programmieren Sie, basierend auf den oben genannten Treibern, eine ergonomisch und intuitiv bedienbare Schaltuhr mit zusätzlicher Temperaturanzeige. Diese soll über folgende Leitungsmerkmale verfügen:</p><ul>
+<li>aktuelle Uhrzeit einstellbar</li>
+<li>bis zu 16 Schalt-Events programmierbar</li>
+<li>für jedes Schalt-Event sind folgende Merkmale einzeln einstellbar:</li>
+<li>Stunde und Minute</li>
+<li>Wochentag</li>
+<li>Wiederholung für jeden einzelnen Wochentag getrennt ein-/ausschaltbar</li>
+<li>Ein- oder Ausschaltvorgang</li>
+<li>die Anzahl der aktuell programmierten Events wird durch rote LEDs am Portexpander PCA9539 dargestellt. ( Anzahl leuchtender LEDs von links = Anzahl Events).</li>
+<li>Der Einschaltzustand wird durch die RGB-LED (grün : EIN, rot : AUS) signaliert</li>
+<li>Die Programmierung und Darstellung von Uhrzeit, Datum und Wochentag geschieht primär über das TM1638-Ein-/Ausgabemodul</li>
+<li>Die Temperaturinformation sowie der Status der Schaltuhr (Anzahl programmierter Events, derzeitiger Schaltzustand) werden auf dem LCD dargestellt.</li>
+<li>Über das LCD soll, nach entsprechender Anforderung, eine Liste aller programmierten Events darstellbar und editierbar sein. Die Bedienung dieser Funktion geschieht über die Taster T1 .. T4, eine Rückmeldung erfolgt über die LEDs LED1 .. LED4.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="sec2"></a>
+Eingebundene Dateien</h1>
+<h2><a class="anchor" id="sec2_1"></a>
+Clock</h2>
+<p>Logik für die Uhrzeit auf dem LEDKey und die Buttons.</p>
+<h2><a class="anchor" id="sec2_2"></a>
+Events</h2>
+<p>Funktionen für Events</p>
+<h2><a class="anchor" id="sec2_3"></a>
+FrontIO</h2>
+<p>Input Output Frontplatte</p>
+<h2><a class="anchor" id="sec2_4"></a>
+GPIO</h2>
+<p>Funktionen und Structe zur Interaktion mit GPIO</p>
+<h2><a class="anchor" id="sec2_5"></a>
+I2C</h2>
+<p>I2C Treiber</p>
+<h2><a class="anchor" id="sec2_6"></a>
+I2CLED</h2>
+<p>Ausgabe der Evenanzahl über LEDs</p>
+<h2><a class="anchor" id="sec2_7"></a>
+LEDKey</h2>
+<p>Anzeigen der Uhrzeit und Datum + Auslesen der Taster</p>
+<h2><a class="anchor" id="sec2_8"></a>
+Menu</h2>
+<p>Anzeigen des Menüs und reagieren auf Tastendrücke</p>
+<h3><a class="anchor" id="sec2_9_1"></a>
+- MainMenu</h3>
+<p>Anzeigen des Hauptmenüs und reagieren auf Tastendrücke </p>
+<h3><a class="anchor" id="sec2_9_2"></a>
+- EventsMenu</h3>
+<p>Anzeigen des Eventmenüs und reagieren auf Tastendrücke </p>
+<h3><a class="anchor" id="sec2_9_3"></a>
+- EventDetailsMenu</h3>
+<p>Anzeigen des EventDetailsMenüs und reagieren auf Tastendrücke</p>
+<h2><a class="anchor" id="sec2_10"></a>
+RGBLED</h2>
+<p>RGB LED Treiber</p>
+<h2><a class="anchor" id="sec2_11"></a>
+RTC</h2>
+<p>Lesen und schreiben von Datum, Uhrzeit und Temperatur</p>
+<h2><a class="anchor" id="sec2_12"></a>
+Serial</h2>
+<p>Custom Serial Protokoll Treiber für TM1638</p>
+<h2><a class="anchor" id="sec2_13"></a>
+State</h2>
+<p>Struct definitionen für den aktuellen Zustand des Menüs</p>
+<h2><a class="anchor" id="sec2_14"></a>
+Timer</h2>
+<p>Timer Treiber</p>
+<hr  />
+<dl class="section author"><dt>Autor</dt><dd>Markus Luckau, Simon Struck </dd></dl>
+<dl class="section date"><dt>Datum</dt><dd>28.11.2021 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 Fertige Version </dd></dl>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

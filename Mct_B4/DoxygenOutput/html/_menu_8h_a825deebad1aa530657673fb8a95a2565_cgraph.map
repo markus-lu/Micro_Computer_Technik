@@ -1,0 +1,4 @@
+<map id="menu_init" name="menu_init">
+<area shape="rect" id="node1" title="Diese Funktion initialisiert alle für das Menü benötigte Hardware. Dabei handelt es sich um das LC&#45;Di..." alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node2" href="$_front_i_o_8c.html#ab02462a6303ccd667bed2a3a17531ed9" title="Diese Funktion initialisiert I²C für die IO auf der Frontplatte." alt="" coords="132,5,213,32"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="clock_loop_once" name="clock_loop_once">
+<area shape="rect" id="node1" title="Diese Funktion chekt ob ein Taster gedrückt wurde und lässt die 7Seg Anzeige neu zeichnen." alt="" coords="5,107,124,133"/>
+<area shape="rect" id="node2" href="$_clock_8c.html#a5203aee24b8ee3f0bb1a5bd7400f6455" title="Diese Funktion reagiert auf Taster und verarbeitet diese." alt="" coords="172,69,327,96"/>
+<area shape="rect" id="node9" href="$_clock_8c.html#a584ac9d5fe069f95d2dc52f96bb012de" title="Diese Funktion schreibt je nachdem was ausgewält ist, die Uhrzeit oder das Datum auf die 7Seg Anzeige..." alt="" coords="190,132,309,159"/>
+<area shape="rect" id="node3" href="$_l_e_d_key_8c.html#a5fb9af344d11c21b1486049ab12f571e" title="Diese Funktion liest aus, welche Taster auf dem LED&amp;KEY gedrückt sind." alt="" coords="390,5,525,32"/>
+<area shape="rect" id="node6" href="$_l_e_d_key_8c.html#ab84623ed752fe4421adc8a01b5036108" title="Diese Funktion setzt die Helligkeit der 7&#45;Segmente und kann das Display auch ganz ausschalten." alt="" coords="381,56,533,83"/>
+<area shape="rect" id="node8" href="$_r_t_c_8c.html#a5a09429bda44498855f43d95cee9d9d1" title="Diese Funktion schreibt eine aktualisierte Zeit in den RTC." alt="" coords="406,107,509,133"/>
+<area shape="rect" id="node4" href="$_serial_8c.html#a0fc995e48b1ad15396d82a0295cecc68" title="Diese Funktion empfängt mehrere Bytes vom TM1638." alt="" coords="621,12,706,39"/>
+<area shape="rect" id="node5" href="$_g_p_i_o_8c.html#a2fb9fd03565587a243b524e1c3ca17ba" title="Diese Funktion setzt den Ausgang eines GPIOPin&#39;s auf LOW." alt="" coords="787,69,884,96"/>
+<area shape="rect" id="node7" href="$_serial_8c.html#a8ac0da8e073a6797296d0512033f1b9e" title="Diese Funktion sendet ein einzelnes Byte and den TM1638. Dies ist ein Befehl, der zum Beispiel die He..." alt="" coords="588,69,739,96"/>
+<area shape="rect" id="node10" href="$_l_e_d_key_8c.html#a860fa1251f4ce2aa3bfa2359458c8081" title="Diese Funktion ersetzt die anzuzeigenden LEDS und 7&#45;Segment&#45;Anzeigen." alt="" coords="375,157,540,184"/>
+<area shape="rect" id="node11" href="$_serial_8c.html#a732f691e58392100db489180495d7252" title="Diese Funktion sendet mehrere Bytes and den TM1638." alt="" coords="620,132,707,159"/>
+</map>

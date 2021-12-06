@@ -1,0 +1,5 @@
+<map id="serial_deinit" name="serial_deinit">
+<area shape="rect" id="node1" title="Diese Funktion de&#45;initialisiert den Timer 2." alt="" coords="5,5,96,32"/>
+<area shape="rect" id="node2" href="$_timer_8c.html#ade62ca8bd955e5e23aafdb684ea4d37e" title="Diese Funktion deinitialisiert Timer 2." alt="" coords="144,5,276,32"/>
+<area shape="rect" id="node3" href="$_timer_8c.html#a5f946664d6639ecebe16ab3742bc2c76" title="Diese Funktion stoppt einen Timer." alt="" coords="324,5,443,32"/>
+</map>
