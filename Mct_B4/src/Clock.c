@@ -362,7 +362,7 @@ void clock_draw_time(struct State *state) {
 		segments[7] = SEGMENT_DIGITS[state->time.year % 10];
 	}
 	// Bit für Wochentag setzen und Schiften
-	uint8_t weekday = (1 << (7 - state->time.weekday));
+	uint8_t weekday = (1 << (8 - state->time.weekday));
 
 	// Wenn Bearbeitungsmodus an ist und Blinken an ist
 	if (state->clock_edit_mode && state->blink) {
