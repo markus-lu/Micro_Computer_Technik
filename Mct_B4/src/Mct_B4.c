@@ -18,6 +18,8 @@
 #include "Timer.h"
 #include "RGBLED.h"
 #include "EventDetailsMenu.h"
+#include "lcdlib_1769.h"
+#include "serial.h"
 #include <stdio.h>
 
 #ifdef __USE_CMSIS
