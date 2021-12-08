@@ -19,7 +19,7 @@
 #include "RGBLED.h"
 #include "EventDetailsMenu.h"
 #include "lcdlib_1769.h"
-#include "serial.h"
+#include "Serial.h"
 #include <stdio.h>
 
 #ifdef __USE_CMSIS
